@@ -13,6 +13,10 @@ Personal Codex skills used from `~/.codex/skills`.
 
 Symlink the skills you want Codex to load into `~/.codex/skills`.
 
+## Validation
+
+Run `python3 scripts/validate_skills.py`.
+
 ## License
 
 This project is licensed under GPL-3.0-or-later. See `LICENSE`.
