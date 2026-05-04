@@ -1,0 +1,4 @@
+interface:
+  display_name: "Change-friendly architecture"
+  short_description: "Design with narrow, testable boundaries"
+  default_prompt: "Use $change-friendly-architecture to review this design for boundaries, locality, testability, and blast radius."
