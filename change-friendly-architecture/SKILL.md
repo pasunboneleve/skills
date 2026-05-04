@@ -14,6 +14,7 @@ Prefer designs where a future change can be made by understanding one small area
 ## Design defaults
 
 - Start simple. Add complexity only when real use cases demand it.
+- Preserve existing user-visible behaviour unless intentionally changing it.
 - Prefer composition over inheritance.
 - Prefer small modules with clear responsibilities.
 - Prefer explicit interfaces over convenience helpers across boundaries.

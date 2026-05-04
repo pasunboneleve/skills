@@ -6,10 +6,12 @@ Personal Codex skills used from `~/.codex/skills`.
 
 ## Skills
 
-- `change-friendly-architecture`: reviews designs for narrow, testable boundaries and low blast radius.
-- `release`: releases through protected main, PR CI, merged release commits, tags, and release workflows.
-- `roborev-beads-workflow`: coordinates Beads task tracking with non-blocking RoboRev review.
-- `strunk-white-editor`: revises prose for clarity, brevity, and directness.
+- [`change-friendly-architecture`](change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
+- [`commit-discipline`](commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
+- [`documentation-boundary`](documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
+- [`release`](release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
+- [`roborev-beads-workflow`](roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
+- [`strunk-white-editor`](strunk-white-editor/SKILL.md): revises prose for clarity, brevity, and directness.
 
 ## Use
 

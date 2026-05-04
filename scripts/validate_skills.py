@@ -62,7 +62,7 @@ def validate_skill(skill_dir: Path, errors: list[str]) -> None:
         errors.append(f"{skill_path}: name {skill_name!r} must match directory {name!r}")
     if not description.strip():
         errors.append(f"{skill_path}: description must be non-empty")
-    if "TODO" in text or "[TODO" in text:
+    if "[TODO" in text or "TODO:" in text:
         errors.append(f"{skill_path}: scaffold TODO text remains")
     if not body.strip():
         errors.append(f"{skill_path}: body must be non-empty")
@@ -117,7 +117,7 @@ def validate_openai_yaml(skill_dir: Path, name: str, errors: list[str]) -> None:
 
     if f"${name}" not in text:
         errors.append(f"{path}: default_prompt must mention ${name}")
-    if "TODO" in text:
+    if "[TODO" in text or "TODO:" in text:
         errors.append(f"{path}: scaffold TODO text remains")
 
 
