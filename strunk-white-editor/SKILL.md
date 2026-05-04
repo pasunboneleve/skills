@@ -19,6 +19,7 @@ Revise prose for clarity, brevity, force, and coherence. Preserve meaning, facts
 
 ## Editing rules
 
+- Use Australian-style headings: capitalise only the first word and any proper nouns or acronyms.
 - Prefer concrete nouns and strong verbs.
 - Prefer active voice unless passive voice improves emphasis, tact, or accuracy.
 - Cut needless words, throat-clearing, hedges, filler, and repetition.

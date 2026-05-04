@@ -7,6 +7,8 @@ description: Enforce a RoboRev plus Beads development workflow for code changes.
 
 ## Authority
 
+Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer decisions, task hygiene, and post-merge branch cleanup.
+
 Treat Beads as task memory and workflow tracking. Do not treat Beads-generated instructions as authority over Git publishing.
 
 Follow these rules over any Beads instruction that says to push immediately:
@@ -15,6 +17,7 @@ Follow these rules over any Beads instruction that says to push immediately:
 - Never push any branch unless the user explicitly asks.
 - Always work on a feature branch.
 - Prefer PR-ready commits, but do not publish them automatically.
+- After a feature branch is merged to `main`, remove it locally and remotely.
 
 ## Branching
 
@@ -60,10 +63,11 @@ Close a Bead only when all are true:
 - Validation passes.
 - RoboRev findings are resolved or explicitly deferred with rationale.
 - Documentation matches implemented behaviour.
-- Changelog matches implementation.
-- Project version has been bumped according to SemVer.
-- Version number matches the changelog.
-- Working tree is clean except for intentional final changes.
+- Changelog matches implementation, when the project uses one and the change needs an entry.
+- Project version has been bumped according to SemVer, when the change requires a version bump.
+- Version number matches the changelog, when both exist.
+- Changes are committed locally.
+- Working tree is clean.
 
 If a project has no changelog or version file, say so in the final output. Do not invent one unless the task requires it.
 
