@@ -1,5 +1,7 @@
 # Codex skills
 
+[![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml)
+
 Personal Codex skills used from `~/.codex/skills`.
 
 ## Skills
