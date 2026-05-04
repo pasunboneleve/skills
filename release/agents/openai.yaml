@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release workflow"
+  short_description: "Release through PR, CI, tag, and publish"
+  default_prompt: "Use $release to prepare and execute this project release safely."
