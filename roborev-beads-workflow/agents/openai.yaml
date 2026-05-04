@@ -1,0 +1,4 @@
+interface:
+  display_name: "RoboRev + Beads workflow"
+  short_description: "Run Beads work with non-blocking RoboRev"
+  default_prompt: "Use $roborev-beads-workflow to implement this Bead with branch discipline, validation, and RoboRev review."

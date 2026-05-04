@@ -4,6 +4,7 @@ Personal Codex skills used from `~/.codex/skills`.
 
 ## Skills
 
+- `roborev-beads-workflow`: coordinates Beads task tracking with non-blocking RoboRev review.
 - `strunk-white-editor`: revises prose for clarity, brevity, and directness.
 
 ## Use
