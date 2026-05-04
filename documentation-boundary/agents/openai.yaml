@@ -1,0 +1,4 @@
+interface:
+  display_name: "Documentation boundary"
+  short_description: "Separate README synopsis from docs"
+  default_prompt: "Use $documentation-boundary to review whether README, docs, help, and changelog updates are in the right place."
