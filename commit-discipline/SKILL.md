@@ -15,6 +15,7 @@ Load and apply `$strunk-white-editor` before writing non-trivial commit messages
 - Commit completed work locally after validation passes.
 - Do not push unless the user explicitly asks.
 - Push only feature branches, never `main`.
+- Do not merge a PR unless CI is green.
 - Close Beads once changes are complete, validated, and committed locally.
 - Do not close Beads for uncommitted work.
 - Track unfinished work in Beads, not TODO comments.
