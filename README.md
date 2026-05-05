@@ -15,7 +15,7 @@ Personal Codex skills used from `~/.codex/skills`.
 
 ## Use
 
-Symlink the skills you want Codex to load into `~/.codex/skills`.
+Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills`.
 
 ## Validation
 
