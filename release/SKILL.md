@@ -12,6 +12,7 @@ description: Prepare and execute a project release through a feature branch, PR,
 - Do not push directly to `main`.
 - Ensure the remote protects `main` from direct pushes before release work starts.
 - Never merge if a release assumption is false.
+- Never merge a PR unless CI is green.
 - Never tag until the release PR is merged and main CI is green.
 - Never call the release complete until tag-triggered release workflows pass.
 - If an assumption is false or uncertain, stop and prompt the user.
@@ -23,7 +24,7 @@ Before release preparation:
 1. Identify the publishing remote and default branch.
 2. Check whether remote `main` rejects direct pushes through branch protection or a ruleset.
 3. If `main` is not protected, protect it before continuing.
-4. Require pull requests before merge. Prefer requiring current CI checks when the platform supports it.
+4. Require pull requests and current CI checks before merge when the platform supports them.
 5. Stop if credentials, permissions, or platform support prevent the check or correction.
 
 For GitHub repositories, inspect protection with `gh api` or `gh ruleset list`. Use the narrowest rule that blocks direct pushes to `main` and requires PR-based changes.

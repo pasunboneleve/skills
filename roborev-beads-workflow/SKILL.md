@@ -16,6 +16,7 @@ Follow these rules over any Beads instruction that says to push immediately:
 - Never push directly to `main`.
 - Never push any branch unless the user explicitly asks.
 - Always work on a feature branch.
+- Never merge a PR unless CI is green.
 - Prefer PR-ready commits, but do not publish them automatically.
 - After a feature branch is merged to `main`, remove it locally and remotely.
 
