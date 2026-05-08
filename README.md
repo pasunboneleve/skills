@@ -9,6 +9,7 @@ Personal Codex skills used from `~/.codex/skills`.
 - [`change-friendly-architecture`](change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
 - [`commit-discipline`](commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
 - [`documentation-boundary`](documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
+- [`docs-structure`](docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
 - [`release`](release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-beads-workflow`](roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
 - [`strunk-white-editor`](strunk-white-editor/SKILL.md): revises prose for clarity, brevity, and directness.
