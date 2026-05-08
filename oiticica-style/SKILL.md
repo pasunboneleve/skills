@@ -121,7 +121,7 @@ Do not let status replace function.
 
 Weak:
 
-> `strunk-white-editor`: remains available as a standalone prose editor.
+> `strunk-white-style`: remains available as a standalone prose style skill.
 
 Fault:
 
@@ -129,7 +129,7 @@ The line names availability but not capability. The reader learns dependency sta
 
 Better:
 
-> `strunk-white-editor`: revises prose for clarity, brevity, and directness; available as a standalone editor.
+> `strunk-white-style`: revises prose for clarity, brevity, and directness; available as a standalone style skill.
 
 Why:
 

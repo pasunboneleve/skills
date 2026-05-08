@@ -57,7 +57,7 @@ cases:
     type: negative
     input: |
       README skill list:
-      - `strunk-white-editor`: remains available as a standalone prose editor.
+      - `strunk-white-style`: remains available as a standalone prose style skill.
     must_find:
       - status replaces function
       - missing capability
