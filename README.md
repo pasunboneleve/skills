@@ -18,7 +18,7 @@ Personal Codex skills used from `~/.codex/skills`.
 
 ## Use
 
-Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills`.
+Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and the hosted Codex-home instructions into `~/.codex/AGENTS.md`.
 
 ## Validation
 

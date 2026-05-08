@@ -10,6 +10,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 - Added `oiticica-style`, a skill for reviewing prose and code through concrete contrast, diagnosis, correction, and explanation.
 - Added `docs-structure`, a skill for keeping README files concise while moving durable documentation into focused `docs/` files.
+- Added a repository-hosted Codex-home `AGENTS.md` template and linked it through `scripts/link_skills.sh`.
 
 ## [0.2.2] - 2026-05-08
 
