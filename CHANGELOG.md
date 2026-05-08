@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-09
+
 ### Added
 
 - Added `oiticica-style`, a skill for reviewing prose and code through concrete contrast, diagnosis, correction, and explanation.
@@ -57,7 +59,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/pasunboneleve/skills/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/pasunboneleve/skills/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/pasunboneleve/skills/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/pasunboneleve/skills/compare/v0.1.0...v0.2.0
