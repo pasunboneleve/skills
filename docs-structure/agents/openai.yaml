@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs structure"
+  short_description: "Keep README concise and move durable docs into docs/"
+  default_prompt: "Use $docs-structure to organise repository documentation between README.md and focused docs/ files."
