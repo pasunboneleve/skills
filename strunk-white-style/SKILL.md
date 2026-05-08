@@ -1,9 +1,9 @@
 ---
-name: strunk-white-editor
+name: strunk-white-style
 description: Apply Strunk and White-style editing to drafts, documentation, emails, commit messages, UI copy, and other prose. Use when Codex is asked to revise, tighten, simplify, proofread, enforce concise writing, improve clarity, cut verbosity, or make text direct while preserving meaning and intent.
 ---
 
-# Strunk and White editor
+# Strunk and White style
 
 ## Purpose
 

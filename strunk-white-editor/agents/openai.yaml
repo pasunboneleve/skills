@@ -1,4 +1,0 @@
-interface:
-  display_name: "Strunk & White editor"
-  short_description: "Tighten prose with classic style rules"
-  default_prompt: "Use $strunk-white-editor to revise this draft for clear, concise style."
