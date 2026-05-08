@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web realtime devloop"
+  short_description: "Run a live browser loop for web UI work"
+  default_prompt: "Use $web-realtime-devloop to develop this browser-based feature with a long-lived server, live inspection, and validation."

@@ -12,6 +12,7 @@ Personal Codex skills used from `~/.codex/skills`.
 - [`release`](release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-beads-workflow`](roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
 - [`strunk-white-editor`](strunk-white-editor/SKILL.md): revises prose for clarity, brevity, and directness.
+- [`web-realtime-devloop`](web-realtime-devloop/SKILL.md): enforces a live browser development loop for realtime web work.
 
 ## Use
 
@@ -20,6 +21,12 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills`.
 ## Validation
 
 Run `python3 scripts/validate_skills.py`.
+
+## Versioning
+
+The current version is recorded in `VERSION`.
+
+See `CHANGELOG.md` for release history. Version tags use `vMAJOR.MINOR.PATCH`.
 
 ## License
 
