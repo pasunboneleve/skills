@@ -6,6 +6,14 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Strengthened `web-realtime-devloop` guidance for realtime rendering architecture, bounded projections, paced rendering, keyed SVG/DOM updates, and performance diagnosis.
+
+### Added
+
+- Added `web-realtime-devloop` eval fixtures for reviewing realtime browser rendering architecture.
+
 ## [0.2.1] - 2026-05-08
 
 ### Changed
