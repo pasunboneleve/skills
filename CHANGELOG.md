@@ -4,6 +4,12 @@ All notable changes to this repository are documented in this file.
 
 This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
+## [Unreleased]
+
+### Changed
+
+- Expanded and tightened `web-realtime-devloop` guidance for session handling, rendered-page inspection, realtime state, validation, CSS, and frontend architecture boundaries.
+
 ## [0.2.0] - 2026-05-08
 
 ### Added
