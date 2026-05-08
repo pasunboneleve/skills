@@ -12,6 +12,7 @@ Personal Codex skills used from `~/.codex/skills`.
 - [`release`](release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-beads-workflow`](roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
 - [`strunk-white-editor`](strunk-white-editor/SKILL.md): revises prose for clarity, brevity, and directness.
+- [`web-realtime-devloop`](web-realtime-devloop/SKILL.md): enforces a live browser development loop for realtime web work.
 
 ## Use
 
