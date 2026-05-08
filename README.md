@@ -22,6 +22,12 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills`.
 
 Run `python3 scripts/validate_skills.py`.
 
+## Versioning
+
+The current version is recorded in `VERSION`.
+
+See `CHANGELOG.md` for release history. Version tags use `vMAJOR.MINOR.PATCH`.
+
 ## License
 
 This project is licensed under GPL-3.0-or-later. See `LICENSE`.
