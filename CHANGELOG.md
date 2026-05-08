@@ -6,6 +6,16 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-05-08
+
+### Changed
+
+- Strengthened `web-realtime-devloop` guidance for realtime rendering architecture, bounded projections, paced rendering, keyed SVG/DOM updates, and performance diagnosis.
+
+### Added
+
+- Added `web-realtime-devloop` eval fixtures for reviewing realtime browser rendering architecture.
+
 ## [0.2.1] - 2026-05-08
 
 ### Changed
@@ -35,7 +45,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/pasunboneleve/skills/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/pasunboneleve/skills/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/pasunboneleve/skills/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/pasunboneleve/skills/releases/tag/v0.1.0

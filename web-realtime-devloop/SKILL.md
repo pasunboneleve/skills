@@ -70,21 +70,79 @@ Check:
 
 For realtime panels, verify that arriving events do not cause layout jumps, unbounded growth, hidden horizontal overflow, clipped labels, overlapping text, or unreadable animation. Keep scroll regions internal and important state visible.
 
+Rendered collections must be bounded. Totals may grow, but arrays rendered as logs, recent changes, timelines, retrievals, token excerpts, error lists, or tool traces must not grow without limit. Streaming text must stay inside fixed logical regions with internal scrolling; it must not resize the page grid.
+
 For topology or observability UIs, make active, idle, stale, and failed states distinct. The first-glance answer should be clear: where the system is now, what is active, what changed recently, what is stale, and what failed.
 
-## Realtime state and architecture
+## Realtime rendering architecture
 
-For realtime observability apps, prefer this flow:
+For realtime observability apps, this flow is required:
 
 ```text
-events -> reducer -> projection -> renderer
+event stream
+-> reducer/domain core
+-> bounded projection
+-> latest projection buffer
+-> requestAnimationFrame render loop
+-> keyed/persistent SVG/DOM updates
 ```
+
+WebSocket, SSE, and message handlers may parse, enqueue events, or store the latest projection. They must not render.
+
+Render at browser cadence, not event cadence. Use `requestAnimationFrame` or an equivalent scheduler. Coalesce many events or projections into one paint.
+
+Use this pattern for projection-driven streams:
+
+```ts
+let latestProjection: Projection | null = null;
+let renderScheduled = false;
+
+socket.onmessage = (message) => {
+  latestProjection = parseProjection(message.data);
+
+  if (!renderScheduled) {
+    renderScheduled = true;
+    requestAnimationFrame(() => {
+      renderScheduled = false;
+      if (latestProjection) render(latestProjection);
+    });
+  }
+};
+```
+
+For event-driven streams, handlers may enqueue validated events. The reducer/core should then produce a bounded projection before rendering.
 
 Keep canonical state out of ad hoc UI components. The browser may own rendering geometry, connection state, hover/focus/selection state, and transient presentation state.
 
 The browser must not become the canonical source of truth for agent phase, topology status, retry or failure accounting, token or usage totals, derived metrics, or event ordering policy.
 
-Put canonical state in a core package or reducer module with tests.
+Put canonical state in a tested core package or reducer module.
+
+## SVG and DOM update discipline
+
+Keep SVG and DOM hot paths persistent and keyed.
+
+Prefer:
+
+- persistent SVG/DOM elements
+- keyed joins for nodes, edges, rows, panels, and list items
+- attribute, class, and text updates instead of replacing whole containers
+- separate create, update, and remove paths
+- render-duration measurements when performance is in question
+
+Avoid `innerHTML = ""`, `replaceChildren`, or full redraws in hot paths unless the collection is tiny and intentionally bounded.
+
+For D3/SVG, use keyed joins:
+
+```ts
+selection
+  .data(nodes, (node) => node.id)
+  .join(
+    (enter) => enter.append("g"),
+    (update) => update,
+    (exit) => exit.remove(),
+  );
+```
 
 For WebSocket or streaming features, validate:
 
@@ -97,6 +155,33 @@ For WebSocket or streaming features, validate:
 - browser refresh while the stream is active
 
 Prefer a deterministic mock event generator with normal, token-heavy, retry, failed-tool, retrieval-heavy, duplicate-event, and out-of-order scenarios.
+
+Mock streams must support paced and bursty modes. Default demos should feel continuous: token events roughly every 40-100 ms, tool or retrieval events roughly every 300-1200 ms, and usage or latency updates at lower cadence. Use burst mode to verify render coalescing.
+
+## Performance diagnosis
+
+When realtime UI feels slow or stilted, investigate in this order before changing languages or runtimes:
+
+1. render frequency
+2. full DOM/SVG rebuilds
+3. layout or reflow from growing panels
+4. projection payload size
+5. event burstiness
+6. console or log spam
+7. dev-mode overhead
+8. reducer or runtime language performance
+
+Do not treat sluggish realtime UI as proof that WASM/Rust is required until the rendering loop, projection bounds, and DOM/SVG update strategy have been inspected.
+
+When performance is in question, add lightweight dev-only counters or equivalent evidence for:
+
+- events received/sec
+- projections broadcast/sec
+- render calls/sec
+- average render duration
+- max render duration
+- projection payload size
+- dropped or coalesced update count, if applicable
 
 ## TypeScript and tests
 
@@ -154,6 +239,20 @@ Use `bun run check` as the repo's deterministic validation command when present.
 
 Use both deterministic checks and rendered-page inspection before claiming completion.
 
+## Completion checklist
+
+Do not mark realtime web work complete unless:
+
+- rendering is paced through `requestAnimationFrame` or an equivalent scheduler
+- WebSocket, SSE, and message handlers do not directly redraw the UI
+- SVG/DOM hot paths use keyed or persistent updates
+- rendered collections are bounded
+- token and log panels do not cause layout jumps
+- the live app was inspected under streaming load
+- desktop, mobile, and zoom-equivalent checks pass
+- performance counters or DevTools evidence were used if the UI felt stilted
+- deterministic validation passed
+
 ## Final report
 
 Report:
@@ -163,6 +262,10 @@ Report:
 - rendered workflows inspected
 - desktop, narrow, and zoom-equivalent checks
 - realtime, error, and reconnect states checked where applicable
+- render scheduling strategy
+- projection and rendered collection bounds
+- SVG/DOM update strategy
+- performance counters or DevTools evidence when performance was relevant
 - validation commands run
 - remaining risks or checks not run
 - unexplained dev server, browser, generated artifact, or lockfile side effects
