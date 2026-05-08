@@ -9,6 +9,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 ### Changed
 
 - Expanded and tightened `web-realtime-devloop` guidance for session handling, rendered-page inspection, realtime state, validation, CSS, and frontend architecture boundaries.
+- Clarified `release` workflow handling for tag-only projects without tag-triggered artifact automation.
 
 ## [0.2.0] - 2026-05-08
 
