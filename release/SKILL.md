@@ -1,6 +1,6 @@
 ---
 name: release
-description: Prepare and execute a project release through a feature branch, PR, green CI, protected main, merged release commit, version tag, and tag-triggered release workflows. Use when Codex is asked to prepare, validate, publish, tag, or execute a versioned release.
+description: Prepare and execute a versioned release through a feature branch, PR, green CI, protected main, merged release commit, version tag, and tag-triggered release workflows when present. Use when Codex is asked to prepare, validate, publish, tag, or execute a release.
 ---
 
 # Release workflow
@@ -14,7 +14,8 @@ description: Prepare and execute a project release through a feature branch, PR,
 - Never merge if a release assumption is false.
 - Never merge a PR unless CI is green.
 - Never tag until the release PR is merged and main CI is green.
-- Never call the release complete until tag-triggered release workflows pass.
+- Never require release artifacts unless tag-triggered release automation exists.
+- Never call an artifact release complete until its tag-triggered workflows pass.
 - If an assumption is false or uncertain, stop and prompt the user.
 
 ## Branch protection
@@ -27,7 +28,7 @@ Before release preparation:
 4. Require pull requests and current CI checks before merge when the platform supports them.
 5. Stop if credentials, permissions, or platform support prevent the check or correction.
 
-For GitHub repositories, inspect protection with `gh api` or `gh ruleset list`. Use the narrowest rule that blocks direct pushes to `main` and requires PR-based changes.
+For GitHub repositories, inspect protection with `gh api` or `gh ruleset list`. Use the narrowest rule that blocks direct pushes to `main` and requires PRs.
 
 ## Required preconditions
 
@@ -42,6 +43,7 @@ Before changing release files, verify:
 7. Help or usage output describes new command-line functionality, when the project exposes command-line help.
 8. Release notes can be extracted from the changelog.
 9. Local validation passes.
+10. Release surface has been classified as artifact or tag-only.
 
 ## Release preparation
 
@@ -52,6 +54,25 @@ Before changing release files, verify:
 5. If user-facing features exist, update docs and changelog.
 6. If command-line changes exist, update help text and verify help or usage output.
 7. Extract release notes when the project has a script or generator.
+
+## Release surface
+
+Before tagging, inspect release automation.
+
+For GitHub repositories, check `.github/workflows/` for workflows triggered by version tags, such as:
+
+```yaml
+on:
+  push:
+    tags:
+      - "v*"
+```
+
+Also check workflows triggered by GitHub release events.
+
+If a tag-triggered release workflow exists, treat the project as an artifact release. After pushing the tag, wait for the triggered workflow and verify its outputs.
+
+If no tag-triggered release workflow exists, treat the project as tag-only. Do not require release artifacts or release workflow checks. A tag-only release is complete when the release PR is merged, main CI is green, and the version tag is pushed.
 
 ## Local validation
 
@@ -88,10 +109,11 @@ After the PR is merged and main CI is green:
 
 1. Create the version tag on the merged `main` release commit.
 2. Push the tag only if the user asked to execute the release.
-3. Wait for tag-triggered release workflows to finish.
-4. If any release workflow fails, the release is incomplete.
+3. For artifact releases, wait for tag-triggered workflows to finish.
+4. For artifact releases, treat any failed release workflow as an incomplete release.
+5. For tag-only releases, do not wait for workflows that do not exist.
 
-Verify every release workflow triggered by the tag. Do not assume one workflow covers the whole release when the project publishes multiple artifacts or separates release creation from artifact upload.
+For artifact releases, verify every workflow triggered by the tag. Do not assume one workflow covers the whole release when the project publishes multiple artifacts or separates release creation from artifact upload.
 
 ## Tag rules
 
@@ -122,7 +144,7 @@ Stop and prompt the user if:
 - main CI is not green after merge
 - merge strategy is unclear
 - tag format is ambiguous
-- tag-triggered release workflows fail
+- tag-triggered release workflows fail for an artifact release
 - credentials or permissions are missing
 
 ## Final output
@@ -135,6 +157,7 @@ Report:
 - PR link or identifier
 - PR CI status
 - main CI status
+- release surface: artifact or tag-only
 - merge commit
 - tag created
 - tag pushed
@@ -143,4 +166,6 @@ Report:
 - documentation, changelog, help, and version updates
 - assumptions that required user confirmation
 
-Do not call the release complete unless the PR was merged, main CI passed, the version tag was pushed, and tag-triggered release workflows passed.
+For artifact releases, do not call the release complete unless the PR was merged, main CI passed, the version tag was pushed, and tag-triggered workflows passed.
+
+For tag-only releases, do not call the release complete unless the PR was merged, main CI passed, and the version tag was pushed.
