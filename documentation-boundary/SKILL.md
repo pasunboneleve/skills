@@ -1,6 +1,6 @@
 ---
 name: documentation-boundary
-description: Distinguish README synopsis work from actual documentation updates, and route prose editing through strunk-white-editor. Use when README, docs, CLI help text, man pages, GNU info files, changelog prose, or project documentation are changed or reviewed.
+description: Distinguish README synopsis work from actual documentation updates. Use when README, docs, CLI help text, man pages, GNU info files, changelog prose, or project documentation are changed or reviewed.
 ---
 
 # Documentation boundary
@@ -46,7 +46,7 @@ Do not claim documentation is updated if only `README.md` changed.
 
 ## Dependency
 
-Before finalising prose changes, load and apply `$strunk-white-editor`.
+Before finalising prose changes, load and apply `$oiticica-style`.
 
 Apply it to:
 

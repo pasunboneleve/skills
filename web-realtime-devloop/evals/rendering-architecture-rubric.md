@@ -88,7 +88,7 @@ Examples:
 - token excerpts
 - error lists
 
-Totals may grow, but rendered arrays should not grow without limit.
+Totals may grow, but rendered arrays must not grow without limit.
 
 Score: 0 / 1 / 2
 

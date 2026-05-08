@@ -15,6 +15,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 ### Changed
 
 - Made `oiticica-style` the standing writing and documentation skill in the hosted Codex-home `AGENTS.md`.
+- Removed `strunk-white-editor` from active documentation guidance while keeping the legacy skill in the repository.
+- Tightened Markdown examples and eval rubrics for stronger obligations and correct code contrasts.
 
 ## [0.2.2] - 2026-05-08
 

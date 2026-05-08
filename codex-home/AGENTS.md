@@ -31,12 +31,12 @@ Prefer and apply:
 
 When writing, editing, or reviewing prose, prompts, code, APIs, tests, architecture notes, or other text-bearing work:
 
-Prefer and apply:
+Load and apply:
 - $oiticica-style
 
 When changing or reviewing README files, docs, help text, man pages, info pages, changelog prose, or other project documentation:
 
-Prefer and apply:
+Load and apply:
 - $documentation-boundary
 - $docs-structure
 - $oiticica-style

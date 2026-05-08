@@ -84,7 +84,7 @@ Weak:
 
 ```ts
 export function priceTotal(items: Item[]) {
-  return items.reduce((sum, item) => sum + item.price * TAX_RATE, 0);
+  return items.reduce((sum, item) => sum + item.price * (1 + TAX_RATE), 0);
 }
 ```
 
@@ -96,7 +96,7 @@ Better:
 
 ```ts
 export function priceTotal(items: Item[], taxRate: number) {
-  return items.reduce((sum, item) => sum + item.price * taxRate, 0);
+  return items.reduce((sum, item) => sum + item.price * (1 + taxRate), 0);
 }
 ```
 
@@ -120,7 +120,7 @@ Final version:
 
 ```ts
 export function priceTotal(items: Item[], taxRate: number) {
-  return items.reduce((sum, item) => sum + item.price * taxRate, 0);
+  return items.reduce((sum, item) => sum + item.price * (1 + taxRate), 0);
 }
 ```
 
