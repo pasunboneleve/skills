@@ -12,6 +12,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added `docs-structure`, a skill for keeping README files concise while moving durable documentation into focused `docs/` files.
 - Added a repository-hosted Codex-home `AGENTS.md` template and linked it through `scripts/link_skills.sh`.
 
+### Changed
+
+- Made `oiticica-style` the standing writing and documentation skill in the hosted Codex-home `AGENTS.md`.
+
 ## [0.2.2] - 2026-05-08
 
 ### Changed

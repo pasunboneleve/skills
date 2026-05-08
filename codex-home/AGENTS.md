@@ -29,17 +29,17 @@ Prefer and apply:
 
 ## Text and documentation
 
-When writing or editing prose:
+When writing, editing, or reviewing prose, prompts, code, APIs, tests, architecture notes, or other text-bearing work:
 
 Prefer and apply:
-- $strunk-white-editor
+- $oiticica-style
 
 When changing or reviewing README files, docs, help text, man pages, info pages, changelog prose, or other project documentation:
 
 Prefer and apply:
 - $documentation-boundary
 - $docs-structure
-- $strunk-white-editor
+- $oiticica-style
 
 ## Browser and realtime UI
 
