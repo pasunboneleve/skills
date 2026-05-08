@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-05-09
+
+### Changed
+
+- Added an Oiticica inventory test so lists must state each entry's capability, not only its status.
+- Restored the `strunk-white-editor` README entry's functional description while keeping its standalone status explicit.
+
 ## [0.3.0] - 2026-05-09
 
 ### Added
@@ -59,7 +66,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/pasunboneleve/skills/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/pasunboneleve/skills/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/pasunboneleve/skills/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/pasunboneleve/skills/compare/v0.2.0...v0.2.1
