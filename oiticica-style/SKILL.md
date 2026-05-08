@@ -105,6 +105,36 @@ If you name several main faults, the `Better` section or `Final version` must re
 - If the strongest judge is deterministic, run it or name that it was not run.
 - For code review, point at the smallest unit that causes the fault: name, branch, function, test, module boundary, API contract, state mutation, or dependency edge.
 
+## Inventory and map test
+
+When reviewing a README, index, repository map, skill list, command list, API list, table of contents, or any inventory, ask:
+
+Can a reader choose the right entry from this line alone?
+
+Each entry must name:
+
+- the object
+- the action or capability
+- the boundary or when to use it
+
+Do not let status replace function.
+
+Weak:
+
+> `strunk-white-editor`: remains available as a standalone prose editor.
+
+Fault:
+
+The line names availability but not capability. The reader learns dependency status, not what the skill does.
+
+Better:
+
+> `strunk-white-editor`: revises prose for clarity, brevity, and directness; available as a standalone editor.
+
+Why:
+
+The verb `revises` lets the reader choose the skill. The standalone note remains secondary.
+
 ## Code translation
 
 Apply the same contrast method to code:

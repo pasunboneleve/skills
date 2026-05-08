@@ -53,6 +53,25 @@ cases:
       - Why
       - Rubric
 
+  - id: inventory-status-replaces-function
+    type: negative
+    input: |
+      README skill list:
+      - `strunk-white-editor`: remains available as a standalone prose editor.
+    must_find:
+      - status replaces function
+      - missing capability
+      - reader cannot choose entry from line alone
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
   - id: prose-false-force
     type: negative
     input: "The team decisively initiated a comprehensive process to evaluate potential remediation options."
