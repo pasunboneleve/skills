@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Added `docs-structure`, a skill for keeping README files concise while moving durable documentation into focused `docs/` files.
+
 ## [0.2.2] - 2026-05-08
 
 ### Changed
