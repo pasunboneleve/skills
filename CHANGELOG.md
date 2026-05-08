@@ -6,9 +6,19 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-09
+
 ### Added
 
+- Added `oiticica-style`, a skill for reviewing prose and code through concrete contrast, diagnosis, correction, and explanation.
 - Added `docs-structure`, a skill for keeping README files concise while moving durable documentation into focused `docs/` files.
+- Added a repository-hosted Codex-home `AGENTS.md` template and linked it through `scripts/link_skills.sh`.
+
+### Changed
+
+- Made `oiticica-style` the standing writing and documentation skill in the hosted Codex-home `AGENTS.md`.
+- Removed `strunk-white-editor` from active documentation guidance while keeping the legacy skill in the repository.
+- Tightened Markdown examples and eval rubrics for stronger obligations and correct code contrasts.
 
 ## [0.2.2] - 2026-05-08
 
@@ -49,7 +59,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/pasunboneleve/skills/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/pasunboneleve/skills/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/pasunboneleve/skills/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/pasunboneleve/skills/compare/v0.1.0...v0.2.0

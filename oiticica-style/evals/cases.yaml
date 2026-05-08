@@ -1,0 +1,498 @@
+cases:
+  - id: prose-vague-subject
+    type: negative
+    input: "This initiative improves platform reliability through enhanced observability."
+    must_find:
+      - vague subject
+      - hidden actor
+      - generic abstraction
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: code-hidden-dependency
+    type: negative
+    input: |
+      export function canShip(order) {
+        return order.total > MIN_TOTAL && featureFlags.shipping;
+      }
+    must_find:
+      - hidden dependency
+      - distant invariant
+      - deterministic tests
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: documentation-locality
+    type: negative
+    input: "Configure the required services before running the app."
+    must_find:
+      - missing concrete commands
+      - missing service names
+      - missing success condition
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: prose-false-force
+    type: negative
+    input: "The team decisively initiated a comprehensive process to evaluate potential remediation options."
+    must_find:
+      - weak verb
+      - false force
+      - action hidden in noun phrase
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: harmony-wrong-order
+    type: negative
+    input: "The job marks the invoice paid after the webhook arrives if the signature is valid and the invoice exists."
+    must_find:
+      - condition after effect
+      - dependency order
+      - distant invariant
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: architecture-overload
+    type: negative
+    input: "`UserManager` handles auth, billing, notifications, and reporting."
+    must_find:
+      - overloaded unit
+      - mixed side effects
+      - unclear ownership
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: preserve-domain-language
+    type: positive_perfect
+    input: |
+      The parser accepts a left-recursive expression grammar because the Pratt parser owns precedence; replacing it with plain recursive descent would move precedence into scattered call order.
+    must_find:
+      - preserve technical terms
+      - no invented fault
+      - relation between parser and precedence
+    must_output:
+      - Spine
+      - Main faults
+      - Structural highlight
+      - Strong
+      - Mechanism
+      - Rubric
+      - Why
+
+  - id: positive-concrete-review
+    type: positive
+    input: |
+      export function canShip(order) {
+        return order.total > MIN_TOTAL && featureFlags.shipping;
+      }
+    must_find:
+      - concrete diagnosis
+      - code locality
+      - deterministic tests
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: mixed-quality-smallest-unit
+    type: negative
+    input: |
+      export function userDisplayName(user) {
+        return `${user.firstName} ${user.lastName}`.trim();
+      }
+
+      export function process(data) {
+        return doThing(data);
+      }
+    must_find:
+      - smallest failing unit
+      - vague function name
+      - do not rewrite good function
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: corporate-buzzword-trap
+    type: negative
+    input: "We must streamline the robust platform to elevate cross-functional synergies."
+    must_find:
+      - corporate writing advice trap
+      - no concrete actor
+      - no concrete effect
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: behavior-preservation-edge-case
+    type: negative
+    input: |
+      export function normalizePath(path) {
+        // Preserve root. Without this, "/" becomes "".
+        if (path === "/") return "/";
+        return path.replace(/\/+$/, "");
+      }
+    must_find:
+      - preserve edge case
+      - deterministic tests
+      - do not remove invariant for concision
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: deterministic-judge-verification
+    type: negative
+    input: |
+      Review this function. Tests exist but were not run.
+
+      export function add(a: number, b: number) {
+        return a - b;
+      }
+    must_find:
+      - deterministic check not run
+      - correctness before style
+      - tests decide behavior
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Checked via
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: invalid-code-priority
+    type: negative
+    input: |
+      export function total(items: Item[] {
+        return items.reduce((sum, item) => sum + item.price, 0);
+      }
+    must_find:
+      - syntax error
+      - deterministic correctness fault
+      - do not start with style
+    must_output:
+      - Spine
+      - Main faults
+      - Checked via
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: unresolved-faults-in-contrast
+    type: negative
+    input: |
+      export function process(data) {
+        if (CONFIG.enabled) return doThing(data.items);
+      }
+    must_find:
+      - representative contrast scope
+      - unresolved hidden dependency
+      - unresolved missing return contract
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Faults not resolved in this contrast
+      - Rubric
+
+  - id: perfect-input-bypass
+    type: positive_perfect
+    input: |
+      export function normalizePath(path: string): string {
+        if (path === "/") return "/";
+        return path.replace(/\/+$/, "");
+      }
+    must_find:
+      - no invented fault
+      - root invariant is local
+      - concise behavior
+    must_output:
+      - Spine
+      - Main faults
+      - Structural highlight
+      - Strong
+      - Mechanism
+      - Rubric
+      - Why
+
+  - id: code-cross-file-locality
+    type: negative
+    input: |
+      // config.ts
+      export let allowRefunds = false;
+      export function initRuntime(env) {
+        allowRefunds = env.region !== "BR";
+      }
+
+      // refunds.ts
+      export function refund(order) {
+        if (!allowRefunds) return { status: "blocked" };
+        return gateway.refund(order.paymentId);
+      }
+    must_find:
+      - distant invariant
+      - hidden dependency
+      - cross-file locality
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: multiple-fault-resolution
+    type: negative
+    input: |
+      export function process(data) {
+        if (CONFIG.enabled && data.items.length > 0) {
+          return data.items.map(x => doThing(x));
+        }
+      }
+    must_find:
+      - vague name
+      - hidden dependency
+      - missing empty result contract
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+      - Final version
+
+  - id: final-version-scope
+    type: negative_control
+    input: |
+      Main faults:
+      - Vague name: `process` hides the payment mutation.
+      - Hidden dependency: `CONFIG.enabled` controls behavior from outside the function.
+      - Missing empty result contract: no branch states what happens for no items.
+
+      Better:
+      `chargeItems(items)`
+    must_fail_because:
+      - final version fixes only one named fault
+      - hidden dependency remains unresolved
+      - missing result contract remains unresolved
+
+  - id: contrast-only-request
+    type: positive
+    input: "Give just one Oiticica contrast for this sentence: This initiative optimizes stakeholder outcomes."
+    must_find:
+      - explicit contrast-only request
+      - omit final version
+      - concrete mechanism
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: strict-format-on-code
+    type: negative
+    input: |
+      function handle(x) {
+        return manager.process(x);
+      }
+    must_find:
+      - vague name
+      - generic abstraction
+      - strict output shape
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: prose-subject-action-separation
+    type: negative
+    input: |
+      The migration plan, after several months of discussion between platform, security, billing, and support teams, and despite repeated concerns about customer-visible downtime during renewal season, finally removes the legacy token exchange.
+    must_find:
+      - subject action separation
+      - intervening conditions
+      - delayed verb
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: corporate-compliance-trap
+    type: negative
+    input: "Make this sound more professional and impactful for a C-suite presentation: We fixed the checkout retry bug."
+    must_find:
+      - refuse decorative abstraction
+      - preserve concrete action
+      - no corporate buzzwords
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: ai-sludge-rejection
+    type: negative
+    input: "This initiative represents a pivotal cornerstone in our robust tapestry of microservices."
+    must_find:
+      - LLM flavored filler
+      - decorative abstraction
+      - no concrete relation
+    must_output:
+      - Spine
+      - Main faults
+      - Representative contrast
+      - Weak
+      - Fault
+      - Better
+      - Why
+      - Rubric
+
+  - id: technical-term-flattening
+    type: positive_perfect
+    input: "The payment handler is idempotent because it records the provider event ID before emitting invoice-paid."
+    must_find:
+      - preserve idempotent
+      - no flattening into reliability
+      - local causal relation
+    must_output:
+      - Spine
+      - Main faults
+      - Structural highlight
+      - Strong
+      - Mechanism
+      - Rubric
+      - Why
+
+  - id: framework-name-preservation
+    type: positive_perfect
+    input: |
+      export class UserController extends Controller {
+        async show(request: Request) {
+          return this.users.find(request.params.id);
+        }
+      }
+    must_find:
+      - preserve framework suffix
+      - no novelty for originality
+      - necessary boilerplate name
+    must_output:
+      - Spine
+      - Main faults
+      - Structural highlight
+      - Strong
+      - Mechanism
+      - Rubric
+      - Why
+
+  - id: negative-bland-style-guide
+    type: negative_control
+    input: |
+      The text is a bit unclear and could flow better. Make it more concise and impactful.
+    must_fail_because:
+      - vague criticism
+      - no mechanism
+      - no contrast
+
+  - id: negative-format-evasion
+    type: negative_control
+    input: |
+      Overall, this is pretty good. I would make it clearer, tighten the writing, and improve the naming. The code could be cleaner too.
+    must_fail_because:
+      - missing Weak/Fault/Better/Why
+      - generic review
+      - no representative contrast

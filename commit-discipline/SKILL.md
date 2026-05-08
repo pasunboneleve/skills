@@ -7,7 +7,7 @@ description: Prepare small, reviewable local commits with explicit rationale, Se
 
 ## Dependencies
 
-Load and apply `$strunk-white-editor` before writing non-trivial commit messages. Use it to keep commit commentary direct, concrete, and free of filler.
+Load and apply `$oiticica-style` before writing non-trivial commit messages. Use it to keep commit commentary concrete: claim, decision, consequence, and remaining risk.
 
 ## Core rules
 

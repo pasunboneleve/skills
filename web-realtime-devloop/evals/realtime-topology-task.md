@@ -6,7 +6,7 @@ Use this fixture to evaluate whether an agent plans and implements realtime brow
 
 Build a live topology map fed by WebSocket events, with a token stream, tool events, retries, failures, and retrieval traces.
 
-The UI should show:
+The UI must show:
 
 - active, idle, stale, and failed nodes
 - edges between agents, tools, retrieval sources, and model calls
@@ -57,7 +57,7 @@ The validation plan must include:
 - desktop, narrow/mobile, and zoom-equivalent checks
 - performance counters or DevTools evidence if the UI feels stilted
 
-The answer should reject plans that:
+The answer must reject plans that:
 
 - render directly inside WebSocket `onmessage`
 - rebuild the whole SVG or DOM on each event

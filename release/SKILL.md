@@ -142,7 +142,7 @@ Stop and prompt the user if:
 - local validation fails
 - PR CI is not green
 - main CI is not green after merge
-- merge strategy is unclear
+- merge strategy is not identified
 - tag format is ambiguous
 - tag-triggered release workflows fail for an artifact release
 - credentials or permissions are missing
