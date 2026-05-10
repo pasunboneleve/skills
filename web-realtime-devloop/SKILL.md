@@ -1,6 +1,6 @@
 ---
 name: web-realtime-devloop
-description: Use this skill for browser UI, realtime visualisation, frontend, WebSocket, Hono, Vite, Bun, Cloudflare-style, Canvas, SVG, D3, or local web application work. It enforces long-lived dev sessions, rendered-page inspection, realtime checks, and deterministic validation.
+description: Use this skill for browser UI, realtime visualisation, and local web application work. It keeps the app running, inspects rendered behaviour, checks realtime flows, and validates deterministically.
 ---
 
 # Web realtime devloop

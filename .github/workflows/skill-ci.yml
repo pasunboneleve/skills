@@ -14,5 +14,16 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: stable
+
+      - name: Install skill-validator
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          GOBIN="$HOME/.local/bin" go install github.com/agent-ecosystem/skill-validator/cmd/skill-validator@latest
+
       - name: Validate Codex skills
-        run: python3 scripts/validate_skills.py
+        run: bash scripts/validate_skills.sh

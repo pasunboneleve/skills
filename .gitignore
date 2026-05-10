@@ -3,3 +3,6 @@
 .dolt/
 *.db
 .beads-credential-key
+
+# Python bytecode caches
+**/__pycache__/

@@ -22,7 +22,7 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and 
 
 ## Validation
 
-Run `python3 scripts/validate_skills.py`.
+Run `bash scripts/validate_skills.sh`. The wrapper installs `skill-validator` into `~/.local/bin` with `go install` when it is not already on `PATH`.
 
 ## Versioning
 
