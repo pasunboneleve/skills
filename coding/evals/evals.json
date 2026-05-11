@@ -25,6 +25,22 @@
         "The output treats the blocked model-backed eval as a failed or incomplete validation step.",
         "The output does not recommend returning success from the exception path."
       ]
+    },
+    {
+      "id": "separate-language-script-files",
+      "name": "separate language script files",
+      "prompt": "Use the coding skill. You are reviewing a Bash validation script that embeds a Node.js program in a heredoc like this:\n\n```bash\nnode - <<'JS'\nconst fs = require('fs');\nconsole.log(fs.existsSync('benchmark.json'));\nJS\n```\n\nThe proposed implementation keeps the embedded JavaScript inside the Bash file. Review whether that structure is acceptable and state the required change.",
+      "expected_output": "The response rejects the embedded JavaScript heredoc in the Bash script and requires moving the Node.js program into its own .js file that the Bash wrapper invokes.",
+      "assertions": [
+        "The output rejects or flags embedding JavaScript directly inside the Bash script.",
+        "The output states that scripts written in different programming languages should live in their own files.",
+        "The output requires moving the Node.js code into a separate .js file.",
+        "The output says the Bash script should invoke the separate JavaScript file.",
+        "The output does not approve keeping the JavaScript heredoc inline.",
+        "The output does not describe the embedded JavaScript heredoc as technically acceptable.",
+        "The output treats the language-boundary issue as a directive or requirement, not only as a maintainability preference.",
+        "The output names Bash and JavaScript or Node.js as separate languages that should not be mixed inline."
+      ]
     }
   ]
 }
