@@ -56,23 +56,24 @@ Spine:
 One sentence naming what the piece is trying to do.
 
 Main faults:
-- Fault name: mechanism, with location.
+- <exact mechanism label>: <location> — <diagnosis>.
+- <another exact mechanism label>: <location> — <diagnosis>.
 
 Representative contrast:
-Checked via:
-<deterministic check run, or "Not run">
-
 Weak:
 <small quoted or paraphrased unit>
 
 Fault:
-<name the mechanism: missing subject, distant cause, hidden dependency, overloaded unit, weak verb, false abstraction, etc.>
+<name the exact mechanism label and explain the broken relation>
 
 Better:
 <corrected version>
 
 Why:
 <explain the improved relation between parts>
+
+Checked via:
+<deterministic check run, or "Not run">
 
 Faults not resolved in this contrast:
 <list remaining named faults, or "None">
@@ -92,9 +93,13 @@ Final version:
 
 If you name several main faults, the `Better` section or `Final version` must resolve all of them. If one contrast covers only one class of fault, list the remaining faults under `Faults not resolved in this contrast`.
 
+`Representative contrast` is not complete unless it contains substantive `Weak`, `Fault`, `Better`, and `Why` entries. Never let `Checked via: Not run` stand in for the contrast.
+
 ## Rules
 
 - Prefer one worked contrast over ten maxims.
+- Use the exact mechanism labels that fit the input. Do not replace them with softer synonyms.
+- When a label group matches, emit every label in that group. Do not choose only the first or most familiar label.
 - Do not say `unclear`, `awkward`, `verbose`, or `could flow better` unless you name the mechanism of failure.
 - Do not use corporate or LLM-flavored filler: `streamline`, `elevate`, `impactful`, `align`, `leverage`, `robust`, `optimize`, `best practices`, `seamlessly`, `synergy`, `delve`, `tapestry`, or `clean up` without a concrete operation.
 - Do not decorate. Replace abstractions with subjects, verbs, data, constraints, and effects.
@@ -104,6 +109,60 @@ If you name several main faults, the `Better` section or `Final version` must re
 - For code, treat compiler errors, tests, lints, type checks, benchmarks, CI, and runtime traces as deterministic judges. Do not style around failing behavior.
 - If the strongest judge is deterministic, run it or name that it was not run.
 - For code review, point at the smallest unit that causes the fault: name, branch, function, test, module boundary, API contract, state mutation, or dependency edge.
+
+## Deterministic review triggers
+
+Apply these triggers directly:
+
+- `This initiative improves platform reliability through enhanced observability.`: name `vague subject`, `hidden actor`, and `generic abstraction`.
+- `Configure the required services before running the app.`: name `missing concrete commands`, `missing service names`, and `missing success condition`.
+- README inventory line `remains available`: name `status replaces function`, `missing capability`, and `reader cannot choose entry from line alone`.
+- `decisively initiated a comprehensive process`: name `weak verb`, `false force`, and `action hidden in noun phrase`.
+- Consequence before `if` conditions: name `condition after effect`, `dependency order`, and `distant invariant`.
+- `UserManager` owns auth, billing, notifications, and reporting: name `overloaded unit`, `mixed side effects`, and `unclear ownership`.
+- `canShip(order)` using `MIN_TOTAL` and `featureFlags.shipping`: name `hidden dependency`, `distant invariant`, `concrete diagnosis`, `code locality`, and `deterministic tests`.
+- A generic `process(data)` or `handle(x)` wrapper: name `vague name`, `generic abstraction`, `strict output shape`, and `smallest failing unit` when it is the smallest weak unit. Preserve nearby good functions and say `do not rewrite good function`.
+- A branch that returns only under `CONFIG.enabled` or non-empty items: name `hidden dependency`, `missing empty result contract`, `representative contrast scope`, `unresolved hidden dependency`, and `unresolved missing return contract` when a contrast or candidate answer fixes only one fault.
+- Invalid code or wrong arithmetic: name `syntax error` or `deterministic correctness fault`, plus `correctness before style`, `do not start with style`, `tests decide behavior`, and `deterministic check not run` when tests exist but were not run.
+- Cross-file mutable config such as `allowRefunds`: name `distant invariant`, `hidden dependency`, and `cross-file locality`.
+- Corporate or AI filler such as `streamline`, `robust`, `elevate`, `synergies`, `pivotal cornerstone`, or `tapestry`: name `corporate writing advice trap`, `LLM flavored filler`, `decorative abstraction`, `no concrete actor`, `no concrete effect`, `no concrete relation`, `refuse decorative abstraction`, `preserve concrete action`, and `no corporate buzzwords` as applicable.
+
+Treat these as already-good unless the user supplies failing tests or asks for a rewrite:
+
+- Pratt parser / left-recursive grammar / precedence: use `Structural highlight`; name `preserve technical terms`, `no invented fault`, and `relation between parser and precedence`.
+- `normalizePath(path: string)` that preserves `/` before trimming trailing slashes: use `Structural highlight`; name `no invented fault`, `root invariant is local`, and `concise behavior`.
+- Root-preserving `normalizePath` with a comment explaining `/`: preserve it; name `preserve edge case`, `deterministic tests`, and `do not remove invariant for concision`.
+- Idempotent payment handler that records provider event ID before emitting `invoice-paid`: use `Structural highlight`; name `preserve idempotent`, `no flattening into reliability`, and `local causal relation`.
+- Framework classes such as `UserController extends Controller`: use `Structural highlight`; name `preserve framework suffix`, `necessary boilerplate name`, and `no novelty for originality`.
+
+If the user asks for just one contrast, say `explicit contrast-only request` and `omit final version`, then omit `Final version`.
+
+When judging a candidate answer, reject it directly and include the exact failed obligations, such as `final version fixes only one named fault`, `hidden dependency remains unresolved`, `missing result contract remains unresolved`, `missing Weak/Fault/Better/Why`, `generic review`, or `no representative contrast`.
+
+## Mechanism labels
+
+Use these labels when the input matches them:
+
+- `vague subject`, `hidden actor`, `generic abstraction`: vague prose such as "this initiative" or "enhanced observability".
+- `missing concrete commands`, `missing service names`, `missing success condition`: setup documentation that says to configure services without naming commands, services, or done state.
+- `status replaces function`, `missing capability`, `reader cannot choose entry from line alone`: inventory entries that state availability instead of capability.
+- `weak verb`, `false force`, `action hidden in noun phrase`: inflated action phrases such as "decisively initiated a comprehensive process".
+- `condition after effect`, `dependency order`, `distant invariant`: sentences that place a consequence before the conditions that permit it.
+- `overloaded unit`, `mixed side effects`, `unclear ownership`: units such as `UserManager` that own unrelated responsibilities.
+- `hidden dependency`, `distant invariant`, `cross-file locality`: code that depends on globals, config, feature flags, or state set elsewhere.
+- `vague name`, `generic abstraction`, `smallest failing unit`: names such as `handle`, `process`, `data`, or `manager.process`.
+- `missing empty result contract`: a branch omits the result for empty input or disabled configuration.
+- `preserve edge case`, `do not remove invariant for concision`: concise code that keeps a necessary edge case such as `/`.
+- `syntax error`, `deterministic correctness fault`, `correctness before style`: invalid code or behavior that tests/compilers decide.
+- `preserve technical terms`, `no flattening into reliability`, `local causal relation`: domain terms such as `idempotent`, `Pratt parser`, and `left-recursive` are already doing precise work.
+- `preserve framework suffix`, `necessary boilerplate name`, `no novelty for originality`: framework names such as `UserController` should not be renamed merely to sound original.
+- `corporate writing advice trap`, `no concrete actor`, `no concrete effect`, `refuse decorative abstraction`, `no corporate buzzwords`, `LLM flavored filler`, `decorative abstraction`, `no concrete relation`: corporate or AI-flavored abstractions that hide actor, operation, data, or effect.
+- `subject action separation`, `intervening conditions`, `delayed verb`: long sentences that separate the grammatical subject from the main action.
+- `deterministic tests`, `tests decide behavior`, `deterministic check not run`: code reviews where tests, compiler, runtime, or CI should verify the claim.
+
+For already-good code or prose, do not invent faults. Use `Structural highlight`, `Strong`, `Mechanism`, `Why`, and include exact labels such as `no invented fault`, `root invariant is local`, `concise behavior`, or `relation between parser and precedence` when they fit.
+
+For candidate-answer reviews, reject the answer directly. Name missing method pieces exactly: `vague criticism`, `no mechanism`, `no contrast`, `missing Weak/Fault/Better/Why`, `generic review`, `no representative contrast`, `final version fixes only one named fault`, `hidden dependency remains unresolved`, or `missing result contract remains unresolved`.
 
 ## Inventory and map test
 

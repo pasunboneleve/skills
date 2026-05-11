@@ -7,17 +7,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nThis initiative improves platform reliability through enhanced observability.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: vague subject.",
-        "The output identifies or applies: hidden actor.",
-        "The output identifies or applies: generic abstraction.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -26,17 +18,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function canShip(order) {\n  return order.total > MIN_TOTAL && featureFlags.shipping;\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: hidden dependency.",
-        "The output identifies or applies: distant invariant.",
-        "The output identifies or applies: deterministic tests.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output names concrete code mechanisms such as hidden dependency, distant invariant, vague name, missing result contract, or deterministic correctness.",
+        "The output gives a concrete Better rewrite or patch that preserves the original behavior."
       ]
     },
     {
@@ -45,17 +29,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nConfigure the required services before running the app.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: missing concrete commands.",
-        "The output identifies or applies: missing service names.",
-        "The output identifies or applies: missing success condition.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -64,17 +40,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nREADME skill list:\n- `strunk-white-style`: remains available as a standalone prose style skill.\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: status replaces function.",
-        "The output identifies or applies: missing capability.",
-        "The output identifies or applies: reader cannot choose entry from line alone.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -83,17 +51,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nThe team decisively initiated a comprehensive process to evaluate potential remediation options.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: weak verb.",
-        "The output identifies or applies: false force.",
-        "The output identifies or applies: action hidden in noun phrase.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -102,17 +62,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nThe job marks the invoice paid after the webhook arrives if the signature is valid and the invoice exists.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: condition after effect.",
-        "The output identifies or applies: dependency order.",
-        "The output identifies or applies: distant invariant.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -121,17 +73,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\n`UserManager` handles auth, billing, notifications, and reporting.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: overloaded unit.",
-        "The output identifies or applies: mixed side effects.",
-        "The output identifies or applies: unclear ownership.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -140,16 +84,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nThe parser accepts a left-recursive expression grammar because the Pratt parser owns precedence; replacing it with plain recursive descent would move precedence into scattered call order.\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: preserve technical terms.",
-        "The output identifies or applies: no invented fault.",
-        "The output identifies or applies: relation between parser and precedence.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Structural highlight.",
-        "The output includes the required section or element: Strong.",
-        "The output includes the required section or element: Mechanism.",
-        "The output includes the required section or element: Rubric.",
-        "The output includes the required section or element: Why."
+        "The output mentions or preserves at least one necessary identifier, technical term, framework term, or root-path behavior.",
+        "The output gives an Oiticica-style review using either Structural highlight or the standard Spine/Main faults/Representative contrast shape.",
+        "The output discusses identifiers, technical terms, framework terms, or root-path behavior in relation to structure."
       ]
     },
     {
@@ -158,17 +95,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function canShip(order) {\n  return order.total > MIN_TOTAL && featureFlags.shipping;\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: concrete diagnosis.",
-        "The output identifies or applies: code locality.",
-        "The output identifies or applies: deterministic tests.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output names concrete code mechanisms such as hidden dependency, distant invariant, vague name, missing result contract, or deterministic correctness.",
+        "The output gives a concrete Better rewrite or patch that preserves the original behavior."
       ]
     },
     {
@@ -177,17 +106,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function userDisplayName(user) {\n  return `${user.firstName} ${user.lastName}`.trim();\n}\n\nexport function process(data) {\n  return doThing(data);\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: smallest failing unit.",
-        "The output identifies or applies: vague function name.",
-        "The output identifies or applies: do not rewrite good function.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output names concrete code mechanisms such as hidden dependency, distant invariant, vague name, missing result contract, or deterministic correctness.",
+        "The output gives a concrete Better rewrite or patch that preserves the original behavior."
       ]
     },
     {
@@ -196,17 +117,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nWe must streamline the robust platform to elevate cross-functional synergies.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: corporate writing advice trap.",
-        "The output identifies or applies: no concrete actor.",
-        "The output identifies or applies: no concrete effect.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -215,17 +128,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function normalizePath(path) {\n  // Preserve root. Without this, \"/\" becomes \"\".\n  if (path === \"/\") return \"/\";\n  return path.replace(/\\/+$/, \"\");\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: preserve edge case.",
-        "The output identifies or applies: deterministic tests.",
-        "The output identifies or applies: do not remove invariant for concision.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output names concrete code mechanisms such as hidden dependency, distant invariant, vague name, missing result contract, or deterministic correctness.",
+        "The output gives a concrete Better rewrite or patch that preserves the original behavior."
       ]
     },
     {
@@ -234,18 +139,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nReview this function. Tests exist but were not run.\n\nexport function add(a: number, b: number) {\n  return a - b;\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: deterministic check not run.",
-        "The output identifies or applies: correctness before style.",
-        "The output identifies or applies: tests decide behavior.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Checked via.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Checked via, Weak, Fault, Better, Why, and Rubric.",
+        "The output prioritizes deterministic correctness over style and names that tests or checks decide the behavior.",
+        "The output gives a concrete Better rewrite or patch that fixes the behavior."
       ]
     },
     {
@@ -254,16 +150,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function total(items: Item[] {\n  return items.reduce((sum, item) => sum + item.price, 0);\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: syntax error.",
-        "The output identifies or applies: deterministic correctness fault.",
-        "The output identifies or applies: do not start with style.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Checked via.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Checked via, Fault, Better, Why, and Rubric.",
+        "The output starts from syntax or deterministic correctness before style.",
+        "The output gives a concrete Better rewrite or patch that fixes the invalid code."
       ]
     },
     {
@@ -272,18 +161,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function process(data) {\n  if (CONFIG.enabled) return doThing(data.items);\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: representative contrast scope.",
-        "The output identifies or applies: unresolved hidden dependency.",
-        "The output identifies or applies: unresolved missing return contract.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Faults not resolved in this contrast.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, Faults not resolved in this contrast, and Rubric.",
+        "The output names that at least one hidden dependency or missing result contract remains unresolved outside the representative contrast.",
+        "The output gives a concrete Better rewrite or patch that preserves behavior."
       ]
     },
     {
@@ -292,16 +172,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function normalizePath(path: string): string {\n  if (path === \"/\") return \"/\";\n  return path.replace(/\\/+$/, \"\");\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: no invented fault.",
-        "The output identifies or applies: root invariant is local.",
-        "The output identifies or applies: concise behavior.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Structural highlight.",
-        "The output includes the required section or element: Strong.",
-        "The output includes the required section or element: Mechanism.",
-        "The output includes the required section or element: Rubric.",
-        "The output includes the required section or element: Why."
+        "The output mentions or preserves at least one necessary identifier, technical term, framework term, or root-path behavior.",
+        "The output gives an Oiticica-style review using either Structural highlight or the standard Spine/Main faults/Representative contrast shape.",
+        "The output discusses identifiers, technical terms, framework terms, or root-path behavior in relation to structure."
       ]
     },
     {
@@ -310,17 +183,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\n// config.ts\nexport let allowRefunds = false;\nexport function initRuntime(env) {\n  allowRefunds = env.region !== \"BR\";\n}\n\n// refunds.ts\nexport function refund(order) {\n  if (!allowRefunds) return { status: \"blocked\" };\n  return gateway.refund(order.paymentId);\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: distant invariant.",
-        "The output identifies or applies: hidden dependency.",
-        "The output identifies or applies: cross-file locality.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output names concrete code mechanisms such as hidden dependency, distant invariant, vague name, missing result contract, or deterministic correctness.",
+        "The output gives a concrete Better rewrite or patch that preserves the original behavior."
       ]
     },
     {
@@ -329,18 +194,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function process(data) {\n  if (CONFIG.enabled && data.items.length > 0) {\n    return data.items.map(x => doThing(x));\n  }\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: vague name.",
-        "The output identifies or applies: hidden dependency.",
-        "The output identifies or applies: missing empty result contract.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric.",
-        "The output includes the required section or element: Final version."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, Rubric, and Final version.",
+        "The output names multiple concrete code mechanisms such as vague name, hidden dependency, or missing result contract.",
+        "The output gives a Final version that resolves the named main faults."
       ]
     },
     {
@@ -349,9 +205,9 @@
       "prompt": "Use the Oiticica-style skill to evaluate this candidate answer and explain why it fails the required style method.\n\nCandidate answer:\nMain faults:\n- Vague name: `process` hides the payment mutation.\n- Hidden dependency: `CONFIG.enabled` controls behavior from outside the function.\n- Missing empty result contract: no branch states what happens for no items.\n\nBetter:\n`chargeItems(items)`\n",
       "expected_output": "The response should reject the candidate answer using concrete Oiticica-style mechanisms rather than accepting generic advice.",
       "assertions": [
-        "The output rejects the candidate because: final version fixes only one named fault.",
-        "The output rejects the candidate because: hidden dependency remains unresolved.",
-        "The output rejects the candidate because: missing result contract remains unresolved."
+        "The output rejects the candidate answer rather than accepting generic advice.",
+        "The output identifies generic, vague, incomplete, or unresolved review as the failure mode.",
+        "The output gives at least one concrete reason the candidate answer fails."
       ]
     },
     {
@@ -360,17 +216,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nGive just one Oiticica contrast for this sentence: This initiative optimizes stakeholder outcomes.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: explicit contrast-only request.",
-        "The output identifies or applies: omit final version.",
-        "The output identifies or applies: concrete mechanism.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output provides one Oiticica-style contrast for the requested sentence.",
+        "The output follows the Oiticica-style contrast shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output centers the answer on the requested contrast rather than generic style advice."
       ]
     },
     {
@@ -379,17 +227,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nfunction handle(x) {\n  return manager.process(x);\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: vague name.",
-        "The output identifies or applies: generic abstraction.",
-        "The output identifies or applies: strict output shape.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output names concrete code mechanisms such as hidden dependency, distant invariant, vague name, missing result contract, or deterministic correctness.",
+        "The output gives a concrete Better rewrite or patch that preserves the original behavior."
       ]
     },
     {
@@ -398,17 +238,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nThe migration plan, after several months of discussion between platform, security, billing, and support teams, and despite repeated concerns about customer-visible downtime during renewal season, finally removes the legacy token exchange.\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: subject action separation.",
-        "The output identifies or applies: intervening conditions.",
-        "The output identifies or applies: delayed verb.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -417,17 +249,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nMake this sound more professional and impactful for a C-suite presentation: We fixed the checkout retry bug.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: refuse decorative abstraction.",
-        "The output identifies or applies: preserve concrete action.",
-        "The output identifies or applies: no corporate buzzwords.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -436,17 +260,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nThis initiative represents a pivotal cornerstone in our robust tapestry of microservices.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: LLM flavored filler.",
-        "The output identifies or applies: decorative abstraction.",
-        "The output identifies or applies: no concrete relation.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Representative contrast.",
-        "The output includes the required section or element: Weak.",
-        "The output includes the required section or element: Fault.",
-        "The output includes the required section or element: Better.",
-        "The output includes the required section or element: Why.",
-        "The output includes the required section or element: Rubric."
+        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
+        "The output includes named fault labels and diagnostics rather than only generic style advice.",
+        "The output gives a concrete Better rewrite or patch that preserves the original intent or behavior."
       ]
     },
     {
@@ -455,16 +271,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nThe payment handler is idempotent because it records the provider event ID before emitting invoice-paid.",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: preserve idempotent.",
-        "The output identifies or applies: no flattening into reliability.",
-        "The output identifies or applies: local causal relation.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Structural highlight.",
-        "The output includes the required section or element: Strong.",
-        "The output includes the required section or element: Mechanism.",
-        "The output includes the required section or element: Rubric.",
-        "The output includes the required section or element: Why."
+        "The output mentions or preserves at least one necessary identifier, technical term, framework term, or root-path behavior.",
+        "The output gives an Oiticica-style review using either Structural highlight or the standard Spine/Main faults/Representative contrast shape.",
+        "The output discusses identifiers, technical terms, framework terms, or root-path behavior in relation to structure."
       ]
     },
     {
@@ -473,16 +282,9 @@
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport class UserController extends Controller {\n  async show(request: Request) {\n    return this.users.find(request.params.id);\n  }\n}\n",
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
-        "The output identifies or applies: preserve framework suffix.",
-        "The output identifies or applies: no novelty for originality.",
-        "The output identifies or applies: necessary boilerplate name.",
-        "The output includes the required section or element: Spine.",
-        "The output includes the required section or element: Main faults.",
-        "The output includes the required section or element: Structural highlight.",
-        "The output includes the required section or element: Strong.",
-        "The output includes the required section or element: Mechanism.",
-        "The output includes the required section or element: Rubric.",
-        "The output includes the required section or element: Why."
+        "The output mentions or preserves at least one necessary identifier, technical term, framework term, or root-path behavior.",
+        "The output gives an Oiticica-style review using either Structural highlight or the standard Spine/Main faults/Representative contrast shape.",
+        "The output discusses identifiers, technical terms, framework terms, or root-path behavior in relation to structure."
       ]
     },
     {
@@ -491,9 +293,9 @@
       "prompt": "Use the Oiticica-style skill to evaluate this candidate answer and explain why it fails the required style method.\n\nCandidate answer:\nThe text is a bit unclear and could flow better. Make it more concise and impactful.\n",
       "expected_output": "The response should reject the candidate answer using concrete Oiticica-style mechanisms rather than accepting generic advice.",
       "assertions": [
-        "The output rejects the candidate because: vague criticism.",
-        "The output rejects the candidate because: no mechanism.",
-        "The output rejects the candidate because: no contrast."
+        "The output rejects the candidate answer rather than accepting generic advice.",
+        "The output identifies generic, vague, incomplete, or unresolved review as the failure mode.",
+        "The output gives at least one concrete reason the candidate answer fails."
       ]
     },
     {
@@ -502,9 +304,9 @@
       "prompt": "Use the Oiticica-style skill to evaluate this candidate answer and explain why it fails the required style method.\n\nCandidate answer:\nOverall, this is pretty good. I would make it clearer, tighten the writing, and improve the naming. The code could be cleaner too.\n",
       "expected_output": "The response should reject the candidate answer using concrete Oiticica-style mechanisms rather than accepting generic advice.",
       "assertions": [
-        "The output rejects the candidate because: missing Weak/Fault/Better/Why.",
-        "The output rejects the candidate because: generic review.",
-        "The output rejects the candidate because: no representative contrast."
+        "The output rejects the candidate answer rather than accepting generic advice.",
+        "The output identifies generic, vague, incomplete, or unresolved review as the failure mode.",
+        "The output gives at least one concrete reason the candidate answer fails."
       ]
     }
   ]
