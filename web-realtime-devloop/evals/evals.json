@@ -1,0 +1,33 @@
+{
+  "skill_name": "web-realtime-devloop",
+  "evals": [
+    {
+      "id": "realtime-topology-task",
+      "name": "realtime topology task",
+      "prompt": "Use the web-realtime-devloop skill to plan an implementation for a live topology map fed by WebSocket events. The UI must show active/idle/stale/failed nodes, edges between agents/tools/retrieval/model calls, recent topology changes, token stream excerpts, tool calls and results, retry/failure state, retrieval traces, and usage/latency summaries.",
+      "expected_output": "The answer separates event ingestion, reducer/domain core, bounded projection, latest projection buffering, requestAnimationFrame rendering, and keyed SVG/DOM updates.",
+      "assertions": [
+        "The output uses the flow event stream -> reducer/domain core -> bounded projection -> latest projection buffer -> requestAnimationFrame render loop -> keyed or persistent SVG/DOM updates.",
+        "The output states that WebSocket handlers may parse, enqueue, or store projections but must not redraw the UI directly.",
+        "The output requires browser-cadence rendering with coalesced updates rather than event-cadence rendering.",
+        "The output keeps token, log, retrieval, recent-change, and projection collections bounded.",
+        "The output includes realistic mock stream pacing, burst mode, retries, failed-tool cases, retrieval-heavy cases, duplicate events, and out-of-order events.",
+        "The output includes deterministic reducer/projection tests and rendered-page inspection under streaming load."
+      ]
+    },
+    {
+      "id": "rendering-architecture-rubric",
+      "name": "rendering architecture rubric",
+      "prompt": "Use the web-realtime-devloop skill to review a proposed realtime browser UI architecture. The proposal uses a WebSocket onmessage handler that appends every token to the page and rebuilds the whole SVG topology after each event. It has no reducer tests and claims visual completion after typechecking only.",
+      "expected_output": "The answer should reject the proposal and explain the realtime rendering architecture failures with concrete validation requirements.",
+      "assertions": [
+        "The output rejects rendering directly in WebSocket onmessage.",
+        "The output rejects rebuilding the whole SVG or DOM on each event.",
+        "The output identifies unbounded token/log content as a layout and performance fault.",
+        "The output requires a reducer/domain core and bounded projection separate from rendering.",
+        "The output requires rendered-page inspection, not only typechecking.",
+        "The output calls for deterministic reducer/projection tests."
+      ]
+    }
+  ]
+}

@@ -22,7 +22,7 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and 
 
 ## Validation
 
-Run `bash scripts/validate_skills.sh`. The wrapper installs `skill-validator` into `~/.local/bin` with `go install` when it is not already on `PATH`.
+Run `bash scripts/validate_skills.sh`. The wrapper installs `skill-validator` into `~/.local/bin` and `agent-skills-eval` globally when either tool is not already on `PATH`.
 
 ## Versioning
 
