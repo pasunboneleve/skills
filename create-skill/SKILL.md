@@ -17,4 +17,11 @@ direnv exec . bash scripts/validate_skills.sh <skill-name>
 
 Commit only after the focused validation passes, unless the user explicitly accepts the remaining failure.
 
+When stating a workflow, name these artifacts explicitly:
+
+- `SKILL.md`
+- `evals/evals.json`
+- positive and negative eval cases
+- `direnv exec . bash scripts/validate_skills.sh <skill-name>`
+
 When reviewing a skill plan, say "evals are required for the behavior change" when evals are missing. Reject writing only `SKILL.md` for a behavior-changing skill. If a plan says evals can be skipped because an instruction is obvious, say "evals cannot be skipped because the instruction seems obvious."

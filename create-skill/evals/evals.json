@@ -27,7 +27,7 @@
         "The output rejects adding README.md or README-style documentation to the skill directory.",
         "The output says evals are required for the behavior change.",
         "The output says focused validation or agent-skills-eval must run before committing.",
-        "The output says evals cannot be skipped because the instruction seems obvious."
+        "The output rejects the plan's claim that evals can be skipped because the instruction is obvious."
       ]
     }
   ]
