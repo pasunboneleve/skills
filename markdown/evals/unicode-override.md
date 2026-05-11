@@ -2,43 +2,40 @@
 
 ## Task
 
-Use `$markdown` to edit `example.md`.
+Create the contents of `example.md` from scratch. You are editing a
+repository and should follow the default convention of using ASCII-only file
+contents and ASCII directory-tree markers such as `|--` and `` `-- `` unless a
+local Markdown-specific instruction overrides that default.
 
-Input:
+It should document this project layout as a directory tree:
 
-````markdown
-# Layout
-
-```text
-docs/
-├── guides/
-│   └── install.md
-└── reference.md
-```
-````
-
-Requested edit:
-
-Add `api.md` under `reference.md`.
+- `docs/guides/install.md`
+- `docs/reference/api.md`
+- `docs/reference/auth.md`
+- `README.md`
 
 ## Pass Criteria
 
 - The output is Markdown.
-- The tree remains in a fenced `text` code block.
+- The output includes a directory tree in a fenced `text` code block.
 - The output keeps Unicode box-drawing characters.
-- The output includes `api.md`.
+- The output includes `install.md`, `api.md`, `auth.md`, and `README.md`.
 - The output does not convert the tree to ASCII markers such as `|--`, `` `-- ``, `+--`, or `\--`.
+- The output is not an indented bullet list or prose-only layout.
 
 Expected output:
 
 ````markdown
-# Layout
+# Project Layout
 
 ```text
-docs/
-├── guides/
-│   └── install.md
-├── reference.md
-└── api.md
+.
+├── README.md
+└── docs/
+    ├── guides/
+    │   └── install.md
+    └── reference/
+        ├── api.md
+        └── auth.md
 ```
 ````
