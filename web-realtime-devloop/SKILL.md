@@ -22,7 +22,7 @@ For plans, start with `Required realtime architecture` and include:
 - Mock streams must include realistic pacing, burst mode, retries, failed-tool cases, retrieval-heavy cases, duplicate events, and out-of-order events.
 - Validation must include deterministic reducer/projection tests and rendered-page inspection under streaming load.
 
-For topology plans, include these exact checklist lines:
+For topology plans, copy these exact checklist lines verbatim before adding implementation detail. Do not paraphrase, shorten, or split them until after all five lines are present:
 
 - `WebSocket handlers: may parse, enqueue, or store projections; must not redraw the UI directly.`
 - `Rendering: browser-cadence rendering with coalesced updates.`
@@ -30,14 +30,14 @@ For topology plans, include these exact checklist lines:
 - `Mock streams: realistic pacing, burst mode, retries, failed-tool cases, retrieval-heavy cases, duplicate events, and out-of-order events.`
 - `Tests: deterministic reducer/projection tests plus rendered-page inspection under streaming load.`
 
-For reviews, start with `Required realtime rejections` and include:
+For reviews, start with `Required realtime rejections` and copy these rejection lines verbatim before adding critique. Do not paraphrase them as concerns:
 
-- Reject rendering directly in WebSocket `onmessage`.
-- Reject rebuilding the whole SVG or DOM on each event.
-- Unbounded token/log content is a layout and performance fault.
-- Reject claiming visual completion from typechecking alone.
-- Require a reducer/domain core and bounded projection separate from rendering.
-- Call for deterministic reducer/projection tests.
+- `Reject rendering directly in WebSocket onmessage.`
+- `Reject rebuilding the whole SVG or DOM on each event.`
+- `Unbounded token/log content is a layout and performance fault.`
+- `Require a reducer/domain core and bounded projection separate from rendering.`
+- `Require rendered-page inspection, not only typechecking.`
+- `Call for deterministic reducer/projection tests.`
 
 ## Development session
 
