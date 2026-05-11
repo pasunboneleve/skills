@@ -140,7 +140,7 @@
       "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
       "assertions": [
         "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Checked via, Weak, Fault, Better, Why, and Rubric.",
-        "The output prioritizes deterministic correctness over style and names that tests or checks decide the behavior.",
+        "The output identifies a deterministic correctness fault before style issues and states that tests exist but were not run or that tests decide the behavior.",
         "The output gives a concrete Better rewrite or patch that fixes the behavior."
       ]
     },
@@ -196,7 +196,7 @@
       "assertions": [
         "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, Rubric, and Final version.",
         "The output names multiple concrete code mechanisms such as vague name, hidden dependency, or missing result contract.",
-        "The output gives a Final version that resolves the named main faults."
+        "The output includes a Final version after the representative contrast, and any unresolved-fault note is scoped to the contrast rather than presented as the final result."
       ]
     },
     {
@@ -218,7 +218,7 @@
       "assertions": [
         "The output provides one Oiticica-style contrast for the requested sentence.",
         "The output follows the Oiticica-style contrast shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
-        "The output centers the answer on the requested contrast rather than generic style advice."
+        "The output omits a final version and does not rewrite beyond the requested single contrast."
       ]
     },
     {

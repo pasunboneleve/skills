@@ -122,22 +122,22 @@ Apply these triggers directly:
 - `UserManager` owns auth, billing, notifications, and reporting: name `overloaded unit`, `mixed side effects`, and `unclear ownership`.
 - `canShip(order)` using `MIN_TOTAL` and `featureFlags.shipping`: name `hidden dependency`, `distant invariant`, `concrete diagnosis`, `code locality`, and `deterministic tests`.
 - A generic `process(data)` or `handle(x)` wrapper: name `vague name`, `generic abstraction`, `strict output shape`, and `smallest failing unit` when it is the smallest weak unit. Preserve nearby good functions and say `do not rewrite good function`.
-- A branch that returns only under `CONFIG.enabled` or non-empty items: name `hidden dependency`, `missing empty result contract`, `representative contrast scope`, `unresolved hidden dependency`, and `unresolved missing return contract` when a contrast or candidate answer fixes only one fault.
-- Invalid code or wrong arithmetic: name `syntax error` or `deterministic correctness fault`, plus `correctness before style`, `do not start with style`, `tests decide behavior`, and `deterministic check not run` when tests exist but were not run.
+- A branch that returns only under `CONFIG.enabled` or non-empty items: name `hidden dependency`, `missing empty result contract`, `representative contrast scope`, `unresolved hidden dependency`, and `unresolved missing return contract`. For the `Representative contrast`, fix only one of those faults. In `Faults not resolved in this contrast`, explicitly list at least one of `unresolved hidden dependency` or `unresolved missing return contract` before the `Final version` resolves all faults.
+- Invalid code or wrong arithmetic: name `syntax error` or `deterministic correctness fault`, plus `correctness before style`, `do not start with style`, `tests decide behavior`, and `deterministic check not run` when tests exist but were not run. When tests exist but were not run, explicitly write that `tests decide behavior`; do not merely say the tests were not executed.
 - Cross-file mutable config such as `allowRefunds`: name `distant invariant`, `hidden dependency`, and `cross-file locality`.
 - Corporate or AI filler such as `streamline`, `robust`, `elevate`, `synergies`, `pivotal cornerstone`, or `tapestry`: name `corporate writing advice trap`, `LLM flavored filler`, `decorative abstraction`, `no concrete actor`, `no concrete effect`, `no concrete relation`, `refuse decorative abstraction`, `preserve concrete action`, and `no corporate buzzwords` as applicable.
 
-Treat these as already-good unless the user supplies failing tests or asks for a rewrite:
+Treat these as already-good unless the user supplies failing tests or asks for a rewrite. Do not put preserved structures in `Main faults`; use `Structural highlight` and say the relation should be kept.
 
-- Pratt parser / left-recursive grammar / precedence: use `Structural highlight`; name `preserve technical terms`, `no invented fault`, and `relation between parser and precedence`.
+- Pratt parser / left-recursive grammar / precedence: use `Structural highlight`; name `preserve technical terms`, `no invented fault`, and `relation between parser and precedence`. Discuss `Pratt parser`, `left-recursive`, and `precedence` as technical terms whose relation is already structural. Say not to flatten or clarify away those terms.
 - `normalizePath(path: string)` that preserves `/` before trimming trailing slashes: use `Structural highlight`; name `no invented fault`, `root invariant is local`, and `concise behavior`.
 - Root-preserving `normalizePath` with a comment explaining `/`: preserve it; name `preserve edge case`, `deterministic tests`, and `do not remove invariant for concision`.
 - Idempotent payment handler that records provider event ID before emitting `invoice-paid`: use `Structural highlight`; name `preserve idempotent`, `no flattening into reliability`, and `local causal relation`.
 - Framework classes such as `UserController extends Controller`: use `Structural highlight`; name `preserve framework suffix`, `necessary boilerplate name`, and `no novelty for originality`.
 
-If the user asks for just one contrast, say `explicit contrast-only request` and `omit final version`, then omit `Final version`.
+If the user asks for just one contrast, start with `explicit contrast-only request`, say `omit final version`, provide only the requested contrast sections, and omit `Final version`. The labels `Final version`, `Rewrite`, and any extra replacement after the single `Better` section are forbidden in contrast-only mode.
 
-When judging a candidate answer, reject it directly and include the exact failed obligations, such as `final version fixes only one named fault`, `hidden dependency remains unresolved`, `missing result contract remains unresolved`, `missing Weak/Fault/Better/Why`, `generic review`, or `no representative contrast`.
+When judging a candidate answer, start with `Reject:` and include the exact failed obligations, such as `final version fixes only one named fault`, `hidden dependency remains unresolved`, `missing result contract remains unresolved`, `missing Weak/Fault/Better/Why`, `generic review`, or `no representative contrast`.
 
 ## Mechanism labels
 
