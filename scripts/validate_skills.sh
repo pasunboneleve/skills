@@ -10,6 +10,7 @@ AGENT_SKILLS_EVAL_BASE_URL="${AGENT_SKILLS_EVAL_BASE_URL:-https://api.openai.com
 AGENT_SKILLS_EVAL_TARGET="${AGENT_SKILLS_EVAL_TARGET:-gpt-4o-mini}"
 AGENT_SKILLS_EVAL_JUDGE="${AGENT_SKILLS_EVAL_JUDGE:-$AGENT_SKILLS_EVAL_TARGET}"
 AGENT_SKILLS_EVAL_WORKSPACE="${AGENT_SKILLS_EVAL_WORKSPACE:-${TMPDIR:-/tmp}/agent-skills-eval-skills}"
+AGENT_SKILLS_EVAL_MIN_PASS="${AGENT_SKILLS_EVAL_MIN_PASS:-0.90}"
 AGENT_SKILLS_EVAL_MIN_DELTA="${AGENT_SKILLS_EVAL_MIN_DELTA:-0.20}"
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
 
@@ -86,7 +87,6 @@ run_eval_validator() {
     --judge "$AGENT_SKILLS_EVAL_JUDGE" \
     --base-url "$AGENT_SKILLS_EVAL_BASE_URL" \
     --api-key-env "$AGENT_SKILLS_EVAL_API_KEY_ENV" \
-    --strict \
     --no-report || status=$?
 
   check_eval_deltas "$run_workspace" || status=$?
@@ -106,7 +106,7 @@ check_eval_deltas() {
     return 1
   fi
 
-  "$js_runtime" "$ROOT/scripts/check_eval_deltas.js" "$workspace" "$AGENT_SKILLS_EVAL_MIN_DELTA"
+  "$js_runtime" "$ROOT/scripts/check_eval_deltas.js" "$workspace" "$AGENT_SKILLS_EVAL_MIN_DELTA" "$AGENT_SKILLS_EVAL_MIN_PASS"
 }
 
 run_skill_validator() {

@@ -5,6 +5,7 @@ const path = require("path");
 
 const workspace = process.argv[2];
 const minDelta = Number(process.argv[3]);
+const minPass = Number(process.argv[4]);
 
 if (!workspace) {
   console.error("error: workspace path is required");
@@ -13,6 +14,11 @@ if (!workspace) {
 
 if (!Number.isFinite(minDelta)) {
   console.error(`error: AGENT_SKILLS_EVAL_MIN_DELTA must be a number, got ${process.argv[3]}`);
+  process.exit(1);
+}
+
+if (!Number.isFinite(minPass)) {
+  console.error(`error: AGENT_SKILLS_EVAL_MIN_PASS must be a number, got ${process.argv[4]}`);
   process.exit(1);
 }
 
@@ -58,6 +64,15 @@ for (const benchmarkPath of benchmarks) {
       `error: skill eval delta too small for ${benchmarkPath}: ` +
         `${pct(delta)} < ${pct(minDelta)} ` +
         `(with_skill ${pct(withSkill)}, without_skill ${pct(withoutSkill)})`
+    );
+    failed = true;
+  }
+
+  if (withSkill < minPass) {
+    console.error(
+      `error: skill eval pass rate too small for ${benchmarkPath}: ` +
+        `${pct(withSkill)} < ${pct(minPass)} ` +
+        `(delta ${pct(delta)}, without_skill ${pct(withoutSkill)})`
     );
     failed = true;
   }
