@@ -68,7 +68,7 @@ validate_skill_args() {
 }
 
 run_eval_validator() {
-  local status=0
+  local eval_status=0
   local run_workspace
   local skill
   local include_args=()
@@ -87,10 +87,13 @@ run_eval_validator() {
     --judge "$AGENT_SKILLS_EVAL_JUDGE" \
     --base-url "$AGENT_SKILLS_EVAL_BASE_URL" \
     --api-key-env "$AGENT_SKILLS_EVAL_API_KEY_ENV" \
-    --no-report || status=$?
+    --no-report || eval_status=$?
 
-  check_eval_deltas "$run_workspace" || status=$?
-  return "$status"
+  if ((eval_status != 0)); then
+    printf 'agent-skills-eval exited with status %d; checking configured aggregate gates\n' "$eval_status" >&2
+  fi
+
+  check_eval_deltas "$run_workspace"
 }
 
 check_eval_deltas() {
