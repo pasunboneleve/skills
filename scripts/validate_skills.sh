@@ -57,11 +57,7 @@ run_eval_validator() {
     --no-report
 }
 
-main() {
-  ensure_skill_validator || return $?
-  ensure_eval_validator || return $?
-  run_eval_validator || return $?
-
+run_skill_validator() {
   skill-validator check \
     --emit-annotations \
     --strict \
@@ -69,6 +65,13 @@ main() {
     --allow-dirs agents,evals,examples,home \
     --allow-flat-layouts \
     "$ROOT"
+}
+
+main() {
+  ensure_skill_validator || return $?
+  ensure_eval_validator || return $?
+  run_skill_validator || return $?
+  run_eval_validator || return $?
 }
 
 main "$@"
