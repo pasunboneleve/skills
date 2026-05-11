@@ -4,6 +4,7 @@ set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 INSTALL_ROOT="${INSTALL_ROOT:-$HOME/.local}"
 SKILL_VALIDATOR_VERSION="${SKILL_VALIDATOR_VERSION:-latest}"
+AGENT_SKILLS_EVAL_VERSION="${AGENT_SKILLS_EVAL_VERSION:-latest}"
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
 
 ensure_skill_validator() {
@@ -20,8 +21,28 @@ ensure_skill_validator() {
   GOBIN="$INSTALL_ROOT/bin" go install "github.com/agent-ecosystem/skill-validator/cmd/skill-validator@$SKILL_VALIDATOR_VERSION"
 }
 
+ensure_eval_validator() {
+  if command -v agent-skills-eval >/dev/null 2>&1; then
+    return 0
+  fi
+
+  if command -v bun >/dev/null 2>&1; then
+    bun add -g "agent-skills-eval@$AGENT_SKILLS_EVAL_VERSION"
+    return $?
+  fi
+
+  if command -v npm >/dev/null 2>&1; then
+    npm install -g "agent-skills-eval@$AGENT_SKILLS_EVAL_VERSION"
+    return $?
+  fi
+
+  printf 'error: agent-skills-eval is not in PATH and neither bun nor npm is available to install it\n' >&2
+  return 1
+}
+
 main() {
   ensure_skill_validator || return $?
+  ensure_eval_validator || return $?
 
   skill-validator check \
     --emit-annotations \
