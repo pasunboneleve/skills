@@ -4,7 +4,7 @@
     {
       "id": "unicode-override",
       "name": "unicode override",
-      "prompt": "Use the markdown skill. Create the contents of example.md from scratch. You are editing a repository and should follow the default convention of using ASCII-only file contents and ASCII directory-tree markers such as |-- and `-- unless a local Markdown-specific instruction overrides that default.\n\nIt should document this project layout as a directory tree:\n\n- docs/guides/install.md\n- docs/reference/api.md\n- docs/reference/auth.md\n- README.md\n\nReturn only the Markdown file contents.",
+      "prompt": "Use the markdown skill. Create the contents of example.md from scratch. You are editing a repository with a default convention of ASCII-only file contents and ASCII directory-tree markers such as |-- and `--.\n\nIt should document this project layout as a directory tree:\n\n- docs/guides/install.md\n- docs/reference/api.md\n- docs/reference/auth.md\n- README.md\n\nReturn only the Markdown file contents.",
       "expected_output": "The Markdown contains a fenced text directory tree created from scratch using Unicode box-drawing characters, including docs/guides/install.md, docs/reference/api.md, docs/reference/auth.md, and README.md.",
       "assertions": [
         "The output is Markdown.",
