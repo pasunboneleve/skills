@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-05-11
+
+### Fixed
+
+- Quoted the `oiticica-style` skill description so its frontmatter parses as valid YAML.
+- Replaced custom Python frontmatter parsing with `skill-validator` for skill package validation in CI.
+
 ## [1.0.0] - 2026-05-09
 
 ### Changed
@@ -72,7 +79,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/pasunboneleve/skills/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/pasunboneleve/skills/compare/v0.3.1...v1.0.0
 [0.3.1]: https://github.com/pasunboneleve/skills/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/pasunboneleve/skills/compare/v0.2.2...v0.3.0

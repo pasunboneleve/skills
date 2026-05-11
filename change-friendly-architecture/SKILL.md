@@ -1,6 +1,6 @@
 ---
 name: change-friendly-architecture
-description: Review or design software architecture for encapsulation, separation of concerns, narrow APIs, explicit state, locality, low coupling, testability, mocking seams, failure visibility, and limited blast radius. Use when Codex is asked to plan, implement, refactor, review, or critique code structure, module boundaries, interfaces, abstractions, tests, or error handling.
+description: Review or design software architecture so changes stay local, explicit, testable, and observable. Use when code structure, module boundaries, interfaces, abstractions, tests, or error handling need architectural judgment.
 ---
 
 # Change-friendly architecture

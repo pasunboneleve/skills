@@ -1,6 +1,6 @@
 ---
 name: oiticica-style
-description: Review and improve prose, documentation, prompts, code, APIs, tests, and architecture notes by Jose Oiticica's concrete-contrast method: principle, weak example, diagnosis, better form, and explanation.
+description: "Review and improve writing or code by using Jose Oiticica's concrete-contrast method. Use when a critique should name a principle, show a weak example, diagnose the fault, give a better form, and explain why it works."
 ---
 
 # Oiticica style
