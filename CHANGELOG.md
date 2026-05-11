@@ -10,6 +10,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 - Added `agent-skills-eval` discovery files for existing eval fixtures and wired the validation wrapper to run model-backed skill evals when credentials are configured.
 
+### Removed
+
+- Removed `strunk-white-style` from the active skill set because its compression-oriented edits can drop useful source information.
+
 ## [1.0.1] - 2026-05-11
 
 ### Fixed
