@@ -22,7 +22,11 @@ For plans, start with `Required realtime architecture` and include:
 - Mock streams must include realistic pacing, burst mode, retries, failed-tool cases, retrieval-heavy cases, duplicate events, and out-of-order events.
 - Validation must include deterministic reducer/projection tests and rendered-page inspection under streaming load.
 
-For topology plans, include a dedicated line that starts `WebSocket handlers:` and says handlers may parse, enqueue, or store projections, but `must not redraw the UI directly`. Also use the exact phrase `browser-cadence rendering with coalesced updates`.
+For topology plans, include these exact checklist lines:
+
+- `WebSocket handlers: may parse, enqueue, or store projections; must not redraw the UI directly.`
+- `Rendering: browser-cadence rendering with coalesced updates.`
+- `Tests: deterministic reducer/projection tests plus rendered-page inspection under streaming load.`
 
 For reviews, start with `Required realtime rejections` and include:
 
