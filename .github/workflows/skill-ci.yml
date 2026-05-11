@@ -1,11 +1,6 @@
 name: Skill CI
 
 on:
-  push:
-    paths-ignore:
-      - "*"
-      - ".*"
-      - "home/**"
   pull_request:
     paths-ignore:
       - "*"
