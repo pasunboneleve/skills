@@ -10,6 +10,7 @@ AGENT_SKILLS_EVAL_BASE_URL="${AGENT_SKILLS_EVAL_BASE_URL:-https://api.openai.com
 AGENT_SKILLS_EVAL_TARGET="${AGENT_SKILLS_EVAL_TARGET:-gpt-4o-mini}"
 AGENT_SKILLS_EVAL_JUDGE="${AGENT_SKILLS_EVAL_JUDGE:-$AGENT_SKILLS_EVAL_TARGET}"
 AGENT_SKILLS_EVAL_WORKSPACE="${AGENT_SKILLS_EVAL_WORKSPACE:-${TMPDIR:-/tmp}/agent-skills-eval-skills}"
+AGENT_SKILLS_EVAL_MIN_DELTA="${AGENT_SKILLS_EVAL_MIN_DELTA:-0.20}"
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
 
 ensure_skill_validator() {
@@ -46,15 +47,39 @@ ensure_eval_validator() {
 }
 
 run_eval_validator() {
+  local status=0
+  local run_workspace
+
+  run_workspace="$(mktemp -d "${AGENT_SKILLS_EVAL_WORKSPACE%/}.XXXXXX")" || return $?
+
   agent-skills-eval "$ROOT" \
-    --workspace "$AGENT_SKILLS_EVAL_WORKSPACE" \
+    --workspace "$run_workspace" \
     --baseline \
     --target "$AGENT_SKILLS_EVAL_TARGET" \
     --judge "$AGENT_SKILLS_EVAL_JUDGE" \
     --base-url "$AGENT_SKILLS_EVAL_BASE_URL" \
     --api-key-env "$AGENT_SKILLS_EVAL_API_KEY_ENV" \
     --strict \
-    --no-report
+    --no-report || status=$?
+
+  check_eval_deltas "$run_workspace" || status=$?
+  return "$status"
+}
+
+check_eval_deltas() {
+  local workspace="$1"
+  local js_runtime
+
+  if command -v node >/dev/null 2>&1; then
+    js_runtime=node
+  elif command -v bun >/dev/null 2>&1; then
+    js_runtime=bun
+  else
+    printf 'error: neither node nor bun is available to check agent-skills-eval deltas\n' >&2
+    return 1
+  fi
+
+  "$js_runtime" "$ROOT/scripts/check_eval_deltas.js" "$workspace" "$AGENT_SKILLS_EVAL_MIN_DELTA"
 }
 
 run_skill_validator() {
