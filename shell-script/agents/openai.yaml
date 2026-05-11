@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shell Script"
+  short_description: "Require strict mode in shell scripts"
+  default_prompt: "Use $shell-script when creating or reviewing shell scripts."

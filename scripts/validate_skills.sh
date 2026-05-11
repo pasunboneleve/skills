@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -u
+set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 INSTALL_ROOT="${INSTALL_ROOT:-$HOME/.local}"
@@ -12,6 +12,10 @@ AGENT_SKILLS_EVAL_JUDGE="${AGENT_SKILLS_EVAL_JUDGE:-$AGENT_SKILLS_EVAL_TARGET}"
 AGENT_SKILLS_EVAL_WORKSPACE="${AGENT_SKILLS_EVAL_WORKSPACE:-${TMPDIR:-/tmp}/agent-skills-eval-skills}"
 AGENT_SKILLS_EVAL_MIN_DELTA="${AGENT_SKILLS_EVAL_MIN_DELTA:-0.20}"
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
+
+usage() {
+  printf 'usage: %s [skill-relpath ...]\n' "${0##*/}"
+}
 
 ensure_skill_validator() {
   if command -v skill-validator >/dev/null 2>&1; then
@@ -46,13 +50,36 @@ ensure_eval_validator() {
   return 1
 }
 
+validate_skill_args() {
+  local skill
+
+  for skill in "$@"; do
+    if [[ "$skill" == -* ]]; then
+      usage >&2
+      return 1
+    fi
+
+    if [[ ! -f "$ROOT/$skill/SKILL.md" ]]; then
+      printf 'error: skill not found or missing SKILL.md: %s\n' "$skill" >&2
+      return 1
+    fi
+  done
+}
+
 run_eval_validator() {
   local status=0
   local run_workspace
+  local skill
+  local include_args=()
+
+  for skill in "$@"; do
+    include_args+=(--include "$skill")
+  done
 
   run_workspace="$(mktemp -d "${AGENT_SKILLS_EVAL_WORKSPACE%/}.XXXXXX")" || return $?
 
   agent-skills-eval "$ROOT" \
+    "${include_args[@]}" \
     --workspace "$run_workspace" \
     --baseline \
     --target "$AGENT_SKILLS_EVAL_TARGET" \
@@ -83,20 +110,34 @@ check_eval_deltas() {
 }
 
 run_skill_validator() {
+  local skill
+
+  if (($# == 0)); then
+    run_skill_validator_path "$ROOT"
+    return $?
+  fi
+
+  for skill in "$@"; do
+    run_skill_validator_path "$ROOT/$skill"
+  done
+}
+
+run_skill_validator_path() {
   skill-validator check \
     --emit-annotations \
     --strict \
     --skip links \
     --allow-dirs agents,evals,examples,home \
     --allow-flat-layouts \
-    "$ROOT"
+    "$1"
 }
 
 main() {
+  validate_skill_args "$@" || return $?
   ensure_skill_validator || return $?
   ensure_eval_validator || return $?
-  run_skill_validator || return $?
-  run_eval_validator || return $?
+  run_skill_validator "$@" || return $?
+  run_eval_validator "$@" || return $?
 }
 
 main "$@"
