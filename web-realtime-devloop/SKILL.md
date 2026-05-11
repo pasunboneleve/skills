@@ -26,6 +26,8 @@ For topology plans, include these exact checklist lines:
 
 - `WebSocket handlers: may parse, enqueue, or store projections; must not redraw the UI directly.`
 - `Rendering: browser-cadence rendering with coalesced updates.`
+- `Bounds: token, log, retrieval, recent-change, error, timeline, and projection collections stay bounded.`
+- `Mock streams: realistic pacing, burst mode, retries, failed-tool cases, retrieval-heavy cases, duplicate events, and out-of-order events.`
 - `Tests: deterministic reducer/projection tests plus rendered-page inspection under streaming load.`
 
 For reviews, start with `Required realtime rejections` and include:
