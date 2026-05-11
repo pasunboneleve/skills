@@ -5,7 +5,7 @@ script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 repo_root="$(cd -- "${script_dir}/.." && pwd -P)"
 codex_home="${CODEX_HOME:-${HOME}/.codex}"
 dest_root="${CODEX_SKILLS_DIR:-${codex_home}/skills}"
-agents_src="${repo_root}/codex-home/AGENTS.md"
+agents_src="${repo_root}/home/AGENTS.md"
 agents_dest="${codex_home}/AGENTS.md"
 
 mkdir -p -- "${dest_root}" "${codex_home}"
