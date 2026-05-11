@@ -55,6 +55,22 @@
         "The output does not accept the return-1 guard as sufficient.",
         "The output does not recommend keeping a warning-and-skip path."
       ]
+    },
+    {
+      "id": "reject-fallback-after-exception",
+      "name": "reject fallback after exception",
+      "prompt": "Use the coding skill. Review this proposed test helper change. The helper runs a repository command, catches any thrown exception, logs `continuing with fallback result`, returns a hardcoded passing fixture, and lets the test suite continue green. The author says this keeps development moving when command execution is blocked by local setup. Is that acceptable? State the required change.",
+      "expected_output": "The response rejects converting a thrown command exception into a hardcoded passing fixture. It should require the original exception to surface and the test or validation run to fail visibly.",
+      "assertions": [
+        "The output rejects or flags catching a command exception and returning a hardcoded passing fixture.",
+        "The output states that the original exception must be surfaced.",
+        "The output says the test or validation run should fail visibly rather than continue green.",
+        "The output says not to mute, swallow, hide, or convert the exception into a fallback success.",
+        "The output rejects the claim that this is acceptable because it keeps development moving.",
+        "The output requires removing the fallback success path or rethrowing the exception.",
+        "The output treats the blocked command execution as a real failure, not a successful test result.",
+        "The output does not recommend keeping the hardcoded passing fixture."
+      ]
     }
   ]
 }
