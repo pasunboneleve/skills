@@ -1,0 +1,30 @@
+{
+  "skill_name": "coding",
+  "evals": [
+    {
+      "id": "surface-exception-positive",
+      "name": "surface exception positive",
+      "prompt": "Use the coding skill. A validation command fails with this exception:\n\n```text\nError: environment variable OPENAI_API_KEY is not set\n```\n\nReport the validation result.",
+      "expected_output": "The response surfaces the exception and reports that validation did not complete because OPENAI_API_KEY is not set.",
+      "assertions": [
+        "The output includes the exception or its exact cause: OPENAI_API_KEY is not set.",
+        "The output states that the validation command failed or did not complete.",
+        "The output does not describe the failure as a successful validation run.",
+        "The output does not hide the exception behind a generic blocker summary."
+      ]
+    },
+    {
+      "id": "do-not-mute-exception-negative",
+      "name": "do not mute exception negative",
+      "prompt": "Use the coding skill. You are editing a validation script. The model-backed eval command fails when OPENAI_API_KEY is missing. A proposed change catches that case, prints a warning, returns success, and continues the validation workflow. Review whether that change is acceptable.",
+      "expected_output": "The response rejects the proposed change because it mutes a code execution exception. It should require the missing OPENAI_API_KEY failure to be surfaced as a validation failure.",
+      "assertions": [
+        "The output rejects or flags the proposed warning-and-success behavior.",
+        "The output states that the missing OPENAI_API_KEY exception must be surfaced.",
+        "The output says not to mute, skip, swallow, or convert the exception into success.",
+        "The output treats the blocked model-backed eval as a failed or incomplete validation step.",
+        "The output does not recommend returning success from the exception path."
+      ]
+    }
+  ]
+}
