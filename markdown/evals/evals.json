@@ -1,0 +1,18 @@
+{
+  "skill_name": "markdown",
+  "evals": [
+    {
+      "id": "unicode-override",
+      "name": "unicode override",
+      "prompt": "Use the markdown skill to edit example.md.\n\nInput:\n\n```markdown\n# Layout\n\n```text\ndocs/\n├── guides/\n│   └── install.md\n└── reference.md\n```\n```\n\nRequested edit:\n\nAdd api.md under reference.md.",
+      "expected_output": "The edited Markdown keeps the tree in a fenced text block, preserves Unicode box-drawing characters, and adds api.md.",
+      "assertions": [
+        "The output is Markdown.",
+        "The tree remains in a fenced text code block.",
+        "The output keeps Unicode box-drawing characters such as ├──, │, and └──.",
+        "The output includes api.md.",
+        "The output does not convert the tree to ASCII markers such as |--, `--, +--, or \\--."
+      ]
+    }
+  ]
+}

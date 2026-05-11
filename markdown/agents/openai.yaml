@@ -1,0 +1,4 @@
+interface:
+  display_name: "Markdown"
+  short_description: "Allow useful Unicode in Markdown files"
+  default_prompt: "Use $markdown when editing Markdown that benefits from Unicode formatting."
