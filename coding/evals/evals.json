@@ -71,6 +71,22 @@
         "The output treats the blocked command execution as a real failure, not a successful test result.",
         "The output does not recommend keeping the hardcoded passing fixture."
       ]
+    },
+    {
+      "id": "state-blocked-execution-rule",
+      "name": "state blocked execution rule",
+      "prompt": "Use the coding skill. During a script execution task, the command throws this exception:\n\n```text\nTypeError: config.timeout must be a number\n```\n\nAnother agent proposes substituting a default timeout, continuing the workflow, and reporting that validation passed. State the coding-skill-specific rule that applies and what should happen.",
+      "expected_output": "The response states the coding skill rule: if code execution is blocked by an exception, surface the exception and do not mute exceptions. It should reject substituting a default timeout and require the validation result to expose the TypeError instead of passing.",
+      "assertions": [
+        "The output states that if code execution is blocked by an exception, the exception should be surfaced.",
+        "The output includes the directive not to mute exceptions.",
+        "The output includes the exact exception or its exact cause: TypeError: config.timeout must be a number.",
+        "The output rejects substituting a default timeout and continuing the workflow.",
+        "The output rejects reporting validation as passed after the exception.",
+        "The output treats the blocked script execution as a failed or incomplete validation run.",
+        "The output frames this as a coding-skill-specific rule or directive.",
+        "The output does not recommend a fallback value as the required fix."
+      ]
     }
   ]
 }
