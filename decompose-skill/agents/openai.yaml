@@ -1,0 +1,4 @@
+interface:
+  display_name: "Decompose Skill"
+  short_description: "Split large skills into lean, loadable parts"
+  default_prompt: "Use $decompose-skill to split this oversized skill into a concise SKILL.md and focused references."

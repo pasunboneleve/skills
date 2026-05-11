@@ -1,0 +1,60 @@
+{
+  "skill_name": "coding",
+  "evals": [
+    {
+      "id": "surface-exception-positive",
+      "name": "surface exception positive",
+      "prompt": "Use the coding skill. A validation command fails with this exception:\n\n```text\nError: environment variable OPENAI_API_KEY is not set\n```\n\nReport the validation result.",
+      "expected_output": "The response surfaces the exception and reports that validation did not complete because OPENAI_API_KEY is not set.",
+      "assertions": [
+        "The output includes the exception or its exact cause: OPENAI_API_KEY is not set.",
+        "The output states that the validation command failed or did not complete.",
+        "The output does not describe the failure as a successful validation run.",
+        "The output does not hide the exception behind a generic blocker summary."
+      ]
+    },
+    {
+      "id": "do-not-mute-exception-negative",
+      "name": "do not mute exception negative",
+      "prompt": "Use the coding skill. You are editing a validation script. The model-backed eval command fails when OPENAI_API_KEY is missing. A proposed change catches that case, prints a warning, returns success, and continues the validation workflow. Review whether that change is acceptable.",
+      "expected_output": "The response rejects the proposed change because it mutes a code execution exception. It should require the missing OPENAI_API_KEY failure to be surfaced as a validation failure.",
+      "assertions": [
+        "The output rejects or flags the proposed warning-and-success behavior.",
+        "The output states that the missing OPENAI_API_KEY exception must be surfaced.",
+        "The output says not to mute, skip, swallow, or convert the exception into success.",
+        "The output treats the blocked model-backed eval as a failed or incomplete validation step.",
+        "The output does not recommend returning success from the exception path."
+      ]
+    },
+    {
+      "id": "separate-language-script-files",
+      "name": "separate language script files",
+      "prompt": "Use the coding skill. You are reviewing a Bash validation script that embeds a Node.js program in a heredoc like this:\n\n```bash\nnode - <<'JS'\nconst fs = require('fs');\nconsole.log(fs.existsSync('benchmark.json'));\nJS\n```\n\nThe proposed implementation keeps the embedded JavaScript inside the Bash file. Review whether that structure is acceptable and state the required change.",
+      "expected_output": "The response rejects the embedded JavaScript heredoc in the Bash script and requires moving the Node.js program into its own .js file that the Bash wrapper invokes.",
+      "assertions": [
+        "The output rejects or flags embedding JavaScript directly inside the Bash script.",
+        "The output states that scripts written in different programming languages should live in their own files.",
+        "The output requires moving the Node.js code into a separate .js file.",
+        "The output says the Bash script should invoke the separate JavaScript file.",
+        "The output does not approve keeping the JavaScript heredoc inline.",
+        "The output does not describe the embedded JavaScript heredoc as technically acceptable.",
+        "The output treats the language-boundary issue as a directive or requirement, not only as a maintainability preference.",
+        "The output names Bash and JavaScript or Node.js as separate languages that should not be mixed inline."
+      ]
+    },
+    {
+      "id": "remove-warning-success-api-key-guard",
+      "name": "remove warning success api key guard",
+      "prompt": "Use the coding skill. Review this proposed patch to a Bash validation wrapper. The original code caught a missing OpenAI key, printed a warning, returned 0, and skipped agent-skills-eval. The proposed patch changes only `return 0` to `return 1`; it still checks OPENAI_API_KEY first, prints a warning, and skips agent-skills-eval. Is that patch acceptable? State the required change.",
+      "expected_output": "The response rejects changing only return 0 to return 1 because the guard still skips the command. It should require removing the guard so agent-skills-eval runs and its missing-key exception fails visibly.",
+      "assertions": [
+        "The output rejects or flags the proposed patch that only changes return 0 to return 1.",
+        "The output states that the patch is still wrong because it skips agent-skills-eval or replaces command execution with a guard branch.",
+        "The output requires removing the OPENAI_API_KEY guard branch or otherwise running agent-skills-eval directly.",
+        "The output says the missing OPENAI_API_KEY exception should surface or fail hard from the validation command.",
+        "The output does not accept the return-1 guard as sufficient.",
+        "The output does not recommend keeping a warning-and-skip path."
+      ]
+    }
+  ]
+}

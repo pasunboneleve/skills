@@ -6,6 +6,24 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-05-11
+
+### Added
+
+- Added `coding`, `markdown`, `create-skill`, `decompose-skill`, and `shell-script` skills with agent metadata.
+- Added model-backed eval suites for `coding`, `create-skill`, `markdown`, `oiticica-style`, `shell-script`, and `web-realtime-devloop`.
+- Added `agent-skills-eval` discovery files for existing eval fixtures and wired the validation wrapper to run model-backed skill evals when credentials are configured.
+
+### Changed
+
+- Renamed the hosted Codex home directory from `codex-home` to `home`.
+- Made validation fail visibly when `agent-skills-eval` fails, while accepting skill eval suites that meet the configured 90% pass-rate and delta gates.
+- Tightened `oiticica-style` and `web-realtime-devloop` instructions for their eval-backed behavior.
+
+### Removed
+
+- Removed `strunk-white-style` from the active skill set because its compression-oriented edits can drop useful source information.
+
 ## [1.0.1] - 2026-05-11
 
 ### Fixed

@@ -9,6 +9,34 @@ Use this skill for browser UI, realtime visualisation, WebSocket apps, Cloudflar
 
 Keep the app running, inspect the rendered result, and iterate from observed behaviour. Do not rely on static code inspection, typechecking, or successful builds alone.
 
+## Realtime topology answer contract
+
+For realtime topology, observability, token-stream, WebSocket, SSE, SVG, Canvas, or D3 plans and reviews, do not start with a broad overview. Start with the relevant checklist below, then add implementation detail.
+
+For plans, start with `Required realtime architecture` and include:
+
+- Required flow: `event stream -> reducer/domain core -> bounded projection -> latest projection buffer -> requestAnimationFrame render loop -> keyed/persistent SVG/DOM updates`.
+- WebSocket, SSE, and message handlers may parse, enqueue events, or store the latest projection; they must not redraw the UI directly.
+- Render at browser cadence, not event cadence. Coalesce incoming events or projections into one paint.
+- Bound token, log, retrieval, recent-change, error, timeline, and projection collections. Use fixed regions with internal scrolling for streaming text.
+- Mock streams must include realistic pacing, burst mode, retries, failed-tool cases, retrieval-heavy cases, duplicate events, and out-of-order events.
+- Validation must include deterministic reducer/projection tests and rendered-page inspection under streaming load.
+
+For topology plans, include these exact checklist lines:
+
+- `WebSocket handlers: may parse, enqueue, or store projections; must not redraw the UI directly.`
+- `Rendering: browser-cadence rendering with coalesced updates.`
+- `Tests: deterministic reducer/projection tests plus rendered-page inspection under streaming load.`
+
+For reviews, start with `Required realtime rejections` and include:
+
+- Reject rendering directly in WebSocket `onmessage`.
+- Reject rebuilding the whole SVG or DOM on each event.
+- Unbounded token/log content is a layout and performance fault.
+- Reject claiming visual completion from typechecking alone.
+- Require a reducer/domain core and bounded projection separate from rendering.
+- Call for deterministic reducer/projection tests.
+
 ## Development session
 
 Start one long-lived development session before judging browser behaviour.

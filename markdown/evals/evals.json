@@ -1,0 +1,19 @@
+{
+  "skill_name": "markdown",
+  "evals": [
+    {
+      "id": "unicode-override",
+      "name": "unicode override",
+      "prompt": "Create the contents of example.md from scratch. You are editing a repository and should follow the default convention of using ASCII-only file contents and ASCII directory-tree markers such as |-- and `-- unless a local Markdown-specific instruction overrides that default.\n\nIt should document this project layout as a directory tree:\n\n- docs/guides/install.md\n- docs/reference/api.md\n- docs/reference/auth.md\n- README.md\n\nReturn only the Markdown file contents.",
+      "expected_output": "The Markdown contains a fenced text directory tree created from scratch using Unicode box-drawing characters, including docs/guides/install.md, docs/reference/api.md, docs/reference/auth.md, and README.md.",
+      "assertions": [
+        "The output is Markdown.",
+        "The output includes a directory tree in a fenced text code block.",
+        "The output keeps Unicode box-drawing characters such as ├──, │, and └──.",
+        "The output includes install.md, api.md, auth.md, and README.md.",
+        "The output does not convert the tree to ASCII markers such as |--, `--, +--, or \\--.",
+        "The output is not an indented bullet list or prose-only layout."
+      ]
+    }
+  ]
+}

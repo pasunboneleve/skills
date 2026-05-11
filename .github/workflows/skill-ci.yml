@@ -26,4 +26,6 @@ jobs:
           GOBIN="$HOME/.local/bin" go install github.com/agent-ecosystem/skill-validator/cmd/skill-validator@latest
 
       - name: Validate Codex skills
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: bash scripts/validate_skills.sh

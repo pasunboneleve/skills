@@ -13,7 +13,6 @@ Personal Codex skills used from `~/.codex/skills`.
 - [`oiticica-style`](oiticica-style/SKILL.md): reviews prose and code through concrete contrast, diagnosis, correction, and explanation.
 - [`release`](release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-beads-workflow`](roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
-- [`strunk-white-style`](strunk-white-style/SKILL.md): revises prose for clarity, brevity, and directness; available as a standalone style skill.
 - [`web-realtime-devloop`](web-realtime-devloop/SKILL.md): enforces a live browser development loop for realtime web work.
 
 ## Use
@@ -22,7 +21,9 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and 
 
 ## Validation
 
-Run `bash scripts/validate_skills.sh`. The wrapper installs `skill-validator` into `~/.local/bin` with `go install` when it is not already on `PATH`.
+Run `bash scripts/validate_skills.sh`. The wrapper installs `skill-validator` into `~/.local/bin` and `agent-skills-eval` globally when either tool is not already on `PATH`.
+
+For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.
 
 ## Versioning
 
