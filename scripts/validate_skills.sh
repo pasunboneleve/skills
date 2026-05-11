@@ -46,11 +46,6 @@ ensure_eval_validator() {
 }
 
 run_eval_validator() {
-  if [ -z "${!AGENT_SKILLS_EVAL_API_KEY_ENV:-}" ]; then
-    printf 'warning: skipping agent-skills-eval because %s is not set\n' "$AGENT_SKILLS_EVAL_API_KEY_ENV" >&2
-    return 0
-  fi
-
   agent-skills-eval "$ROOT" \
     --workspace "$AGENT_SKILLS_EVAL_WORKSPACE" \
     --baseline \
@@ -71,7 +66,7 @@ main() {
     --emit-annotations \
     --strict \
     --skip links \
-    --allow-dirs agents,evals,examples,codex-home \
+    --allow-dirs agents,evals,examples,home \
     --allow-flat-layouts \
     "$ROOT"
 }
