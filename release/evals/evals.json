@@ -1,0 +1,30 @@
+{
+  "skill_name": "release",
+  "evals": [
+    {
+      "id": "protected-pr-ci-satisfies-gate",
+      "name": "protected pr ci satisfies gate",
+      "prompt": "Use the release skill. A release PR was merged into protected `main`. Branch protection required the `validate` PR check, and GitHub allowed the merge only after `validate` passed. The repository workflow has only `pull_request`; there is no push-to-main workflow and no manual dispatch. Produce the release status line for the CI gate and state whether tagging may proceed if version, changelog, and tag rules match.",
+      "expected_output": "The response includes `Required CI gate status:` and identifies the gate as protected PR CI. It says there is no separate post-merge main workflow to wait for and allows tagging if version, changelog, and tag rules match.",
+      "assertions": [
+        "The output includes the exact label `Required CI gate status:`.",
+        "The output identifies the gate as `protected PR CI`.",
+        "The output says no separate post-merge main workflow exists or no separate main run is required.",
+        "The output allows proceeding to tag if version, changelog, and tag rules match.",
+        "The output does not say tagging must stop solely because the merge commit has no separate main CI status."
+      ]
+    },
+    {
+      "id": "post-merge-main-ci-required-when-present",
+      "name": "post merge main ci required when present",
+      "prompt": "Use the release skill. A release PR merged after green PR checks. The repository also has a separate `push` workflow on `main` that runs release validation after merges. The push workflow for the merged release commit is still pending. May the agent tag now?",
+      "expected_output": "The response rejects tagging while the separate post-merge main workflow is pending and requires that workflow to pass for the merged release commit first.",
+      "assertions": [
+        "The output says not to tag yet.",
+        "The output identifies the separate post-merge main workflow as part of the required CI gate.",
+        "The output requires the push-to-main workflow to pass for the merged release commit.",
+        "The output does not treat the green PR check alone as sufficient when a separate main workflow exists and is pending."
+      ]
+    }
+  ]
+}

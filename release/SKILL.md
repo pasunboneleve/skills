@@ -13,7 +13,7 @@ description: Prepare and execute a versioned release through a feature branch, P
 - Ensure the remote protects `main` from direct pushes before release work starts.
 - Never merge if a release assumption is false.
 - Never merge a PR unless CI is green.
-- Never tag until the release PR is merged and main CI is green.
+- Never tag until the release PR is merged and the repository's required CI gate is green.
 - Never require release artifacts unless tag-triggered release automation exists.
 - Never call an artifact release complete until its tag-triggered workflows pass.
 - If an assumption is false or uncertain, stop and prompt the user.
@@ -72,7 +72,20 @@ Also check workflows triggered by GitHub release events.
 
 If a tag-triggered release workflow exists, treat the project as an artifact release. After pushing the tag, wait for the triggered workflow and verify its outputs.
 
-If no tag-triggered release workflow exists, treat the project as tag-only. Do not require release artifacts or release workflow checks. A tag-only release is complete when the release PR is merged, main CI is green, and the version tag is pushed.
+If no tag-triggered release workflow exists, treat the project as tag-only. Do not require release artifacts or release workflow checks. A tag-only release is complete when the release PR is merged, the required CI gate is green, and the version tag is pushed.
+
+## CI gate semantics
+
+Treat the repository's required CI gate as green when one of these is true:
+
+- A protected branch requires PR checks, the release PR merged through that protection, and the required PR checks passed.
+- A post-merge workflow runs on `main` and the run for the merged release commit passed.
+
+Do not require a separate post-merge `main` run when the repository has no push-to-main workflow or manual dispatch for the relevant validation. In that case, record that the protected PR check was the CI gate and that no separate main workflow exists.
+
+Do not tag if a separate post-merge `main` workflow exists and has not passed for the merged release commit.
+
+When reporting this decision, include `Required CI gate status:` and state whether the gate was `protected PR CI` or `post-merge main CI`. If protected PR CI is the gate, also state `No separate post-merge main workflow exists` or `No separate main run is required`.
 
 ## Local validation
 
@@ -100,12 +113,14 @@ After local validation passes:
 5. If PR CI is green, merge the PR with the project convention.
 6. Fetch and check out the updated `main`.
 7. Verify `main` points at the merged release commit.
-8. Wait for main CI to finish.
-9. If main CI is not green, do not tag.
+8. Determine the required CI gate:
+   - If branch protection required the passing PR check and no separate post-merge `main` workflow exists, treat the protected green PR check as the release CI gate.
+   - If a separate post-merge `main` workflow exists, wait for that workflow on the merged release commit.
+9. If the required CI gate is not green, do not tag.
 
 ## Tag and release flow
 
-After the PR is merged and main CI is green:
+After the PR is merged and the required CI gate is green:
 
 1. Create the version tag on the merged `main` release commit.
 2. Push the tag only if the user asked to execute the release.
@@ -141,7 +156,7 @@ Stop and prompt the user if:
 - help output is stale or missing
 - local validation fails
 - PR CI is not green
-- main CI is not green after merge
+- the required CI gate is not green
 - merge strategy is not identified
 - tag format is ambiguous
 - tag-triggered release workflows fail for an artifact release
@@ -156,7 +171,7 @@ Report:
 - main protection status or correction
 - PR link or identifier
 - PR CI status
-- main CI status
+- required CI gate status, including whether it was protected PR CI or post-merge main CI
 - release surface: artifact or tag-only
 - merge commit
 - tag created
@@ -166,6 +181,6 @@ Report:
 - documentation, changelog, help, and version updates
 - assumptions that required user confirmation
 
-For artifact releases, do not call the release complete unless the PR was merged, main CI passed, the version tag was pushed, and tag-triggered workflows passed.
+For artifact releases, do not call the release complete unless the PR was merged, the required CI gate passed, the version tag was pushed, and tag-triggered workflows passed.
 
-For tag-only releases, do not call the release complete unless the PR was merged, main CI passed, and the version tag was pushed.
+For tag-only releases, do not call the release complete unless the PR was merged, the required CI gate passed, and the version tag was pushed.
