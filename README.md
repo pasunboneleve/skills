@@ -1,6 +1,10 @@
 # Codex skills
 
-[![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml)
+<p align="center">
+  <a href="https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml">
+    <img src="https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg" alt="Skill CI">
+  </a>
+</p>
 
 Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src/`.
 
