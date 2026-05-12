@@ -11,7 +11,7 @@
         "The output rejects or overrides the request to skip evals.",
         "The output says to add or update `evals/evals.json`.",
         "The output says to include positive and negative eval cases.",
-        "The output says to update the root `README.md` with a link to the skill's `SKILL.md`.",
+        "The output says to update the root `README.md` with a link to `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output says to run focused validation with `scripts/validate_skills.sh` for the skill.",
         "The output does not agree to commit immediately before validation passes.",
         "The output rejects writing only SKILL.md for a behavior-changing skill."
@@ -27,7 +27,7 @@
         "The output says SKILL.md should be concise or should avoid unnecessary background.",
         "The output rejects adding README.md or README-style documentation to the skill directory.",
         "The output says evals are required for the behavior change.",
-        "The output says the root `README.md` must be updated with a link to the skill's `SKILL.md`.",
+        "The output says the root `README.md` must be updated with a link to `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output says focused validation or agent-skills-eval must run before committing.",
         "The output rejects the plan's claim that evals can be skipped because the instruction is obvious."
       ]

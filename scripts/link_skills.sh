@@ -3,6 +3,7 @@ set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 repo_root="$(cd -- "${script_dir}/.." && pwd -P)"
+skills_root="${SKILLS_ROOT:-${repo_root}/src}"
 codex_home="${CODEX_HOME:-${HOME}/.codex}"
 dest_root="${CODEX_SKILLS_DIR:-${codex_home}/skills}"
 claude_home="${CLAUDE_HOME:-${HOME}/.claude}"
@@ -79,7 +80,7 @@ while IFS= read -r -d '' skill_file; do
 
   link_skill_dir "${skill_dir}" "${dest_root}/${skill_name}"
   link_skill_dir "${skill_dir}" "${claude_skills_dir}/${skill_name}"
-done < <(find "${repo_root}" -type f -name SKILL.md -print0 | sort -z)
+done < <(find "${skills_root}" -type f -name SKILL.md -print0 | sort -z)
 
 link_regular_file "${agents_src}" "${agents_dest}"
 link_regular_file "${agents_src}" "${claude_agents_dest}"

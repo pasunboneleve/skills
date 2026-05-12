@@ -12,6 +12,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ### Changed
 
+- Moved repository skills under `src/` and updated validation, CI scope detection, linking, and README references for the new layout.
+- Tightened `beads`, `roborev-beads-workflow`, and `shell-script` instructions so full validation remains deterministic after the layout move.
 - Added the verified upstream link for Beads in the Beads skill.
 - Added verified upstream links for RoboRev and Beads in the RoboRev workflow skill.
 - Added root `AGENTS.md` guidance requiring every repository skill to be linked from `README.md`.

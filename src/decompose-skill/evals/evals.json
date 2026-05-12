@@ -9,7 +9,7 @@
       "assertions": [
         "The output says each resulting `SKILL.md` stays concise or contains routing and core rules.",
         "The output says references, scripts, or assets are created only when they support focused loading or deterministic operations.",
-        "The output says to update the root `README.md` with links to each changed or resulting skill's `SKILL.md`.",
+        "The output says to update the root `README.md` with links to each changed or resulting skill using `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output includes `direnv exec . bash scripts/validate_skills.sh <skill-name>` or an equivalent focused validation command for each changed skill.",
         "The output says to commit only after validation passes or to report validation results before committing."
       ]
@@ -21,7 +21,7 @@
       "expected_output": "The response rejects the plan because decomposition changes skill discovery and requires README.md links plus focused validation before commit.",
       "assertions": [
         "The output rejects or flags the plan as incomplete.",
-        "The output says the root `README.md` must be updated with links to the new skills' `SKILL.md` files.",
+        "The output says the root `README.md` must be updated with links to the new skills using `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output rejects skipping validation because decomposition is only moving text.",
         "The output says to run focused validation for each changed or new skill.",
         "The output does not agree to commit immediately before validation passes."

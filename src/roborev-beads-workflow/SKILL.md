@@ -62,6 +62,15 @@ Wait idly for RoboRev only when no safe work remains.
 
 Use `$beads` for concrete Beads commands and state transitions.
 
+When asked to name Beads lifecycle requirements, state these concrete transitions and commands:
+
+- Load `$beads`.
+- Find ready work with `bd ready`, create new work with `bd create`, or confirm an existing Bead.
+- Claim active work with `bd update <id> --claim`.
+- Record validation, blockers, decisions, PRs, and deferred work with `bd update <id> --append-notes "<note>"`.
+- Add ordering dependencies with `bd dep add <blocked> <blocker>` when order matters.
+- Close completed validated work with `bd close <id> --reason "<validation and delivery evidence>"`, or report that the Bead remains open or deferred.
+
 Do not close a Bead just because implementation appears complete.
 
 Close a Bead only when all are true:

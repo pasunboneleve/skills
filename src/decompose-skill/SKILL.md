@@ -9,6 +9,13 @@ Use this skill to turn a large or vague skill into a small trigger surface and a
 
 The goal is not to split by word count alone. Split so another Codex instance can choose the right file from the skill body without loading irrelevant material.
 
+When reviewing or planning a decomposition that creates, renames, removes, or changes skills, explicitly require both:
+
+- root `README.md` links in the form `src/skill-name/SKILL.md`
+- focused validation for every changed or new skill with `direnv exec . bash scripts/validate_skills.sh <skill-name>`
+
+Reject plans that leave `README.md` alone, skip focused validation because the change is "only moving text", or commit before validation passes.
+
 ## Decomposition Workflow
 
 1. Identify the skill's jobs.
@@ -46,7 +53,7 @@ direnv exec . bash scripts/validate_skills.sh <skill-name>
 ```
 
    - Forward-test with realistic prompts when the split changes how agents discover instructions.
-   - Update the root `README.md` when decomposition creates, renames, removes, or changes the summary of a skill. Every skill must be listed with a link to `skill-name/SKILL.md`.
+   - Update the root `README.md` when decomposition creates, renames, removes, or changes the summary of a skill. Every skill must be listed with a link to `src/skill-name/SKILL.md`.
    - Commit only after focused validation passes, unless the user explicitly accepts the remaining failure.
 
 ## Split Criteria

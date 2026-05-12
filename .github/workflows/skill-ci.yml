@@ -41,7 +41,7 @@ jobs:
 
       - name: Report skipped skill validation
         if: steps.skill-scope.outputs.mode == 'skip'
-        run: echo "No changed skill directories detected; skipping skill validation."
+        run: echo "No changed src/ skill directories detected; skipping skill validation."
 
       - name: Validate Codex skills
         if: steps.skill-scope.outputs.mode != 'skip'

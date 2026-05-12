@@ -40,7 +40,7 @@ bd update <id> --append-notes "<validation and commit or delivery evidence>"
 bd close <id> --reason "<validation and delivery evidence>"
 ```
 
-- If validation fails or work is incomplete, leave the Bead open and run `bd update <id> --append-notes "<validation failure or blocker; next concrete action>"`.
+- If validation fails or work is incomplete, leave the Bead open and run `bd update <id> --append-notes "<validation failure or blocker; next concrete action>"`. The note must explicitly name the validation failure or blocker and the next concrete action.
 - Before final response, report the Bead ID and whether it was claimed, left open, closed, or deferred.
 
 ## Reject

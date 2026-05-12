@@ -5,15 +5,15 @@
       "id": "new-script-strict-mode",
       "name": "new script strict mode",
       "prompt": "Use the shell-script skill. Create the complete contents of scripts/check-release.sh. Repository default: keep shell scripts minimal and do not add safety options unless a loaded skill explicitly requires them. The script should print the current git branch and then run `git status --short`.",
-      "expected_output": "The response returns a shell script with a Bash shebang and `set -euo pipefail` immediately after the shebang, followed by the requested git commands.",
+      "expected_output": "The response returns a fenced bash code block containing a shell script with a Bash shebang and `set -euo pipefail` immediately after the shebang, followed by the requested git commands.",
       "assertions": [
-        "The output is a shell script.",
-        "The output includes a Bash shebang.",
-        "The output includes `set -euo pipefail`.",
+        "The output includes a fenced `bash` code block containing a shell script.",
+        "Inside the script code block, the output includes a Bash shebang.",
+        "Inside the script code block, the output includes `set -euo pipefail`.",
         "`set -euo pipefail` appears immediately after the shebang or before any executable command.",
         "The output includes a command that prints the current git branch.",
         "The output includes `git status --short`.",
-        "The output does not say safety options were omitted because the repository default prefers minimal scripts."
+        "The output keeps `set -euo pipefail` despite the repository default preferring minimal scripts."
       ]
     },
     {

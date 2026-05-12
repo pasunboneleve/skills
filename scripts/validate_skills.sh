@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SKILLS_ROOT="${SKILLS_ROOT:-$ROOT/src}"
 INSTALL_ROOT="${INSTALL_ROOT:-$HOME/.local}"
 SKILL_VALIDATOR_VERSION="${SKILL_VALIDATOR_VERSION:-latest}"
 AGENT_SKILLS_EVAL_VERSION="${AGENT_SKILLS_EVAL_VERSION:-latest}"
@@ -60,7 +61,7 @@ validate_skill_args() {
       return 1
     fi
 
-    if [[ ! -f "$ROOT/$skill/SKILL.md" ]]; then
+    if [[ ! -f "$SKILLS_ROOT/$skill/SKILL.md" ]]; then
       printf 'error: skill not found or missing SKILL.md: %s\n' "$skill" >&2
       return 1
     fi
@@ -79,7 +80,7 @@ run_eval_validator() {
 
   run_workspace="$(mktemp -d "${AGENT_SKILLS_EVAL_WORKSPACE%/}.XXXXXX")" || return $?
 
-  agent-skills-eval "$ROOT" \
+  agent-skills-eval "$SKILLS_ROOT" \
     "${include_args[@]}" \
     --workspace "$run_workspace" \
     --baseline \
@@ -116,12 +117,12 @@ run_skill_validator() {
   local skill
 
   if (($# == 0)); then
-    run_skill_validator_path "$ROOT"
+    run_skill_validator_path "$SKILLS_ROOT"
     return $?
   fi
 
   for skill in "$@"; do
-    run_skill_validator_path "$ROOT/$skill"
+    run_skill_validator_path "$SKILLS_ROOT/$skill"
   done
 }
 

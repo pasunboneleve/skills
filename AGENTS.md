@@ -4,12 +4,12 @@ Use repository-local instructions first when present.
 
 ## Skill Index
 
-Every skill in this repository must be listed in the root `README.md` with a link to its `SKILL.md`.
+Every skill in this repository must live under `src/` and be listed in the root `README.md` with a link to its `SKILL.md`.
 
 When creating, renaming, deleting, or materially changing a skill:
 
 - Update the root `README.md` entry in the same change.
-- Keep the link target in the form `skill-name/SKILL.md`.
+- Keep the link target in the form `src/skill-name/SKILL.md`.
 - Run focused validation for each changed skill before committing:
 
 ```bash
