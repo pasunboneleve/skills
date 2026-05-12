@@ -14,6 +14,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 - Added root `AGENTS.md` guidance requiring every repository skill to be linked from `README.md`.
 - Updated `create-skill` to require root `README.md` skill links and focused validation before committing.
+- Updated `decompose-skill` to require root `README.md` skill links and focused validation before committing.
 - Updated `roborev-beads-workflow` to delegate Beads lifecycle commands to the focused `beads` skill.
 
 ## [1.2.0] - 2026-05-12
