@@ -7,6 +7,7 @@ Personal Codex skills used from `~/.codex/skills`.
 ## Skills
 
 - [`change-friendly-architecture`](change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
+- [`beads`](beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
 - [`coding`](coding/SKILL.md): surfaces code execution exceptions and keeps mixed-language scripts in separate files.
 - [`commit-discipline`](commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
 - [`create-skill`](create-skill/SKILL.md): creates concise skills with current eval scaffolding and focused validation.

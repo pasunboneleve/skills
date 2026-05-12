@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Added `beads`, a focused skill for claiming Beads work, recording lifecycle notes, and closing completed Beads with validation evidence.
+
 ## [1.2.0] - 2026-05-12
 
 ### Added
