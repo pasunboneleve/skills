@@ -126,11 +126,11 @@
       "id": "behavior-preservation-edge-case",
       "name": "behavior preservation edge case",
       "prompt": "Use the Oiticica-style skill to review the following input.\n\nexport function normalizePath(path) {\n  // Preserve root. Without this, \"/\" becomes \"\".\n  if (path === \"/\") return \"/\";\n  return path.replace(/\\/+$/, \"\");\n}\n",
-      "expected_output": "The response should follow the Oiticica-style review shape and ground its judgment in concrete mechanisms.",
+      "expected_output": "The response should preserve the root-path edge case and treat the code as already-good structure.",
       "assertions": [
-        "The output follows the Oiticica-style structural review shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
-        "The output names concrete code mechanisms such as hidden dependency, distant invariant, vague name, missing result contract, or deterministic correctness.",
-        "The output gives a concrete Better rewrite or patch that preserves the original behavior."
+        "The output uses Structural highlight or Main faults: None found instead of inventing a fault in the root-preserving normalizePath code.",
+        "The output explicitly preserves the root-path behavior or explains that the slash edge case should be kept.",
+        "The output names concrete preservation mechanisms such as preserve edge case, deterministic tests, or do not remove invariant for concision."
       ]
     },
     {
@@ -218,7 +218,7 @@
       "assertions": [
         "The output provides one Oiticica-style contrast for the requested sentence.",
         "The output follows the Oiticica-style contrast shape with Spine, Main faults, Representative contrast, Weak, Fault, Better, Why, and Rubric.",
-        "The output omits a final version and does not rewrite beyond the requested single contrast."
+        "The output omits a Final version section and does not add another rewrite or replacement after the Rubric."
       ]
     },
     {

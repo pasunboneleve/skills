@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-05-12
+
+### Changed
+
+- Added a committed `agent-skills-eval` configuration with target and judge temperature set to 0.
+- Tightened eval-backed `coding`, `oiticica-style`, and `web-realtime-devloop` behavior so full model-backed validation passes consistently.
+
 ## [1.1.0] - 2026-05-11
 
 ### Added
@@ -97,7 +104,9 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/pasunboneleve/skills/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/pasunboneleve/skills/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/pasunboneleve/skills/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/pasunboneleve/skills/compare/v0.3.1...v1.0.0
 [0.3.1]: https://github.com/pasunboneleve/skills/compare/v0.3.0...v0.3.1

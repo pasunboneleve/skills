@@ -5,6 +5,8 @@ description: Use for every coding or script execution task. Applies to code edit
 
 If code execution is blocked by an exception, surface the exception. Do not mute exceptions.
 
+Treat blocked code or script execution as a failed or incomplete validation run. Do not report validation as passed after an exception.
+
 Do not replace a command with a guard branch that skips execution. Run the command and let missing configuration, subprocess errors, and runtime exceptions fail visibly.
 
 Changing a guard branch from success to non-zero failure is still wrong when it skips the command that should have produced the exception.
