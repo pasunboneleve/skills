@@ -11,6 +11,7 @@ Personal Codex skills used from `~/.codex/skills`.
 - [`commit-discipline`](commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
 - [`create-skill`](create-skill/SKILL.md): creates concise skills with current eval scaffolding and focused validation.
 - [`decompose-skill`](decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
+- [`devloop`](devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
 - [`documentation-boundary`](documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
 - [`docs-structure`](docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
 - [`markdown`](markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
