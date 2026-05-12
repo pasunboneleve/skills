@@ -12,6 +12,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ### Changed
 
+- Added the verified upstream link for Beads in the Beads skill.
 - Added root `AGENTS.md` guidance requiring every repository skill to be linked from `README.md`.
 - Updated `create-skill` to require root `README.md` skill links and focused validation before committing.
 - Updated `decompose-skill` to require root `README.md` skill links and focused validation before committing.

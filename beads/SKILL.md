@@ -5,7 +5,7 @@ description: "Use when tracking work with Beads or bd: creating issues, claiming
 
 # Beads
 
-Use this skill for Beads lifecycle hygiene. Beads track work; keep their state true.
+Use this skill for [Beads](https://github.com/gastownhall/beads) lifecycle hygiene. Beads track work; keep their state true.
 
 ## Start work
 
