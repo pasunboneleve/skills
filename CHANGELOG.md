@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-05-12
+
 ### Added
 
 - Added `beads`, a focused skill for claiming Beads work, recording lifecycle notes, and closing completed Beads with validation evidence.
@@ -14,6 +16,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 - Moved repository skills under `src/` and updated validation, CI scope detection, linking, and README references for the new layout.
 - Tightened `beads`, `roborev-beads-workflow`, and `shell-script` instructions so full validation remains deterministic after the layout move.
+- Tightened `release` CI-gate wording so tag-only releases do not wait for nonexistent post-merge workflows.
 - Added the verified upstream link for Beads in the Beads skill.
 - Added verified upstream links for RoboRev and Beads in the RoboRev workflow skill.
 - Added root `AGENTS.md` guidance requiring every repository skill to be linked from `README.md`.
@@ -130,7 +133,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/pasunboneleve/skills/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/pasunboneleve/skills/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/pasunboneleve/skills/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/pasunboneleve/skills/compare/v1.0.1...v1.1.0

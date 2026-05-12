@@ -28,6 +28,7 @@ bd update <id> --append-notes "<note>"
 ## Finish work
 
 - Do not close before validation has passed and the relevant change is committed, merged, or intentionally delivered.
+- For a concrete Bead ID, write the exact ID in every lifecycle command; do not use `<id>` once the ID is known.
 - Before closing completed work, record validation and delivery evidence:
 
 ```bash
@@ -42,6 +43,16 @@ bd close <id> --reason "<validation and delivery evidence>"
 
 - If validation fails or work is incomplete, leave the Bead open and run `bd update <id> --append-notes "<validation failure or blocker; next concrete action>"`. The note must explicitly name the validation failure or blocker and the next concrete action.
 - Before final response, report the Bead ID and whether it was claimed, left open, closed, or deferred.
+
+For completed Bead `skills-abc` after successful validation and commit, use this shape:
+
+```bash
+bd update skills-abc --claim
+bd update skills-abc --append-notes "Validation passed: <command>. Commit: <hash or message>."
+bd close skills-abc --reason "Validation passed: <command>. Delivered in commit <hash or message>."
+```
+
+Then report: `Bead skills-abc closed`.
 
 ## Reject
 
