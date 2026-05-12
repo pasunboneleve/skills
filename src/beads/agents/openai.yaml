@@ -1,0 +1,4 @@
+interface:
+  display_name: "Beads"
+  short_description: "Keep Beads claimed, updated, and closed"
+  default_prompt: "Use $beads when creating, claiming, updating, closing, or reporting Beads work."

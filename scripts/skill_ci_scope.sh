@@ -50,11 +50,16 @@ declare -A seen_skills=()
 skills=()
 
 for path in "${changed_files[@]}"; do
-  top_level="${path%%/*}"
-  if [[ -f "$top_level/SKILL.md" && -z "${seen_skills[$top_level]+x}" ]]; then
-    seen_skills["$top_level"]=1
-    skills+=("$top_level")
-  fi
+  case "$path" in
+    src/*/*)
+      skill="${path#src/}"
+      skill="${skill%%/*}"
+      if [[ -f "src/$skill/SKILL.md" && -z "${seen_skills[$skill]+x}" ]]; then
+        seen_skills["$skill"]=1
+        skills+=("$skill")
+      fi
+      ;;
+  esac
 done
 
 if ((${#skills[@]} == 0)); then

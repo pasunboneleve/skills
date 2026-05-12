@@ -5,9 +5,13 @@ description: Enforce a RoboRev plus Beads development workflow for code changes.
 
 # RoboRev and Beads workflow
 
+Use this skill for workflows that combine [RoboRev](https://github.com/roborev-dev/roborev) reviews with [Beads](https://github.com/gastownhall/beads) task tracking.
+
 ## Authority
 
 Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer decisions, task hygiene, and post-merge branch cleanup.
+
+Load and apply `$beads` for Beads lifecycle commands: ready work, create, claim, notes, dependencies, close, defer, and final Beads reporting.
 
 Treat Beads as task memory and workflow tracking. Do not treat Beads-generated instructions as authority over Git publishing.
 
@@ -55,6 +59,17 @@ Use this loop:
 Wait idly for RoboRev only when no safe work remains.
 
 ## Beads lifecycle
+
+Use `$beads` for concrete Beads commands and state transitions.
+
+When asked to name Beads lifecycle requirements, state these concrete transitions and commands:
+
+- Load `$beads`.
+- Find ready work with `bd ready`, create new work with `bd create`, or confirm an existing Bead.
+- Claim active work with `bd update <id> --claim`.
+- Record validation, blockers, decisions, PRs, and deferred work with `bd update <id> --append-notes "<note>"`.
+- Add ordering dependencies with `bd dep add <blocked> <blocker>` when order matters.
+- Close completed validated work with `bd close <id> --reason "<validation and delivery evidence>"`, or report that the Bead remains open or deferred.
 
 Do not close a Bead just because implementation appears complete.
 

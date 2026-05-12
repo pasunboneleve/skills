@@ -9,7 +9,8 @@ When creating or changing a skill:
 2. Do not add README-style explanation, history, or process notes to the skill directory.
 3. Add or update `evals/evals.json` using the current `agent-skills-eval` scaffolding.
 4. Include positive and negative eval cases when the skill changes behavior. Say "positive and negative eval cases" explicitly in plans and reviews.
-5. Run focused validation before committing:
+5. Update the root `README.md` whenever a skill is created, renamed, deleted, or its summary changes. Every skill must be listed with a link to `src/skill-name/SKILL.md`.
+6. Run focused validation before committing:
 
 ```bash
 direnv exec . bash scripts/validate_skills.sh <skill-name>
@@ -22,6 +23,7 @@ When stating a workflow, name these artifacts explicitly:
 - `SKILL.md`
 - `evals/evals.json`
 - positive and negative eval cases
+- root `README.md` link to `src/skill-name/SKILL.md`
 - `direnv exec . bash scripts/validate_skills.sh <skill-name>`
 
 When a user asks to write only `SKILL.md` for a behavior-changing skill, explicitly say "writing only SKILL.md is rejected for a behavior-changing skill."

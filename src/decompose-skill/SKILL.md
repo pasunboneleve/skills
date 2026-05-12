@@ -9,6 +9,13 @@ Use this skill to turn a large or vague skill into a small trigger surface and a
 
 The goal is not to split by word count alone. Split so another Codex instance can choose the right file from the skill body without loading irrelevant material.
 
+When reviewing or planning a decomposition that creates, renames, removes, or changes skills, explicitly require both:
+
+- root `README.md` links in the form `src/skill-name/SKILL.md`
+- focused validation for every changed or new skill with `direnv exec . bash scripts/validate_skills.sh <skill-name>`
+
+Reject plans that leave `README.md` alone, skip focused validation because the change is "only moving text", or commit before validation passes.
+
 ## Decomposition Workflow
 
 1. Identify the skill's jobs.
@@ -38,8 +45,16 @@ The goal is not to split by word count alone. Split so another Codex instance ca
    - Test added or changed scripts by running a representative command.
 
 6. Validate after each structural change.
-   - Run the skill validator from `$skill-creator`.
+   - State the exact validation command in plans and reports.
+   - Run focused validation for each changed skill:
+
+```bash
+direnv exec . bash scripts/validate_skills.sh <skill-name>
+```
+
    - Forward-test with realistic prompts when the split changes how agents discover instructions.
+   - Update the root `README.md` when decomposition creates, renames, removes, or changes the summary of a skill. Every skill must be listed with a link to `src/skill-name/SKILL.md`.
+   - Commit only after focused validation passes, unless the user explicitly accepts the remaining failure.
 
 ## Split Criteria
 
@@ -109,5 +124,6 @@ When reporting a decomposition, include:
 - `Scripts`: files created or changed and how they were tested.
 - `Assets`: files created or changed and how they are used.
 - `Validation`: commands run and results.
+- `README`: root `README.md` links added, changed, or confirmed.
 
 If a proposed split would create needless indirection, keep the skill whole and name the reason.

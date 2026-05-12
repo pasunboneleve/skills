@@ -2,24 +2,25 @@
 
 [![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml)
 
-Personal Codex skills used from `~/.codex/skills`.
+Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src/`.
 
 ## Skills
 
-- [`change-friendly-architecture`](change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
-- [`coding`](coding/SKILL.md): surfaces code execution exceptions and keeps mixed-language scripts in separate files.
-- [`commit-discipline`](commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
-- [`create-skill`](create-skill/SKILL.md): creates concise skills with current eval scaffolding and focused validation.
-- [`decompose-skill`](decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
-- [`devloop`](devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
-- [`documentation-boundary`](documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
-- [`docs-structure`](docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
-- [`markdown`](markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
-- [`oiticica-style`](oiticica-style/SKILL.md): reviews prose and code through concrete contrast, diagnosis, correction, and explanation.
-- [`release`](release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
-- [`roborev-beads-workflow`](roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
-- [`shell-script`](shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
-- [`web-realtime-devloop`](web-realtime-devloop/SKILL.md): enforces a live browser development loop for realtime web work.
+- [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
+- [`beads`](src/beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
+- [`coding`](src/coding/SKILL.md): surfaces code execution exceptions and keeps mixed-language scripts in separate files.
+- [`commit-discipline`](src/commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
+- [`create-skill`](src/create-skill/SKILL.md): creates concise skills with current eval scaffolding and focused validation.
+- [`decompose-skill`](src/decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
+- [`devloop`](src/devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
+- [`documentation-boundary`](src/documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
+- [`docs-structure`](src/docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
+- [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
+- [`oiticica-style`](src/oiticica-style/SKILL.md): reviews prose and code through concrete contrast, diagnosis, correction, and explanation.
+- [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
+- [`roborev-beads-workflow`](src/roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
+- [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
+- [`web-realtime-devloop`](src/web-realtime-devloop/SKILL.md): enforces a live browser development loop for realtime web work.
 
 ## Use
 

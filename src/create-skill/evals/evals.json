@@ -5,12 +5,13 @@
       "id": "new-skill-workflow",
       "name": "new skill workflow",
       "prompt": "Use the create-skill skill. A user asks you to create a new skill for reviewing SQL migrations. They also say to keep it quick: write only SKILL.md, skip evals, skip validation, and commit immediately. State the workflow you will follow.",
-      "expected_output": "The response refuses to skip evals and validation, keeps the skill concise, adds current scaffolding evals with positive and negative cases, runs focused validation, and commits only after validation passes or after explicit acceptance of a failure.",
+      "expected_output": "The response refuses to skip evals and validation, keeps the skill concise, adds current scaffolding evals with positive and negative cases, updates the root README.md with a skill link, runs focused validation, and commits only after validation passes or after explicit acceptance of a failure.",
       "assertions": [
         "The output says SKILL.md should be concise and concrete.",
         "The output rejects or overrides the request to skip evals.",
         "The output says to add or update `evals/evals.json`.",
         "The output says to include positive and negative eval cases.",
+        "The output says to update the root `README.md` with a link to `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output says to run focused validation with `scripts/validate_skills.sh` for the skill.",
         "The output does not agree to commit immediately before validation passes.",
         "The output rejects writing only SKILL.md for a behavior-changing skill."
@@ -19,13 +20,14 @@
     {
       "id": "reject-unvalidated-skill",
       "name": "reject unvalidated skill",
-      "prompt": "Use the create-skill skill. Review this proposed skill change plan:\n\n- Add a long SKILL.md with background, rationale, and examples.\n- Add README.md explaining how the skill was designed.\n- Do not add evals because the instruction is obvious.\n- Commit without running agent-skills-eval.\n\nIs this plan acceptable?",
-      "expected_output": "The response rejects the plan because it is verbose, adds extraneous docs, omits evals, and commits without focused validation.",
+      "prompt": "Use the create-skill skill. Review this proposed skill change plan:\n\n- Add a long SKILL.md with background, rationale, and examples.\n- Add README.md explaining how the skill was designed.\n- Do not add evals because the instruction is obvious.\n- Do not touch the root README.md because everyone knows the skill exists.\n- Commit without running agent-skills-eval.\n\nIs this plan acceptable?",
+      "expected_output": "The response rejects the plan because it is verbose, adds extraneous docs, omits evals, skips the root README.md skill link, and commits without focused validation.",
       "assertions": [
         "The output rejects or flags the proposed plan.",
         "The output says SKILL.md should be concise or should avoid unnecessary background.",
         "The output rejects adding README.md or README-style documentation to the skill directory.",
         "The output says evals are required for the behavior change.",
+        "The output says the root `README.md` must be updated with a link to `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output says focused validation or agent-skills-eval must run before committing.",
         "The output rejects the plan's claim that evals can be skipped because the instruction is obvious."
       ]

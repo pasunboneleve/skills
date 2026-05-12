@@ -87,6 +87,8 @@ Do not tag if a separate post-merge `main` workflow exists and has not passed fo
 
 When reporting this decision, include `Required CI gate status:` and state whether the gate was `protected PR CI` or `post-merge main CI`. If protected PR CI is the gate, also state `No separate post-merge main workflow exists` or `No separate main run is required`.
 
+When protected PR CI is the gate and there is no post-merge `main` workflow, do not stop tagging solely because the merge commit has no separate main CI status. Report `Required CI gate status: protected PR CI. No separate post-merge main workflow exists; no separate main run is required.`
+
 ## Local validation
 
 Run the project's validation path before creating or updating the PR.
