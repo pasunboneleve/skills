@@ -5,6 +5,8 @@ description: Enforce a RoboRev plus Beads development workflow for code changes.
 
 # RoboRev and Beads workflow
 
+Use this skill for workflows that combine [RoboRev](https://github.com/roborev-dev/roborev) reviews with [Beads](https://github.com/gastownhall/beads) task tracking.
+
 ## Authority
 
 Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer decisions, task hygiene, and post-merge branch cleanup.
