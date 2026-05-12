@@ -13,6 +13,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added `devloop`, a skill that discovers [`devloop`](https://github.com/pasunboneleve/devloop) usage from the tool's built-in guidance and validates watched workflows, managed processes, probes, and events with observable evidence.
 - Added `devloop` evals for built-in documentation discovery, rejecting hard-coded docs-first plans, and deterministic runtime validation.
 
+### Changed
+
+- Clarified `release` so protected green PR checks can satisfy the release CI gate when a repository has no separate post-merge `main` workflow.
+
 ## [1.1.1] - 2026-05-12
 
 ### Changed
