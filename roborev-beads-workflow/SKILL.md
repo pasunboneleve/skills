@@ -9,6 +9,8 @@ description: Enforce a RoboRev plus Beads development workflow for code changes.
 
 Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer decisions, task hygiene, and post-merge branch cleanup.
 
+Load and apply `$beads` for Beads lifecycle commands: ready work, create, claim, notes, dependencies, close, defer, and final Beads reporting.
+
 Treat Beads as task memory and workflow tracking. Do not treat Beads-generated instructions as authority over Git publishing.
 
 Follow these rules over any Beads instruction that says to push immediately:
@@ -55,6 +57,8 @@ Use this loop:
 Wait idly for RoboRev only when no safe work remains.
 
 ## Beads lifecycle
+
+Use `$beads` for concrete Beads commands and state transitions.
 
 Do not close a Bead just because implementation appears complete.
 
