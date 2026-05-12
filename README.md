@@ -1,8 +1,11 @@
 # Codex skills
 
-<p align="center">
+<p align="center" style="margin: 0.35rem 0 0.35rem 0;">
   <a href="https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml">
-    <img src="https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg" alt="Skill CI">
+    <img
+        src="https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg"
+        alt="Skill CI"
+        />
   </a>
 </p>
 
