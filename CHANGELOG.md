@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-05-12
+
+### Added
+
+- Added `devloop`, a skill that discovers [`devloop`](https://github.com/pasunboneleve/devloop) usage from the tool's built-in guidance and validates watched workflows, managed processes, probes, and events with observable evidence.
+- Added `devloop` evals for built-in documentation discovery, rejecting hard-coded docs-first plans, and deterministic runtime validation.
+
 ## [1.1.1] - 2026-05-12
 
 ### Changed
@@ -104,7 +111,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/pasunboneleve/skills/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/pasunboneleve/skills/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/pasunboneleve/skills/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/pasunboneleve/skills/compare/v1.0.0...v1.0.1

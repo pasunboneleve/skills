@@ -1,0 +1,4 @@
+interface:
+  display_name: "Devloop"
+  short_description: "Validate devloop workflows deterministically"
+  default_prompt: "Use $devloop for devloop.toml, watched workflows, managed processes, probes, events, and env interpolation."
