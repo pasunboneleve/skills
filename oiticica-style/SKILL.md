@@ -37,7 +37,49 @@ If the unit is already concrete, local, correct, and clear, do not invent faults
 
 Use this exact shape for all structural reviews. Omit it only if the user asks for a silent rewrite.
 
-For already-good input, write `None found` under `Main faults` and replace `Representative contrast` with:
+For prompts containing `just one Oiticica contrast`, `only one Oiticica contrast`, or `one contrast`, use this contrast-only shape and stop after the last rubric line:
+
+```markdown
+Spine:
+One sentence naming what the piece is trying to do.
+
+Main faults:
+- <exact mechanism label>: <location> — <diagnosis>.
+
+Representative contrast:
+Weak:
+<small quoted or paraphrased unit>
+
+Fault:
+<name the exact mechanism label and explain the broken relation>
+
+Better:
+<corrected version>
+
+Why:
+<explain the improved relation between parts>
+
+Checked via:
+<deterministic check run, or "Not run">
+
+Faults not resolved in this contrast:
+<list remaining named faults, or "None">
+
+Rubric:
+- correctness: N/5
+- clarity: N/5
+- concision: N/5
+- force: N/5
+- harmony: N/5
+- originality: N/5
+- locality: N/5
+```
+
+In contrast-only mode, do not include `Final version`, `Rewrite`, or any text after the rubric. The final output line must be the `locality` rubric score.
+
+For every non-contrast-only review that lists any `Main faults`, include `Final version` after `Rubric`. Do not stop at `Faults not resolved in this contrast` for normal reviews.
+
+For already-good input, write `None found` under `Main faults` and replace `Representative contrast` with `Structural highlight`. Do not add `Weak`, `Fault`, `Better`, `Rubric`, or `Final version` for already-good input.
 
 ```markdown
 Structural highlight:
@@ -119,6 +161,7 @@ Apply these triggers directly:
 - README inventory line `remains available`: name `status replaces function`, `missing capability`, and `reader cannot choose entry from line alone`.
 - `decisively initiated a comprehensive process`: name `weak verb`, `false force`, and `action hidden in noun phrase`.
 - Consequence before `if` conditions: name `condition after effect`, `dependency order`, and `distant invariant`.
+- `The job marks the invoice paid after the webhook arrives if the signature is valid and the invoice exists.`: name `condition after effect`, `dependency order`, and `distant invariant`. This is not already-good input; use the standard review shape with `Representative contrast`.
 - `UserManager` owns auth, billing, notifications, and reporting: name `overloaded unit`, `mixed side effects`, and `unclear ownership`.
 - `canShip(order)` using `MIN_TOTAL` and `featureFlags.shipping`: name `hidden dependency`, `distant invariant`, `concrete diagnosis`, `code locality`, and `deterministic tests`.
 - A generic `process(data)` or `handle(x)` wrapper: name `vague name`, `generic abstraction`, `strict output shape`, and `smallest failing unit` when it is the smallest weak unit. Preserve nearby good functions and say `do not rewrite good function`.
@@ -131,13 +174,13 @@ Treat these as already-good unless the user supplies failing tests or asks for a
 
 - Pratt parser / left-recursive grammar / precedence: use `Structural highlight`; name `preserve technical terms`, `no invented fault`, and `relation between parser and precedence`. Discuss `Pratt parser`, `left-recursive`, and `precedence` as technical terms whose relation is already structural. Say not to flatten or clarify away those terms.
 - `normalizePath(path: string)` that preserves `/` before trimming trailing slashes: use `Structural highlight`; name `no invented fault`, `root invariant is local`, and `concise behavior`.
-- Root-preserving `normalizePath` with a comment explaining `/`: preserve it; name `preserve edge case`, `deterministic tests`, and `do not remove invariant for concision`.
+- Root-preserving `normalizePath` with a comment explaining `/`: use `Structural highlight`; preserve it; write `Main faults: None found`; name `preserve edge case`, `deterministic tests`, and `do not remove invariant for concision`. Do not add `Weak`, `Fault`, `Better`, `Rubric`, or `Final version`.
 - Idempotent payment handler that records provider event ID before emitting `invoice-paid`: use `Structural highlight`; name `preserve idempotent`, `no flattening into reliability`, and `local causal relation`.
 - Framework classes such as `UserController extends Controller`: use `Structural highlight`; name `preserve framework suffix`, `necessary boilerplate name`, and `no novelty for originality`.
 
-If the user asks for just one contrast, start with `explicit contrast-only request`, say `omit final version`, provide only the requested contrast sections, and omit `Final version`. The labels `Final version`, `Rewrite`, and any extra replacement after the single `Better` section are forbidden in contrast-only mode.
+If the user asks for just one contrast, use the contrast-only shape from `Required review shape`. Do not include `Final version`.
 
-When judging a candidate answer, start with `Reject:` and include the exact failed obligations, such as `final version fixes only one named fault`, `hidden dependency remains unresolved`, `missing result contract remains unresolved`, `missing Weak/Fault/Better/Why`, `generic review`, or `no representative contrast`.
+Use `Reject:` only when the user explicitly asks you to evaluate a candidate answer. Never use `Reject:` for an ordinary review prompt. When judging a candidate answer, start with `Reject:` and include the exact failed obligations, such as `final version fixes only one named fault`, `hidden dependency remains unresolved`, `missing result contract remains unresolved`, `missing Weak/Fault/Better/Why`, `generic review`, or `no representative contrast`.
 
 ## Mechanism labels
 

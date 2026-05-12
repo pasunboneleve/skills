@@ -26,6 +26,7 @@ For topology plans, copy these exact checklist lines verbatim before adding impl
 
 - `WebSocket handlers: may parse, enqueue, or store projections; must not redraw the UI directly.`
 - `Rendering: browser-cadence rendering with coalesced updates.`
+- `Keep token, log, retrieval, recent-change, and projection collections bounded.`
 - `Bounds: token, log, retrieval, recent-change, error, timeline, and projection collections stay bounded.`
 - `Mock streams: realistic pacing, burst mode, retries, failed-tool cases, retrieval-heavy cases, duplicate events, and out-of-order events.`
 - `Tests: deterministic reducer/projection tests plus rendered-page inspection under streaming load.`
@@ -38,6 +39,8 @@ For reviews, start with `Required realtime rejections` and copy these rejection 
 - `Require a reducer/domain core and bounded projection separate from rendering.`
 - `Require rendered-page inspection, not only typechecking.`
 - `Call for deterministic reducer/projection tests.`
+
+After those lines, keep the review body explicit: say `This is rejected because ...` for direct WebSocket rendering and whole-SVG/DOM rebuilds; say `Required change: ...` for reducer/domain core, bounded projection, rendered-page inspection, and deterministic reducer/projection tests. Do not soften these as optional concerns.
 
 ## Development session
 
