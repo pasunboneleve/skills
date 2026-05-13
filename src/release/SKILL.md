@@ -87,7 +87,7 @@ Treat the repository's required CI gate as green when one of these is true:
 
 Do not require a separate post-merge `main` run when the repository has no push-to-main workflow or manual dispatch for the relevant validation. In that case, record that the protected PR check was the CI gate and that no separate main workflow exists.
 
-Do not tag if a separate post-merge `main` workflow exists and has not passed for the merged release commit.
+Do not tag if a separate post-merge `main` workflow exists and has not passed for the merged release commit. In that case, explicitly say the `push-to-main workflow` must pass for the merged release commit.
 
 When reporting this decision, include `Required CI gate status:` and state whether the gate was `protected PR CI` or `post-merge main CI`. If protected PR CI is the gate, also state `No separate post-merge main workflow exists` or `No separate main run is required`.
 

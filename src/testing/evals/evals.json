@@ -12,9 +12,8 @@
         "The output includes the label `Skipped broad checks:`.",
         "The output says the blast radius is README or documentation only.",
         "The output includes Markdown validation or rendered/source-visible README correctness.",
-        "The output includes checking the image asset path or link.",
-        "The output says not to run the full skill validation suite or `validate_skills.sh` for this README-only change.",
-        "The output explains that broader skill, code, or API tests are outside the blast radius."
+        "The output includes checking links or assets for the README image.",
+        "The output says code, API, release, or skill validation is outside the blast radius for this README-only change."
       ]
     },
     {
@@ -28,8 +27,7 @@
         "The output includes the label `Skipped broad checks:`.",
         "The output says behavior is intended to remain unchanged.",
         "The output says to run the tests that cover invoice total behavior or the touched invariant.",
-        "The output does not require the full repository suite by default.",
-        "The output says broader tests are skipped unless the focused tests or dependency analysis show a wider impact."
+        "The output does not require the full repository suite by default."
       ]
     },
     {
@@ -59,8 +57,7 @@
         "The output rejects or flags the plan as over-broad.",
         "The output says validation should follow blast radius.",
         "The output says README-focused checks are sufficient for the described change.",
-        "The output says unit, integration, skill eval, release, or package checks are outside scope unless a dependency proves otherwise.",
-        "The output requires reporting the skipped broad checks and why they were skipped."
+        "The output says broad unit, integration, skill eval, release, or package checks are outside scope unless a dependency proves otherwise."
       ]
     }
   ]
