@@ -6,6 +6,18 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-05-13
+
+### Added
+
+- Added `testing`, a focused skill for selecting deterministic validation by blast radius and reporting skipped broad checks.
+- Added a public-domain README cover image with a linked source caption.
+
+### Changed
+
+- Updated `commit-discipline`, `release`, `roborev-beads-workflow`, and `web-realtime-devloop` to delegate validation scope to the focused `testing` skill.
+- Updated `commit-discipline` to format command literals with backticks while leaving proper names unformatted.
+
 ## [1.3.0] - 2026-05-12
 
 ### Added
@@ -133,7 +145,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/pasunboneleve/skills/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/pasunboneleve/skills/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/pasunboneleve/skills/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/pasunboneleve/skills/compare/v1.1.0...v1.1.1

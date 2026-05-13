@@ -1,0 +1,27 @@
+{
+  "skill_name": "commit-discipline",
+  "evals": [
+    {
+      "id": "command-literals-use-backticks",
+      "name": "command literals use backticks",
+      "prompt": "Use the commit-discipline skill. State the rule label and formatting rule for command literals like grep or ls -lah and proper names like Python or AWS.",
+      "expected_output": "The response uses the exact phrase `command literals versus proper names`, says command literals get backticks, and says proper names do not get backticks.",
+      "assertions": [
+        "The output includes the exact phrase `command literals versus proper names`.",
+        "The output says command literals are wrapped in backticks.",
+        "The output says proper names are not wrapped in backticks."
+      ]
+    },
+    {
+      "id": "proper-names-not-command-literals",
+      "name": "proper names are not command literals",
+      "prompt": "Use the commit-discipline skill. State the rule label and revise this note for formatting only: Ran cargo test and npm run build. Updated Angular and .NET examples.",
+      "expected_output": "The response uses the exact phrase `command literals versus proper names`, formats command literals with backticks, and leaves Angular and .NET unwrapped.",
+      "assertions": [
+        "The output includes the exact phrase `command literals versus proper names`.",
+        "The output says command literals are wrapped in backticks or formats `cargo test` and `npm run build` with backticks.",
+        "The output says proper names are not wrapped in backticks or leaves Angular and .NET unwrapped."
+      ]
+    }
+  ]
+}
