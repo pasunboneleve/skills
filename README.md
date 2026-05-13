@@ -38,6 +38,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-beads-workflow`](src/roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
+- [`testing`](src/testing/SKILL.md): selects the narrowest deterministic validation for a change's blast radius.
 - [`web-realtime-devloop`](src/web-realtime-devloop/SKILL.md): enforces a live browser development loop for realtime web work.
 
 ## Use

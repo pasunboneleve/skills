@@ -9,14 +9,16 @@ description: Prepare small, reviewable local commits with explicit rationale, Se
 
 Load and apply `$oiticica-style` before writing non-trivial commit messages. Use it to keep commit commentary concrete: claim, decision, consequence, and remaining risk.
 
+Load and apply `$testing` before deciding validation scope. Use it to choose the narrowest deterministic checks for the change's blast radius.
+
 ## Core rules
 
 - Keep commits small, coherent, and reviewable.
-- Commit completed work locally after validation passes.
+- Commit completed work locally after the selected validation passes.
 - Do not push unless the user explicitly asks.
 - Push only feature branches, never `main`.
 - Do not merge a PR unless CI is green.
-- Close Beads once changes are complete, validated, and committed locally.
+- Close Beads once changes are complete, validated at the selected scope, and committed locally.
 - Do not close Beads for uncommitted work.
 - Track unfinished work in Beads, not TODO comments.
 - After a feature branch is merged to `main`, remove the feature branch locally and remotely.
@@ -28,7 +30,7 @@ Load and apply `$oiticica-style` before writing non-trivial commit messages. Use
 - Record follow-up work as a Bead when it is real and deferred.
 - Do not leave TODO comments in code.
 - Do not hide incomplete work in comments, dead code, or vague final notes.
-- Before closing a Bead, confirm validation passed and the working tree is clean except for intentional final changes.
+- Before closing a Bead, confirm selected validation passed and the working tree is clean except for intentional final changes.
 
 ## Version impact
 

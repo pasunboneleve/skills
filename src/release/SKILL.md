@@ -18,6 +18,10 @@ description: Prepare and execute a versioned release through a feature branch, P
 - Never call an artifact release complete until its tag-triggered workflows pass.
 - If an assumption is false or uncertain, stop and prompt the user.
 
+## Dependencies
+
+Load and apply `$testing` before choosing local validation commands. Use the validation scope it selects for the release change surface.
+
 ## Branch protection
 
 Before release preparation:
@@ -42,7 +46,7 @@ Before changing release files, verify:
 6. Documentation describes new user-facing features.
 7. Help or usage output describes new command-line functionality, when the project exposes command-line help.
 8. Release notes can be extracted from the changelog.
-9. Local validation passes.
+9. Selected local validation passes.
 10. Release surface has been classified as artifact or tag-only.
 
 ## Release preparation
@@ -91,22 +95,11 @@ When protected PR CI is the gate and there is no post-merge `main` workflow, do 
 
 ## Local validation
 
-Run the project's validation path before creating or updating the PR.
-
-Discover and run the project equivalents for:
-
-- formatter
-- linter
-- unit tests
-- integration tests, if present
-- documentation checks, if present
-- help or usage checks, if relevant
-- release-note checks, if present
-- packaging or build checks required for release confidence
+Run the validation selected by `$testing` before creating or updating the PR. The scope must match the release change surface, including docs, help, version, changelog, packaging, or behavior checks when those surfaces changed.
 
 ## PR and merge flow
 
-After local validation passes:
+After selected local validation passes:
 
 1. Push the feature branch only if the user asked to execute the release.
 2. Create or update the release PR.
