@@ -70,4 +70,7 @@ A change is non-trivial when it:
 - Omit needless words.
 - Use concrete nouns and strong verbs.
 - Avoid ceremony for simple edits.
+- Wrap command literals in backticks, such as `grep` or `ls -lah`.
+- Do not wrap proper names in backticks, such as Angular, Python, AWS, or .NET.
+- When asked for this formatting rule, name the distinction as command literals versus proper names.
 - Put reasoning in the commit message instead of scattering it across code comments.
