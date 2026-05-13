@@ -18,6 +18,56 @@
         "The output does not include ASCII tree markers such as `+--` or `\\--`.",
         "The output is not an indented bullet list or prose-only layout."
       ]
+    },
+    {
+      "id": "first-software-org-mentions-linked",
+      "name": "first software and organization mentions linked",
+      "prompt": "Use the markdown skill. Name only the applicable rule, then write a short Markdown paragraph that starts with `[devloop](https://github.com/pasunboneleve/devloop)` and also mentions Google as the organization that publishes browser documentation, using https://google.com as Google's main-website link target.",
+      "expected_output": "The first mentions of devloop and Google are Markdown links to their main websites, and later mentions if any are not required to be linked.",
+      "assertions": [
+        "The output includes `First Mentions`.",
+        "The output includes `[devloop](https://github.com/pasunboneleve/devloop)`.",
+        "The output includes `[Google](https://google.com)`.",
+        "The output uses Markdown link syntax for the first software or organization mentions."
+      ]
+    },
+    {
+      "id": "fenced-file-references-remain-literal",
+      "name": "fenced file references remain literal",
+      "prompt": "Use the markdown skill. Name only the applicable rule on its own line, then write Markdown with one prose sentence that links README.md and docs/setup.md as important project files. After that sentence, add a fenced text block showing these literal lines exactly:\n\nREADME.md\ndocs/setup.md\nCHANGELOG.txt",
+      "expected_output": "File references in prose are Markdown links, but the same file names inside the fenced text block remain literal unlinked text.",
+      "assertions": [
+        "The output includes `File References`.",
+        "In the prose sentence, README.md is a Markdown inline link to README.md rather than a code span or plain text.",
+        "In the prose sentence, docs/setup.md is a Markdown inline link to docs/setup.md rather than a code span or plain text.",
+        "The output includes a fenced text code block.",
+        "Inside the fenced text block, README.md, docs/setup.md, and CHANGELOG.txt appear as literal text, not Markdown links."
+      ]
+    },
+    {
+      "id": "repeated-prose-file-reference-linked-once",
+      "name": "repeated prose file reference linked once",
+      "prompt": "Use the markdown skill. Name only the applicable rule on its own line, then rewrite this paragraph by changing only file-link markup, preserving all words and punctuation. Link only the first README.md mention: README.md explains the quick start; README.md includes examples; README.md should be reviewed before release.",
+      "expected_output": "The first prose mention of README.md is linked, but repeated README.md mentions in the same paragraph are not linked again.",
+      "assertions": [
+        "The output includes `File References`.",
+        "The output text contains the exact literal substring `[README.md](README.md)` exactly once.",
+        "The output includes `README.md includes examples` as plain unlinked text.",
+        "The output includes `README.md should be reviewed before release` as plain unlinked text."
+      ]
+    },
+    {
+      "id": "file-list-references-linked",
+      "name": "file list references linked",
+      "prompt": "Use the markdown skill. Name only the applicable rule on its own line, then write a Markdown bullet list of these files: README.md, docs/setup.md, CHANGELOG.txt.",
+      "expected_output": "Each file reference in the file list is a Markdown link.",
+      "assertions": [
+        "The output includes `File References`.",
+        "The output includes a Markdown list.",
+        "The output text contains the exact literal substring `[README.md](README.md)`.",
+        "The output text contains the exact literal substring `[docs/setup.md](docs/setup.md)`.",
+        "The output text contains the exact literal substring `[CHANGELOG.txt](CHANGELOG.txt)`."
+      ]
     }
   ]
 }
