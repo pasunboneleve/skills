@@ -4,31 +4,23 @@
     {
       "id": "command-literals-use-backticks",
       "name": "command literals use backticks",
-      "prompt": "Use the commit-discipline skill. State the formatting rule, then write a concise validation note for a commit that ran grep and ls -lah, and mention the code touches Python and AWS documentation.",
-      "expected_output": "The response names the distinction between command literals and proper names. It formats command literals as `grep` and `ls -lah`, while leaving proper names such as Python and AWS unformatted.",
+      "prompt": "Use the commit-discipline skill. State the rule label and formatting rule for command literals like grep or ls -lah and proper names like Python or AWS.",
+      "expected_output": "The response uses the exact phrase `command literals versus proper names`, says command literals get backticks, and says proper names do not get backticks.",
       "assertions": [
-        "The output mentions command literals.",
-        "The output mentions proper names.",
-        "The output includes `grep` with backticks.",
-        "The output includes `ls -lah` with backticks.",
-        "The output mentions Python without wrapping it in backticks.",
-        "The output mentions AWS without wrapping it in backticks.",
-        "The output does not present a Conventional Commits type/scope/subject template as the formatting rule."
+        "The output includes the exact phrase `command literals versus proper names`.",
+        "The output says command literals are wrapped in backticks.",
+        "The output says proper names are not wrapped in backticks."
       ]
     },
     {
       "id": "proper-names-not-command-literals",
       "name": "proper names are not command literals",
-      "prompt": "Use the commit-discipline skill. State the formatting rule, then revise this commit note for formatting only: Ran cargo test and npm run build. Updated Angular and .NET examples.",
-      "expected_output": "The response names the distinction between command literals and proper names. It wraps `cargo test` and `npm run build` in backticks, but does not wrap Angular or .NET in backticks.",
+      "prompt": "Use the commit-discipline skill. State the rule label and revise this note for formatting only: Ran cargo test and npm run build. Updated Angular and .NET examples.",
+      "expected_output": "The response uses the exact phrase `command literals versus proper names`, formats command literals with backticks, and leaves Angular and .NET unwrapped.",
       "assertions": [
-        "The output mentions command literals.",
-        "The output mentions proper names.",
-        "The output includes `cargo test` with backticks.",
-        "The output includes `npm run build` with backticks.",
-        "The output mentions Angular without wrapping it in backticks.",
-        "The output mentions .NET without wrapping it in backticks.",
-        "The output does not present a Conventional Commits type/scope/subject template as the formatting rule."
+        "The output includes the exact phrase `command literals versus proper names`.",
+        "The output says command literals are wrapped in backticks or formats `cargo test` and `npm run build` with backticks.",
+        "The output says proper names are not wrapped in backticks or leaves Angular and .NET unwrapped."
       ]
     }
   ]

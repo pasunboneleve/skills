@@ -72,5 +72,5 @@ A change is non-trivial when it:
 - Avoid ceremony for simple edits.
 - Wrap command literals in backticks, such as `grep` or `ls -lah`.
 - Do not wrap proper names in backticks, such as Angular, Python, AWS, or .NET.
-- When asked for this formatting rule, name the distinction as command literals versus proper names.
+- When asked to state, name, or label this formatting rule, start with `command literals versus proper names`.
 - Put reasoning in the commit message instead of scattering it across code comments.
