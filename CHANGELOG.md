@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-05-13
+
+### Changed
+
+- Tightened `markdown` guidance for first software and organization links, file-list links, repeated prose file references, and literal file references inside fenced code blocks.
+- Added `markdown` eval coverage for file lists, repeated same-paragraph file mentions, fenced file references, and first software or organization links.
+
 ## [1.4.0] - 2026-05-13
 
 ### Added
@@ -145,7 +152,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.4.1...HEAD
+[1.4.1]: https://github.com/pasunboneleve/skills/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/pasunboneleve/skills/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/pasunboneleve/skills/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/pasunboneleve/skills/compare/v1.1.1...v1.2.0
