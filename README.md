@@ -4,6 +4,24 @@
 
 Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src/`.
 
+<br>
+
+<p align="center" style="margin: 0.35rem 0 0.35rem 0;">
+  <a href="https://commons.wikimedia.org/wiki/File:A_seated_man_sharpening_a_quill_pen._Engraving_by_C._Guttenb_Wellcome_V0024853.jpg"
+  target="_blank"
+  rel="noopener noreferrer">
+    <img
+        src="docs/images/quill-codex.jpg"
+        alt="A seated man sharpening a quill pen beside an open codex"
+        style="width:58.5%;"
+        />
+  </a>
+</p>
+
+<p align="center" style="margin: 0 0 1.25rem 0;">
+    <sub>A sharpened tool. An open codex. A practiced hand.</sub>
+</p>
+
 ## Skills
 
 - [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
@@ -20,6 +38,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-beads-workflow`](src/roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
+- [`testing`](src/testing/SKILL.md): selects the narrowest deterministic validation for a change's blast radius.
 - [`web-realtime-devloop`](src/web-realtime-devloop/SKILL.md): enforces a live browser development loop for realtime web work.
 
 ## Use

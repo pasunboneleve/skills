@@ -9,6 +9,8 @@ Use this skill for browser UI, realtime visualisation, WebSocket apps, Cloudflar
 
 Keep the app running, inspect the rendered result, and iterate from observed behaviour. Do not rely on static code inspection, typechecking, or successful builds alone.
 
+Load and apply `$testing` before choosing non-visual validation commands. Keep rendered-page inspection for visual behavior claims.
+
 ## Realtime topology answer contract
 
 For realtime topology, observability, token-stream, WebSocket, SSE, SVG, Canvas, or D3 plans and reviews, do not start with a broad overview. Start with the relevant checklist below, then add implementation detail.
@@ -257,7 +259,7 @@ For Cloudflare Workers or Pages targets, prefer Fetch-style request handling, We
 
 ## Validation
 
-Run the fastest relevant deterministic checks while iterating, then run the repo's full local validation path before finishing.
+Run the fastest relevant deterministic checks while iterating. Before finishing, run the validation selected by `$testing` for the web change's blast radius.
 
 Prefer local commands such as:
 

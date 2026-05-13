@@ -1,0 +1,64 @@
+{
+  "skill_name": "testing",
+  "evals": [
+    {
+      "id": "readme-only-markdown-scope",
+      "name": "README-only markdown scope",
+      "prompt": "Use the testing skill. A change adds a centered image and caption to README.md and adds docs/images/cover.jpg. No skill files, code, APIs, scripts, or config changed. State the validation scope.",
+      "expected_output": "The response limits validation to README Markdown, image path, source link, alt text or caption, and rendered/source-visible correctness. It rejects running the full skill validation suite because no skill behavior changed.",
+      "assertions": [
+        "The output includes the label `Blast radius:`.",
+        "The output includes the label `Required checks:`.",
+        "The output includes the label `Skipped broad checks:`.",
+        "The output says the blast radius is README or documentation only.",
+        "The output includes Markdown validation or rendered/source-visible README correctness.",
+        "The output includes checking links or assets for the README image.",
+        "The output says code, API, release, or skill validation is outside the blast radius for this README-only change."
+      ]
+    },
+    {
+      "id": "unchanged-behavior-focused-tests",
+      "name": "unchanged behavior focused tests",
+      "prompt": "Use the testing skill. A refactor changes the implementation of invoice total calculation, but the intended invoice behavior and public API are unchanged. There are existing tests for invoice totals and a full repository suite. State what to run.",
+      "expected_output": "The response runs the invoice total behavior tests or equivalent focused invariant tests, not the whole repository suite by default, because the behavior surface is unchanged and local.",
+      "assertions": [
+        "The output includes the label `Blast radius:`.",
+        "The output includes the label `Required checks:`.",
+        "The output includes the label `Skipped broad checks:`.",
+        "The output says behavior is intended to remain unchanged.",
+        "The output says to run the tests that cover invoice total behavior or the touched invariant.",
+        "The output does not require the full repository suite by default."
+      ]
+    },
+    {
+      "id": "api-change-parent-consumer-tests",
+      "name": "API change parent consumer tests",
+      "prompt": "Use the testing skill. A library function changes its API contract and the CLI calls that function. There is a direct API test named `api-contract-test` and a focused CLI test named `cli-uses-library-contract`. State the validation scope.",
+      "expected_output": "The response runs `api-contract-test` and `cli-uses-library-contract`, expanding concentrically to the first real consumer.",
+      "assertions": [
+        "The output includes the label `Blast radius:`.",
+        "The output includes the label `Required checks:`.",
+        "The output includes the label `Skipped broad checks:`.",
+        "The output says the API or contract changed.",
+        "The output includes `api-contract-test`, `direct API contract test`, or direct API contract tests.",
+        "The output includes `cli-uses-library-contract` or tests for the parent CLI that consumes the API.",
+        "The output includes `Concentric expansion` or describes expanding from the direct API to the CLI consumer."
+      ]
+    },
+    {
+      "id": "reject-broad-validation-by-habit",
+      "name": "reject broad validation by habit",
+      "prompt": "Use the testing skill. Review this validation plan: `This PR changes only README.md. I will run all unit tests, integration tests, skill evals, release checks, and package builds because validation should always be comprehensive.` Is it acceptable?",
+      "expected_output": "The response rejects the plan because it ignores blast radius. It requires README-focused validation and a note explaining that broad suites are outside scope for the docs-only change.",
+      "assertions": [
+        "The output includes the label `Blast radius:`.",
+        "The output includes the label `Required checks:`.",
+        "The output includes the label `Skipped broad checks:`.",
+        "The output rejects or flags the plan as over-broad.",
+        "The output says validation should follow blast radius.",
+        "The output says README-focused checks are sufficient for the described change.",
+        "The output says broad unit, integration, skill eval, release, or package checks are outside scope unless a dependency proves otherwise."
+      ]
+    }
+  ]
+}

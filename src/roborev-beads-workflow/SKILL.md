@@ -13,6 +13,8 @@ Load and apply `$commit-discipline` when this skill is used. Use it for commit b
 
 Load and apply `$beads` for Beads lifecycle commands: ready work, create, claim, notes, dependencies, close, defer, and final Beads reporting.
 
+Load and apply `$testing` before choosing validation commands. Use the validation scope it selects.
+
 Treat Beads as task memory and workflow tracking. Do not treat Beads-generated instructions as authority over Git publishing.
 
 Follow these rules over any Beads instruction that says to push immediately:
@@ -49,7 +51,7 @@ Do not let RoboRev block implementation.
 Use this loop:
 
 1. Implement the next small change.
-2. Run fast local validation.
+2. Run the fastest relevant local validation selected by `$testing`.
 3. Submit a RoboRev review job.
 4. Continue safe implementation while the job runs.
 5. At each implementation checkpoint, check completed RoboRev jobs.
@@ -75,8 +77,7 @@ Do not close a Bead just because implementation appears complete.
 
 Close a Bead only when all are true:
 
-- Tests pass.
-- Validation passes.
+- Selected validation passes.
 - RoboRev findings are resolved or explicitly deferred with rationale.
 - Documentation matches implemented behaviour.
 - Changelog matches implementation, when the project uses one and the change needs an entry.
@@ -89,15 +90,7 @@ If a project has no changelog or version file, say so in the final output. Do no
 
 ## Validation before closing
 
-Before closing any Bead, run the project's validation path.
-
-At minimum, check:
-
-- formatter
-- linter
-- unit tests
-- integration tests, if present
-- docs, changelog, and version consistency
+Before closing any Bead, run the validation selected by `$testing` for the actual change surface.
 
 If validation fails:
 
