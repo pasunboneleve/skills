@@ -2,10 +2,6 @@ name: Skill CI
 
 on:
   pull_request:
-    paths-ignore:
-      - "*"
-      - ".*"
-      - "home/**"
 
 permissions:
   contents: read
