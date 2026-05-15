@@ -18,6 +18,14 @@ Prefer and apply:
 - $commit-discipline
 - $change-friendly-architecture
 
+Before running `git commit`:
+
+- Announce the applicable skills for the commit phase.
+- Re-read `$commit-discipline`.
+- Classify the commit as simple or non-trivial.
+- For non-trivial commits, use the structured commit message sections from `$commit-discipline`.
+- Confirm validation status and Beads status.
+
 ## Releases
 
 When preparing, validating, tagging, or executing a release:
