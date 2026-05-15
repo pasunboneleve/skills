@@ -15,8 +15,7 @@
         "The output says to include positive and negative eval cases.",
         "The output says to update the root `README.md` with a link to `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output says to run focused validation with `scripts/validate_skills.sh` for the skill.",
-        "The output does not agree to commit immediately before validation passes.",
-        "The output rejects writing only SKILL.md for a behavior-changing skill."
+        "The output does not agree to commit immediately before validation passes."
       ]
     },
     {
@@ -34,6 +33,19 @@
         "The output says the root `README.md` must be updated with a link to `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.",
         "The output says focused validation or agent-skills-eval must run before committing.",
         "The output rejects the plan's claim that evals can be skipped because the instruction is obvious."
+      ]
+    },
+    {
+      "id": "reject-self-contained-eval-prompt",
+      "name": "reject self contained eval prompt",
+      "prompt": "Use the create-skill skill. Review this eval plan for a new API-review skill:\n\n- The prompt will define the exact review rubric.\n- It will list every expected fault in the sample API.\n- It will tell the model the desired answer shape.\n- That should make the eval deterministic, even if the without-skill run also passes.\n\nIs this acceptable?",
+      "expected_output": "The response rejects the plan because eval prompts must prove skill lift: with-skill should pass near 100%, without-skill should fail near 0%, and the prompt must not teach the expected answer, rubric, review shape, concept definition, or expected fault.",
+      "assertions": [
+        "The output rejects or flags the proposed eval plan.",
+        "The output says eval prompts should prove skill lift or compare with-skill against without-skill behavior.",
+        "The output says with-skill should pass near 100% and without-skill should fail near 0%, or equivalent wording.",
+        "The output says the prompt should not teach the review shape, rubric, concept definition, expected fault, or expected answer.",
+        "The output says the behavior belongs in `SKILL.md`."
       ]
     }
   ]

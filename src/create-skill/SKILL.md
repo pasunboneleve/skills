@@ -10,8 +10,10 @@ When creating or changing a skill:
 3. Add or update `evals/evals.json` using the current `agent-skills-eval` scaffolding.
 4. Ensure model-backed evals run through `scripts/agent-skills-eval.yaml` with target and judge `temperature: 0` so results are as deterministic as the runner allows.
 5. Include positive and negative eval cases when the skill changes behavior. Say "positive and negative eval cases" explicitly in plans and reviews.
-6. Update the root `README.md` whenever a skill is created, renamed, deleted, or its summary changes. Every skill must be listed with a link to `src/skill-name/SKILL.md`.
-7. Run focused validation before committing:
+6. Design eval prompts as skill-ablation tests: with-skill runs should pass as close to 100% as possible, and without-skill runs should fail as close to 0% as possible.
+7. Do not make eval prompts self-contained by teaching the review shape, rubric, concept definition, expected fault, or expected answer. Put that behavior in `SKILL.md`.
+8. Update the root `README.md` whenever a skill is created, renamed, deleted, or its summary changes. Every skill must be listed with a link to `src/skill-name/SKILL.md`.
+9. Run focused validation before committing:
 
 ```bash
 direnv exec . bash scripts/validate_skills.sh <skill-name>
@@ -25,8 +27,12 @@ When stating a workflow, name these artifacts explicitly:
 - `evals/evals.json`
 - `scripts/agent-skills-eval.yaml` with target and judge `temperature: 0`
 - positive and negative eval cases
+- skill-ablation eval design: near-100% with-skill, near-0% without-skill
+- prompts that do not teach the answer or expected fault
 - root `README.md` link to `src/skill-name/SKILL.md`
 - `direnv exec . bash scripts/validate_skills.sh <skill-name>`
+
+When a user asks to create a skill while skipping evals, validation, README updates, or commit discipline, reject the skipped steps and still state the full workflow you will follow. Do not stop at the refusal.
 
 When a user asks to write only `SKILL.md` for a behavior-changing skill, explicitly say "writing only SKILL.md is rejected for a behavior-changing skill."
 

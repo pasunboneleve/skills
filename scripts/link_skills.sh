@@ -10,7 +10,6 @@ claude_home="${CLAUDE_HOME:-${HOME}/.claude}"
 claude_skills_dir="${CLAUDE_SKILLS_DIR:-${claude_home}/skills}"
 agents_src="${repo_root}/home/AGENTS.md"
 agents_dest="${codex_home}/AGENTS.md"
-claude_agents_dest="${claude_home}/CLAUDE.md"
 
 linked=0
 skipped=0
@@ -83,7 +82,6 @@ while IFS= read -r -d '' skill_file; do
 done < <(find "${skills_root}" -type f -name SKILL.md -print0 | sort -z)
 
 link_regular_file "${agents_src}" "${agents_dest}"
-link_regular_file "${agents_src}" "${claude_agents_dest}"
 
 printf 'done: %d linked, %d skipped, %d unlinked, %d failed\n' "${linked}" "${skipped}" "${unlinked}" "${failed}"
 

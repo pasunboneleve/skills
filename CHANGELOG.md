@@ -6,6 +6,18 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-05-15
+
+### Added
+
+- Added `skill-project`, a skill for scaffolding standalone skill-set repositories with shared validation, linking, eval, and agent metadata conventions.
+- Added eval coverage for standalone skill-project setup, required repository `AGENTS.md` eval guidance, safe Claude linking, and required Skill CI behavior.
+
+### Changed
+
+- Updated `create-skill`, `skill-project`, and repository `AGENTS.md` to require skill-ablation eval design: with-skill runs should pass near 100%, without-skill runs should fail near 0%, and prompts should not teach the expected answer.
+- Updated `scripts/link_skills.sh` so it no longer links hosted Codex instructions into `~/.claude/CLAUDE.md`; Claude receives skill directory links only.
+
 ## [1.4.2] - 2026-05-15
 
 ### Changed
@@ -159,7 +171,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.4.2...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/pasunboneleve/skills/compare/v1.4.2...v1.5.0
 [1.4.2]: https://github.com/pasunboneleve/skills/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/pasunboneleve/skills/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/pasunboneleve/skills/compare/v1.3.0...v1.4.0
