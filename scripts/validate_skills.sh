@@ -80,7 +80,9 @@ run_eval_validator() {
 
   run_workspace="$(mktemp -d "${AGENT_SKILLS_EVAL_WORKSPACE%/}.XXXXXX")" || return $?
 
-  agent-skills-eval "$SKILLS_ROOT" \
+  agent-skills-eval \
+    --config "$ROOT/scripts/agent-skills-eval.yaml" \
+    "$SKILLS_ROOT" \
     "${include_args[@]}" \
     --workspace "$run_workspace" \
     --baseline \
