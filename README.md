@@ -49,6 +49,8 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and 
 
 Run `bash scripts/validate_skills.sh`. The wrapper installs `skill-validator` into `~/.local/bin` and `agent-skills-eval` globally when either tool is not already on `PATH`.
 
+Model-backed evals use [`scripts/agent-skills-eval.yaml`](scripts/agent-skills-eval.yaml), which sets target and judge temperature to `0`.
+
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.
 
 ## Versioning

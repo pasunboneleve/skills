@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-05-15
+
+### Changed
+
+- Required skill eval workflows to use the committed `scripts/agent-skills-eval.yaml` configuration with target and judge temperature set to `0`.
+- Updated `create-skill` evals and validation documentation to preserve the deterministic eval configuration.
+
 ## [1.4.1] - 2026-05-13
 
 ### Changed
@@ -152,7 +159,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.4.1...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.4.2...HEAD
+[1.4.2]: https://github.com/pasunboneleve/skills/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/pasunboneleve/skills/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/pasunboneleve/skills/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/pasunboneleve/skills/compare/v1.2.0...v1.3.0
