@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-05-18
+
+### Changed
+
+- Updated `coding` to forbid machine-specific filesystem paths in scripts, code, configuration, and documentation unless the user explicitly asks for the exact path.
+- Added eval coverage for replacing machine-specific paths with repo-relative paths, source-relative paths, environment variables, or documented placeholders.
+
 ## [1.5.0] - 2026-05-15
 
 ### Added
@@ -171,7 +178,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/pasunboneleve/skills/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/pasunboneleve/skills/compare/v1.4.2...v1.5.0
 [1.4.2]: https://github.com/pasunboneleve/skills/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/pasunboneleve/skills/compare/v1.4.0...v1.4.1
