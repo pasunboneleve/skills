@@ -87,6 +87,31 @@
         "The output frames this as a coding-skill-specific rule or directive.",
         "The output does not recommend a fallback value as the required fix."
       ]
+    },
+    {
+      "id": "avoid-machine-specific-path-positive",
+      "name": "avoid machine specific path positive",
+      "prompt": "Use the coding skill. Update a public setup example for a checked-out repository. The user wants the command to run from the repository root and did not ask you to include their local home directory or desktop path. State the command you would document.",
+      "expected_output": "The response documents a repo-relative or source-relative command and avoids adding a concrete machine-specific path.",
+      "assertions": [
+        "The output uses a repo-relative or source-relative command.",
+        "The output does not include a concrete `/home/...` path.",
+        "The output does not include a user-specific home path such as `~/src/projects/...`.",
+        "The output treats avoiding machine-specific paths as required unless explicitly requested."
+      ]
+    },
+    {
+      "id": "reject-machine-specific-path-negative",
+      "name": "reject machine specific path negative",
+      "prompt": "Use the coding skill. Review this proposed README snippet for a public repository:\n\n```sh\nchezmoi --source /home/dmvianna/src/projects/chezmoi-config apply\n```\n\nThe user did not ask to document that exact machine path. Is the snippet acceptable? State the required change.",
+      "expected_output": "The response rejects the machine-specific path and requires replacing it with a repo-relative path, source-relative path, environment variable, or documented placeholder.",
+      "assertions": [
+        "The output rejects or flags the proposed snippet.",
+        "The output identifies `/home/dmvianna/src/projects/chezmoi-config` as machine-specific or user-specific.",
+        "The output states that machine-specific filesystem paths should not be added unless explicitly requested.",
+        "The output requires replacing the path with a repo-relative path, source-relative path, environment variable, or documented placeholder.",
+        "The output does not approve keeping the concrete machine path."
+      ]
     }
   ]
 }

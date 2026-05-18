@@ -12,3 +12,5 @@ Do not replace a command with a guard branch that skips execution. Run the comma
 Changing a guard branch from success to non-zero failure is still wrong when it skips the command that should have produced the exception.
 
 Do not inline a script written in one programming language inside a script written in another programming language. Keep each language in its own file and invoke that file from the wrapper script.
+
+Do not add machine-specific filesystem paths to scripts, code, configuration, or documentation unless the user explicitly asks for that exact path. Prefer repo-relative paths, source-relative paths, environment variables, or documented placeholders.

@@ -26,7 +26,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 
 - [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
 - [`beads`](src/beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
-- [`coding`](src/coding/SKILL.md): surfaces code execution exceptions and keeps mixed-language scripts in separate files.
+- [`coding`](src/coding/SKILL.md): surfaces code execution exceptions, keeps mixed-language scripts in separate files, and avoids machine-specific paths.
 - [`commit-discipline`](src/commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
 - [`create-skill`](src/create-skill/SKILL.md): creates concise skills with current eval scaffolding and focused validation.
 - [`decompose-skill`](src/decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
