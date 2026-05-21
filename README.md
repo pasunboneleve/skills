@@ -34,7 +34,6 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`documentation-boundary`](src/documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
 - [`docs-structure`](src/docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
 - [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
-- [`oiticica-style`](src/oiticica-style/SKILL.md): reviews prose and code through concrete contrast, diagnosis, correction, and explanation.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-beads-workflow`](src/roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.

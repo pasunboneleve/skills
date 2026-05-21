@@ -12,8 +12,9 @@ When creating or changing a skill:
 5. Include positive and negative eval cases when the skill changes behavior. Say "positive and negative eval cases" explicitly in plans and reviews.
 6. Design eval prompts as skill-ablation tests: with-skill runs should pass as close to 100% as possible, and without-skill runs should fail as close to 0% as possible.
 7. Do not make eval prompts self-contained by teaching the review shape, rubric, concept definition, expected fault, or expected answer. Put that behavior in `SKILL.md`.
-8. Update the root `README.md` whenever a skill is created, renamed, deleted, or its summary changes. Every skill must be listed with a link to `src/skill-name/SKILL.md`.
-9. Run focused validation before committing:
+8. Do not amend skill rules to fit one eval or test case tightly. When an eval fails, revise the general behavior, selection rule, rubric boundary, or missing concept that should apply beyond that case.
+9. Update the root `README.md` whenever a skill is created, renamed, deleted, or its summary changes. Every skill must be listed with a link to `src/skill-name/SKILL.md`.
+10. Run focused validation before committing:
 
 ```bash
 direnv exec . bash scripts/validate_skills.sh <skill-name>
@@ -29,6 +30,7 @@ When stating a workflow, name these artifacts explicitly:
 - positive and negative eval cases
 - skill-ablation eval design: near-100% with-skill, near-0% without-skill
 - prompts that do not teach the answer or expected fault
+- general skill rules rather than eval-specific patches
 - root `README.md` link to `src/skill-name/SKILL.md`
 - `direnv exec . bash scripts/validate_skills.sh <skill-name>`
 
@@ -37,3 +39,5 @@ When a user asks to create a skill while skipping evals, validation, README upda
 When a user asks to write only `SKILL.md` for a behavior-changing skill, explicitly say "writing only SKILL.md is rejected for a behavior-changing skill."
 
 When reviewing a skill plan, say "evals are required for the behavior change" when evals are missing. Reject writing only `SKILL.md` for a behavior-changing skill. If a plan says evals can be skipped because an instruction is obvious, say "evals cannot be skipped because the instruction seems obvious."
+
+When reviewing eval prompts that teach the answer, say the tested behavior belongs in `SKILL.md`, not in the prompt, and that eval prompts must prove skill lift: near-100% with-skill and near-0% without-skill.

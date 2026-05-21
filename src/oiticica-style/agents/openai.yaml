@@ -1,4 +1,0 @@
-interface:
-  display_name: "Oiticica style"
-  short_description: "Review prose and code by concrete contrast"
-  default_prompt: "Use $oiticica-style to review this prose or code with concrete Weak/Fault/Better/Why contrasts."

@@ -47,6 +47,19 @@
         "The output says the prompt should not teach the review shape, rubric, concept definition, expected fault, or expected answer.",
         "The output says the behavior belongs in `SKILL.md`."
       ]
+    },
+    {
+      "id": "reject-eval-specific-rule-patch",
+      "name": "reject eval specific rule patch",
+      "prompt": "Use the create-skill skill. Review this plan after a skill eval failed:\n\n- Add a new sentence to SKILL.md that mentions the exact fixture language from the failing eval.\n- Require the exact route and wording that would make this one fixture pass.\n- Leave the broader selection principle unchanged because the current failure is only in the test.\n- Re-run the same eval and commit if it passes.\n\nIs this acceptable?",
+      "expected_output": "The response rejects the plan because skill rules must stay general. A failing eval should lead to a broader behavior, selection rule, rubric boundary, or missing concept that applies beyond one fixture, then focused validation should run before commit.",
+      "assertions": [
+        "The output rejects or flags the proposed plan.",
+        "The output says not to amend skill rules to fit one eval, test case, fixture, or exact example.",
+        "The output says the fix should revise a general behavior, selection rule, rubric boundary, or missing concept.",
+        "The output rejects adding exact fixture language, exact route wording, or an example-specific workaround to `SKILL.md`.",
+        "The output says focused validation should run before committing."
+      ]
     }
   ]
 }
