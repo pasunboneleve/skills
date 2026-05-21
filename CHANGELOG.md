@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-05-21
+
 ### Changed
 
 - Updated `create-skill` to reject eval-specific rule patches and require general skill behavior changes when evals fail.
