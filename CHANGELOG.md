@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [1.6.1] - 2026-05-21
+
+### Changed
+
+- Linked the README mention of `agent-skills-eval` to its upstream repository.
+
 ## [1.6.0] - 2026-05-18
 
 ### Changed
