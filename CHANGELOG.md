@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Removed
+
+- Removed the monolithic `oiticica-style` skill; the replacement router now lives in the standalone `oiticica-style` skill project.
+
 ## [1.6.1] - 2026-05-21
 
 ### Changed
