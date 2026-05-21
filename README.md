@@ -1,4 +1,4 @@
-# Codex skills
+# [Codex](https://developers.openai.com/codex/cli) skills
 
 [![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml)
 
