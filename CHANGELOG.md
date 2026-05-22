@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.0.2] - 2026-05-22
+
 ### Added
 
 - Added `changelog`, a skill for unreleased changelog entries, revert cleanup, SemVer classification, and release-time version finalization.
@@ -27,6 +29,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Expanded `change-friendly-architecture` guidance and eval coverage for change-amplifying types, schemas, broad units, ambient context, scattered workflows, repeated boilerplate, and test boundaries.
 - Expanded `documentation-boundary` guidance and eval coverage for README manual sprawl, CLI help surfaces, changelog-only documentation claims, and docs-only maintenance.
 - Tightened `testing` validation-scope reports so API contract changes include the exact `Concentric expansion:` path from direct contract tests to parent consumer tests.
+- Tightened `testing` unchanged-behavior validation reports to state that behavior is intended to remain unchanged and that full repository suites are not required by default.
 
 ## [2.0.1] - 2026-05-21
 
