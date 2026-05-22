@@ -39,6 +39,71 @@
         "The output recommends preserving the visible workflow composition point.",
         "The output allows extraction only for real boundaries, local helpers, or changes that reduce the change surface."
       ]
+    },
+    {
+      "id": "reject-broad-operations-module",
+      "name": "reject broad operations module",
+      "prompt": "Use the change-friendly-architecture skill. Review this refactor: move all customer-related use cases into one vertical-slice file, customer.ts. It would contain the import CSV workflow, account closure workflow, billing retry workflow, support override workflow, email-selection workflow, and audit-export workflow. Each workflow currently has a clear local sequence of focused steps. The team argues that one file per business noun is easier than deciding boundaries now. Is this a change-friendly shape?",
+      "expected_output": "The response rejects or flags customer.ts as too broad because one business noun still gathers unrelated reasons to change. It preserves the useful local workflow sequences instead of scattering every step into pass-through modules. It recommends splitting by behavior, use case, or owner when the file gathers unrelated change reasons, while keeping each workflow's composition visible and connecting them through narrow explicit interfaces only where coordination is real.",
+      "assertions": [
+        "The output rejects or flags one customer.ts file for all listed workflows as too broad for change-friendly architecture.",
+        "The output says one business noun or customer-related label is not enough cohesion when the file gathers unrelated reasons to change.",
+        "The output recommends splitting by behavior, use case, owner, or focused boundary rather than by the broad customer noun alone.",
+        "The output preserves each workflow's visible local sequence or composition point instead of recommending pass-through modules for every step.",
+        "The output allows narrow explicit interfaces only where real coordination between workflows is needed."
+      ]
+    },
+    {
+      "id": "reject-bare-callsite-boilerplate",
+      "name": "reject bare callsite boilerplate",
+      "prompt": "Use the change-friendly-architecture skill. Review this implementation plan: every outbound integration call will inline the same timeout setup, retry loop, metric tags, trace id propagation, structured log fields, and error wrapping. Each call site can tweak one or two fields, so the team wants to keep the boilerplate bare at each call site for explicitness. Is that the right change-friendly shape?",
+      "expected_output": "The response rejects leaving repeated integration boilerplate bare at every call site. It says the plan creates many places to update when timeout, retry, logging, metrics, or error policy changes. It recommends a local helper, data declaration, focused adapter, or policy wrapper that centralizes the common shape while leaving per-call differences explicit.",
+      "assertions": [
+        "The output rejects or flags leaving repeated timeout, retry, logging, metrics, trace, and error boilerplate bare at every call site.",
+        "The output says policy changes would fan out across many call sites or widen the change surface.",
+        "The output does not accept call-site explicitness as sufficient reason to duplicate the boilerplate.",
+        "The output recommends a local helper, data declaration, focused adapter, or policy wrapper.",
+        "The output preserves per-call differences or explicit parameters rather than hiding all integration behavior in an opaque global helper."
+      ]
+    },
+    {
+      "id": "reject-compatible-schema-churn",
+      "name": "reject compatible schema churn",
+      "prompt": "Use the change-friendly-architecture skill. Review this event design and say which parts to reject or keep: all commerce services will publish and consume one backward- and forward-compatible Avro CustomerEvent record with many optional fields and defaults. Checkout, loyalty, fulfilment, fraud, support, and marketing all add their own minor fields to the shared record, and each service decodes the record into local behavior. A separate test runtime uses a precise record schema to enforce parity between the real message bus and the fake bus. Is this architecture change-friendly?",
+      "expected_output": "The response rejects the shared commerce event as change-friendly merely because the Avro schema is compatible. It says ordinary optional-field changes still force many producers and consumers to encode, decode, understand, or ignore unrelated fields. It recommends ownership-specific events, stable canonical boundaries, adapters, or local translation near the owning producer and consumers. It does not reject the precise real/fake runtime record schema when it protects parity at a stable boundary.",
+      "assertions": [
+        "The output rejects or flags the shared CustomerEvent record as not change-friendly despite backward and forward compatibility.",
+        "The output says optional field additions still spread encode/decode, branch, or understanding work across many producers and consumers.",
+        "The output recommends ownership-specific events, stable canonical boundaries, adapters, or local translation near owning services.",
+        "The output treats backward and forward compatibility, optional fields, or defaults as insufficient for change locality or change-friendly design.",
+        "The output says the precise real/fake bus record schema should be kept, accepted, or treated as fine when it enforces parity at a stable boundary."
+      ]
+    },
+    {
+      "id": "reject-ambient-plugin-context",
+      "name": "reject ambient plugin context",
+      "prompt": "Use the change-friendly-architecture skill. Review this plugin API proposal: every plugin receives a typed read-only PluginEnv with env.get(Database), env.get(Logger), env.get(CurrentUser), env.get(Clock), env.get(FileSystem), env.get(FeatureFlags), env.get(SchemaRegistry), env.get(RetryPolicy), and env.get(RequestMetadata). Plugin authors only request what they need at runtime, and the platform can add new capabilities without changing plugin function signatures. Is this a good boundary, and does the typed read-only shape change the answer?",
+      "expected_output": "The response rejects or flags PluginEnv as a broad ambient service-locator boundary despite being typed and read-only. It says the design hides dependencies, lets unrelated platform capabilities become part of every plugin boundary, and treats signature stability as more important than local reasoning. It recommends declared per-plugin capabilities, narrow explicit inputs, small ports, adapters, or scoped values.",
+      "assertions": [
+        "The output rejects or flags PluginEnv as a poor change-friendly boundary.",
+        "The output identifies the design as ambient context, a service locator, or hidden dependency lookup.",
+        "The output says typed, read-only access or runtime env.get calls do not remove the coupling problem.",
+        "The output does not accept signature stability alone as enough justification for the broad environment.",
+        "The output recommends declared per-plugin capabilities, narrow explicit inputs, small ports, or adapters."
+      ]
+    },
+    {
+      "id": "reject-internal-mocks-and-global-test-state",
+      "name": "reject internal mocks and global test state",
+      "prompt": "Use the change-friendly-architecture skill. Review this test strategy: scheduler tests will monkeypatch process environment variables, the global clock, current working directory, and a singleton job registry in beforeEach. To keep tests fast, they will mock private retry-plan builders and private queue-drain functions instead of exercising the scheduler through its public boundary. Parallel failures will be handled by running the whole suite serially. Is this a good architecture for tests?",
+      "expected_output": "The response rejects or flags the strategy. It says process-global mutation must be isolated in a small helper and serialized only where necessary, not scattered through beforeEach or used to force the whole suite serial. It also says tests should fake external boundaries and exercise behavior through a useful public boundary instead of mocking private internals such as retry-plan builders and queue-drain functions.",
+      "assertions": [
+        "The output rejects or flags the test strategy as not change-friendly.",
+        "The output says process-global mutation such as environment, clock, working directory, or singleton registry changes should be isolated in a small helper.",
+        "The output says serialization should be scoped to tests that need global mutation, rather than making the whole suite serial as the primary fix.",
+        "The output rejects mocking private retry-plan builders, private queue-drain functions, or internal implementation details.",
+        "The output recommends testing behavior at a useful public boundary and faking external boundaries instead of internals."
+      ]
     }
   ]
 }

@@ -24,7 +24,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 
 ## Skills
 
-- [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
+- [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries, explicit dependencies, visible workflows, and low blast radius.
 - [`beads`](src/beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
 - [`changelog`](src/changelog/SKILL.md): keeps unreleased changelog entries accurate and finalizes version sections at release time.
 - [`coding`](src/coding/SKILL.md): surfaces code execution exceptions, keeps mixed-language scripts in separate files, and avoids machine-specific paths.

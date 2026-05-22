@@ -66,6 +66,8 @@ Prefer designs where a future change can be made by understanding one small area
 - Prefer explicit parameters and return values over ambient context.
 - Preserve useful failure context at boundaries.
 
+When reviewing plugin or extension APIs, do not accept a broad context, environment, or service locator merely because it is typed, read-only, or keeps function signatures stable. Require plugins to declare the small capabilities they need, and pass those capabilities through explicit ports, adapters, or scoped inputs.
+
 ## Testing and mocks
 
 - Design core logic so it can be tested without live external systems.
@@ -104,9 +106,13 @@ When reviewing a shared helper proposed mainly to remove duplication across unre
 
 When reviewing restrictive types or schemas, evaluate how many files must change for the next plausible behaviour. If the representation is type-safe or wire-compatible but still amplifies ordinary changes across many modules, reject it as not change-friendly and recommend a stable boundary, local translation layer, or behaviour-oriented composition.
 
+When a design contains both a churn-prone shared schema and a precise boundary schema, separate them explicitly. Reject the schema that spreads ordinary product changes across unrelated producers and consumers, while preserving precise record schemas that enforce a stable API or real/mock runtime parity.
+
 When comparing alternatives, explicitly name which option is more change-friendly, why the rejected option widens future changes, and what replacement shape would localize the change.
 
 When reviewing workflow structure, distinguish visible composition from scatter. Prefer a visible workflow that composes focused actions, such as a pipeline or Haskell-style `do` notation shape, and gather repeated logging, metrics, and error wrapping behind local helpers or adapters.
+
+When reviewing a broad function, module, or file, reject boundaries that group unrelated workflows around one noun or owner. Split by behavior, use case, or true ownership while preserving each workflow's visible composition point. Connect workflows through narrow explicit interfaces only where real coordination is needed.
 
 When reviewing tests that mutate process-global state such as time, environment, or working directory, require that mutation to be isolated in a small helper and serialized when parallel tests would interfere.
 

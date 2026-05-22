@@ -24,7 +24,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Updated `roborev-kata-workflow` eval coverage to require `kata assign`, comments, relationships, and `kata close --done` guidance.
 - Updated `create-skill` to require `agents/openai.yaml` metadata for new or changed skills.
 - Updated `create-skill` eval guidance so assertions test behavior rather than exact phrasing, except when wording or formatting is the behavior under test.
-- Expanded `change-friendly-architecture` to flag change-amplifying types, schemas, scattered workflows, and repeated boilerplate.
+- Expanded `change-friendly-architecture` guidance and eval coverage for change-amplifying types, schemas, broad units, ambient context, scattered workflows, repeated boilerplate, and test boundaries.
 - Tightened `testing` validation-scope reports so API contract changes include the exact `Concentric expansion:` path from direct contract tests to parent consumer tests.
 
 ## [2.0.1] - 2026-05-21
