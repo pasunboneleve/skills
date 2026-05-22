@@ -22,6 +22,18 @@
         "The output says command literals are wrapped in backticks or formats `cargo test` and `npm run build` with backticks.",
         "The output says proper names are not wrapped in backticks or leaves Angular and .NET unwrapped."
       ]
+    },
+    {
+      "id": "ordinary-commit-delegates-changelog",
+      "name": "ordinary commit delegates changelog",
+      "prompt": "Use the commit-discipline skill. You are preparing an ordinary local commit for a backwards-compatible behavior change in a project with CHANGELOG.md and VERSION. State the required changelog and version handling before committing.",
+      "expected_output": "The response treats this as ordinary pre-release work, updates [Unreleased] or records a concrete no-entry rationale, reports SemVer impact when relevant, and avoids bumping VERSION or creating a dated release section before release preparation.",
+      "assertions": [
+        "The output identifies normal mode or ordinary-commit changelog handling.",
+        "The output says to update `[Unreleased]` or record a concrete no-entry rationale.",
+        "The output says not to bump `VERSION` for the ordinary commit.",
+        "The output says not to create a dated release section before release."
+      ]
     }
   ]
 }

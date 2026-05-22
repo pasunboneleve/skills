@@ -124,6 +124,10 @@ Do not create empty directories speculatively.
 
 Create docs only when there is real content.
 
+When a documentation plan asks whether to create directories for possible
+future content, answer that part directly. Reject future-only directories
+until there is a concrete file to place in them.
+
 ## Architecture docs
 
 Architecture docs explain boundaries.

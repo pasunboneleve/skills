@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kata"
+  short_description: "Track Kata issues with evidence"
+  default_prompt: "Use $kata when searching, creating, assigning, updating, closing, or reporting Kata issues."

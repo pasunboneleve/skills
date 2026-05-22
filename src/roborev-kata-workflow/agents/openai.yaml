@@ -1,0 +1,4 @@
+interface:
+  display_name: "Roborev + Kata workflow"
+  short_description: "Run Kata work with non-blocking Roborev"
+  default_prompt: "Use $roborev-kata-workflow to implement this feature with branch discipline, validation, and Roborev review."

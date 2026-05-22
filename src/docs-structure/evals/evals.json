@@ -1,0 +1,31 @@
+{
+  "skill_name": "docs-structure",
+  "evals": [
+    {
+      "id": "move-long-setup-out-of-readme",
+      "name": "move long setup out of readme",
+      "prompt": "Use the docs-structure skill. Review this documentation plan: put a full dependency installation guide, environment-variable catalogue, local service startup details, troubleshooting notes, and validation matrix directly in README.md so everything is in one place. Is this the right structure?",
+      "expected_output": "The response rejects putting all durable detail in README.md. It keeps README as a short synopsis with quick start and validation essentials, moves detailed setup, environment, startup, troubleshooting, and validation material into focused docs files, and links to those docs from README.md.",
+      "assertions": [
+        "The output rejects or flags putting the full detailed guide directly in `README.md`.",
+        "The output says `README.md` should stay a concise synopsis or quick-start surface.",
+        "The output moves detailed dependency, environment, startup, troubleshooting, or validation material into focused `docs/` files.",
+        "The output recommends linking from `README.md` to the detailed docs.",
+        "The output does not hide essential first-run or validation information only in deep docs."
+      ]
+    },
+    {
+      "id": "place-documentation-by-purpose",
+      "name": "place documentation by purpose",
+      "prompt": "Use the docs-structure skill. A project needs a quick product overview, an architecture boundary explanation, an operations incident runbook, and a durable decision about the event schema. Decide where each belongs, and say whether to create docs/design/ and docs/research/ now for future content.",
+      "expected_output": "The response puts the quick overview in README.md, the boundary explanation in docs/architecture, the incident procedure in docs/operations, and the durable event-schema decision in docs/decisions as an ADR or decision record. It rejects creating docs/design/ or docs/research/ just for possible future content.",
+      "assertions": [
+        "The output puts the quick project or product overview in `README.md`.",
+        "The output puts architecture boundary explanation in `docs/architecture/` or an equivalent architecture doc.",
+        "The output puts the incident runbook in `docs/operations/` or an equivalent operations runbook.",
+        "The output puts the durable event-schema decision in `docs/decisions/` or an ADR.",
+        "The output rejects creating `docs/design/`, `docs/research/`, or other docs directories only for possible future content."
+      ]
+    }
+  ]
+}

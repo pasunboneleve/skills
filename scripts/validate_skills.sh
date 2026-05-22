@@ -13,10 +13,11 @@ AGENT_SKILLS_EVAL_JUDGE="${AGENT_SKILLS_EVAL_JUDGE:-$AGENT_SKILLS_EVAL_TARGET}"
 AGENT_SKILLS_EVAL_WORKSPACE="${AGENT_SKILLS_EVAL_WORKSPACE:-${TMPDIR:-/tmp}/agent-skills-eval-skills}"
 AGENT_SKILLS_EVAL_MIN_PASS="${AGENT_SKILLS_EVAL_MIN_PASS:-0.90}"
 AGENT_SKILLS_EVAL_MIN_DELTA="${AGENT_SKILLS_EVAL_MIN_DELTA:-0.20}"
+EVAL_ID=""
 export PATH="$INSTALL_ROOT/bin:$HOME/go/bin:$PATH"
 
 usage() {
-  printf 'usage: %s [skill-relpath ...]\n' "${0##*/}"
+  printf 'usage: %s [--eval-id <id>] [skill-relpath ...]\n' "${0##*/}"
 }
 
 ensure_skill_validator() {
@@ -55,6 +56,12 @@ ensure_eval_validator() {
 validate_skill_args() {
   local skill
 
+  if [[ -n "$EVAL_ID" && $# -ne 1 ]]; then
+    printf 'error: --eval-id requires exactly one skill relpath\n' >&2
+    usage >&2
+    return 1
+  fi
+
   for skill in "$@"; do
     if [[ "$skill" == -* ]]; then
       usage >&2
@@ -70,6 +77,7 @@ validate_skill_args() {
 
 run_eval_validator() {
   local eval_status=0
+  local eval_skills_root="$SKILLS_ROOT"
   local run_workspace
   local skill
   local include_args=()
@@ -80,9 +88,14 @@ run_eval_validator() {
 
   run_workspace="$(mktemp -d "${AGENT_SKILLS_EVAL_WORKSPACE%/}.XXXXXX")" || return $?
 
+  if [[ -n "$EVAL_ID" ]]; then
+    eval_skills_root="$run_workspace/filtered-skills"
+    filter_eval_case "$eval_skills_root" "$1" "$EVAL_ID" || return $?
+  fi
+
   agent-skills-eval \
     --config "$ROOT/scripts/agent-skills-eval.yaml" \
-    "$SKILLS_ROOT" \
+    "$eval_skills_root" \
     "${include_args[@]}" \
     --workspace "$run_workspace" \
     --baseline \
@@ -97,6 +110,24 @@ run_eval_validator() {
   fi
 
   check_eval_deltas "$run_workspace"
+}
+
+filter_eval_case() {
+  local dest_root="$1"
+  local skill="$2"
+  local eval_id="$3"
+  local js_runtime
+
+  if command -v node >/dev/null 2>&1; then
+    js_runtime=node
+  elif command -v bun >/dev/null 2>&1; then
+    js_runtime=bun
+  else
+    printf 'error: neither node nor bun is available to filter eval cases\n' >&2
+    return 1
+  fi
+
+  "$js_runtime" "$ROOT/scripts/filter_eval_case.js" "$SKILLS_ROOT" "$dest_root" "$skill" "$eval_id"
 }
 
 check_eval_deltas() {
@@ -139,6 +170,35 @@ run_skill_validator_path() {
 }
 
 main() {
+  while (($# > 0)); do
+    case "$1" in
+      --eval-id)
+        if (($# < 2)); then
+          printf 'error: --eval-id requires a value\n' >&2
+          usage >&2
+          return 1
+        fi
+        EVAL_ID="$2"
+        shift 2
+        ;;
+      -h|--help)
+        usage
+        return 0
+        ;;
+      --)
+        shift
+        break
+        ;;
+      -*)
+        usage >&2
+        return 1
+        ;;
+      *)
+        break
+        ;;
+    esac
+  done
+
   validate_skill_args "$@" || return $?
   ensure_skill_validator || return $?
   ensure_eval_validator || return $?

@@ -11,10 +11,10 @@ Use repository-local instructions first when present. Use the Codex skills below
 
 ## Code and version control
 
-When working on code, architecture, tests, commits, branches, Beads, RoboRev, PRs, or version control:
+When working on code, architecture, tests, commits, branches, Kata, Roborev, PRs, or version control:
 
 Prefer and apply:
-- $roborev-beads-workflow
+- $roborev-kata-workflow
 - $commit-discipline
 - $change-friendly-architecture
 
@@ -24,7 +24,7 @@ Before running `git commit`:
 - Re-read `$commit-discipline`.
 - Classify the commit as simple or non-trivial.
 - For non-trivial commits, use the structured commit message sections from `$commit-discipline`.
-- Confirm validation status and Beads status.
+- Confirm validation status and Kata status.
 
 ## Releases
 

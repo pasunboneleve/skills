@@ -24,18 +24,20 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 
 ## Skills
 
-- [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries and low blast radius.
+- [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries, explicit dependencies, visible workflows, and low blast radius.
 - [`beads`](src/beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
+- [`changelog`](src/changelog/SKILL.md): keeps unreleased changelog entries accurate and finalizes version sections at release time.
 - [`coding`](src/coding/SKILL.md): surfaces code execution exceptions, keeps mixed-language scripts in separate files, and avoids machine-specific paths.
 - [`commit-discipline`](src/commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
-- [`create-skill`](src/create-skill/SKILL.md): creates concise skills with current eval scaffolding and focused validation.
+- [`create-skill`](src/create-skill/SKILL.md): creates concise skills with OpenAI metadata, eval scaffolding, and focused validation.
 - [`decompose-skill`](src/decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
 - [`devloop`](src/devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
 - [`documentation-boundary`](src/documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
 - [`docs-structure`](src/docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
+- [`kata`](src/kata/SKILL.md): keeps Kata issues searched, assigned, updated with evidence, and closed when verified.
 - [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
-- [`roborev-beads-workflow`](src/roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
+- [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates kata task tracking with non-blocking Roborev review.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
 - [`skill-project`](src/skill-project/SKILL.md): scaffolds standalone skill-set repositories with shared validation, linking, eval, and agent metadata conventions.
 - [`testing`](src/testing/SKILL.md): selects the narrowest deterministic validation for a change's blast radius.
@@ -50,6 +52,12 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and 
 Run `bash scripts/validate_skills.sh`. The wrapper installs [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) into `~/.local/bin` and [`agent-skills-eval`](https://github.com/darkrishabh/agent-skills-eval) globally when either tool is not already on `PATH`.
 
 Model-backed evals use [`scripts/agent-skills-eval.yaml`](scripts/agent-skills-eval.yaml), which sets target and judge temperature to `0`.
+
+To iterate on one eval case, pass a skill relpath and eval id:
+
+```bash
+bash scripts/validate_skills.sh --eval-id reject-overfit-domain-type change-friendly-architecture
+```
 
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.
 

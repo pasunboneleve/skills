@@ -1,6 +1,6 @@
 ---
 name: commit-discipline
-description: Prepare small, reviewable local commits with explicit rationale, SemVer impact, task hygiene, branch cleanup expectations, and clear commit commentary. Use when Codex is asked to commit work, prepare a PR-ready change, close Beads after implementation, decide version impact, write commit messages, or clean up merged feature branches.
+description: Prepare small, reviewable local commits with explicit rationale, SemVer impact, task hygiene, branch cleanup expectations, and clear commit commentary. Use when asked to commit work, prepare a PR-ready change, decide version impact, write commit messages, or clean up merged feature branches.
 ---
 
 # Commit discipline
@@ -11,6 +11,8 @@ Load and apply `$oiticica-style` before writing non-trivial commit messages. Use
 
 Load and apply `$testing` before deciding validation scope. Use it to choose the narrowest deterministic checks for the change's blast radius.
 
+Load and apply `$changelog` when the project has a changelog or version file. For ordinary commits, use normal mode: update `[Unreleased]` when the change needs an entry, record a concrete no-entry rationale when it does not, and do not bump `VERSION` or create dated release sections.
+
 ## Core rules
 
 - Keep commits small, coherent, and reviewable.
@@ -18,29 +20,28 @@ Load and apply `$testing` before deciding validation scope. Use it to choose the
 - Do not push unless the user explicitly asks.
 - Push only feature branches, never `main`.
 - Do not merge a PR unless CI is green.
-- Close Beads once changes are complete, validated at the selected scope, and committed locally.
-- Do not close Beads for uncommitted work.
-- Track unfinished work in Beads, not TODO comments.
+- Close Kata issues once changes are complete, validated at the selected scope, and committed locally.
+- Do not close Kata issues for uncommitted work.
+- Track unfinished work in Kata, not TODO comments.
 - After a feature branch is merged to `main`, remove the feature branch locally and remotely.
+- Handle changelog state through `$changelog` before committing when the project has a changelog or version file.
 
 ## Task hygiene
 
-- Create or update a Bead before substantial work.
-- Keep each Bead scoped to a reviewable unit.
-- Record follow-up work as a Bead when it is real and deferred.
 - Do not leave TODO comments in code.
 - Do not hide incomplete work in comments, dead code, or vague final notes.
-- Before closing a Bead, confirm selected validation passed and the working tree is clean except for intentional final changes.
+- Before closing a Kata issue, confirm selected validation passed and the working tree is clean except for intentional final changes.
 
-## Version impact
+## SemVer classification
 
-Use SemVer: `MAJOR.MINOR.PATCH`.
+Use `$changelog` for SemVer classification and changelog policy.
 
-- `PATCH`: bug fixes, refactors, documentation, tests, cosmetic changes, or internal changes with no new user-visible capability and no breaking change.
-- `MINOR`: new backwards-compatible user-visible capability.
-- `MAJOR`: breaking change to behaviour, API, data format, command contract, or other external interface.
+For ordinary commits:
 
-When in doubt, treat a change that adds no new user-visible capability as `PATCH`.
+- Report the SemVer impact in the commit rationale when it matters.
+- Keep version source changes for release preparation.
+- Reject ordinary commits that bump `VERSION` or create dated changelog sections before release.
+- When stating required changelog and version handling before commit, explicitly include all four outcomes: normal-mode handling, `[Unreleased]` entry or no-entry rationale, no `VERSION` bump, and no dated release section.
 
 ## Commit message rules
 
