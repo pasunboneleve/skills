@@ -17,8 +17,10 @@ Prefer designs where a future change can be made by understanding one small area
 - Preserve existing user-visible behaviour unless intentionally changing it.
 - Prefer composition over inheritance.
 - Prefer small modules with clear responsibilities.
+- Avoid broad functions, modules, and files that gather unrelated reasons to change.
 - Prefer explicit interfaces over convenience helpers across boundaries.
 - Use helpers within a module to reduce local duplication.
+- Wrap repeated boilerplate in local helpers, data declarations, or focused adapters instead of leaving it bare at every call site.
 - Apply DRY carefully. Do not introduce shared abstractions that increase coupling.
 - Prefer idiomatic constructs over bespoke patterns.
 
@@ -46,6 +48,7 @@ Prefer designs where a future change can be made by understanding one small area
 - Prefer decoupling over reuse when reuse would widen the change surface.
 - Treat a change that touches many unrelated modules as a design warning.
 - Keep changes near the behaviour they affect.
+- Prefer composing a workflow from clear transformations or actions in one visible place over threading main logic through many pass-through modules. Haskell-style `do` notation, pipelines, and similar composition forms are good when they make the sequence legible while keeping steps focused.
 - Avoid abstractions that force callers to know unrelated implementation details.
 - Prefer explicit signals over timing-based coordination. Do not use `sleep` to fix races.
 
@@ -55,6 +58,11 @@ Prefer designs where a future change can be made by understanding one small area
 - Reject abstractions that exist only to remove superficial duplication.
 - Keep APIs narrow, intentional, and hard to misuse.
 - Make invalid states difficult to represent where the language or framework supports it.
+- Do not overfit types to today's cases when new behavior would force widespread constructor matches, schema branches, or caller rewrites.
+- Reject domain types that encode a cartesian product of independent dimensions, such as product kind plus lifecycle state, when future cross-cutting behavior would require constructor and pattern-match churn.
+- Treat wire-format compatibility as insufficient when every minor schema change still requires many producers and consumers to add encode/decode logic.
+- Do not reject precise types or record schemas when they protect a stable boundary, model durable invariants, or enforce parity between real and mock runtimes without spreading ordinary product changes.
+- For shared event schemas, keep owner-specific fields near the owning producer and consumers. Prefer ownership-specific events, stable canonical boundaries, adapters, or local translation when a shared package would make unrelated services absorb schema churn.
 - Prefer explicit parameters and return values over ambient context.
 - Preserve useful failure context at boundaries.
 
@@ -82,6 +90,10 @@ Prefer designs where a future change can be made by understanding one small area
 - A change requires touching many unrelated modules.
 - An abstraction requires reading its implementation to use safely.
 - Shared helpers introduce hidden coupling.
+- Type or schema changes require edits across many unrelated modules.
+- A compatible schema still spreads translation work across many producers and consumers.
+- Main behaviour is hard to see because it is threaded through many tiny pass-through modules.
+- Boilerplate is repeated bare at every call site instead of gathered behind a local shape.
 - Error handling leaks internal details across boundaries.
 - A refactor increases indirection without making change easier.
 - Tests are hard to run locally.
@@ -89,6 +101,12 @@ Prefer designs where a future change can be made by understanding one small area
 - `sleep` is used to fix a race.
 
 When reviewing a shared helper proposed mainly to remove duplication across unrelated subsystems, say that superficial reuse does not justify widening the change surface. Prefer local responsibilities unless the helper protects a stable, explicit boundary.
+
+When reviewing restrictive types or schemas, evaluate how many files must change for the next plausible behaviour. If the representation is type-safe or wire-compatible but still amplifies ordinary changes across many modules, reject it as not change-friendly and recommend a stable boundary, local translation layer, or behaviour-oriented composition.
+
+When comparing alternatives, explicitly name which option is more change-friendly, why the rejected option widens future changes, and what replacement shape would localize the change.
+
+When reviewing workflow structure, distinguish visible composition from scatter. Prefer a visible workflow that composes focused actions, such as a pipeline or Haskell-style `do` notation shape, and gather repeated logging, metrics, and error wrapping behind local helpers or adapters.
 
 When reviewing tests that mutate process-global state such as time, environment, or working directory, require that mutation to be isolated in a small helper and serialized when parallel tests would interfere.
 

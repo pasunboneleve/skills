@@ -9,23 +9,35 @@
       "assertions": [
         "The output rejects or flags the shared metadata normalizer as not change-friendly.",
         "The output says the shared abstraction widens coupling, blast radius, or change surface across unrelated subsystems.",
-        "The output says superficial reuse or removing duplication is not enough to justify the abstraction.",
+        "The output does not treat reduced duplication or code reuse as enough to justify the abstraction.",
         "The output flags subsystem-type switches, optional knobs, or unrelated caller knowledge as a leaky abstraction.",
         "The output recommends keeping responsibilities local unless there is a stable explicit boundary."
       ]
     },
     {
-      "id": "test-boundaries-not-internals",
-      "name": "test boundaries not internals",
-      "prompt": "Use the change-friendly-architecture skill. Review this test plan for a job scheduler: mock three private methods inside the scheduler, mutate process-global time and environment in each test, and skip integration tests because the mocked internals cover every branch. Is this a change-friendly test strategy?",
-      "expected_output": "The response rejects the strategy because it mocks implementation details, relies on process-global state, and misses boundary behavior. It recommends testing behavior and invariants at the narrowest useful boundary, faking external boundaries such as clocks and environment through small helpers or ports, isolating unavoidable globals, and adding integration tests where module interactions or failure paths matter.",
+      "id": "reject-overfit-domain-type",
+      "name": "reject overfit domain type",
+      "prompt": "Use the change-friendly-architecture skill. Review this design: a Haskell service replaces a string payment_status with a closed algebraic data type whose constructors enumerate the current payment method and lifecycle combinations, such as CardPending, CardSettled, WalletPending, and WalletSettled. The team says this is a clear improvement because invalid combinations become unrepresentable and future additions will be caught by exhaustive pattern matching. Is this the right architecture?",
+      "expected_output": "The response does not accept type safety alone as the architecture test. It flags the combined constructors as overfitting today's dimensions and says exhaustive pattern matching can become change amplification when new cross-cutting states or behaviors appear. It recommends separating dimensions, localizing behavior-specific decisions, or translating from a stable boundary type into composable policies.",
       "assertions": [
-        "The output rejects or flags mocking private scheduler methods or internal implementation details.",
-        "The output says tests should target behavior, invariants, or a useful boundary rather than internal branches.",
-        "The output rejects unisolated process-global time or environment mutation.",
-        "The output recommends faking or injecting external boundaries such as clocks or environment through small helpers, ports, or adapters.",
-        "The output says unavoidable process-global mutation should be isolated or serialized.",
-        "The output requires integration or boundary tests when module interactions or failure paths matter."
+        "The output rejects or flags type safety alone as insufficient for change-friendly design.",
+        "The output says the constructor set overfits today's payment-method and lifecycle combinations.",
+        "The output says a new cross-cutting state or behavior would fan changes out across modules or case expressions.",
+        "The output recommends separating dimensions such as payment method and lifecycle state, or otherwise reducing product-state combinations.",
+        "The output recommends localizing behavior-specific decisions through composition, policies, or a translation boundary."
+      ]
+    },
+    {
+      "id": "preserve-visible-workflow-composition",
+      "name": "preserve visible workflow composition",
+      "prompt": "Use the change-friendly-architecture skill. Review this refactor proposal: invoice creation is currently one function that reads like a Haskell do-notation sequence, composing validate input, load account, build lines, apply tax, persist draft, and publish event. Each step is a focused helper. The proposal moves each step into a separate module with one exported function because separation of concerns should make the code easier to change. Should the refactor be accepted?",
+      "expected_output": "The response rejects the refactor. It says the current do-notation-like composition is a good visible workflow because the main sequence is local while steps remain focused. Moving each step into pass-through modules would scatter main logic, increase navigation, and make changes harder. It recommends preserving the visible composition point and only extracting real boundaries or local helpers when they reduce change surface.",
+      "assertions": [
+        "The output rejects or flags moving the focused steps into separate pass-through modules.",
+        "The output says the current Haskell do-notation-like sequence, pipeline, or visible composition point is change-friendly.",
+        "The output says the proposed refactor would scatter main invoice logic or require more navigation across modules.",
+        "The output recommends preserving the visible workflow composition point.",
+        "The output allows extraction only for real boundaries, local helpers, or changes that reduce the change surface."
       ]
     }
   ]
