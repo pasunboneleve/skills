@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Project"
+  short_description: "Scaffold skill-set repositories"
+  default_prompt: "Use $skill-project when creating or reviewing standalone skill-set repositories."

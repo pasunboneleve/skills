@@ -1,0 +1,4 @@
+interface:
+  display_name: "Testing"
+  short_description: "Choose focused validation"
+  default_prompt: "Use $testing to choose the narrowest deterministic validation for a change."

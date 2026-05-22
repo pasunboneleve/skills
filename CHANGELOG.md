@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.1] - 2026-05-22
+
+### Added
+
+- Added OpenAI agent metadata for `skill-project` and `testing`.
+
 ## [2.2.0] - 2026-05-22
 
 ### Added

@@ -21,8 +21,10 @@ If no deterministic check exists, add a focused test when practical. Otherwise r
 
 Do not run a broad validation suite merely because it exists. Reject that as over-broad. Report which broader checks were skipped and why they are outside the blast radius.
 
-When reporting validation scope, use these labels:
+When reporting validation scope, always use these exact labels as plain text:
 
 - `Blast radius:` name the changed surface and say when it is docs-only.
 - `Required checks:` name the exact focused checks. For API contracts, include `Concentric expansion: direct API contract test -> parent consumer test`.
 - `Skipped broad checks:` name skipped suites and why.
+
+For API or contract changes, the `Required checks:` line must include the exact phrase `Concentric expansion:` and show the path from the direct contract test to the parent consumer test.
