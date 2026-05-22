@@ -28,7 +28,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`beads`](src/beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
 - [`coding`](src/coding/SKILL.md): surfaces code execution exceptions, keeps mixed-language scripts in separate files, and avoids machine-specific paths.
 - [`commit-discipline`](src/commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
-- [`create-skill`](src/create-skill/SKILL.md): creates concise skills with current eval scaffolding and focused validation.
+- [`create-skill`](src/create-skill/SKILL.md): creates concise skills with OpenAI metadata, eval scaffolding, and focused validation.
 - [`decompose-skill`](src/decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
 - [`devloop`](src/devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
 - [`documentation-boundary`](src/documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.

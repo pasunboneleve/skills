@@ -6,6 +6,16 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-05-22
+
+### Added
+
+- Added OpenAI agent metadata for `kata`.
+
+### Changed
+
+- Updated `create-skill` to require `agents/openai.yaml` metadata for new or changed skills.
+
 ## [2.1.0] - 2026-05-22
 
 ### Added
