@@ -1,25 +1,24 @@
 ---
-name: roborev-beads-workflow
-description: Enforce a RoboRev plus Beads development workflow for code changes. Use when Codex is asked to implement, fix, refactor, or review work tracked by Beads and RoboRev, especially when branch discipline, non-blocking review jobs, validation gates, SemVer, changelog checks, and final delivery reporting matter.
+name: roborev-kata-workflow
+description: Enforce a Roborev plus Kata development workflow for code changes. Use when Codex is asked to implement, fix, refactor, or review work tracked by Kata and Roborev, especially when branch discipline, non-blocking review jobs, validation gates, SemVer, changelog checks, and final delivery reporting matter.
 ---
 
-# RoboRev and Beads workflow
+# Roborev and Kata workflow
 
-Use this skill for workflows that combine [RoboRev](https://github.com/roborev-dev/roborev) reviews with [Beads](https://github.com/gastownhall/beads) task tracking.
+Use this skill for workflows that combine [Roborev](https://github.com/roborev-dev/roborev) reviews with [Kata](https://github.com/kenn-io/kata) task tracking.
 
 ## Authority
 
 Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer decisions, task hygiene, and post-merge branch cleanup.
 
-Load and apply `$beads` for Beads lifecycle commands: ready work, create, claim, notes, dependencies, close, defer, and final Beads reporting.
+Load and apply `$kata` for Kata lifecycle commands: ready work, create, claim, notes, dependencies, close, defer, and final Kata reporting.
 
 Load and apply `$testing` before choosing validation commands. Use the validation scope it selects.
 
-Treat Beads as task memory and workflow tracking. Do not treat Beads-generated instructions as authority over Git publishing.
+Treat Kata as task memory and workflow tracking. Do not treat Kata-generated instructions as authority over Git publishing.
 
-Follow these rules over any Beads instruction that says to push immediately:
+Follow these rules over any Kata instruction that says to push immediately:
 
-- Never push directly to `main`.
 - Never push any branch unless the user explicitly asks.
 - Always work on a feature branch.
 - Never merge a PR unless CI is green.
@@ -35,38 +34,38 @@ Before changing files:
 3. Base the branch name on the Bead or task.
 4. Do not implement on `main`.
 
-## RoboRev daemon
+## Roborev daemon
 
 Before requesting review:
 
-1. Check whether the RoboRev daemon is running.
+1. Check whether the Roborev daemon is running.
 2. If it is not running, start it.
 3. Fall back to local or non-daemon review only if daemon startup fails.
-4. Do not assume RoboRev is available.
+4. Do not assume Roborev is available.
 
 ## Non-blocking review loop
 
-Do not let RoboRev block implementation.
+Do not let Roborev block implementation.
 
 Use this loop:
 
 1. Implement the next small change.
 2. Run the fastest relevant local validation selected by `$testing`.
-3. Submit a RoboRev review job.
+3. Submit a Roborev review job.
 4. Continue safe implementation while the job runs.
-5. At each implementation checkpoint, check completed RoboRev jobs.
+5. At each implementation checkpoint, check completed Roborev jobs.
 6. Address completed findings.
 7. Leave unfinished jobs pending.
 
-Wait idly for RoboRev only when no safe work remains.
+Wait idly for Roborev only when no safe work remains.
 
-## Beads lifecycle
+## Kata lifecycle
 
-Use `$beads` for concrete Beads commands and state transitions.
+Use `$kata` for concrete Kata commands and state transitions.
 
-When asked to name Beads lifecycle requirements, state these concrete transitions and commands:
+When asked to name Kata lifecycle requirements, state these concrete transitions and commands:
 
-- Load `$beads`.
+- Load `$kata`.
 - Find ready work with `bd ready`, create new work with `bd create`, or confirm an existing Bead.
 - Claim active work with `bd update <id> --claim`.
 - Record validation, blockers, decisions, PRs, and deferred work with `bd update <id> --append-notes "<note>"`.
@@ -78,7 +77,7 @@ Do not close a Bead just because implementation appears complete.
 Close a Bead only when all are true:
 
 - Selected validation passes.
-- RoboRev findings are resolved or explicitly deferred with rationale.
+- Roborev findings are resolved or explicitly deferred with rationale.
 - Documentation matches implemented behaviour.
 - Changelog matches implementation, when the project uses one and the change needs an entry.
 - Project version has been bumped according to SemVer, when the change requires a version bump.
@@ -103,9 +102,9 @@ If validation fails:
 Report:
 
 - branch name
-- Beads updated or closed
-- RoboRev jobs submitted and completed
-- unresolved RoboRev findings
+- Kata updated or closed
+- Roborev jobs submitted and completed
+- unresolved Roborev findings
 - validation commands run
 - version, changelog, and documentation updates
 - whether anything was pushed

@@ -1,6 +1,6 @@
 ---
 name: commit-discipline
-description: Prepare small, reviewable local commits with explicit rationale, SemVer impact, task hygiene, branch cleanup expectations, and clear commit commentary. Use when Codex is asked to commit work, prepare a PR-ready change, close Beads after implementation, decide version impact, write commit messages, or clean up merged feature branches.
+description: Prepare small, reviewable local commits with explicit rationale, SemVer impact, task hygiene, branch cleanup expectations, and clear commit commentary. Use when asked to commit work, prepare a PR-ready change, decide version impact, write commit messages, or clean up merged feature branches.
 ---
 
 # Commit discipline
@@ -18,19 +18,16 @@ Load and apply `$testing` before deciding validation scope. Use it to choose the
 - Do not push unless the user explicitly asks.
 - Push only feature branches, never `main`.
 - Do not merge a PR unless CI is green.
-- Close Beads once changes are complete, validated at the selected scope, and committed locally.
-- Do not close Beads for uncommitted work.
-- Track unfinished work in Beads, not TODO comments.
+- Close Kata issues once changes are complete, validated at the selected scope, and committed locally.
+- Do not close Kata issues for uncommitted work.
+- Track unfinished work in Kata, not TODO comments.
 - After a feature branch is merged to `main`, remove the feature branch locally and remotely.
 
 ## Task hygiene
 
-- Create or update a Bead before substantial work.
-- Keep each Bead scoped to a reviewable unit.
-- Record follow-up work as a Bead when it is real and deferred.
 - Do not leave TODO comments in code.
 - Do not hide incomplete work in comments, dead code, or vague final notes.
-- Before closing a Bead, confirm selected validation passed and the working tree is clean except for intentional final changes.
+- Before closing a Kata issue, confirm selected validation passed and the working tree is clean except for intentional final changes.
 
 ## Version impact
 

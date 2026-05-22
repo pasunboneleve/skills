@@ -35,7 +35,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`docs-structure`](src/docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
 - [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
-- [`roborev-beads-workflow`](src/roborev-beads-workflow/SKILL.md): coordinates Beads task tracking with non-blocking RoboRev review.
+- [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates kata task tracking with non-blocking Roborev review.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
 - [`skill-project`](src/skill-project/SKILL.md): scaffolds standalone skill-set repositories with shared validation, linking, eval, and agent metadata conventions.
 - [`testing`](src/testing/SKILL.md): selects the narrowest deterministic validation for a change's blast radius.

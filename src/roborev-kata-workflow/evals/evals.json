@@ -1,0 +1,18 @@
+{
+  "skill_name": "roborev-kata-workflow",
+  "evals": [
+    {
+      "id": "delegate-kata-lifecycle",
+      "name": "delegate kata lifecycle",
+      "prompt": "Use the roborev-kata-workflow skill. A user asks you to implement tracked work with a Bead. State which additional skill must be loaded for Kata lifecycle commands and name the required Kata state transitions.",
+      "expected_output": "The response says to load the kata skill for lifecycle commands and requires ready/create or reuse, claim, notes, dependencies when needed, close/defer, and final Kata reporting.",
+      "assertions": [
+        "The output says to load or apply the `kata` skill.",
+        "The output mentions Kata lifecycle commands or concrete bd commands.",
+        "The output requires claiming work, such as `bd update <id> --claim`.",
+        "The output requires notes for validation, blockers, decisions, or deferred work.",
+        "The output requires closing completed work or reporting the final Bead state."
+      ]
+    }
+  ]
+}
