@@ -53,6 +53,12 @@ Run `bash scripts/validate_skills.sh`. The wrapper installs [`skill-validator`](
 
 Model-backed evals use [`scripts/agent-skills-eval.yaml`](scripts/agent-skills-eval.yaml), which sets target and judge temperature to `0`.
 
+To iterate on one eval case, pass a skill relpath and eval id:
+
+```bash
+bash scripts/validate_skills.sh --eval-id reject-overfit-domain-type change-friendly-architecture
+```
+
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.
 
 ## Versioning
