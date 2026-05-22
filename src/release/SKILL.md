@@ -22,6 +22,10 @@ description: Prepare and execute a versioned release through a feature branch, P
 
 Load and apply `$testing` before choosing local validation commands. Use the validation scope it selects for the release change surface.
 
+Load and apply `$changelog` in release mode before changing version or release-note files. Use it to choose or confirm the release version, move `[Unreleased]` entries into the dated release section, recreate empty `[Unreleased]`, update the project version source, and verify version, changelog, release notes, and intended tag agree.
+
+When stating release file edits and consistency checks, explicitly say to use `$changelog` release mode and that tagging is blocked until the changelog section, project version, release notes input, and intended tag version agree.
+
 ## Branch protection
 
 Before release preparation:
@@ -40,9 +44,9 @@ Before changing release files, verify:
 
 1. Current branch is a feature branch. If on `main`, create or switch to a release feature branch.
 2. Project version exists and conforms to SemVer.
-3. Changelog has an entry for the exact project version.
+3. Changelog has `[Unreleased]` entries to release.
 4. Changelog heading matches the project convention.
-5. Changelog version matches the project version.
+5. `$changelog` release mode can make the changelog version, project version, release notes, and intended tag agree.
 6. Documentation describes new user-facing features.
 7. Help or usage output describes new command-line functionality, when the project exposes command-line help.
 8. Release notes can be extracted from the changelog.
@@ -51,13 +55,14 @@ Before changing release files, verify:
 
 ## Release preparation
 
-1. Discover and inspect the project version source.
-2. Inspect the changelog.
-3. Confirm version and changelog match.
-4. Check whether implemented changes include user-facing features or command-line changes.
-5. If user-facing features exist, update docs and changelog.
-6. If command-line changes exist, update help text and verify help or usage output.
-7. Extract release notes when the project has a script or generator.
+1. State that `$changelog` release mode owns release changelog and version edits.
+2. Discover and inspect the project version source.
+3. Inspect the changelog.
+4. Use `$changelog` release mode to confirm the release version, finalize the changelog section, recreate `[Unreleased]`, update the version source, and verify consistency.
+5. Check whether implemented changes include user-facing features or command-line changes.
+6. If user-facing features exist, update docs and confirm `$changelog` has the matching release-note entry.
+7. If command-line changes exist, update help text and verify help or usage output.
+8. Extract release notes when the project has a script or generator.
 
 ## Release surface
 
@@ -143,9 +148,9 @@ Stop and prompt the user if:
 - remote `main` is not protected and cannot be protected
 - version is missing
 - version is not SemVer
-- changelog entry is missing
+- changelog `[Unreleased]` entries are missing for changes being released
 - changelog heading does not match the project convention
-- changelog and project version disagree
+- `$changelog` release mode leaves the changelog, project version, release notes, or intended tag inconsistent
 - release notes extraction fails
 - documentation is stale or missing
 - help output is stale or missing

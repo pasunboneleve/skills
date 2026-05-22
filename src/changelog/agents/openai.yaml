@@ -1,0 +1,4 @@
+interface:
+  display_name: "Changelog"
+  short_description: "Maintain unreleased and release notes"
+  default_prompt: "Use $changelog to update unreleased entries, handle reverted changes, or prepare release changelog sections."

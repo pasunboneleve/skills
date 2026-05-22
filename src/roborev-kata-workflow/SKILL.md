@@ -9,7 +9,9 @@ Use this skill for workflows that combine [Roborev](https://github.com/roborev-d
 
 ## Authority
 
-Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer decisions, task hygiene, and post-merge branch cleanup.
+Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer commentary, task hygiene, and post-merge branch cleanup.
+
+Load and apply `$changelog` when the project has a changelog or version file. Use normal mode for ordinary implementation work and release mode for release work.
 
 Load and apply `$kata` for Kata lifecycle commands: ready work, create, assign, comments, relationships, close, defer, and final Kata reporting.
 
@@ -79,11 +81,11 @@ Close a Kata issue only when all are true:
 - Selected validation passes.
 - Roborev findings are resolved or explicitly deferred with rationale.
 - Documentation matches implemented behaviour.
-- Changelog matches implementation, when the project uses one and the change needs an entry.
-- Project version has been bumped according to SemVer, when the change requires a version bump.
-- Version number matches the changelog, when both exist.
+- Changelog handling is complete through `$changelog`, when the project uses one: ordinary work has an accurate `[Unreleased]` entry or a concrete no-entry rationale, and release work has matching version, changelog, release notes, and tag intent.
 - Changes are committed locally.
 - Working tree is clean.
+
+When stating changelog and version checks for closing ordinary implementation work, explicitly say to use `$changelog` normal mode, keep `[Unreleased]` accurate, and avoid a `VERSION` bump or release-tag consistency checks until release work.
 
 If a project has no changelog or version file, say so in the final output. Do not invent one unless the task requires it.
 
@@ -106,7 +108,9 @@ Report:
 - Roborev jobs submitted and completed
 - unresolved Roborev findings
 - validation commands run
-- version, changelog, and documentation updates
+- changelog mode and result
+- version updates only for release work
+- documentation updates
 - whether anything was pushed
 
 Never claim completion unless validation passed.

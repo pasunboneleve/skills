@@ -6,32 +6,23 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
-## [2.2.1] - 2026-05-22
-
 ### Added
 
-- Added OpenAI agent metadata for `skill-project` and `testing`.
-
-## [2.2.0] - 2026-05-22
-
-### Added
-
-- Added OpenAI agent metadata for `kata`.
-
-### Changed
-
-- Updated `create-skill` to require `agents/openai.yaml` metadata for new or changed skills.
-
-## [2.1.0] - 2026-05-22
-
-### Added
-
+- Added `changelog`, a skill for unreleased changelog entries, revert cleanup, SemVer classification, and release-time version finalization.
+- Added changelog eval coverage rejecting diff-only changelog bodies.
 - Added `kata`, a skill for Kata issue lifecycle hygiene with positive and negative eval cases.
+- Added OpenAI agent metadata for `kata`, `skill-project`, and `testing`.
 
 ### Changed
 
+- Centralized changelog and version policy in `changelog`; ordinary implementation changes now update `[Unreleased]`, while release preparation finalizes `VERSION` and dated changelog sections.
+- Required changelogs to remain human-readable standalone text files instead of replacing entries with version-control diffs or compare links.
+- Updated `commit-discipline`, `roborev-kata-workflow`, `release`, and `create-skill` to delegate changelog policy to `changelog`.
 - Updated `roborev-kata-workflow` to use concrete Kata commands instead of legacy Beads commands.
 - Updated `roborev-kata-workflow` eval coverage to require `kata assign`, comments, relationships, and `kata close --done` guidance.
+- Updated `create-skill` to require `agents/openai.yaml` metadata for new or changed skills.
+- Updated `create-skill` eval guidance so assertions test behavior rather than exact phrasing, except when wording or formatting is the behavior under test.
+- Tightened `testing` validation-scope reports so API contract changes include the exact `Concentric expansion:` path from direct contract tests to parent consumer tests.
 
 ## [2.0.1] - 2026-05-21
 
@@ -228,7 +219,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/pasunboneleve/skills/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/pasunboneleve/skills/compare/v1.6.1...v2.0.0
+[1.6.1]: https://github.com/pasunboneleve/skills/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/pasunboneleve/skills/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/pasunboneleve/skills/compare/v1.4.2...v1.5.0
 [1.4.2]: https://github.com/pasunboneleve/skills/compare/v1.4.1...v1.4.2
