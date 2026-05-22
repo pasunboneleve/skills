@@ -25,6 +25,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Updated `create-skill` to require `agents/openai.yaml` metadata for new or changed skills.
 - Updated `create-skill` eval guidance so assertions test behavior rather than exact phrasing, except when wording or formatting is the behavior under test.
 - Expanded `change-friendly-architecture` guidance and eval coverage for change-amplifying types, schemas, broad units, ambient context, scattered workflows, repeated boilerplate, and test boundaries.
+- Expanded `documentation-boundary` guidance and eval coverage for README manual sprawl, CLI help surfaces, changelog-only documentation claims, and docs-only maintenance.
 - Tightened `testing` validation-scope reports so API contract changes include the exact `Concentric expansion:` path from direct contract tests to parent consumer tests.
 
 ## [2.0.1] - 2026-05-21

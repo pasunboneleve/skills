@@ -33,6 +33,7 @@ When editing `README.md`:
 - link to real documentation instead of duplicating it
 - avoid turning it into a manual
 - move long procedural detail to docs or help text
+- reject README-only runbooks, tutorials, troubleshooting catalogs, or command references when those details belong in docs, help text, man pages, info pages, or dedicated references
 
 ## Documentation rules
 
@@ -43,6 +44,14 @@ When changing behaviour or adding features, update the real documentation surfac
 - man pages or info pages, if present
 
 Do not claim documentation is updated if only `README.md` changed.
+
+Do not treat changelog prose, release notes, or commit summaries as the real documentation update for changed behaviour.
+
+When CLI behaviour changes, update the user-facing CLI surface that explains that behaviour, such as `--help`, man pages, or info pages when present. Updating docs alone is not enough when the command itself exposes help for the changed behaviour.
+
+For docs-only maintenance, such as README synopsis edits, link fixes, or prose cleanup, do not require feature documentation for unchanged behaviour. Still report which documentation surfaces changed.
+
+Do not apply checklist items mechanically. Require CLI help, man pages, info pages, changelog prose, or docs updates only when the changed behaviour or changed documentation surface makes them relevant.
 
 ## Dependency
 
