@@ -6,6 +6,17 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-05-22
+
+### Added
+
+- Added `kata`, a skill for Kata issue lifecycle hygiene with positive and negative eval cases.
+
+### Changed
+
+- Updated `roborev-kata-workflow` to use concrete Kata commands instead of legacy Beads commands.
+- Updated `roborev-kata-workflow` eval coverage to require `kata assign`, comments, relationships, and `kata close --done` guidance.
+
 ## [2.0.1] - 2026-05-21
 
 ### Changed

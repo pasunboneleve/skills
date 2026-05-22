@@ -33,6 +33,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`devloop`](src/devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
 - [`documentation-boundary`](src/documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
 - [`docs-structure`](src/docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
+- [`kata`](src/kata/SKILL.md): keeps Kata issues searched, assigned, updated with evidence, and closed when verified.
 - [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates kata task tracking with non-blocking Roborev review.

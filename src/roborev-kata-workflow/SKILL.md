@@ -11,7 +11,7 @@ Use this skill for workflows that combine [Roborev](https://github.com/roborev-d
 
 Load and apply `$commit-discipline` when this skill is used. Use it for commit boundaries, local commit completion, SemVer decisions, task hygiene, and post-merge branch cleanup.
 
-Load and apply `$kata` for Kata lifecycle commands: ready work, create, claim, notes, dependencies, close, defer, and final Kata reporting.
+Load and apply `$kata` for Kata lifecycle commands: ready work, create, assign, comments, relationships, close, defer, and final Kata reporting.
 
 Load and apply `$testing` before choosing validation commands. Use the validation scope it selects.
 
@@ -31,7 +31,7 @@ Before changing files:
 
 1. Check the current branch.
 2. If on `main`, create a feature branch.
-3. Base the branch name on the Bead or task.
+3. Base the branch name on the Kata issue or task.
 4. Do not implement on `main`.
 
 ## Roborev daemon
@@ -66,15 +66,15 @@ Use `$kata` for concrete Kata commands and state transitions.
 When asked to name Kata lifecycle requirements, state these concrete transitions and commands:
 
 - Load `$kata`.
-- Find ready work with `bd ready`, create new work with `bd create`, or confirm an existing Bead.
-- Claim active work with `bd update <id> --claim`.
-- Record validation, blockers, decisions, PRs, and deferred work with `bd update <id> --append-notes "<note>"`.
-- Add ordering dependencies with `bd dep add <blocked> <blocker>` when order matters.
-- Close completed validated work with `bd close <id> --reason "<validation and delivery evidence>"`, or report that the Bead remains open or deferred.
+- Find ready work with `kata ready --json`, create new work with `kata create ... --idempotency-key ... --json`, or confirm an existing issue.
+- Assign active work with `kata assign <ref> <owner> --json`.
+- Record validation, blockers, decisions, PRs, and deferred work with `kata comment <ref> --body "<note>" --json`.
+- Add ordering relationships with `kata edit <ref> --blocks <other-ref> --json` or `kata edit <ref> --blocked-by <other-ref> --json`.
+- Close completed validated work with `kata close <ref> --done --message "<validation and delivery evidence>" --commit <sha>`, or report that the issue remains open or deferred.
 
-Do not close a Bead just because implementation appears complete.
+Do not close a Kata issue just because implementation appears complete.
 
-Close a Bead only when all are true:
+Close a Kata issue only when all are true:
 
 - Selected validation passes.
 - Roborev findings are resolved or explicitly deferred with rationale.
@@ -89,13 +89,13 @@ If a project has no changelog or version file, say so in the final output. Do no
 
 ## Validation before closing
 
-Before closing any Bead, run the validation selected by `$testing` for the actual change surface.
+Before closing any Kata issue, run the validation selected by `$testing` for the actual change surface.
 
 If validation fails:
 
-- Do not close the Bead.
+- Do not close the Kata issue.
 - Record the failure.
-- Fix it, or create a follow-up Bead only when the deferral is explicit and justified.
+- Fix it, or create a follow-up Kata issue only when the deferral is explicit and justified.
 
 ## Final output
 
