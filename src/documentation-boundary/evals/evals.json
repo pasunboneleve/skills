@@ -1,0 +1,32 @@
+{
+  "skill_name": "documentation-boundary",
+  "evals": [
+    {
+      "id": "readme-only-is-not-docs-complete",
+      "name": "readme only is not docs complete",
+      "prompt": "Use the documentation-boundary skill. A command-line flag changed behavior. The proposed update edits only README.md with a short mention and then claims documentation is complete. Review the plan.",
+      "expected_output": "The response rejects claiming documentation is complete from README-only changes. It treats README as a synopsis and requires updating the real documentation surface for the behavior change, such as docs, CLI help, man pages, or info pages when present, or explicitly explaining why none applies.",
+      "assertions": [
+        "The output rejects or flags the claim that documentation is complete from only a `README.md` edit.",
+        "The output says `README.md` is a synopsis rather than the full documentation.",
+        "The output requires updating a real documentation surface for the behavior change, such as `docs/`, CLI help, man pages, or info pages when present.",
+        "The output allows no real documentation update only with an explicit reason.",
+        "The output requires reporting which documentation surfaces changed."
+      ]
+    },
+    {
+      "id": "report-documentation-surfaces",
+      "name": "report documentation surfaces",
+      "prompt": "Use the documentation-boundary skill. You changed docs/development/local-dev.md, updated README.md links, and did not change CLI help, man pages, info pages, or changelog prose. State the documentation boundary report.",
+      "expected_output": "The response reports README synopsis and docs changed, and explicitly reports that CLI help, man or info pages, and changelog did not change. It does not imply the README edit alone was the documentation update.",
+      "assertions": [
+        "The output reports that the README synopsis changed.",
+        "The output reports that `docs/` changed.",
+        "The output reports that CLI help did not change.",
+        "The output reports that man or info pages did not change.",
+        "The output reports that changelog prose did not change.",
+        "The output does not claim the README edit alone was the full documentation update."
+      ]
+    }
+  ]
+}

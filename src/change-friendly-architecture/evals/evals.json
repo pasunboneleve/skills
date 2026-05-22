@@ -1,0 +1,32 @@
+{
+  "skill_name": "change-friendly-architecture",
+  "evals": [
+    {
+      "id": "reject-leaky-shared-helper",
+      "name": "reject leaky shared helper",
+      "prompt": "Use the change-friendly-architecture skill. Review this cleanup plan: auth, billing, search, and audit each have two similar lines that build request metadata, so replace them with one shared metadata normalizer that switches on subsystem type and exposes optional knobs for each caller. Is this a change-friendly abstraction?",
+      "expected_output": "The response rejects the abstraction because removing superficial duplication is not enough reason to create a cross-subsystem helper. It widens the change surface, makes unrelated callers depend on one conditional utility, and asks callers to understand knobs for other subsystems. It recommends keeping responsibilities local unless there is a stable explicit boundary.",
+      "assertions": [
+        "The output rejects or flags the shared metadata normalizer as not change-friendly.",
+        "The output says the shared abstraction widens coupling, blast radius, or change surface across unrelated subsystems.",
+        "The output says superficial reuse or removing duplication is not enough to justify the abstraction.",
+        "The output flags subsystem-type switches, optional knobs, or unrelated caller knowledge as a leaky abstraction.",
+        "The output recommends keeping responsibilities local unless there is a stable explicit boundary."
+      ]
+    },
+    {
+      "id": "test-boundaries-not-internals",
+      "name": "test boundaries not internals",
+      "prompt": "Use the change-friendly-architecture skill. Review this test plan for a job scheduler: mock three private methods inside the scheduler, mutate process-global time and environment in each test, and skip integration tests because the mocked internals cover every branch. Is this a change-friendly test strategy?",
+      "expected_output": "The response rejects the strategy because it mocks implementation details, relies on process-global state, and misses boundary behavior. It recommends testing behavior and invariants at the narrowest useful boundary, faking external boundaries such as clocks and environment through small helpers or ports, isolating unavoidable globals, and adding integration tests where module interactions or failure paths matter.",
+      "assertions": [
+        "The output rejects or flags mocking private scheduler methods or internal implementation details.",
+        "The output says tests should target behavior, invariants, or a useful boundary rather than internal branches.",
+        "The output rejects unisolated process-global time or environment mutation.",
+        "The output recommends faking or injecting external boundaries such as clocks or environment through small helpers, ports, or adapters.",
+        "The output says unavoidable process-global mutation should be isolated or serialized.",
+        "The output requires integration or boundary tests when module interactions or failure paths matter."
+      ]
+    }
+  ]
+}

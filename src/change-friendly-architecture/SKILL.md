@@ -88,7 +88,13 @@ Prefer designs where a future change can be made by understanding one small area
 - Duplication was removed by introducing a worse abstraction.
 - `sleep` is used to fix a race.
 
+When reviewing a shared helper proposed mainly to remove duplication across unrelated subsystems, say that superficial reuse does not justify widening the change surface. Prefer local responsibilities unless the helper protects a stable, explicit boundary.
+
+When reviewing tests that mutate process-global state such as time, environment, or working directory, require that mutation to be isolated in a small helper and serialized when parallel tests would interfere.
+
 ## Review checklist
+
+When rejecting a design or test plan, state the replacement shape: local responsibilities, explicit inputs and outputs, visible failure paths, test boundaries, and any boundary fakes or adapters needed.
 
 - Does this make the system easier to change?
 - Is coupling reduced or made explicit?

@@ -11,6 +11,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added `changelog`, a skill for unreleased changelog entries, revert cleanup, SemVer classification, and release-time version finalization.
 - Added changelog eval coverage rejecting diff-only changelog bodies.
 - Added `kata`, a skill for Kata issue lifecycle hygiene with positive and negative eval cases.
+- Added eval coverage for `change-friendly-architecture`, `docs-structure`, and `documentation-boundary`.
 - Added OpenAI agent metadata for `kata`, `skill-project`, and `testing`.
 
 ### Changed
