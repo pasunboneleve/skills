@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Added `ci`, a skill for GitHub Actions workflows and README CI badges for code and skills projects.
+
 ## [2.0.3] - 2026-05-24
 
 ### Changed

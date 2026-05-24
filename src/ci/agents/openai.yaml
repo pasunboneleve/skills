@@ -1,0 +1,4 @@
+interface:
+  display_name: "CI"
+  short_description: "Add GitHub Actions CI and README badges"
+  default_prompt: "Use $ci when adding or reviewing repository CI."
