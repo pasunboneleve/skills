@@ -89,6 +89,31 @@
       ]
     },
     {
+      "id": "idiomatic-multiline-string-positive",
+      "name": "idiomatic multiline string positive",
+      "prompt": "Use the coding skill. Update this Ruby helper so the static banner includes a third line: `Run skill-check --help for usage.`\n\n```ruby\ndef welcome_banner\n  banner = String.new\n  banner << \"Welcome to skill-check\\n\"\n  banner << \"\\n\"\n  banner\nend\n```",
+      "expected_output": "The response rewrites the static Ruby banner with an idiomatic multiline string form such as a heredoc instead of extending the repeated append-call sequence.",
+      "assertions": [
+        "The output rewrites the Ruby helper using an idiomatic multiline string form such as a heredoc.",
+        "The output includes the existing title line, the blank line, and the requested usage sentence in one multiline string value.",
+        "The output does not extend or preserve the repeated `banner <<` append-call sequence.",
+        "The output does not use consecutive function calls to compose the static multiline banner."
+      ]
+    },
+    {
+      "id": "reject-consecutive-calls-for-multiline-string-negative",
+      "name": "reject consecutive calls for multiline string negative",
+      "prompt": "Use the coding skill. Review this proposed Go helper:\n\n```go\nfunc welcomeMessage() string {\n\tvar b strings.Builder\n\tb.WriteString(\"Welcome to skill-check\\n\")\n\tb.WriteString(\"\\n\")\n\tb.WriteString(\"Run skill-check --help for usage.\\n\")\n\treturn b.String()\n}\n```\n\nIs this acceptable? State the required change.",
+      "expected_output": "The response rejects composing the multiline string through consecutive WriteString calls and requires using Go's idiomatic raw multiline string literal instead.",
+      "assertions": [
+        "The output rejects or flags the consecutive WriteString calls.",
+        "The output states that multiline strings should not be composed through consecutive function calls.",
+        "The output requires replacing the builder calls with an idiomatic Go multiline string literal.",
+        "The output does not approve keeping the strings.Builder sequence for this static multiline value.",
+        "The output treats the multiline string form as a coding-skill directive, not only as a subjective style preference."
+      ]
+    },
+    {
       "id": "avoid-machine-specific-path-positive",
       "name": "avoid machine specific path positive",
       "prompt": "Use the coding skill. Update a public setup example for a checked-out repository. The user wants the command to run from the repository root and did not ask you to include their local home directory or desktop path. State the command you would document.",

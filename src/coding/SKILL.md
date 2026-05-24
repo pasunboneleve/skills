@@ -13,4 +13,6 @@ Changing a guard branch from success to non-zero failure is still wrong when it 
 
 Do not inline a script written in one programming language inside a script written in another programming language. Keep each language in its own file and invoke that file from the wrapper script.
 
+Do not compose static multiline strings through consecutive function calls such as repeated append, write, add, or concatenation calls. When writing or reviewing code, reject that shape and use the language's idiomatic multiline string form, such as a heredoc, raw string literal, template literal, or triple-quoted string.
+
 Do not add machine-specific filesystem paths to scripts, code, configuration, or documentation unless the user explicitly asks for that exact path. Prefer repo-relative paths, source-relative paths, environment variables, or documented placeholders.
