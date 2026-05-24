@@ -1,6 +1,6 @@
 # [Codex](https://developers.openai.com/codex/cli) skills
 
-[![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml)
+[![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg?branch=main)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml?query=branch%3Amain)
 
 Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src/`.
 
@@ -27,6 +27,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries, explicit dependencies, visible workflows, and low blast radius.
 - [`beads`](src/beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
 - [`changelog`](src/changelog/SKILL.md): keeps unreleased changelog entries accurate and finalizes version sections at release time.
+- [`ci`](src/ci/SKILL.md): adds GitHub Actions checks and README badges for code and skills projects.
 - [`coding`](src/coding/SKILL.md): surfaces code execution exceptions, keeps code idiomatic, separates mixed-language scripts, and avoids machine-specific paths.
 - [`commit-discipline`](src/commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
 - [`create-skill`](src/create-skill/SKILL.md): creates concise skills with OpenAI metadata, eval scaffolding, and focused validation.
