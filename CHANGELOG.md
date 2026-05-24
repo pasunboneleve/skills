@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.1.1] - 2026-05-24
+
+### Changed
+
+- Tightened `roborev-kata-workflow` so Kata issues stay open until relevant Roborev jobs are complete and green, fixed with a green follow-up, or explicitly deferred.
+
 ## [2.1.0] - 2026-05-24
 
 ### Added
