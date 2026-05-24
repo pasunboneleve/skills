@@ -26,6 +26,33 @@
         "The output says ordinary work should not bump `VERSION` or does not require a version bump before closing.",
         "The output reserves version, changelog, release notes, and tag consistency for release work."
       ]
+    },
+    {
+      "id": "pending-roborev-blocks-kata-close",
+      "name": "pending roborev blocks kata close",
+      "prompt": "Use the roborev-kata-workflow skill. A Kata issue has a local commit and selected validation passed. You submitted Roborev job 812 for the final change, but it is still running. State whether the issue can be closed and what Kata update should happen.",
+      "expected_output": "The response says not to close the Kata issue while Roborev job 812 is pending, records a Kata comment that validation passed but closure is waiting for Roborev job 812, and reports the issue remains open or deferred.",
+      "assertions": [
+        "The output says not to close the Kata issue while Roborev job 812 is pending, running, queued, or unfinished.",
+        "The output treats the pending Roborev job as a closure blocker even though validation passed and a commit exists.",
+        "The output includes `kata comment` or otherwise requires recording the pending Roborev blocker in Kata.",
+        "The output names Roborev job 812 in the Kata update or closeout evidence.",
+        "The output reports that the Kata issue remains open, pending, blocked, or deferred.",
+        "The output does not include `kata close` as the next command."
+      ]
+    },
+    {
+      "id": "verify-nonzero-roborev-before-green",
+      "name": "verify nonzero roborev before green",
+      "prompt": "Use the roborev-kata-workflow skill. Roborev review command for job 913 exited non-zero, but the streamed text says `No issues found`. Validation passed and the change is committed. State what must happen before closing the Kata issue.",
+      "expected_output": "The response requires verifying job 913 with roborev show before treating it as green. It should close only if roborev show confirms no findings, and the Kata close evidence should name job 913 and the verification.",
+      "assertions": [
+        "The output requires running or checking `roborev show 913`.",
+        "The output says not to treat the non-zero Roborev wrapper result as green until job 913 is verified.",
+        "The output says the Kata issue can close only if verification confirms no findings or all findings are resolved or deferred.",
+        "The output requires the Kata close evidence or comment to name Roborev job 913 and its verified outcome.",
+        "The output does not recommend closing immediately based only on the streamed `No issues found` text."
+      ]
     }
   ]
 }

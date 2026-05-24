@@ -61,6 +61,22 @@ Use this loop:
 
 Wait idly for Roborev only when no safe work remains.
 
+## Roborev close gate
+
+When Roborev is used for a Kata issue, do not close the Kata issue until every Roborev job relevant to the final change is complete and accounted for.
+
+Before `kata close`:
+
+- Confirm each relevant Roborev job completed.
+- Treat pending, queued, running, failed, or unread Roborev jobs as blockers for closure.
+- Verify any non-zero Roborev command that appears to report no findings with `roborev show <job-id>` before treating it as green.
+- If Roborev found issues, fix them and run a follow-up Roborev review that returns no findings, or record an explicit deferral rationale in Kata before closing.
+- Include Roborev job IDs and their verified outcome in the Kata comment or close message. For a verified non-zero wrapper result, the Kata evidence must explicitly say that the command exited non-zero, `roborev show <job-id>` was checked, and the verified outcome was no findings or named resolved/deferred findings.
+- For non-zero wrapper verification, use an evidence line equivalent to `Roborev job <id>: command exited non-zero; verified with roborev show <id>; outcome: no findings`. If findings were present, name the fixed follow-up job or the explicit deferral rationale in the outcome.
+- When Roborev is pending after validation and commit, state that validation and commit are not enough to close while the Roborev job is unfinished.
+
+If no safe implementation work remains while Roborev is pending, wait for Roborev instead of closing the Kata issue.
+
 ## Kata lifecycle
 
 Use `$kata` for concrete Kata commands and state transitions.
@@ -79,7 +95,7 @@ Do not close a Kata issue just because implementation appears complete.
 Close a Kata issue only when all are true:
 
 - Selected validation passes.
-- Roborev findings are resolved or explicitly deferred with rationale.
+- Every Roborev job relevant to the final change is complete and green, or findings are fixed with a green follow-up review, or findings are explicitly deferred with rationale in Kata.
 - Documentation matches implemented behaviour.
 - Changelog handling is complete through `$changelog`, when the project uses one: ordinary work has an accurate `[Unreleased]` entry or a concrete no-entry rationale, and release work has matching version, changelog, release notes, and tag intent.
 - Changes are committed locally.
@@ -106,7 +122,7 @@ Report:
 - branch name
 - Kata updated or closed
 - Roborev jobs submitted and completed
-- unresolved Roborev findings
+- unresolved, deferred, pending, or failed Roborev jobs
 - validation commands run
 - changelog mode and result
 - version updates only for release work
