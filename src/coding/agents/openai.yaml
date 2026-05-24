@@ -1,4 +1,4 @@
 interface:
   display_name: "Coding"
-  short_description: "Surface exceptions during code execution"
+  short_description: "Surface execution failures and keep code idiomatic"
   default_prompt: "Use $coding for coding or script execution tasks."
