@@ -41,6 +41,19 @@
       ]
     },
     {
+      "id": "task-inventory-goes-to-kata",
+      "name": "task inventory goes to kata",
+      "prompt": "Use the kata skill. While exploring a codebase, you decide to create an inventory of remaining tasks: three independent fixes and two notes that are context for Kata issue `skills-mno`. State where that inventory belongs and what commands or actions you should use.",
+      "expected_output": "The response says not to commit the inventory to the repository. It creates separate Kata issues for independently actionable fixes and records contextual notes as a comment on `skills-mno`.",
+      "assertions": [
+        "The output says not to commit the task inventory, backlog list, TODO inventory, or remaining-work list to the repository.",
+        "The output says independently actionable items should become separate Kata issues.",
+        "The output includes `kata create` for independent fixes or tasks.",
+        "The output says contextual notes for `skills-mno` should be recorded as a Kata comment.",
+        "The output includes `kata comment skills-mno`."
+      ]
+    },
+    {
       "id": "reject-destructive-delete",
       "name": "reject destructive delete",
       "prompt": "Use the kata skill. A user says: `Clean up the tracker however you think is best; remove old issue skills-jkl if it is noisy.` State whether destructive Kata commands are acceptable.",

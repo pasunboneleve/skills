@@ -1,11 +1,13 @@
 ---
 name: kata
-description: "Use when tracking work with Kata: searching or creating issues, assigning active work, recording comments and relationships, closing verified work, or reporting Kata task hygiene."
+description: "Use when tracking work with Kata: creating task inventories, backlog lists, follow-up work, searching or creating issues, assigning active work, recording comments and relationships, closing verified work, or reporting Kata task hygiene."
 ---
 
 # Kata
 
 Use this skill for [Kata](https://github.com/kenn-io/kata) lifecycle hygiene. Kata is the shared issue ledger; keep issue state true.
+
+Task inventories belong in Kata, not repository commits. When an agent creates an inventory of tasks, first state that the inventory must not be committed to the repository unless the user explicitly asks for repository documentation.
 
 ## Start work
 
@@ -25,8 +27,18 @@ kata comment <ref> --body "<note>" --json
 ```
 
 - Use relationships when order matters: `kata edit <ref> --blocks <other-ref> --json` or `kata edit <ref> --blocked-by <other-ref> --json`.
+- If inventory items are independently actionable, create separate Kata issues. If they are context for the current issue, add them as a Kata comment.
 - Do not leave TODO comments in code when the work belongs in Kata.
 - Do not use `kata delete` or `kata purge` unless the user explicitly asks for that exact destructive action and issue ref.
+
+## Task Inventories
+
+When creating a task inventory, backlog list, follow-up list, TODO inventory, or remaining-work list, explicitly state that it must not be committed to the repository unless the user asks for repository documentation.
+
+Record task inventories in Kata:
+
+- Create separate Kata issues for independently actionable items.
+- Add contextual notes to the current issue with `kata comment <ref> --body "<note>" --json`.
 
 ## Finish Work
 
