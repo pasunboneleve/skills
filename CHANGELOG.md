@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.1.2] - 2026-05-24
+
 ### Changed
 
 - Updated `kata` to keep task inventories, backlog lists, follow-ups, and remaining-work notes in Kata issues or comments instead of repository commits.
