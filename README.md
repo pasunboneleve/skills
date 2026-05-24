@@ -38,6 +38,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`kata`](src/kata/SKILL.md): keeps Kata issues searched, assigned, updated with evidence, and closed when verified.
 - [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
+- [`repo-policy`](src/repo-policy/SKILL.md): configures GitHub repository policies for protected main, PR merges, CI gates, and artifact releases.
 - [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates kata task tracking with non-blocking Roborev review.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
 - [`skill-project`](src/skill-project/SKILL.md): scaffolds standalone skill-set repositories with shared validation, linking, eval, and agent metadata conventions.

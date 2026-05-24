@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo Policy"
+  short_description: "Configure GitHub branch, merge, CI, and release policies"
+  default_prompt: "Use $repo-policy when creating a GitHub repo or configuring remote repository policy."

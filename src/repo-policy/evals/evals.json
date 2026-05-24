@@ -1,0 +1,57 @@
+{
+  "skill_name": "repo-policy",
+  "evals": [
+    {
+      "id": "configure-protected-main-existing-repo",
+      "name": "configure protected main existing repo",
+      "prompt": "Use the repo-policy skill. You are configuring policy for an existing GitHub repository with default branch `main`. State the branch protection or ruleset behavior you should configure.",
+      "expected_output": "The response configures main so direct pushes are blocked, changes reach main through pull requests, and the direct-main exception is limited to the initial push for a fresh new repository.",
+      "assertions": [
+        "The output says to configure `main` so direct pushes are blocked or rejected.",
+        "The output says changes should reach `main` through pull requests.",
+        "The output mentions branch protection or rulesets.",
+        "The output limits the direct `main` push exception to the initial push for creating a fresh new repository.",
+        "The output does not configure direct pushes to `main` as allowed for the existing repository."
+      ]
+    },
+    {
+      "id": "fresh-repo-policy-setup",
+      "name": "fresh repo policy setup",
+      "prompt": "Use the repo-policy skill. You are creating a brand-new GitHub repository and need to publish initial files before remote branch protection can exist. State the remote policy setup sequence.",
+      "expected_output": "The response allows the initial main push only for fresh repository creation, then immediately configures GitHub policy so main rejects direct pushes and future changes use pull requests.",
+      "assertions": [
+        "The output allows an initial push to `main` only for fresh new repository creation or initial setup.",
+        "The output says the exception is limited to the fresh repository setup before remote policy exists.",
+        "The output says to configure GitHub branch protection or rulesets after the initial setup.",
+        "The output says the configured policy should block or reject future direct pushes to `main`.",
+        "The output says future changes should use pull requests."
+      ]
+    },
+    {
+      "id": "configure-pr-merge-and-ci-policy",
+      "name": "configure pr merge and ci policy",
+      "prompt": "Use the repo-policy skill. You are configuring GitHub repository settings for a project that has CI. State the pull request merge methods and required status-check policy to configure.",
+      "expected_output": "The response disables squash merging, enables a non-squash merge strategy, and configures required CI checks so pull requests cannot merge until CI passes.",
+      "assertions": [
+        "The output says to disable squash merging in repository settings.",
+        "The output says to enable a non-squash merge strategy such as merge commits.",
+        "The output says to configure branch protection or rulesets with required status checks.",
+        "The output says pull requests cannot merge until required CI checks pass.",
+        "The output says pending, failing, missing, or ambiguous CI should block merging."
+      ]
+    },
+    {
+      "id": "configure-artifact-release-tags",
+      "name": "configure artifact release tags",
+      "prompt": "Use the repo-policy skill. You are configuring GitHub Actions for a repository that builds release artifacts. State how artifact publishing should be triggered.",
+      "expected_output": "The response configures artifact builds to trigger from version tags, not ordinary main pushes or PR merges, and requires tag-triggered release workflows to pass before the artifact release is complete.",
+      "assertions": [
+        "The output says release artifacts should be built or published from version tags.",
+        "The output says ordinary pushes or pull request merges to `main` should not publish release artifacts.",
+        "The output mentions a version tag convention such as `vMAJOR.MINOR.PATCH` or the repository's tag convention.",
+        "The output says GitHub Actions or release workflows should be triggered by tags.",
+        "The output says the release is not complete until tag-triggered artifact workflows pass."
+      ]
+    }
+  ]
+}
