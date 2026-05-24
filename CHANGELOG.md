@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.0.3] - 2026-05-24
+
 ### Changed
 
 - Updated `coding` to require idiomatic multiline strings instead of composing them through consecutive function calls.
