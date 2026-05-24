@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Added `repo-policy`, a skill for GitHub repository policy configuration covering protected main, PR merge methods, CI gates, and tag-triggered artifact releases.
+
 ## [2.1.2] - 2026-05-24
 
 ### Changed
