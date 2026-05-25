@@ -16,13 +16,14 @@ When answering, include the concrete files or links involved. For review request
 - Add `src/<skill-name>/evals/evals.json` with positive and negative eval cases for behavior-changing skills.
 - Require eval prompts to prove skill lift: with-skill runs should pass as close to 100% as possible, and without-skill runs should fail as close to 0% as possible.
 - Require eval prompts not to teach the review shape, rubric, concept definition, expected fault, or expected answer; that behavior belongs in `SKILL.md`.
+- When asked what eval rule belongs in `AGENTS.md`, state all of those points directly: repository-local `AGENTS.md`, skill-ablation or with-skill versus without-skill comparison, near-100% with-skill pass, near-0% without-skill pass, no self-contained prompts, and behavior instructions belong in `SKILL.md`.
 - Add `src/<skill-name>/agents/openai.yaml` to every skill from the start. Do not postpone it until evals exist.
-- Add `src/<skill-name>/agents/notes.md` to every skill; for textual sources, name the source behind each example and say whether the eval text is a quotation, source-model paraphrase, or invented weak passage.
+- Add `src/<skill-name>/references/notes.md` to every skill; for textual sources, name the source behind each example and say whether the eval text is a quotation, source-model paraphrase, or invented weak passage.
 
 ## Shared project files
 
-- Reuse the validation and linking shape from this repository's `scripts/` instead of inventing per-project one-offs: `validate_skills.sh`, `skill_ci_scope.sh`, `run_skill_ci_validation.sh`, `agent-skills-eval.yaml`, and `link_skills.sh`.
-- Keep model-backed evals on an `agent-skills-eval.yaml` config that sets both target and judge `temperature: 0`.
+- Reuse the validation and linking shape from this repository's `scripts/` instead of inventing per-project one-offs: `validate_skills.sh`, `skill_ci_scope.sh`, `run_skill_ci_validation.sh`, `skilpel.yaml`, and `link_skills.sh`. When naming `skilpel.yaml`, say it sets target and judge `temperature: 0`.
+- Keep model-backed evals on a `skilpel.yaml` config that sets both target and judge `temperature: 0`.
 - Add `.envrc` with `dotenv_if_exists .env`.
 - Add `.env` to `.gitignore`.
 - Document that local evals need a non-version-controlled `.env` containing the configured model provider key, such as `OPENAI_API_KEY=...`.

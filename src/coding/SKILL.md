@@ -15,4 +15,8 @@ Do not inline a script written in one programming language inside a script writt
 
 Do not compose static multiline strings through consecutive function calls such as repeated append, write, add, or concatenation calls. When writing or reviewing code, reject that shape and use the language's idiomatic multiline string form, such as a heredoc, raw string literal, template literal, or triple-quoted string.
 
-Do not add machine-specific filesystem paths to scripts, code, configuration, or documentation unless the user explicitly asks for that exact path. Prefer repo-relative paths, source-relative paths, environment variables, or documented placeholders.
+When modifying existing code that builds a static multiline string with repeated calls, rewrite the whole static value as one multiline string. Do not preserve or extend the repeated-call sequence.
+
+Do not add machine-specific filesystem paths to scripts, code, configuration, or documentation unless the user explicitly asks for that exact path. Prefer repo-relative paths, source-relative paths, or environment variables. If an example is meant to run from the repository root, document the command directly from that root; do not prepend placeholder absolute paths such as `/path/to/project`.
+
+Source notes live in `references/notes.md`.

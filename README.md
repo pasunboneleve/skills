@@ -51,9 +51,9 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and 
 
 ## Validation
 
-Run `bash scripts/validate_skills.sh`. The wrapper installs [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) into `~/.local/bin` and [`agent-skills-eval`](https://github.com/darkrishabh/agent-skills-eval) globally when either tool is not already on `PATH`.
+Run `bash scripts/validate_skills.sh`. The wrapper installs [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) when needed and uses the verified [`skilpel`](https://github.com/pasunboneleve/skilpel) release binary at `~/.local/bin/skilpel`.
 
-Model-backed evals use [`scripts/agent-skills-eval.yaml`](scripts/agent-skills-eval.yaml), which sets target and judge temperature to `0`.
+Model-backed evals use [`scripts/skilpel.yaml`](scripts/skilpel.yaml), which sets target and judge temperature to `0`.
 
 To iterate on one eval case, pass a skill relpath and eval id:
 

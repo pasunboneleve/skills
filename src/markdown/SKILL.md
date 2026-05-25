@@ -24,3 +24,7 @@ If the same file path appears in prose and inside a fenced code block, apply the
 Do not convert file references inside fenced code blocks into links; fenced content is literal.
 For repeated same-paragraph mentions, link the first mention only and leave later mentions unchanged as plain text.
 When asked which rule applies to text-file references, name only `File References` on its own line, then write the requested Markdown while still applying file-reference links. When asked to change only link markup, preserve the original words and punctuation.
+
+# Source Notes
+
+Source notes live in `references/notes.md`.

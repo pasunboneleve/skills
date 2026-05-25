@@ -38,8 +38,8 @@
       "expected_output": "File references in prose are Markdown links, but the same file names inside the fenced text block remain literal unlinked text.",
       "assertions": [
         "The output includes `File References`.",
-        "In the prose sentence, README.md is a Markdown inline link to README.md rather than a code span or plain text.",
-        "In the prose sentence, docs/setup.md is a Markdown inline link to docs/setup.md rather than a code span or plain text.",
+        "The output text contains the exact literal substring `[README.md](README.md)`.",
+        "The output text contains the exact literal substring `[docs/setup.md](docs/setup.md)`.",
         "The output includes a fenced text code block.",
         "Inside the fenced text block, README.md, docs/setup.md, and CHANGELOG.txt appear as literal text, not Markdown links."
       ]
