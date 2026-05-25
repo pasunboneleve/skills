@@ -115,6 +115,7 @@ When reviewing workflow structure, distinguish visible composition from scatter.
 When reviewing a broad function, module, or file, reject boundaries that group unrelated workflows around one noun or owner. Split by behavior, use case, or true ownership while preserving each workflow's visible composition point. Connect workflows through narrow explicit interfaces only where real coordination is needed.
 
 When reviewing tests that mutate process-global state such as time, environment, or working directory, require that mutation to be isolated in a small helper and serialized when parallel tests would interfere.
+Do not accept serializing the whole test suite as the primary fix for process-global mutation; scope serialization to the tests or helper that actually mutates global state.
 
 ## Review checklist
 

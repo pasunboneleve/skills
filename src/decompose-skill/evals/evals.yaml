@@ -1,0 +1,41 @@
+skill_name: decompose-skill
+evals:
+- id: decomposition-validation-and-readme
+  name: decomposition validation and readme
+  prompt: Use the decompose-skill skill. A user asks you to split one oversized skill
+    into two focused skills. State the concrete workflow you will follow before committing.
+  expected_output: The response keeps each SKILL.md concise, creates focused references
+    only when useful, updates the root README.md with links for the resulting skills,
+    runs focused validation for each changed skill, and reports validation evidence
+    before committing.
+  assertions:
+  - The output says each resulting `SKILL.md` stays concise or contains routing and
+    core rules.
+  - The output says references, scripts, or assets are created only when they support
+    focused loading or deterministic operations.
+  - The output says to update the root `README.md` with links to each changed or resulting
+    skill using `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.
+  - The output includes `direnv exec . bash scripts/validate_skills.sh <skill-name>`
+    or an equivalent focused validation command for each changed skill.
+  - The output says to commit only after validation passes or to report validation
+    results before committing.
+- id: reject-unvalidated-decomposition
+  name: reject unvalidated decomposition
+  prompt: |-
+    Use the decompose-skill skill. Review this plan:
+
+    - Split a large skill into three new skills.
+    - Leave README.md alone.
+    - Skip validation because this is only moving text.
+    - Commit the split immediately.
+
+    Is this acceptable?
+  expected_output: The response rejects the plan because decomposition changes skill
+    discovery and requires README.md links plus focused validation before commit.
+  assertions:
+  - The output rejects or flags the plan as incomplete.
+  - The output says the root `README.md` must be updated with links to the new skills
+    using `src/<skill-name>/SKILL.md` or `src/skill-name/SKILL.md`.
+  - The output rejects skipping validation because decomposition is only moving text.
+  - The output says to run focused validation for each changed or new skill.
+  - The output does not agree to commit immediately before validation passes.

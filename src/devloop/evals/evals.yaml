@@ -1,0 +1,92 @@
+skill_name: devloop
+evals:
+- id: discover-built-in-docs-positive
+  name: discover built in docs positive
+  prompt: 'Use the devloop skill. A user asks: `Teach me how to use devloop in this
+    repo. I know it has built-in documentation, but I do not know which commands are
+    available.` State the first steps you will take before explaining usage.'
+  expected_output: 'The response starts from devloop''s own built-in output: run devloop
+    without arguments, then run available help or docs entry points such as --help,
+    help, docs, or --docs only when present, and report which commands were run.'
+  assertions:
+  - The output includes `Devloop discovery:`.
+  - The output says to run `devloop` without arguments first.
+  - The output says to read or use devloop's built-in output before explaining usage.
+  - The output says to run available help or docs entries after the no-argument command.
+  - The output mentions candidates such as `--help`, `help`, `docs`, or `--docs`.
+  - The output says not to claim an argument exists until the tool output or command
+    result proves it.
+  - The output says to report which devloop commands were run or what each proved.
+- id: reject-hardcoded-docs-first-negative
+  name: reject hardcoded docs first negative
+  prompt: 'Use the devloop skill. Review this plan: `I will skip running devloop because
+    the repository docs are enough. I will summarize the current markdown docs and
+    tell the user which help commands devloop supports from memory.` Is this acceptable?'
+  expected_output: The response rejects the plan because it skips devloop's built-in
+    guidance and hard-codes behavior from docs or memory instead of running the no-argument
+    command and proven help/docs entries.
+  assertions:
+  - The output rejects or flags the proposed plan.
+  - The output says not to skip running devloop when teaching or discovering usage.
+  - The output requires running `devloop` without arguments first.
+  - The output requires using built-in help or docs output as the primary source.
+  - The output says repository docs or source are secondary for gaps or verification.
+  - The output rejects claiming help or docs arguments from memory.
+- id: validation-plan-positive
+  name: validation plan positive
+  prompt: |-
+    Use the devloop skill. Plan deterministic validation for this devloop setup:
+
+    ```toml
+    root = "."
+
+    [watch.app]
+    paths = ["src/**/*.rs"]
+    workflow = "check"
+
+    [process.server]
+    command = ["cargo", "run", "--", "--port", "$PORT"]
+    env = { RUST_LOG = "info" }
+
+    [process.server.readiness]
+    kind = "http"
+    url = "http://127.0.0.1:$PORT/health"
+
+    [workflow.check]
+    steps = [{ run = ["cargo", "check"] }]
+    ```
+
+    The goal is to verify environment interpolation, the readiness probe, and the watched workflow.
+  expected_output: The response uses the Devloop validation shape and includes config,
+    environment source, trigger, expected observation, evidence command, pass condition,
+    and failure condition.
+  assertions:
+  - The output starts or includes `Devloop validation:`.
+  - The output includes `Config:`.
+  - The output includes `Environment source:` and says `PORT` must be in the parent
+    process environment before devloop starts.
+  - The output includes `Trigger:` and specifies a deterministic change under `src/**/*.rs`.
+  - The output includes `Expected observation:` and mentions the `check` workflow
+    or `cargo check`.
+  - The output includes `Evidence command:` with a concrete command or command pattern.
+  - The output includes `Pass condition:` and `Failure condition:`.
+  - The output mentions the readiness URL `http://127.0.0.1:$PORT/health` or the expanded
+    health URL.
+  - The output states or implies that passing validation requires actual command output
+    or observation, not the plan alone.
+- id: runtime-claim-reject-static-only
+  name: runtime claim reject static only
+  prompt: 'Use the devloop skill. Review this proposed validation report: `I read
+    devloop.toml and the workflow looks correct, so watcher reloads, process startup,
+    and readiness probes are validated. No commands were run.` Is this acceptable?'
+  expected_output: The response rejects the report because runtime watcher, process
+    startup, and readiness claims require deterministic runtime evidence.
+  assertions:
+  - The output rejects or flags the proposed validation report.
+  - The output says static inspection alone is insufficient for runtime watcher, process,
+    or readiness behavior.
+  - The output requires a deterministic trigger such as a watched file change, event
+    call, process start, or probe request.
+  - The output requires reporting actual observation or command output.
+  - The output does not accept the claim that validation completed without running
+    commands.

@@ -1,0 +1,45 @@
+skill_name: beads
+evals:
+- id: claim-and-close-positive
+  name: claim and close positive
+  prompt: Use the beads skill. A user asks you to implement a small tracked change.
+    You create Bead `skills-abc`, implement it, run validation successfully, and commit
+    the change. State the Beads lifecycle commands and final report you should use.
+  expected_output: The response claims the Bead with `bd update skills-abc --claim`,
+    records validation or delivery notes, closes the Bead with `bd close skills-abc
+    --reason ...`, and reports the Bead ID and closed state.
+  assertions:
+  - The output includes `bd update skills-abc --claim`.
+  - The output includes `bd update skills-abc --append-notes` or otherwise records
+    validation or delivery evidence in notes.
+  - The output includes `bd close skills-abc --reason`.
+  - The close reason mentions validation and commit or delivery evidence.
+  - The output reports that Bead `skills-abc` is closed or completed.
+- id: reject-unclaimed-open-finished-work
+  name: reject unclaimed open finished work
+  prompt: 'Use the beads skill. Review this task-hygiene report: `I created Bead skills-def,
+    made the code change, validation passed, and I committed it. I did not run bd
+    update --claim and I left the Bead open because the code is already done.` Is
+    this acceptable?'
+  expected_output: The response rejects the report because the Bead was never claimed
+    and completed work was left open. It requires claiming the Bead and closing it
+    with validation and commit evidence.
+  assertions:
+  - The output rejects or flags the report as incomplete Beads hygiene.
+  - The output says the Bead should have been claimed with `bd update skills-def --claim`.
+  - The output says completed validated committed work should not leave the Bead open.
+  - The output requires `bd close skills-def --reason`.
+  - The output says the close reason should include validation and commit or delivery
+    evidence.
+- id: unfinished-work-stays-open
+  name: unfinished work stays open
+  prompt: Use the beads skill. A task is claimed as Bead `skills-ghi`, but validation
+    fails. State what should happen to the Bead before the final response.
+  expected_output: The response keeps the Bead open, appends notes with the validation
+    failure and the next concrete action, and does not close it.
+  assertions:
+  - The output says not to close Bead `skills-ghi` while validation is failing.
+  - The output includes `bd update skills-ghi --append-notes`.
+  - The output says the note should include the validation failure.
+  - The output says the note should include the next concrete action.
+  - The output reports that the Bead remains open or in progress.

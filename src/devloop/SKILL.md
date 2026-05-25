@@ -62,4 +62,4 @@ For reviews, reject plans that rely only on static inspection when the claim is 
 
 - Do not push branches or commit changes unless the user explicitly asks.
 - Do not bypass repository validation.
-- When changing this skill, update `evals/evals.json` with positive and negative eval cases.
+- When changing this skill, update `evals/evals.yaml` with positive and negative eval cases.

@@ -8,7 +8,7 @@ When creating or changing a skill:
 1. Keep `SKILL.md` concise and concrete. Add only instructions the agent must follow.
 2. Do not add README-style explanation, history, or process notes to the skill directory.
 3. Add or update `agents/openai.yaml` with `interface.display_name`, `interface.short_description`, and `interface.default_prompt`.
-4. Add or update `evals/evals.json` using the current `skilpel` scaffolding.
+4. Add or update `evals/evals.yaml` using the current `skilpel` scaffolding.
 5. Ensure model-backed evals run through `scripts/skilpel.yaml` with target and judge `temperature: 0` so results are as deterministic as the runner allows.
 6. Include positive and negative eval cases when the skill changes behavior. Say "positive and negative eval cases" explicitly in plans and reviews.
 7. Design eval prompts as skill-ablation tests: with-skill runs should pass as close to 100% as possible, and without-skill runs should fail as close to 0% as possible.
@@ -30,7 +30,7 @@ When stating a workflow, name these artifacts explicitly:
 
 - `SKILL.md`
 - `agents/openai.yaml` with `interface.display_name`, `interface.short_description`, and `interface.default_prompt`
-- `evals/evals.json`
+- `evals/evals.yaml`
 - `scripts/skilpel.yaml` with target and judge `temperature: 0`
 - positive and negative eval cases
 - skill-ablation eval design: near-100% with-skill, near-0% without-skill
@@ -42,7 +42,9 @@ When stating a workflow, name these artifacts explicitly:
 - no `VERSION` bump for ordinary skill creation or update work
 - `direnv exec . bash scripts/validate_skills.sh <skill-name>`
 
-When reviewing a skill creation or skill change plan, check the required artifacts one by one. Name any missing required artifact by path, including `agents/openai.yaml`, `evals/evals.json`, root `README.md`, `CHANGELOG.md`, and `scripts/skilpel.yaml` validation.
+When reviewing a skill creation or skill change plan, check the required artifacts one by one. Name any missing required artifact by path, including `agents/openai.yaml`, `evals/evals.yaml`, root `README.md`, `CHANGELOG.md`, and `scripts/skilpel.yaml` validation.
+
+When rejecting direct or default `skilpel` execution for skill evals, explicitly say to use `scripts/skilpel.yaml` with target and judge `temperature: 0`.
 
 When a user asks to create a skill while skipping evals, validation, README updates, or commit discipline, reject the skipped steps and still state the full workflow you will follow. In that workflow, explicitly include `scripts/skilpel.yaml` with target and judge temperature `0`, the `[Unreleased]` changelog entry, and no `VERSION` bump. Do not stop at the refusal.
 

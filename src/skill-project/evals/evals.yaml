@@ -1,0 +1,80 @@
+skill_name: skill-project
+evals:
+- id: standalone-project-checklist-positive
+  name: standalone project checklist positive
+  prompt: Use the skill-project skill. I am creating a standalone repository for a
+    set of skills. What concrete files and rules should I put in place before the
+    first PR?
+  expected_output: The response gives a concise project checklist covering src skill
+    layout, README links, evals, per-skill agents/openai.yaml and references/notes.md,
+    reused validation/linking scripts, .envrc and ignored .env, CI validate workflow,
+    provider secret, and safe linking behavior.
+  assertions:
+  - The output says skills should live under `src/<skill-name>/SKILL.md` or an equivalent
+    `src/` skill layout.
+  - The output requires README entries linking to each skill's `SKILL.md`.
+  - The output requires `evals/evals.yaml` with positive and negative eval cases for
+    behavior-changing skills.
+  - The output requires every skill to have `agents/openai.yaml`.
+  - The output requires `references/notes.md` and says textual examples need source
+    notes or quotation/paraphrase/invented status.
+  - The output mentions reusing validation and linking scripts or the validation/linking
+    shape from this repository.
+  - The output requires `skilpel.yaml` target and judge temperature to be `0`.
+  - The output requires `.envrc` with `.env` loading and a non-version-controlled
+    `.env` for local provider keys.
+  - The output requires a GitHub Actions pull-request `validate` job and a GitHub
+    secret for the provider key.
+  - The output says repository `AGENTS.md` should include the skill-ablation eval
+    rule for future skills.
+  - The output says not to link hosted instructions into `~/.claude/CLAUDE.md`.
+- id: standalone-agents-eval-rule-positive
+  name: standalone agents eval rule positive
+  prompt: Use the skill-project skill. I am scaffolding AGENTS.md for a new standalone
+    skill-set repository. What eval rule should I include so future skill evals are
+    meaningful?
+  expected_output: 'The response says AGENTS.md should require skill-ablation eval
+    prompts: with-skill runs should pass near 100%, without-skill runs should fail
+    near 0%, and prompts must not teach the answer, rubric, review shape, concept
+    definition, or expected fault.'
+  assertions:
+  - The output says to put the eval rule in repository `AGENTS.md` or repository-local
+    instructions.
+  - The output says eval prompts should prove skill lift or compare with-skill against
+    without-skill behavior.
+  - The output says with-skill should pass near 100% and without-skill should fail
+    near 0%, or equivalent wording.
+  - The output says not to make prompts self-contained by teaching the answer, rubric,
+    review shape, concept definition, or expected fault.
+  - The output says that behavior belongs in `SKILL.md`.
+- id: reject-claude-top-level-link-negative
+  name: reject claude top level link negative
+  prompt: 'Use the skill-project skill. Review this setup plan: `scripts/link_skills.sh
+    will link all skill directories into ~/.codex/skills and ~/.claude/skills. It
+    will also symlink home/AGENTS.md to ~/.codex/AGENTS.md and ~/.claude/CLAUDE.md
+    so both agents share the same top-level instructions. We will skip agents/openai.yaml
+    until evals exist.` Is this acceptable?'
+  expected_output: The response rejects the plan because it links top-level hosted
+    instructions into Claude and omits required per-skill agents/openai.yaml metadata.
+  assertions:
+  - The output rejects or flags the proposed plan.
+  - The output allows linking skill directories into `~/.codex/skills` and `~/.claude/skills`.
+  - The output forbids linking `home/AGENTS.md` or any top-level instruction file
+    to `~/.claude/CLAUDE.md`.
+  - The output requires every skill to have `agents/openai.yaml`.
+  - The output does not accept delaying `agents/openai.yaml` until evals exist.
+- id: ci-path-filter-negative
+  name: ci path filter negative
+  prompt: 'Use the skill-project skill. Review this CI plan: `The required Skill CI
+    workflow will use pull_request paths-ignore for README.md, home/**, and dotfiles.
+    If those files change, no validate check will run, which is fine because they
+    do not need skill validation.` Is this acceptable?'
+  expected_output: The response rejects path filters that suppress a required validate
+    check and says the workflow should still emit validate while the scope script
+    chooses skip, focused, or full validation.
+  assertions:
+  - The output rejects or flags the CI plan.
+  - The output says a required `validate` check should be emitted for pull requests.
+  - The output says not to rely on path filters that suppress the required workflow
+    check.
+  - The output says the scope script should decide skip, focused, or full validation.
