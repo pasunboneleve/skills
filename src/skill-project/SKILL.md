@@ -17,7 +17,7 @@ When answering, include the concrete files or links involved. For review request
 - Require eval prompts to prove skill lift: with-skill runs should pass as close to 100% as possible, and without-skill runs should fail as close to 0% as possible.
 - Require eval prompts not to teach the review shape, rubric, concept definition, expected fault, or expected answer; that behavior belongs in `SKILL.md`.
 - Add `src/<skill-name>/agents/openai.yaml` to every skill from the start. Do not postpone it until evals exist.
-- Add `src/<skill-name>/agents/notes.md` to every skill; for textual sources, name the source behind each example and say whether the eval text is a quotation, source-model paraphrase, or invented weak passage.
+- Add `src/<skill-name>/references/notes.md` to every skill; for textual sources, name the source behind each example and say whether the eval text is a quotation, source-model paraphrase, or invented weak passage.
 
 ## Shared project files
 
