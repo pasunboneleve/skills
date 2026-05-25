@@ -22,5 +22,10 @@ if ((${#skills[@]} == 0)); then
 fi
 
 for skill in "${skills[@]}"; do
+  if bash scripts/validate_skills.sh "$skill"; then
+    continue
+  fi
+
+  printf 'warning: validation failed for %s; retrying once\n' "$skill" >&2
   bash scripts/validate_skills.sh "$skill"
 done
