@@ -132,8 +132,8 @@
       "assertions": [
         "The output rejects or flags the proposed snippet.",
         "The output identifies `/home/dmvianna/src/projects/chezmoi-config` as machine-specific or user-specific.",
-        "The output states that machine-specific filesystem paths should not be added unless explicitly requested.",
-        "The output requires replacing the path with a repo-relative path, source-relative path, environment variable, or documented placeholder.",
+        "The output says the snippet is not acceptable because it includes a machine-specific filesystem path.",
+        "The output requires replacing the path with a repo-relative path, source-relative path, or environment variable.",
         "The output does not approve keeping the concrete machine path."
       ]
     }
