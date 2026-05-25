@@ -45,14 +45,14 @@
     {
       "id": "remove-warning-success-api-key-guard",
       "name": "remove warning success api key guard",
-      "prompt": "Use the coding skill. Review this proposed patch to a Bash validation wrapper. The original code caught a missing OpenAI key, printed a warning, returned 0, and skipped agent-skills-eval. The proposed patch changes only `return 0` to `return 1`; it still checks OPENAI_API_KEY first, prints a warning, and skips agent-skills-eval. Is that patch acceptable? State the required change.",
-      "expected_output": "The response rejects changing only return 0 to return 1 because the guard still skips the command. It should require removing the guard so agent-skills-eval runs and its missing-key exception fails visibly.",
+      "prompt": "Use the coding skill. Review this proposed patch to a Bash validation wrapper. The original code caught a missing OpenAI key, printed a warning, returned 0, and skipped skilpel. The proposed patch changes only `return 0` to `return 1`; it still checks OPENAI_API_KEY first, prints a warning, and skips skilpel. Is that patch acceptable? State the required change.",
+      "expected_output": "The response rejects changing only return 0 to return 1 because the guard still skips the command. It should require removing the guard so skilpel runs and its missing-key exception fails visibly.",
       "assertions": [
         "The output rejects or flags the proposed patch that only changes return 0 to return 1.",
-        "The output states that the patch is still wrong because it skips agent-skills-eval or replaces command execution with a guard branch.",
-        "The output requires removing the OPENAI_API_KEY guard branch or otherwise running agent-skills-eval directly.",
+        "The output states that the patch is still wrong because it skips skilpel or replaces command execution with a guard branch.",
+        "The output requires removing the OPENAI_API_KEY guard branch or otherwise running skilpel directly.",
         "The output says the missing OPENAI_API_KEY exception should surface or fail hard from the validation command.",
-        "The output does not accept the return-1 guard as sufficient.",
+        "The output says changing only `return 0` to `return 1` is insufficient or does not address the underlying skipped command.",
         "The output does not recommend keeping a warning-and-skip path."
       ]
     },
@@ -84,8 +84,7 @@
         "The output rejects substituting a default timeout and continuing the workflow.",
         "The output rejects reporting validation as passed after the exception.",
         "The output treats the blocked script execution as a failed or incomplete validation run.",
-        "The output frames this as a coding-skill-specific rule or directive.",
-        "The output does not recommend a fallback value as the required fix."
+        "The output frames this as a coding-skill-specific rule or directive."
       ]
     },
     {

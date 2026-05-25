@@ -21,8 +21,8 @@ When answering, include the concrete files or links involved. For review request
 
 ## Shared project files
 
-- Reuse the validation and linking shape from this repository's `scripts/` instead of inventing per-project one-offs: `validate_skills.sh`, `skill_ci_scope.sh`, `run_skill_ci_validation.sh`, `agent-skills-eval.yaml`, and `link_skills.sh`.
-- Keep model-backed evals on an `agent-skills-eval.yaml` config that sets both target and judge `temperature: 0`.
+- Reuse the validation and linking shape from this repository's `scripts/` instead of inventing per-project one-offs: `validate_skills.sh`, `skill_ci_scope.sh`, `run_skill_ci_validation.sh`, `skilpel.yaml`, and `link_skills.sh`.
+- Keep model-backed evals on a `skilpel.yaml` config that sets both target and judge `temperature: 0`.
 - Add `.envrc` with `dotenv_if_exists .env`.
 - Add `.env` to `.gitignore`.
 - Document that local evals need a non-version-controlled `.env` containing the configured model provider key, such as `OPENAI_API_KEY=...`.

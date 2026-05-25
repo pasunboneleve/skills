@@ -9,6 +9,7 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 ### Changed
 
 - Moved skill notes from `agents/notes.md` to `references/notes.md`, updated `skill-project` guidance to use the new location, and clarified `coding` so edits rewrite existing repeated-call multiline strings into one idiomatic multiline literal.
+- Updated skill validation to run `skilpel` directly with its native gates, remove the legacy delta-checking helper, and document the new `scripts/skilpel.yaml` configuration.
 
 ## [2.1.3] - 2026-05-24
 

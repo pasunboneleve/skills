@@ -13,7 +13,7 @@
         "The output requires every skill to have `agents/openai.yaml`.",
         "The output requires `references/notes.md` and says textual examples need source notes or quotation/paraphrase/invented status.",
         "The output mentions reusing validation and linking scripts or the validation/linking shape from this repository.",
-        "The output requires `agent-skills-eval.yaml` target and judge temperature to be `0`.",
+        "The output requires `skilpel.yaml` target and judge temperature to be `0`.",
         "The output requires `.envrc` with `.env` loading and a non-version-controlled `.env` for local provider keys.",
         "The output requires a GitHub Actions pull-request `validate` job and a GitHub secret for the provider key.",
         "The output says repository `AGENTS.md` should include the skill-ablation eval rule for future skills.",
