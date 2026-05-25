@@ -22,6 +22,8 @@ scripts/run_skill_ci_validation.sh
 
 Do not make skills-project CI revalidate unrelated skills for ordinary pull requests. Shared validation infrastructure, cross-cutting configuration, and scope script changes should keep the required job stable, validate script syntax or equivalent static checks, and still run skill validation only for the changed `src/<skill>` directories.
 
+When asked to state the CI behavior for a standalone skills repository, explicitly include the workflow path, pull-request trigger, stable `validate` job, scope script, validation wrapper, smallest affected skill set, and README badge link.
+
 For hybrid projects, include both the programming-language checks and the skills validation.
 
 Make pull requests run the CI workflow. Add `push` on `main` when post-merge validation is needed. Add tag triggers only when the repository actually publishes release artifacts from tags.

@@ -16,6 +16,7 @@ When answering, include the concrete files or links involved. For review request
 - Add `src/<skill-name>/evals/evals.json` with positive and negative eval cases for behavior-changing skills.
 - Require eval prompts to prove skill lift: with-skill runs should pass as close to 100% as possible, and without-skill runs should fail as close to 0% as possible.
 - Require eval prompts not to teach the review shape, rubric, concept definition, expected fault, or expected answer; that behavior belongs in `SKILL.md`.
+- When asked what eval rule belongs in `AGENTS.md`, state all of those points directly: repository-local `AGENTS.md`, skill-ablation or with-skill versus without-skill comparison, near-100% with-skill pass, near-0% without-skill pass, no self-contained prompts, and behavior instructions belong in `SKILL.md`.
 - Add `src/<skill-name>/agents/openai.yaml` to every skill from the start. Do not postpone it until evals exist.
 - Add `src/<skill-name>/references/notes.md` to every skill; for textual sources, name the source behind each example and say whether the eval text is a quotation, source-model paraphrase, or invented weak passage.
 
