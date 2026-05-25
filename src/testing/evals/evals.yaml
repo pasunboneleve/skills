@@ -66,8 +66,9 @@ evals:
   - The output includes the label `Blast radius:`.
   - The output includes the label `Required checks:`.
   - The output includes the label `Skipped broad checks:`.
-  - The output rejects or flags the plan as over-broad.
-  - The output says validation should follow blast radius.
+  - The output says the proposed validation plan is not acceptable or is over-broad.
+  - The output bases the validation scope on the README-only blast radius rather than
+    a habit of running comprehensive checks.
   - The output says README-focused checks are sufficient for the described change.
   - The output says broad unit, integration, skill eval, release, or package checks
     are outside scope unless a dependency proves otherwise.
