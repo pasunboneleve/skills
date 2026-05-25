@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.1.4] - 2026-05-25
+
 ### Changed
 
 - Moved skill notes from `agents/notes.md` to `references/notes.md`, updated `skill-project` guidance to use the new location, and clarified `coding` so edits rewrite existing repeated-call multiline strings into one idiomatic multiline literal.

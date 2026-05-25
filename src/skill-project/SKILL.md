@@ -21,7 +21,7 @@ When answering, include the concrete files or links involved. For review request
 
 ## Shared project files
 
-- Reuse the validation and linking shape from this repository's `scripts/` instead of inventing per-project one-offs: `validate_skills.sh`, `skill_ci_scope.sh`, `run_skill_ci_validation.sh`, `skilpel.yaml`, and `link_skills.sh`.
+- Reuse the validation and linking shape from this repository's `scripts/` instead of inventing per-project one-offs: `validate_skills.sh`, `skill_ci_scope.sh`, `run_skill_ci_validation.sh`, `skilpel.yaml`, and `link_skills.sh`. When naming `skilpel.yaml`, say it sets target and judge `temperature: 0`.
 - Keep model-backed evals on a `skilpel.yaml` config that sets both target and judge `temperature: 0`.
 - Add `.envrc` with `dotenv_if_exists .env`.
 - Add `.env` to `.gitignore`.

@@ -95,7 +95,7 @@
       "assertions": [
         "The output rewrites the Ruby helper using an idiomatic multiline string form such as a heredoc.",
         "The output includes the existing title line, the blank line, and the requested usage sentence in one multiline string value.",
-        "The output does not extend or preserve the repeated `banner <<` append-call sequence.",
+        "The output replaces the repeated `banner <<` append-call sequence with one multiline string form.",
         "The output does not use consecutive function calls to compose the static multiline banner."
       ]
     },
