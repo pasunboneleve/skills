@@ -6,6 +6,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.1.5] - 2026-05-25
+
 ### Changed
 
 - Converted skill eval definitions from `evals/evals.json` to `evals/evals.yaml`, updated skill creation guidance to use the YAML eval format, and tightened validation-facing guidance for documentation structure, changelog release checks, and process-global test isolation.
