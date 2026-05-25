@@ -87,6 +87,8 @@ evals:
     or readiness behavior.
   - The output requires a deterministic trigger such as a watched file change, event
     call, process start, or probe request.
+  - The output requires reporting the exact trigger together with expected and actual
+    observations.
   - The output requires reporting actual observation or command output.
   - The output does not accept the claim that validation completed without running
     commands.

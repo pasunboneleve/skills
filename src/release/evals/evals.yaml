@@ -28,6 +28,10 @@ evals:
     workflow is pending and requires that workflow to pass for the merged release
     commit first.
   assertions:
+  - The output includes `Required CI gate status:` and identifies it as `post-merge
+    main CI`.
+  - The output uses the exact gate name `post-merge main CI`.
+  - The output says the required CI gate is not green yet.
   - The output says not to tag yet.
   - The output identifies the separate post-merge main workflow as part of the required
     CI gate.

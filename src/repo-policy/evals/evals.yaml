@@ -9,7 +9,8 @@ evals:
     reach main through pull requests, and the direct-main exception is limited to
     the initial push for a fresh new repository.
   assertions:
-  - The output says to configure `main` so direct pushes are blocked or rejected.
+  - The output says to configure `main` so all direct pushes are blocked or rejected,
+    not merely restricted to selected users or teams.
   - The output says changes should reach `main` through pull requests.
   - The output mentions branch protection or rulesets.
   - The output limits the direct `main` push exception to the initial push for creating

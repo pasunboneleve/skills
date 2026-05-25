@@ -58,6 +58,8 @@ Devloop validation:
 
 For reviews, reject plans that rely only on static inspection when the claim is about runtime watcher, process, event, browser reload, readiness, or liveness behavior.
 
+When rejecting a static-only runtime validation claim, explicitly name a deterministic runtime trigger that would be required, such as a watched file change, event endpoint call, process start, or probe request. Also require actual observation or command output before saying validation passed.
+
 ## Boundaries
 
 - Do not push branches or commit changes unless the user explicitly asks.
