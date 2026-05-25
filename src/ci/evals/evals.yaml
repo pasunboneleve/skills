@@ -53,8 +53,8 @@ evals:
   - The output says not to suppress a required workflow with `paths-ignore`.
   - The output says skip, focused, or full validation decisions should happen inside
     the job while preserving a stable required check.
-  - The output says skills CI should validate only the smallest affected skill set
-    or otherwise avoid revalidating unrelated changes.
+  - The output says the replacement should avoid unnecessary work by deciding based
+    on affected files while keeping validation decisions inside the required job.
   - The output requires fixing the README badge link so it points to the workflow
     runs page.
   - The output requires the badge link to include a default-branch query.

@@ -192,8 +192,8 @@ evals:
   - The output rejects or flags the test strategy as not change-friendly.
   - The output says process-global mutation such as environment, clock, working directory,
     or singleton registry changes should be isolated in a small helper.
-  - The output says serialization should be scoped to tests that need global mutation,
-    rather than making the whole suite serial as the primary fix.
+  - The output rejects running the whole suite serially as the primary fix and recommends
+    isolated or parallel-safe handling for shared global state.
   - The output rejects mocking private retry-plan builders, private queue-drain functions,
     or internal implementation details.
   - The output recommends testing behavior at a useful public boundary and faking
