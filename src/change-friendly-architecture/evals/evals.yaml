@@ -93,10 +93,11 @@ evals:
     when the file gathers unrelated reasons to change.
   - The output recommends splitting by behavior, use case, owner, or focused boundary
     rather than by the broad customer noun alone.
-  - The output preserves each workflow's visible local sequence or composition point
-    instead of recommending pass-through modules for every step.
-  - The output allows narrow explicit interfaces only where real coordination between
-    workflows is needed.
+  - The output preserves separate workflow boundaries, visible local sequences, or
+    focused workflow modules instead of consolidating every step into the broad noun
+    file.
+  - The output recommends explicit inputs and outputs, narrow interfaces, or clear
+    boundaries for the separated workflows instead of a broad shared interface.
 - id: reject-bare-callsite-boilerplate
   name: reject bare callsite boilerplate
   prompt: 'Use the change-friendly-architecture skill. Review this implementation

@@ -69,6 +69,8 @@ evals:
     still need changes.
   assertions:
   - The output rejects or flags closing the task as fully documented.
+  - The output says not to close the task until the CLI help and man page updates
+    are made.
   - The output requires updating the command's `--help` text for the changed flag
     behavior.
   - The output requires updating the man page because it exists and describes the

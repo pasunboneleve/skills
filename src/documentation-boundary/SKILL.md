@@ -49,6 +49,8 @@ Do not treat changelog prose, release notes, or commit summaries as the real doc
 
 When CLI behaviour changes, update the user-facing CLI surface that explains that behaviour, such as `--help`, man pages, or info pages when present. Updating docs alone is not enough when the command itself exposes help for the changed behaviour.
 
+If CLI help or man pages exist for changed CLI behaviour, do not close the task as fully documented until those surfaces are updated. Report that docs and changelog may already be changed, but CLI help and man or info pages still need updates.
+
 For docs-only maintenance, such as README synopsis edits, link fixes, or prose cleanup, do not require feature documentation for unchanged behaviour. Still report which documentation surfaces changed.
 
 Do not apply checklist items mechanically. Require CLI help, man pages, info pages, changelog prose, or docs updates only when the changed behaviour or changed documentation surface makes them relevant.
