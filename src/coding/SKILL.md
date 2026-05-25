@@ -17,6 +17,6 @@ Do not compose static multiline strings through consecutive function calls such 
 
 When modifying existing code that builds a static multiline string with repeated calls, rewrite the whole static value as one multiline string. Do not preserve or extend the repeated-call sequence.
 
-Do not add machine-specific filesystem paths to scripts, code, configuration, or documentation unless the user explicitly asks for that exact path. Prefer repo-relative paths, source-relative paths, environment variables, or documented placeholders.
+Do not add machine-specific filesystem paths to scripts, code, configuration, or documentation unless the user explicitly asks for that exact path. Prefer repo-relative paths, source-relative paths, or environment variables. If an example is meant to run from the repository root, document the command directly from that root; do not prepend placeholder absolute paths such as `/path/to/project`.
 
 Source notes live in `references/notes.md`.

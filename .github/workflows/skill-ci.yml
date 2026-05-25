@@ -35,6 +35,9 @@ jobs:
             "${{ github.event.pull_request.base.sha }}" \
             "${{ github.event.before }}" >> "$GITHUB_OUTPUT"
 
+      - name: Validate shell scripts
+        run: bash -n scripts/*.sh
+
       - name: Report skipped skill validation
         if: steps.skill-scope.outputs.mode == 'skip'
         run: echo "No changed src/ skill directories detected; skipping skill validation."
@@ -45,4 +48,6 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SKILL_VALIDATION_MODE: ${{ steps.skill-scope.outputs.mode }}
           SKILL_VALIDATION_TARGETS: ${{ steps.skill-scope.outputs.skills }}
+          SKILPEL_LOG_FORMAT: pretty
+          SKILPEL_OUTPUT: text
         run: scripts/run_skill_ci_validation.sh

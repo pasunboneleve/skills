@@ -37,15 +37,6 @@ if ((${#changed_files[@]} == 0)); then
   exit 0
 fi
 
-for path in "${changed_files[@]}"; do
-  case "$path" in
-    .github/workflows/skill-ci.yml|scripts/*)
-      echo "mode=full"
-      exit 0
-      ;;
-  esac
-done
-
 declare -A seen_skills=()
 skills=()
 

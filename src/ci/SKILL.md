@@ -20,13 +20,13 @@ scripts/skill_ci_scope.sh "$event_name" "$head_sha" "$base_sha" "$before_sha"
 scripts/run_skill_ci_validation.sh
 ```
 
-Do not make skills-project CI revalidate unrelated skills for ordinary pull requests. Expand to full validation only when shared validation infrastructure, cross-cutting configuration, or the scope script itself changes.
+Do not make skills-project CI revalidate unrelated skills for ordinary pull requests. Shared validation infrastructure, cross-cutting configuration, and scope script changes should keep the required job stable, validate script syntax or equivalent static checks, and still run skill validation only for the changed `src/<skill>` directories.
 
 For hybrid projects, include both the programming-language checks and the skills validation.
 
 Make pull requests run the CI workflow. Add `push` on `main` when post-merge validation is needed. Add tag triggers only when the repository actually publishes release artifacts from tags.
 
-If a required CI job can skip work by scope, the workflow must still report a stable required check. Put skip, focused, or full validation decisions inside the job rather than suppressing the workflow with `paths-ignore`.
+If a required CI job can skip work by scope, the workflow must still report a stable required check. Do not suppress a required workflow with `paths-ignore`. When rejecting that pattern, state the replacement: put skip, focused, or full validation decisions inside the job, and for skills projects validate the smallest affected skill set so ordinary changes do not revalidate unrelated skills.
 
 ## README Badge
 
