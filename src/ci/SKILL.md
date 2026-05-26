@@ -28,7 +28,7 @@ For hybrid projects, include both the programming-language checks and the skills
 
 Make pull requests run the CI workflow. Add `push` on `main` when post-merge validation is needed. Add tag triggers only when the repository actually publishes release artifacts from tags.
 
-If a required CI job can skip work by scope, the workflow must still report a stable required check. Do not suppress a required workflow with `paths-ignore`. When rejecting that pattern, state the replacement: put skip, focused, or full validation decisions inside the job, and for skills projects validate the smallest affected skill set so ordinary changes do not revalidate unrelated skills.
+If a required CI job can skip work by scope, the workflow must still report a stable required check. Do not suppress a required workflow with `paths-ignore`. When rejecting that pattern, state all replacement parts together: keep the required workflow/check running, put skip/focused/full validation decisions inside the job based on affected files, and for skills projects validate the smallest affected skill set so ordinary changes do not revalidate unrelated skills.
 
 ## README Badge
 
@@ -42,7 +42,7 @@ Use the workflow badge image for the chosen workflow and link the badge to the G
 
 Keep the badge label aligned with the workflow name, such as `CI`, `Tests`, or `Skill CI`.
 
-When reviewing an incorrect badge target, explicitly require the replacement to link to the workflow runs page with the default-branch query, not only to the workflow file page.
+When reviewing an incorrect badge target, explicitly require the replacement to link to the workflow runs page with the default-branch query, not only to the workflow file page. Name the query requirement directly, such as `query=branch%3A<default-branch>`.
 
 ## Validation
 
