@@ -56,9 +56,8 @@ evals:
 - id: reject-broad-validation-by-habit
   name: reject broad validation by habit
   prompt: 'Use the testing skill. Review this validation plan: `This PR changes only
-    README.md. I will run all unit tests, integration tests, skill evals, release
-    checks, and package builds because validation should always be comprehensive.`
-    Is it acceptable?'
+    README.md. I will run unit tests, integration tests, skill evals, release checks,
+    and package builds to be extra cautious.` Is it acceptable?'
   expected_output: The response rejects the plan because it ignores blast radius.
     It requires README-focused validation and a note explaining that broad suites
     are outside scope for the docs-only change.

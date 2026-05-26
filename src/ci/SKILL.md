@@ -42,6 +42,8 @@ Use the workflow badge image for the chosen workflow and link the badge to the G
 
 Keep the badge label aligned with the workflow name, such as `CI`, `Tests`, or `Skill CI`.
 
+When reviewing an incorrect badge target, explicitly require the replacement to link to the workflow runs page with the default-branch query, not only to the workflow file page.
+
 ## Validation
 
 After changing CI, validate at the narrowest useful boundary:

@@ -65,10 +65,10 @@ evals:
   - The output does not accept delaying `agents/openai.yaml` until evals exist.
 - id: ci-path-filter-negative
   name: ci path filter negative
-  prompt: 'Use the skill-project skill. Review this CI plan: `The required Skill CI
-    workflow will use pull_request paths-ignore for README.md, home/**, and dotfiles.
-    If those files change, no validate check will run, which is fine because they
-    do not need skill validation.` Is this acceptable?'
+  prompt: 'Use the skill-project skill. Review this CI plan: `The Skill CI workflow
+    will use pull_request paths-ignore for README.md, home/**, and dotfiles to keep
+    routine metadata changes fast. Skill source changes still run the usual validation.`
+    Is this acceptable?'
   expected_output: The response rejects path filters that suppress a required validate
     check and says the workflow should still emit validate while the scope script
     chooses skip, focused, or full validation.

@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Tightened eval prompts that leaked expected review failures and clarified CI badge review guidance for default-branch workflow run links.
+
 ## [2.1.5] - 2026-05-25
 
 ### Changed

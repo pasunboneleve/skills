@@ -19,9 +19,10 @@ evals:
   - The output says to report which devloop commands were run or what each proved.
 - id: reject-hardcoded-docs-first-negative
   name: reject hardcoded docs first negative
-  prompt: 'Use the devloop skill. Review this plan: `I will skip running devloop because
-    the repository docs are enough. I will summarize the current markdown docs and
-    tell the user which help commands devloop supports from memory.` Is this acceptable?'
+  prompt: 'Use the devloop skill. Review this plan: `I will prepare the devloop
+    usage guide from README.md, docs/development.md, and a couple of command names
+    I have seen in previous projects. That should be enough to answer the user quickly.`
+    Is this acceptable?'
   expected_output: The response rejects the plan because it skips devloop's built-in
     guidance and hard-codes behavior from docs or memory instead of running the no-argument
     command and proven help/docs entries.

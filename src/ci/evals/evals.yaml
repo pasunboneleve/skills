@@ -40,11 +40,10 @@ evals:
   - The badge link points to the workflow runs page for the default branch.
 - id: reject-path-ignore-required-ci-negative
   name: reject path ignore required ci negative
-  prompt: 'Use the ci skill. Review this CI plan: `Add .github/workflows/ci.yml, but
-    use pull_request.paths-ignore for README.md, docs/**, and scripts/** so the required
-    check does not run for those PRs. If the workflow is skipped, GitHub can still
-    merge small docs and script changes faster. The README badge can point to the
-    workflow file page without a branch query.` Is this acceptable?'
+  prompt: 'Use the ci skill. Review this CI plan: `Add .github/workflows/ci.yml
+    with pull_request paths-ignore for README.md, docs/**, and scripts/** to avoid
+    spending CI minutes on small non-code PRs. The README badge will point at the
+    workflow file page.` Is this acceptable?'
   expected_output: The response rejects suppressing the required workflow with paths-ignore
     and requires a stable check with skip decisions inside the job. It also requires
     the README badge to link to workflow runs filtered to the default branch.
