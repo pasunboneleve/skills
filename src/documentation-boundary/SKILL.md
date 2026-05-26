@@ -69,12 +69,13 @@ Apply it to:
 
 ## Validation
 
-Before completion, report which surfaces changed:
+Before completion, report which surfaces changed by filling this checklist:
 
-- README synopsis
-- docs
-- CLI help
-- man or info pages
-- changelog
+Documentation surfaces:
+- [ ] README synopsis
+- [ ] docs
+- [ ] CLI help
+- [ ] man or info pages
+- [ ] changelog prose
 
-If behaviour changed and no documentation surface changed, explicitly say why.
+If user-facing behaviour changed and docs, CLI help, man pages, and info pages are all unchanged, say whether that is acceptable and why.

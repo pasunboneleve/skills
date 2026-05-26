@@ -8,13 +8,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ### Changed
 
-- Tightened eval prompts that leaked expected review failures and clarified CI badge review guidance for default-branch workflow run links.
+- Tightened eval prompts that leaked expected review failures, clarified CI badge review guidance for default-branch workflow run links, and made documentation-boundary surface reporting concise and explicit.
 
 ## [2.1.5] - 2026-05-25
 
 ### Changed
 
-- Converted skill eval definitions from `evals/evals.json` to `evals/evals.yaml`, updated skill creation guidance to use the YAML eval format, ran focused CI skill validation one skill at a time with one retry for transient eval variance, and tightened validation-facing guidance for documentation structure, changelog release checks, and process-global test isolation.
+- Converted skill eval definitions from `evals/evals.json` to `evals/evals.yaml`, updated skill creation guidance to use the YAML eval format, ran focused CI skill validation one skill at a time, and tightened validation-facing guidance for documentation structure, changelog release checks, and process-global test isolation.
 
 ## [2.1.4] - 2026-05-25
 

@@ -20,8 +20,7 @@ evals:
 - id: report-documentation-surfaces
   name: report documentation surfaces
   prompt: Use the documentation-boundary skill. You changed docs/development/local-dev.md,
-    updated README.md links, and did not change CLI help, man pages, info pages, or
-    changelog prose. State the documentation boundary report.
+    and updated README.md links. State the documentation boundary report.
   expected_output: The response reports README synopsis and docs changed, and explicitly
     reports that CLI help, man or info pages, and changelog did not change. It does
     not imply the README edit alone was the documentation update.
@@ -31,7 +30,7 @@ evals:
   - The output reports that CLI help did not change.
   - The output reports that man or info pages did not change.
   - The output reports that changelog prose did not change.
-  - The output does not claim the README edit alone was the full documentation update.
+  - The output reports README synopsis and docs as separate documentation surfaces.
 - id: reject-readme-as-manual
   name: reject README as manual
   prompt: 'Use the documentation-boundary skill. Review this documentation change
