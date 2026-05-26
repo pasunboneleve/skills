@@ -106,6 +106,8 @@ When reviewing a shared helper proposed mainly to remove duplication across unre
 
 When reviewing restrictive types or schemas, evaluate how many files must change for the next plausible behaviour. If the representation is type-safe or wire-compatible but still amplifies ordinary changes across many modules, reject it as not change-friendly and recommend a stable boundary, local translation layer, or behaviour-oriented composition.
 
+For domain types that encode a cartesian product of independent dimensions, explicitly say type safety alone is insufficient when future additions would force constructor and pattern-match churn. The replacement recommendation must include both parts: separate the independent dimensions, and localize behavior-specific decisions through composition, policies, interfaces, adapters, or a translation boundary.
+
 When a design contains both a churn-prone shared schema and a precise boundary schema, separate them explicitly. Reject the schema that spreads ordinary product changes across unrelated producers and consumers, while preserving precise record schemas that enforce a stable API or real/mock runtime parity.
 
 When comparing alternatives, explicitly name which option is more change-friendly, why the rejected option widens future changes, and what replacement shape would localize the change.
@@ -114,7 +116,10 @@ When reviewing workflow structure, distinguish visible composition from scatter.
 
 When reviewing a broad function, module, or file, reject boundaries that group unrelated workflows around one noun or owner. Split by behavior, use case, or true ownership while preserving each workflow's visible composition point. Connect workflows through narrow explicit interfaces only where real coordination is needed.
 
+For broad noun-based modules, explicitly say the noun is not enough cohesion when the module gathers unrelated reasons to change. Preserve each workflow's visible local sequence, and add narrow explicit interfaces only for real coordination between workflows.
+
 When reviewing tests that mutate process-global state such as time, environment, or working directory, require that mutation to be isolated in a small helper and serialized when parallel tests would interfere.
+Do not accept serializing the whole test suite as the primary fix for process-global mutation; scope serialization to the tests or helper that actually mutates global state.
 
 ## Review checklist
 

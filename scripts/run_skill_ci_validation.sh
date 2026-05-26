@@ -21,4 +21,6 @@ if ((${#skills[@]} == 0)); then
   exit 1
 fi
 
-bash scripts/validate_skills.sh "${skills[@]}"
+for skill in "${skills[@]}"; do
+  bash scripts/validate_skills.sh "$skill"
+done

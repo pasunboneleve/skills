@@ -1,0 +1,123 @@
+skill_name: documentation-boundary
+evals:
+- id: readme-only-is-not-docs-complete
+  name: readme only is not docs complete
+  prompt: Use the documentation-boundary skill. A command-line flag changed behavior.
+    The proposed update edits only README.md with a short mention and then claims
+    documentation is complete. Review the plan.
+  expected_output: The response rejects claiming documentation is complete from README-only
+    changes. It treats README as a synopsis and requires updating the real documentation
+    surface for the behavior change, such as docs, CLI help, man pages, or info pages
+    when present, or explicitly explaining why none applies.
+  assertions:
+  - The output rejects or flags the claim that documentation is complete from only
+    a `README.md` edit.
+  - The output says `README.md` is a synopsis rather than the full documentation.
+  - The output requires updating a real documentation surface for the behavior change,
+    such as `docs/`, CLI help, man pages, or info pages when present.
+  - The output allows no real documentation update only with an explicit reason.
+  - The output requires reporting which documentation surfaces changed.
+- id: report-documentation-surfaces
+  name: report documentation surfaces
+  prompt: Use the documentation-boundary skill. You changed docs/development/local-dev.md,
+    and updated README.md links. State the documentation boundary report.
+  expected_output: The response reports README synopsis and docs changed, and explicitly
+    reports that CLI help, man or info pages, and changelog did not change. It does
+    not imply the README edit alone was the documentation update.
+  assertions:
+  - The output reports that the README synopsis changed.
+  - The output reports that `docs/` changed.
+  - The output reports that CLI help did not change.
+  - The output reports that man or info pages did not change.
+  - The output reports that changelog prose did not change.
+  - The output reports README synopsis and docs as separate documentation surfaces.
+- id: reject-readme-as-manual
+  name: reject README as manual
+  prompt: 'Use the documentation-boundary skill. Review this documentation change
+    before I commit it: I copied the deployment guide, troubleshooting catalog, full
+    command reference, and failure-drill runbook into README.md so users can find
+    everything from the repository front page. The original docs files still exist.'
+  expected_output: The response rejects or flags the README expansion. It treats README.md
+    as a synopsis rather than the full documentation, keeps only concise entry-point
+    material there, and sends durable deployment, troubleshooting, command reference,
+    and runbook content back to docs, CLI help, man pages, info pages, or dedicated
+    references. It reports that README synopsis and docs changed, and does not claim
+    README alone is the real documentation.
+  assertions:
+  - The output rejects or flags copying the deployment guide, troubleshooting catalog,
+    command reference, and failure-drill runbook into README.md.
+  - The output says README.md should remain a synopsis, quick entry point, or short
+    overview rather than the full documentation.
+  - The output moves long procedural detail, troubleshooting, deployment detail, command
+    reference, or failure drills to docs, help text, man pages, info pages, or dedicated
+    references.
+  - The output preserves essential first-run or relevance information in README rather
+    than removing README usefulness entirely.
+  - The output reports which documentation surfaces changed, including README synopsis
+    and docs.
+- id: require-cli-help-for-cli-behavior
+  name: require CLI help for CLI behavior
+  prompt: 'Use the documentation-boundary skill. Review this release note before I
+    close the task: the `cache clean --stale` flag now marks entries for delayed cleanup
+    instead of deleting them immediately. I updated docs/cache.md and CHANGELOG.md.
+    The command has built-in help and a man page, but I did not touch them.'
+  expected_output: The response rejects closing the task as documented. It requires
+    updating the relevant CLI help and man page because the CLI behavior changed and
+    those surfaces exist. It treats docs/cache.md and the changelog as insufficient
+    by themselves, and reports docs and changelog changed while CLI help and man pages
+    still need changes.
+  assertions:
+  - The output rejects or flags closing the task as fully documented.
+  - The output says not to close the task until the CLI help and man page updates
+    are made.
+  - The output requires updating the command's `--help` text for the changed flag
+    behavior.
+  - The output requires updating the man page because it exists and describes the
+    command behavior.
+  - The output does not treat `docs/cache.md` alone as enough for the CLI behavior
+    change.
+  - The output reports that docs and changelog changed while CLI help and man pages
+    still need changes.
+- id: reject-changelog-as-docs
+  name: reject changelog as docs
+  prompt: 'Use the documentation-boundary skill. Review this plan before implementation:
+    the next release introduces a new config file format and users must migrate existing
+    projects. I plan to put the migration instructions in CHANGELOG.md and the release
+    notes only, because people read those during upgrades.'
+  expected_output: The response rejects relying on changelog prose or release notes
+    as the real documentation update. It says migration behavior needs an appropriate
+    documentation surface such as docs, CLI help, README links, man pages, or info
+    pages when relevant. It may keep the changelog entry as release history, but requires
+    real documentation or an explicit no-surface rationale, and reports changelog
+    changed while docs and other documentation surfaces still need attention.
+  assertions:
+  - The output rejects or flags relying only on CHANGELOG.md or release notes for
+    the migration behavior change.
+  - The output says changelog prose or release notes are not the real documentation
+    surface for changed behavior.
+  - The output requires an appropriate documentation surface such as docs, CLI help,
+    README links, man pages, or info pages when relevant.
+  - The output allows the changelog entry to remain as release history without counting
+    it as sufficient documentation.
+  - The output says the changelog can keep a brief note or release-history entry
+    while docs or other real documentation surfaces still need attention.
+- id: do-not-overrequire-docs-for-docs-only-maintenance
+  name: do not overrequire docs for docs-only maintenance
+  prompt: 'Use the documentation-boundary skill. Review this closeout note: I fixed
+    broken README.md links, shortened duplicated README prose, and adjusted docs/index.md
+    navigation labels. The checklist template says every change needs docs, CLI help,
+    man page, and changelog updates before closure.'
+  expected_output: The response does not require additional feature documentation
+    because this is docs-only maintenance with no behavior change. It reports README
+    synopsis and docs changed, and reports that CLI help, man or info pages, and changelog
+    did not change. It distinguishes docs-only maintenance from behavior changes that
+    require real documentation surfaces.
+  assertions:
+  - The output says no additional feature or behavior documentation is required for
+    this docs-only maintenance.
+  - The output rejects or narrows the checklist template's claim that CLI help, man
+    page, and changelog updates are always required.
+  - The output reports that the README synopsis changed.
+  - The output reports that docs changed.
+  - The output reports that CLI help did not change.
+  - The output reports that man or info pages and changelog prose did not change.

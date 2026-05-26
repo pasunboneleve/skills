@@ -15,6 +15,10 @@ README.md is the synopsis. docs/ is the memory.
 
 Do not put every design decision, tutorial, runbook, or architecture explanation in README.md. Do not hide essential first-run information deep in docs/.
 
+When moving detailed setup or validation material out of README.md, explicitly keep
+minimal first-run and validation commands in README.md and link from those short
+sections to the detailed docs.
+
 ## README.md owns
 
 README.md should answer, quickly:
@@ -127,6 +131,9 @@ Create docs only when there is real content.
 When a documentation plan asks whether to create directories for possible
 future content, answer that part directly. Reject future-only directories
 until there is a concrete file to place in them.
+
+If asked whether to create `docs/design/`, `docs/research/`, or any other docs
+directory for possible future content, reject each future-only directory by name.
 
 ## Architecture docs
 

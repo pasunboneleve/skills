@@ -1,0 +1,69 @@
+skill_name: changelog
+evals:
+- id: normal-change-unreleased-no-version
+  name: normal change unreleased no version
+  prompt: Use the changelog skill. A normal implementation commit adds OpenAI metadata
+    for a skill in a project with CHANGELOG.md and VERSION. State the changelog and
+    version handling.
+  expected_output: The response says to add the packaging metadata change under [Unreleased],
+    not bump VERSION, and not create a dated version section before release.
+  assertions:
+  - The output says to add or update an entry under `[Unreleased]`.
+  - The output says not to bump `VERSION` for the ordinary implementation commit.
+  - The output says not to create a dated version section before release.
+  - The output identifies the change as packaging metadata or patch-level impact.
+- id: release-mode-finalizes-version
+  name: release mode finalizes version
+  prompt: Use the changelog skill. A release is being prepared. CHANGELOG.md has entries
+    under [Unreleased], VERSION is still the last released version, and the release
+    version is 2.3.0 for today's release. State the required changelog and VERSION
+    edits.
+  expected_output: The response moves [Unreleased] entries to [2.3.0] - today's date,
+    recreates an empty [Unreleased], updates VERSION to 2.3.0, and verifies changelog,
+    VERSION, release notes, and tag version agree.
+  assertions:
+  - The output says to move `[Unreleased]` entries to `[2.3.0] -` with a date.
+  - The output says to recreate a fresh empty `[Unreleased]` section.
+  - The output says to update `VERSION` to `2.3.0`.
+  - The output says to verify that `CHANGELOG.md` and `VERSION` agree before release
+    readiness.
+- id: reverted-change-removes-entry
+  name: reverted change removes entry
+  prompt: Use the changelog skill. A feature was added under [Unreleased], but before
+    release the code change is fully reverted. Also state what to do if only part
+    of the feature is reverted. What must happen to the changelog?
+  expected_output: The response says to remove the unreleased entry for the fully
+    reverted feature, or narrow it if only part was reverted, so [Unreleased] reflects
+    the net state that will ship.
+  assertions:
+  - The output says to remove the `[Unreleased]` entry for the fully reverted feature.
+  - The output says partial reverts should narrow or update the entry.
+  - The output does not say to keep the transient reverted feature as shipped behavior.
+- id: reject-ordinary-version-bump
+  name: reject ordinary version bump
+  prompt: 'Use the changelog skill. Review this ordinary implementation plan: `Add
+    a bug fix entry, bump VERSION from 1.4.0 to 1.4.1, and create ## [1.4.1] - 2026-05-22
+    in the same feature commit.` Is this acceptable before release?'
+  expected_output: The response rejects the plan because ordinary implementation commits
+    should add the bug fix under [Unreleased] and defer VERSION bumps and dated version
+    sections to release mode.
+  assertions:
+  - The output rejects or flags the plan as unacceptable before release.
+  - The output says not to bump `VERSION` in the ordinary feature commit.
+  - The output says not to create the dated version section until release mode.
+- id: reject-diff-only-changelog
+  name: reject diff only changelog
+  prompt: 'Use the changelog skill. Review this changelog plan: replace the written
+    [Unreleased] entries with a single GitHub compare link and tell readers to inspect
+    the diff for details. Is this acceptable?'
+  expected_output: The response rejects the plan because CHANGELOG.md must remain
+    a human-readable standalone text file with meaningful prose entries. Compare links
+    may supplement entries, but must not replace release notes with raw diffs, commit
+    lists, issue lists, or version-control summaries.
+  assertions:
+  - The output rejects or flags the diff-only changelog plan.
+  - The output says `CHANGELOG.md` should remain human-readable or standalone.
+  - The output says written changelog entries or release notes must be preserved.
+  - The output says compare links may supplement but not replace prose entries.
+  - The output rejects relying on raw diffs, commit lists, issue lists, or version-control
+    summaries as the changelog body.

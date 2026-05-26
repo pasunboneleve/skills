@@ -13,7 +13,7 @@ When answering, include the concrete files or links involved. For review request
 
 - Put skills under `src/<skill-name>/SKILL.md`; do not mix skill directories with `scripts/`, `home/`, docs, or project metadata.
 - Add each skill to `README.md` with a link to `src/<skill-name>/SKILL.md`.
-- Add `src/<skill-name>/evals/evals.json` with positive and negative eval cases for behavior-changing skills.
+- Add `src/<skill-name>/evals/evals.yaml` with positive and negative eval cases for behavior-changing skills.
 - Require eval prompts to prove skill lift: with-skill runs should pass as close to 100% as possible, and without-skill runs should fail as close to 0% as possible.
 - Require eval prompts not to teach the review shape, rubric, concept definition, expected fault, or expected answer; that behavior belongs in `SKILL.md`.
 - When asked what eval rule belongs in `AGENTS.md`, state all of those points directly: repository-local `AGENTS.md`, skill-ablation or with-skill versus without-skill comparison, near-100% with-skill pass, near-0% without-skill pass, no self-contained prompts, and behavior instructions belong in `SKILL.md`.
