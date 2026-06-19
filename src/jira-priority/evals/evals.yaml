@@ -1,0 +1,159 @@
+skill_name: jira-priority
+evals:
+- id: cosmetic-lowest
+  name: cosmetic defect is Lowest
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "The login button label reads 'Logi In' instead of 'Login'. All features
+    work normally and no user is blocked from completing any task."
+  expected_output: The response assigns Lowest priority because the issue is cosmetic and does not prevent use. Neither escalation rule is satisfied.
+  assertions:
+  - The output states the base priority as Lowest.
+  - The output identifies the issue as cosmetic or as not preventing use.
+  - The output states the final priority as Lowest.
+
+- id: one-customer-part-low
+  name: one customer partial block is Low
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "A single tenant reports that CSV export for timesheets is broken.
+    They can still view, enter, and approve timesheets normally.
+    An Excel export option is available as an alternative."
+  expected_output: The response states base priority as Low because one customer is blocked on part of their work. The no-workaround rule is not satisfied because an alternative exists. The critical-process rule is not satisfied. Final priority is Low.
+  assertions:
+  - The output states the base priority as Low.
+  - The output states the no-workaround rule is not satisfied because a workaround or alternative exists.
+  - The output states the critical-process rule is not satisfied.
+  - The output states the final priority as Low.
+
+- id: one-customer-all-medium
+  name: one customer fully blocked is Medium
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "One tenant reports that every page in the application renders as a blank
+    white screen for all their users. No screen is accessible — not the
+    dashboard, not reports, not any module. All features are unavailable to
+    them. The tenant's own administrator can restore the working state by
+    selecting a fallback theme from the account settings panel — this has not
+    been done yet. Other tenants are unaffected."
+  expected_output: The response states base priority as Medium because one customer is blocked on all their work. The no-workaround rule is not satisfied because a workaround exists (the tenant admin can restore the theme). Final priority is Medium.
+  assertions:
+  - The output states the base priority as Medium.
+  - The output identifies the condition as one customer blocked on all their work.
+  - The output states that a workaround exists or that the no-workaround rule does not apply.
+  - The output states the final priority as Medium.
+
+- id: many-customers-part-medium
+  name: many customers partial block is Medium
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "Multiple tenants report that the monthly timesheet summary report cannot
+    be generated. The report page returns an error for all users across those
+    tenants. All other timesheet functions work normally. Users can still
+    export raw timesheet data as CSV and produce their own summaries."
+  expected_output: The response states base priority as Medium because many customers are blocked on part of their work. The no-workaround rule is not satisfied because a CSV export workaround exists. Final priority is Medium.
+  assertions:
+  - The output states the base priority as Medium.
+  - The output identifies the condition as many customers blocked on part of their work.
+  - The output states that a workaround exists or that the no-workaround rule does not apply.
+  - The output states the final priority as Medium.
+
+- id: many-customers-all-high
+  name: many customers fully blocked is High
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "The platform web application is inaccessible for most tenants due to a
+    CDN misconfiguration. No tenant user can open any page or perform any
+    action in the app. A direct-access URL that bypasses the CDN is available
+    to affected tenants as a temporary workaround. Not all tenants are
+    affected."
+  expected_output: The response states base priority as High because many customers are blocked on all their work but not all tenants are affected. The no-workaround rule is not satisfied because a bypass URL exists. Final priority is High.
+  assertions:
+  - The output states the base priority as High.
+  - The output identifies the condition as many customers blocked on all their work but not a complete outage.
+  - The output states the no-workaround rule is not satisfied.
+  - The output states the final priority as High.
+
+- id: full-outage-highest
+  name: complete outage is Highest
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "The platform API is returning 500 errors for every request. No customer
+    can perform any action in the application."
+  expected_output: The response states base priority as Highest because no customer can do any work. Final priority is Highest.
+  assertions:
+  - The output states the base priority as Highest.
+  - The output identifies the issue as a complete outage or states no customer can work.
+  - The output states the final priority as Highest.
+
+- id: data-leak-highest
+  name: secret leak is Highest regardless of scope
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "Authentication tokens are being written to application logs. Only one
+    internal engineer has access to those logs today, but the tokens could be
+    used to impersonate any user."
+  expected_output: The response states base priority as Highest because of a data or secret leak. Final priority is Highest.
+  assertions:
+  - The output states the base priority as Highest.
+  - The output identifies the issue as a data or secret leak.
+  - The output states the final priority as Highest.
+
+- id: no-workaround-escalates
+  name: no workaround escalates one level
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "One customer cannot export their worker roster as a PDF. All other
+    features — timesheets, scheduling, billing, and reporting — work normally
+    for that customer. No alternative PDF download option exists within the
+    platform."
+  expected_output: The response states base priority as Low because one customer is blocked on part of their work. The no-workaround rule is satisfied because no alternative export exists, raising the priority to Medium. The critical-process rule is not satisfied. Final priority is Medium.
+  assertions:
+  - The output states the base priority as Low.
+  - The output states the no-workaround rule is satisfied.
+  - The output states the critical-process rule is not satisfied.
+  - The output states the final priority as Medium.
+
+- id: critical-process-escalates
+  name: critical business process escalates one level
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "One customer's payroll export is producing incorrect totals. Other parts
+    of the application — timesheets, scheduling, and reporting — work normally
+    for that customer. A workaround exists: their payroll team can manually
+    recalculate totals using the raw timesheet data export."
+  expected_output: The response states base priority as Low because one customer is blocked on part of their work. The no-workaround rule is not satisfied because a manual workaround exists. The critical-process rule is satisfied because payroll is a critical business process, raising the priority to Medium. Final priority is Medium.
+  assertions:
+  - The output states the base priority as Low.
+  - The output states the critical-process rule is satisfied because payroll is a critical process.
+  - The output states the final priority as Medium.
+
+- id: double-escalation
+  name: two escalation rules raise priority by two levels
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "One customer cannot generate invoices. Their billing module returns an
+    error every time they attempt to create an invoice for a client. No
+    alternative way to produce invoices exists within the platform. All other
+    features — timesheets, scheduling, and payroll — work normally for that
+    customer."
+  expected_output: The response states base priority as Low because one customer is blocked on part of their work. The no-workaround rule is satisfied because no alternative invoicing method is available, raising to Medium. The critical-process rule is satisfied because invoicing is a billing process, raising further to High. Final priority is High.
+  assertions:
+  - The output states the base priority as Low.
+  - The output states the no-workaround rule is satisfied.
+  - The output states the critical-process rule is satisfied because billing or invoicing is a critical process.
+  - The output states the final priority as High.
+
+- id: no-escalation-when-rules-absent
+  name: escalation rules do not apply when conditions are absent
+  prompt: >-
+    Use the jira-priority skill. Classify this issue:
+    "Several tenants report a minor UI misalignment in the report header on
+    wide screens. The data is fully correct and all functions work. Users can
+    work around it by resizing the window."
+  expected_output: The response states base priority as Lowest because the issue is cosmetic. A workaround exists so the no-workaround rule does not raise the priority. No critical business process is affected. Final priority is Lowest.
+  assertions:
+  - The output states the base priority as Lowest.
+  - The output mentions resizing the window as a workaround.
+  - The output identifies that no critical business process is affected or blocked.
+  - The output states the final priority as Lowest.
