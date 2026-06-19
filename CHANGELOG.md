@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-06-19
+
+### Added
+
+- `jira-priority` skill: classifies Jira issue priority from customer impact breadth and depth, with escalation rules for missing workarounds and critical business processes (payroll, safety compliance, billing, authentication).
+
 ## [2.1.6] - 2026-05-26
 
 ### Changed

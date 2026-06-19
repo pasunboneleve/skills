@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jira Priority"
+  short_description: "Classify and assign priority for Jira issues"
+  default_prompt: "Use $jira-priority to classify the priority of a Jira issue."
