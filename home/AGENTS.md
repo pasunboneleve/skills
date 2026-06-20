@@ -5,8 +5,6 @@ Use repository-local instructions first when present. Use the Codex skills below
 ## Global invariants
 
 - Never push unless the user explicitly asks.
-- When pushing is requested, push only a feature branch.
-- Never push directly to `main`.
 - Do not bypass validation, task hygiene, or review loops.
 
 ## Code and version control
