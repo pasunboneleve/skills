@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.2] - 2026-06-20
+
+### Changed
+
+- Removed the hosted `home/AGENTS.md` directive that separately forbade direct pushes to `main`; the remaining workflow still limits pushes to feature branches and requires explicit user approval before any push.
+
 ## [2.2.1] - 2026-06-20
 
 ### Changed
@@ -290,7 +296,8 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v2.2.1...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v2.2.2...HEAD
+[2.2.2]: https://github.com/pasunboneleve/skills/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/pasunboneleve/skills/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/pasunboneleve/skills/compare/v2.1.6...v2.2.0
 [2.1.6]: https://github.com/pasunboneleve/skills/compare/v2.1.5...v2.1.6
