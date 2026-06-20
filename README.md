@@ -29,7 +29,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`changelog`](src/changelog/SKILL.md): keeps unreleased changelog entries accurate and finalizes version sections at release time.
 - [`ci`](src/ci/SKILL.md): adds GitHub Actions checks and README badges for code and skills projects.
 - [`coding`](src/coding/SKILL.md): surfaces code execution exceptions, keeps code idiomatic, separates mixed-language scripts, and avoids machine-specific paths.
-- [`commit-discipline`](src/commit-discipline/SKILL.md): prepares small local commits with clear rationale and task hygiene.
+- [`commit-discipline`](src/commit-discipline/SKILL.md): prepares small local commits with clear rationale, changelog discipline, and task hygiene.
 - [`create-skill`](src/create-skill/SKILL.md): creates concise skills with OpenAI metadata, eval scaffolding, and focused validation.
 - [`decompose-skill`](src/decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
 - [`devloop`](src/devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
@@ -40,7 +40,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 - [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`repo-policy`](src/repo-policy/SKILL.md): configures GitHub repository policies for protected main, PR merges, CI gates, and artifact releases.
-- [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates kata task tracking with non-blocking Roborev review.
+- [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates Kata task tracking with non-blocking Roborev review, including configured external review providers.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
 - [`skill-project`](src/skill-project/SKILL.md): scaffolds standalone skill-set repositories with shared validation, linking, eval, and agent metadata conventions.
 - [`testing`](src/testing/SKILL.md): selects the narrowest deterministic validation for a change's blast radius.

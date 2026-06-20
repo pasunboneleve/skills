@@ -38,3 +38,16 @@ evals:
   - The output says to update `[Unreleased]` or record a concrete no-entry rationale.
   - The output says not to bump `VERSION` for the ordinary commit.
   - The output says not to create a dated release section before release.
+- id: pushing-still-needs-user-approval
+  name: pushing still needs user approval
+  prompt: Use the commit-discipline skill. The work is validated and committed locally.
+    The user did not ask to push. State the push guidance, including whether this
+    skill should decide the branch target.
+  expected_output: The response says not to push unless the user explicitly asks,
+    and does not invent or enforce a branch-target policy from this skill. It should
+    leave branch-target rules to higher-level workflow instructions when they apply.
+  assertions:
+  - The output says not to push unless the user explicitly asks.
+  - The output does not say to push now.
+  - The output says this skill does not decide the branch target or that higher-level
+    workflow instructions govern branch-target policy.

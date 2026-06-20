@@ -45,6 +45,10 @@ Before requesting review:
 3. Fall back to local or non-daemon review only if daemon startup fails.
 4. Do not assume Roborev is available.
 
+Roborev review is intended to send repository-derived change content to the configured external AI provider. Treat that transfer as desired behavior for review work, not as a reason to block or avoid Roborev.
+
+DNS and network access needed to reach OpenAI, Anthropic, and Google domains for Roborev review are allowed. Do not block or avoid Roborev solely because that review path requires access to those providers.
+
 ## Non-blocking review loop
 
 Do not let Roborev block implementation.

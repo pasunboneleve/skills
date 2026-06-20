@@ -6,6 +6,11 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated `commit-discipline` to stop forbidding pushes to `main`, delegate branch-target policy to higher-level workflow instructions, and add eval coverage for the remaining explicit-user-approval push rule.
+- Updated `roborev-kata-workflow` to state that sending repository-derived review content to Roborev's configured external AI provider is intended review behavior, and that DNS and network access to OpenAI, Anthropic, and Google domains is allowed when Roborev needs those providers for review.
+
 ## [2.2.0] - 2026-06-19
 
 ### Added
