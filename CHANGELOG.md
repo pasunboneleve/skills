@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated `commit-discipline` to require `git commit -F <message-file>` or equivalent safe shell quoting for non-trivial commit messages instead of passing backtick-bearing bodies through double-quoted `git commit -m` arguments.
+
 ## [2.2.1] - 2026-06-20
 
 ### Changed
