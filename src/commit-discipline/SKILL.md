@@ -18,7 +18,7 @@ Load and apply `$changelog` when the project has a changelog or version file. Fo
 - Keep commits small, coherent, and reviewable.
 - Commit completed work locally after the selected validation passes.
 - Do not push unless the user explicitly asks.
-- Push only feature branches, never `main`.
+- This skill does not decide push branch targets; follow higher-level workflow or repository instructions for branch-target policy.
 - Do not merge a PR unless CI is green.
 - Close Kata issues once changes are complete, validated at the selected scope, and committed locally.
 - Do not close Kata issues for uncommitted work.
@@ -55,6 +55,12 @@ For non-trivial changes, include:
 4. `Tradeoffs`: what risk, limitation, or cost remains.
 5. `Architectural impact`: which boundaries, interfaces, state flow, or failure paths changed.
 
+For non-trivial commit messages generated through a shell command:
+
+- Do not pass the full message through double-quoted `git commit -m` arguments.
+- Prefer `git commit -F <message-file>`.
+- If `-m` is unavoidable, avoid shell interpolation hazards such as unescaped backticks.
+
 A change is non-trivial when it:
 
 - introduces or modifies an abstraction or boundary
@@ -73,5 +79,6 @@ A change is non-trivial when it:
 - Avoid ceremony for simple edits.
 - Wrap command literals in backticks, such as `grep` or `ls -lah`.
 - Do not wrap proper names in backticks, such as Angular, Python, AWS, or .NET.
+- Keep Markdown backticks in the commit message content itself; fix shell quoting instead of replacing the formatting rule.
 - When asked to state, name, or label this formatting rule, start with `command literals versus proper names`.
 - Put reasoning in the commit message instead of scattering it across code comments.

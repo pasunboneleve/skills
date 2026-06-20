@@ -38,3 +38,33 @@ evals:
   - The output says to update `[Unreleased]` or record a concrete no-entry rationale.
   - The output says not to bump `VERSION` for the ordinary commit.
   - The output says not to create a dated release section before release.
+- id: pushing-still-needs-user-approval
+  name: pushing still needs user approval
+  prompt: Use the commit-discipline skill. The work is validated and committed locally.
+    The user did not ask to push. State the push guidance, including whether this
+    skill should decide the branch target.
+  expected_output: The response says not to push unless the user explicitly asks,
+    and does not invent or enforce a branch-target policy from this skill. It should
+    leave branch-target rules to higher-level workflow instructions when they apply.
+  assertions:
+  - The output says not to push unless the user explicitly asks.
+  - The output does not say to push now.
+  - The output says this skill does not decide the branch target or that higher-level
+    workflow instructions govern branch-target policy.
+- id: nontrivial-commit-message-uses-message-file
+  name: nontrivial commit message uses message file
+  prompt: Use the commit-discipline skill. You need to create a non-trivial `git commit`
+    message from the shell, and the message body includes command literals like `git
+    status` and `CHANGELOG.md`. State the safe command pattern and whether the formatting
+    rule should change.
+  expected_output: The response prefers `git commit -F <message-file>` for the non-trivial
+    message, rejects passing the full message through double-quoted `git commit -m`
+    arguments, and keeps Markdown backticks for command literals instead of replacing
+    the formatting rule.
+  assertions:
+  - The output prefers `git commit -F` with a message file for the non-trivial commit
+    message.
+  - The output says not to pass the full message through double-quoted `git commit -m`
+    shell arguments.
+  - The output keeps command literals in backticks or says not to replace the formatting
+    rule.

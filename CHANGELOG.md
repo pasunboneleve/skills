@@ -6,6 +6,14 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.1] - 2026-06-20
+
+### Changed
+
+- Updated `commit-discipline` to stop forbidding pushes to `main`, delegate branch-target policy to higher-level workflow instructions, and add eval coverage for the remaining explicit-user-approval push rule.
+- Updated `commit-discipline` to require `git commit -F <message-file>` or equivalent safe shell quoting for non-trivial commit messages instead of passing backtick-bearing bodies through double-quoted `git commit -m` arguments.
+- Updated `roborev-kata-workflow` to state that sending repository-derived review content to Roborev's configured external AI provider is intended review behavior, and that DNS and network access to OpenAI, Anthropic, and Google domains is allowed when Roborev needs those providers for review.
+
 ## [2.2.0] - 2026-06-19
 
 ### Added
@@ -282,7 +290,18 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 - Added a script to link repository skills into `~/.codex/skills`.
 - Added the README and GPL-3.0-or-later license.
 
-[Unreleased]: https://github.com/pasunboneleve/skills/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/pasunboneleve/skills/compare/v2.2.1...HEAD
+[2.2.1]: https://github.com/pasunboneleve/skills/compare/v2.2.0...v2.2.1
+[2.2.0]: https://github.com/pasunboneleve/skills/compare/v2.1.6...v2.2.0
+[2.1.6]: https://github.com/pasunboneleve/skills/compare/v2.1.5...v2.1.6
+[2.1.5]: https://github.com/pasunboneleve/skills/compare/v2.1.4...v2.1.5
+[2.1.4]: https://github.com/pasunboneleve/skills/compare/v2.1.3...v2.1.4
+[2.1.3]: https://github.com/pasunboneleve/skills/compare/v2.1.2...v2.1.3
+[2.1.2]: https://github.com/pasunboneleve/skills/compare/v2.1.1...v2.1.2
+[2.1.1]: https://github.com/pasunboneleve/skills/compare/v2.1.0...v2.1.1
+[2.1.0]: https://github.com/pasunboneleve/skills/compare/v2.0.3...v2.1.0
+[2.0.3]: https://github.com/pasunboneleve/skills/compare/v2.0.2...v2.0.3
+[2.0.2]: https://github.com/pasunboneleve/skills/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/pasunboneleve/skills/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/pasunboneleve/skills/compare/v1.6.1...v2.0.0
 [1.6.1]: https://github.com/pasunboneleve/skills/compare/v1.6.0...v1.6.1
