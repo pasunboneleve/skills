@@ -6,6 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.3] - 2026-06-26
+
+### Changed
+
+- Updated `scripts/link_skills.sh` to mirror the shared skill tree into `~/.agents/skills`, link the hosted home instructions into `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `pi`'s actual global context path at `~/.pi/agent/AGENTS.md`, and mirror the same `AGENTS.md` into `~/.agents/AGENTS.md`.
+- Updated the root `README.md` synopsis to present this repository as a shared skill set for Codex, Claude Code, and Pi, with links to each agent's main site.
+
 ## [2.2.2] - 2026-06-20
 
 ### Changed

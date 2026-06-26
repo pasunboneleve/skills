@@ -37,14 +37,13 @@ When answering, include the concrete files or links involved. For review request
 
 ## Linking rules
 
-- Copy and adapt this repository's `scripts/link_skills.sh`; rely on that script for Codex-home instruction linking behavior.
-- Link skill directories into skill homes, such as `~/.codex/skills/<skill-name>` and `~/.claude/skills/<skill-name>`.
-- Do not link, copy, or install `home/AGENTS.md`, `AGENTS.md`, `CLAUDE.md`, or any other top-level agent instruction file into `~/.claude/CLAUDE.md`.
-- Refuse a link script that installs top-level agent instruction files into Claude, even if it correctly links skill directories.
-- When giving a project checklist, mention the Claude top-level prohibition explicitly, not only the positive skill-directory links.
+- Copy and adapt this repository's `scripts/link_skills.sh`; rely on that script for Codex, Claude, and Pi home-instruction linking behavior.
+- Link skill directories into skill homes, such as `~/.codex/skills/<skill-name>`, `~/.claude/skills/<skill-name>`, and `~/.agents/skills/<skill-name>`.
+- Link the shared home instruction file into each harness's global instruction path when that harness supports one, such as `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.pi/agent/AGENTS.md`.
+- When giving a project checklist, mention both parts explicitly: skill-directory links and the matching global instruction-file links.
 
 ## Validation
 
 - For script or workflow changes, run shell syntax checks and a deterministic scope-script check.
 - For skill changes, run focused validation with `direnv exec . bash scripts/validate_skills.sh <skill-name>`.
-- Before claiming a new standalone skill project is ready, validate at least one temporary install target for `scripts/link_skills.sh` so it proves skill directories are linked and `~/.claude/CLAUDE.md` is not created.
+- Before claiming a new standalone skill project is ready, validate at least one temporary install target for `scripts/link_skills.sh` so it proves skill directories are linked and the expected global instruction files are created at their harness-specific paths.
