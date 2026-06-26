@@ -1,8 +1,8 @@
-# [Codex](https://developers.openai.com/codex/cli) skills
+# Skills for [Codex](https://developers.openai.com/codex/cli), [Claude Code](https://www.anthropic.com/claude-code), and [Pi](https://github.com/earendil-works/pi-mono)
 
 [![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg?branch=main)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml?query=branch%3Amain)
 
-Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src/`.
+Shared coding-agent skills used from `~/.codex/skills`, `~/.claude/skills`, and `~/.agents/skills`. Skill sources live under `src/`.
 
 <br>
 
@@ -48,7 +48,7 @@ Personal Codex skills used from `~/.codex/skills`. Skill sources live under `src
 
 ## Use
 
-Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills` and the hosted Codex-home instructions into `~/.codex/AGENTS.md`.
+Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills`, `~/.claude/skills`, and `~/.agents/skills`, and to link the hosted home instructions into `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `pi`'s global context path at `~/.pi/agent/AGENTS.md`. The script also mirrors that same `AGENTS.md` into `~/.agents/AGENTS.md`.
 
 ## Validation
 

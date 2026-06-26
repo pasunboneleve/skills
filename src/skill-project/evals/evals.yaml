@@ -27,7 +27,7 @@ evals:
     secret for the provider key.
   - The output says repository `AGENTS.md` should include the skill-ablation eval
     rule for future skills.
-  - The output says not to link hosted instructions into `~/.claude/CLAUDE.md`.
+  - The output says to link the shared instruction file into each harness-specific global path, including `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.pi/agent/AGENTS.md`.
 - id: standalone-agents-eval-rule-positive
   name: standalone agents eval rule positive
   prompt: Use the skill-project skill. I am scaffolding AGENTS.md for a new standalone
@@ -47,20 +47,22 @@ evals:
   - The output says not to make prompts self-contained by teaching the answer, rubric,
     review shape, concept definition, or expected fault.
   - The output says that behavior belongs in `SKILL.md`.
-- id: reject-claude-top-level-link-negative
-  name: reject claude top level link negative
+- id: require-global-instruction-links-positive
+  name: require global instruction links positive
   prompt: 'Use the skill-project skill. Review this setup plan: `scripts/link_skills.sh
     will link all skill directories into ~/.codex/skills and ~/.claude/skills. It
     will also symlink home/AGENTS.md to ~/.codex/AGENTS.md and ~/.claude/CLAUDE.md
-    so both agents share the same top-level instructions. We will skip agents/openai.yaml
-    until evals exist.` Is this acceptable?'
-  expected_output: The response rejects the plan because it links top-level hosted
-    instructions into Claude and omits required per-skill agents/openai.yaml metadata.
+    so both agents share the same top-level instructions, and it will mirror the
+    skill tree into ~/.agents/skills plus link ~/.pi/agent/AGENTS.md for Pi. We
+    will skip agents/openai.yaml until evals exist.` Is this acceptable?'
+  expected_output: The response accepts the harness-specific global instruction-file
+    links, requires the matching Pi and ~/.agents links, and still rejects delaying
+    per-skill agents/openai.yaml metadata.
   assertions:
-  - The output rejects or flags the proposed plan.
+  - The output accepts or allows linking `home/AGENTS.md` or an equivalent shared
+    instruction file to `~/.claude/CLAUDE.md`.
   - The output allows linking skill directories into `~/.codex/skills` and `~/.claude/skills`.
-  - The output forbids linking `home/AGENTS.md` or any top-level instruction file
-    to `~/.claude/CLAUDE.md`.
+  - The output requires or explicitly mentions `~/.agents/skills` and `~/.pi/agent/AGENTS.md`.
   - The output requires every skill to have `agents/openai.yaml`.
   - The output does not accept delaying `agents/openai.yaml` until evals exist.
 - id: ci-path-filter-negative
