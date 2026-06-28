@@ -49,22 +49,32 @@ evals:
   - The output says that behavior belongs in `SKILL.md`.
 - id: require-global-instruction-links-positive
   name: require global instruction links positive
-  prompt: 'Use the skill-project skill. Review this setup plan: `scripts/link_skills.sh
-    will link all skill directories into ~/.codex/skills and ~/.claude/skills. It
-    will also symlink home/AGENTS.md to ~/.codex/AGENTS.md and ~/.claude/CLAUDE.md
-    so both agents share the same top-level instructions, and it will mirror the
-    skill tree into ~/.agents/skills plus link ~/.pi/agent/AGENTS.md for Pi. We
-    will skip agents/openai.yaml until evals exist.` Is this acceptable?'
-  expected_output: The response accepts the harness-specific global instruction-file
-    links, requires the matching Pi and ~/.agents links, and still rejects delaying
-    per-skill agents/openai.yaml metadata.
+  prompt: 'Use the skill-project skill. Review this standalone skill-repo checklist
+    and label each item Allowed, Forbidden, or Mandatory. For every item, add one
+    sentence of justification with the concrete files or links involved: `1. Link each skill directory
+    into ~/.codex/skills/<skill-name>. 2. Link each skill directory into ~/.claude/skills/<skill-name>.
+    3. Use one shared home instruction file for every harness that supports a global
+    instruction path. 4. Pi can rely on the Codex and Claude links, so no extra
+    Pi-specific or shared .agents install paths are needed. 5. Delay agents/openai.yaml
+    until a skill gets evals. 6. README can keep describing the repository as Codex-only
+    even if the link script installs Claude and Pi paths.`'
+  expected_output: The response allows the Codex and Claude skill-directory links,
+    requires the matching harness-specific global instruction-file links with concrete
+    global instruction paths, rejects the claim that Pi needs no extra install paths
+    by adding the missing Pi and shared .agents locations, rejects delaying `agents/openai.yaml`,
+    and rejects a Codex-only README when the installer supports Claude and Pi.
   assertions:
-  - The output accepts or allows linking `home/AGENTS.md` or an equivalent shared
-    instruction file to `~/.claude/CLAUDE.md`.
-  - The output allows linking skill directories into `~/.codex/skills` and `~/.claude/skills`.
-  - The output requires or explicitly mentions `~/.agents/skills` and `~/.pi/agent/AGENTS.md`.
+  - The output classifies the Codex and Claude skill-directory links as allowed,
+    acceptable, or mandatory.
+  - The output says the shared instruction file should be linked into harness-specific
+    global instruction paths, either by naming that rule explicitly or by giving
+    at least one concrete path such as `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`,
+    or `~/.pi/agent/AGENTS.md`.
+  - The output rejects the claim that Pi needs no extra install paths and adds `~/.agents/skills`.
   - The output requires every skill to have `agents/openai.yaml`.
   - The output does not accept delaying `agents/openai.yaml` until evals exist.
+  - The output rejects keeping the README Codex-only when the repository also installs
+    Claude and Pi paths.
 - id: ci-path-filter-negative
   name: ci path filter negative
   prompt: 'Use the skill-project skill. Review this CI plan: `The Skill CI workflow

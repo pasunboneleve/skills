@@ -8,7 +8,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ### Changed
 
-- Updated `home/AGENTS.md` to load `apsd-software-design` automatically for installed software-design, refactoring, abstraction, error-handling, naming, comments, and design-process tasks.
+- Added the Ousterhout-inspired [`apsd-software-design`](https://github.com/pasunboneleve/a-philosophy-of-software-design-skills) skill set to `home/AGENTS.md` as the standing software-design guidance for design, refactoring, abstraction, error handling, naming, comments, and design-process tasks.
+
+## [2.2.4] - 2026-06-28
+
+### Changed
+
+- Tightened the `skill-project` global-instruction-link eval so the prompt no longer teaches the Pi and `~/.agents` answers directly, improving its skill-ablation quality.
 
 ## [2.2.3] - 2026-06-26
 
