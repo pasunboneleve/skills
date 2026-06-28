@@ -1,6 +1,6 @@
 # Skills for [Codex](https://developers.openai.com/codex/cli), [Claude Code](https://www.anthropic.com/claude-code), and [Pi](https://github.com/earendil-works/pi-mono)
 
-[![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg?branch=main)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml?query=branch%3Amain)
+[![Skill CI](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml/badge.svg)](https://github.com/pasunboneleve/skills/actions/workflows/skill-ci.yml?query=event%3Apull_request)
 
 Shared coding-agent skills used from `~/.codex/skills`, `~/.claude/skills`, and `~/.agents/skills`. Skill sources live under `src/`.
 
