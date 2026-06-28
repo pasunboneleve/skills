@@ -41,6 +41,13 @@ When answering, include the concrete files or links involved. For review request
 - Link skill directories into skill homes, such as `~/.codex/skills/<skill-name>`, `~/.claude/skills/<skill-name>`, and `~/.agents/skills/<skill-name>`.
 - Link the shared home instruction file into each harness's global instruction path when that harness supports one, such as `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.pi/agent/AGENTS.md`.
 - When giving a project checklist, mention both parts explicitly: skill-directory links and the matching global instruction-file links.
+- When reviewing a linking plan that says Pi can rely on Codex or Claude links alone, mark that item `Forbidden` and explicitly add the missing Pi and shared-agent install paths: `~/.agents/skills/<skill-name>` and `~/.pi/agent/AGENTS.md`.
+- When reviewing a checklist item about shared home instructions, name the concrete harness-specific instruction-file paths instead of leaving the rule abstract. For this repository shape, explicitly list `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.pi/agent/AGENTS.md`.
+
+## Review patterns
+
+- For linking-plan reviews, do not stop at bare `Allowed` or `Forbidden` labels. Include the missing or required concrete paths in the same item.
+- For CI-plan reviews that use path filters on the required workflow, always include the scope-script requirement explicitly: `Required: the scope script chooses skip, focused, or full validation`, even when the proposed plan never mentions the scope script.
 
 ## Validation
 

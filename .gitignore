@@ -13,3 +13,6 @@
 
 # Local validation artifacts
 .skilpel/
+
+# Editor lockfiles
+.#*

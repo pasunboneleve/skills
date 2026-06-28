@@ -40,6 +40,13 @@ When writing, editing, or reviewing prose, prompts, code, APIs, tests, architect
 Load and apply:
 - $oiticica-style
 
+## Software design
+
+When the task is about software design, refactoring quality, abstraction shape, deep modules, error-handling design, naming, comments, general-purpose interfaces, design process, or consistency:
+
+Load and apply when installed:
+- $apsd-software-design
+
 When changing or reviewing README files, docs, help text, man pages, info pages, changelog prose, or other project documentation:
 
 Load and apply:
