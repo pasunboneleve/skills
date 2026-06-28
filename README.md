@@ -52,7 +52,7 @@ Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills`, `~/
 
 ## Validation
 
-Run `bash scripts/validate_skills.sh`. The wrapper installs [`skill-validator`](https://github.com/agent-ecosystem/skill-validator) when needed and uses the verified [`skilpel`](https://github.com/pasunboneleve/skilpel) release binary at `~/.local/bin/skilpel`.
+Run `bash scripts/validate_skills.sh`.
 
 Model-backed evals use [`scripts/skilpel.yaml`](scripts/skilpel.yaml), which sets target and judge temperature to `0`.
 
@@ -63,6 +63,10 @@ bash scripts/validate_skills.sh --eval-id reject-overfit-domain-type change-frie
 ```
 
 For local model-backed evals, put `OPENAI_API_KEY` in `.env`. The committed `.envrc` loads `.env` into the shell with direnv; `.env` is ignored by Git.
+
+## Contributing
+
+See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for repository shape, validation workflow, and the local `skill-validator` and `skilpel` dependencies.
 
 ## Versioning
 
