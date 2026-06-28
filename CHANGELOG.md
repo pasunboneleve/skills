@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated `home/AGENTS.md` to load `apsd-software-design` automatically for installed software-design, refactoring, abstraction, error-handling, naming, comments, and design-process tasks.
+
 ## [2.2.3] - 2026-06-26
 
 ### Changed
