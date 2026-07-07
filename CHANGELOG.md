@@ -6,10 +6,13 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.5] - 2026-07-07
+
 ### Changed
 
 - Added the Ousterhout-inspired [`apsd-software-design`](https://github.com/pasunboneleve/a-philosophy-of-software-design-skills) skill set to `home/AGENTS.md` as the standing software-design guidance for design, refactoring, abstraction, error handling, naming, comments, and design-process tasks.
 - Added `docs/CONTRIBUTING.md` and moved the detailed local `skill-validator` and `skilpel` validation dependency guidance out of the README synopsis into that contributing guide.
+- Added GitHub PR review-thread handling guidance to `home/AGENTS.md`, requiring addressed comments to receive per-thread replies before resolution.
 
 ## [2.2.4] - 2026-06-28
 
