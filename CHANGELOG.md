@@ -6,6 +6,17 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.2.6] - 2026-07-07
+
+### Added
+
+- Added `scripts/install-agent-services.sh`, focused installer validation, and service setup documentation for installing Kata and Roborev as macOS LaunchAgents or Linux user systemd services without depending on chezmoi.
+- Added global agent guidance that treats Kata and Roborev as managed local services outside the command sandbox instead of ad hoc daemons.
+
+### Changed
+
+- Updated `roborev-kata-workflow` so agents treat sandbox-local Roborev status failures as possible false negatives and check or repair the managed service instead of starting ad hoc daemon processes.
+
 ## [2.2.5] - 2026-07-07
 
 ### Changed
