@@ -29,6 +29,13 @@ Before running `git commit`:
 - Reply in the specific review thread for each addressed comment, then resolve that thread once the fix or explicit deferral is recorded.
 - Do not replace per-thread replies with a single top-level PR summary.
 
+## Local agent services
+
+- Treat Kata and Roborev daemons as OS-managed user services when this repository's `scripts/install-agent-services.sh` has been run.
+- Kata and Roborev services run outside the command sandbox; sandbox-local status checks can be false negatives.
+- Do not start `kata daemon start` or `roborev daemon run` as ad hoc foreground processes during normal work.
+- If Kata or Roborev appears unavailable, check the managed service status outside the sandbox or rerun `scripts/install-agent-services.sh` instead of spawning a second daemon.
+
 ## Releases
 
 When preparing, validating, tagging, or executing a release:

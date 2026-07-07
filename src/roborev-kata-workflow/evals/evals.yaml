@@ -85,6 +85,45 @@ evals:
     path needs access to those providers.
   - The output allows proceeding with Roborev review unless there is some separate
     operational failure.
+- id: roborev-managed-service-not-foreground-daemon
+  name: roborev managed service not foreground daemon
+  prompt: Use the roborev-kata-workflow skill. You need a Roborev review, but `roborev
+    status` inside the sandbox says the daemon is not running. The repository has
+    scripts/install-agent-services.sh for managed local services. State what to do
+    before review.
+  expected_output: The response says Roborev and Kata services run outside the command
+    sandbox, treats sandbox-local status failures as possible false negatives, checks
+    or verifies the managed Roborev service outside the sandbox, repairs it through
+    scripts/install-agent-services.sh if needed, and does not start roborev daemon
+    run or roborev daemon start as an ad hoc foreground process.
+  assertions:
+  - The output says Roborev or Kata services run outside the command sandbox.
+  - The output treats sandbox-local status failure as a possible false negative.
+  - The output says to verify or check the managed OS service or service status before
+    treating Roborev as absent.
+  - The output mentions `scripts/install-agent-services.sh` or a managed service repair
+    path if the service is missing or unhealthy.
+  - The output says not to start `roborev daemon run` or `roborev daemon start` as
+    an ad hoc foreground process.
+  - The output does not recommend `roborev daemon run` as the next action.
+  - The output does not recommend `roborev daemon start` as the next action.
+- id: reject-ad-hoc-roborev-daemon-start
+  name: reject ad hoc roborev daemon start
+  prompt: Use the roborev-kata-workflow skill. An agent says the next step is to
+    run `roborev daemon start` in the foreground because `roborev status` failed
+    inside its command sandbox. Review that plan.
+  expected_output: The response rejects starting an ad hoc Roborev daemon, explains
+    that managed Roborev and Kata services run outside the command sandbox, and
+    replaces the plan with checking or using the managed service outside the sandbox
+    or repairing it through the repository installer.
+  assertions:
+  - The output rejects or says not to run `roborev daemon start` as the next step.
+  - The output says the sandbox-local status failure may be false because the service
+    runs outside the command sandbox.
+  - The output replaces the plan with checking, using, or repairing the managed service.
+  - The output mentions `scripts/install-agent-services.sh` or the repository installer
+    as the repair path.
+  - The output does not endorse starting an ad hoc foreground Roborev daemon.
 - id: verify-nonzero-roborev-before-green
   name: verify nonzero roborev before green
   prompt: Use the roborev-kata-workflow skill. Roborev review command for job 913

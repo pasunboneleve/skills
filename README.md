@@ -50,9 +50,13 @@ Shared coding-agent skills used from `~/.codex/skills`, `~/.claude/skills`, and 
 
 Run `./scripts/link_skills.sh` to symlink the skills into `~/.codex/skills`, `~/.claude/skills`, and `~/.agents/skills`, and to link the hosted home instructions into `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, and `pi`'s global context path at `~/.pi/agent/AGENTS.md`. The script also mirrors that same `AGENTS.md` into `~/.agents/AGENTS.md`.
 
+Run `bash scripts/install-agent-services.sh` to install Kata and Roborev for the current user and configure their daemons as OS-managed user services. See [`docs/development/agent-services.md`](docs/development/agent-services.md) for requirements and service status commands.
+
 ## Validation
 
 Run `bash scripts/validate_skills.sh`.
+
+For the Kata and Roborev service installer, run `bash scripts/validate_agent_services.sh`.
 
 Model-backed evals use [`scripts/skilpel.yaml`](scripts/skilpel.yaml), which sets target and judge temperature to `0`.
 

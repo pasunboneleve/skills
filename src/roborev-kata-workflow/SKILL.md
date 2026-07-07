@@ -40,10 +40,13 @@ Before changing files:
 
 Before requesting review:
 
-1. Check whether the Roborev daemon is running.
-2. If it is not running, start it.
-3. Fall back to local or non-daemon review only if daemon startup fails.
-4. Do not assume Roborev is available.
+1. Check whether the Roborev daemon is running with `roborev status`.
+2. Remember that Roborev and Kata managed services run outside the command sandbox; sandbox-local status checks can be false negatives.
+3. If `roborev status` appears false inside a sandbox, verify or use the managed OS service outside the sandbox before treating the daemon as absent.
+4. If the managed service is missing or unhealthy, repair it with the repository's service installer when available, such as `scripts/install-agent-services.sh`.
+5. Do not start `roborev daemon run` or `roborev daemon start` as an ad hoc foreground process during normal work.
+6. Fall back to local or non-daemon review only if the managed service cannot be repaired or used.
+7. Do not assume Roborev is available.
 
 Roborev review is intended to send repository-derived change content to the configured external AI provider. Treat that transfer as desired behavior for review work, not as a reason to block or avoid Roborev.
 
@@ -77,7 +80,8 @@ Before `kata close`:
 - If Roborev found issues, fix them and run a follow-up Roborev review that returns no findings, or record an explicit deferral rationale in Kata before closing.
 - Include Roborev job IDs and their verified outcome in the Kata comment or close message. For a verified non-zero wrapper result, the Kata evidence must explicitly say that the command exited non-zero, `roborev show <job-id>` was checked, and the verified outcome was no findings or named resolved/deferred findings.
 - For non-zero wrapper verification, use an evidence line equivalent to `Roborev job <id>: command exited non-zero; verified with roborev show <id>; outcome: no findings`. If findings were present, name the fixed follow-up job or the explicit deferral rationale in the outcome.
-- When Roborev is pending after validation and commit, state that validation and commit are not enough to close while the Roborev job is unfinished.
+- When Roborev is pending after validation and commit, explicitly state that validation passed and a local commit exists, but those are not enough to close while the Roborev job is unfinished. Record a Kata comment naming the pending Roborev job and the passed validation or commit evidence.
+- When a non-zero Roborev wrapper result is verified before close, the Kata comment or close evidence must name the Roborev job ID, the `roborev show <job-id>` verification, and the verified outcome.
 
 If no safe implementation work remains while Roborev is pending, wait for Roborev instead of closing the Kata issue.
 
