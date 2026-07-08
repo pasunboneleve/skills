@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pull Request"
+  short_description: "Prepare GitHub PRs and handle review threads with linked references"
+  default_prompt: "Use $pull-request when preparing, updating, reviewing, responding to, or merging GitHub pull requests."
