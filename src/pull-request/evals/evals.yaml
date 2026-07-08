@@ -1,0 +1,67 @@
+skill_name: pull-request
+evals:
+- id: reply-per-thread-with-handle
+  name: reply per thread with handle
+  prompt: Use the pull-request skill. A GitHub PR has two review threads from users
+    alice and bob. You fixed alice's request and deliberately deferred bob's request
+    with a written rationale. State how to respond and resolve the threads.
+  expected_output: The response requires replying in each specific review thread,
+    addressing @alice and @bob by GitHub handle, recording the fix or deferral in
+    the corresponding thread, and resolving only after the thread reply records that
+    outcome.
+  assertions:
+  - The output says to reply in each specific review thread rather than only posting
+    one top-level PR summary.
+  - The output addresses both commenters as `@alice` and `@bob` or otherwise says
+    to include each commenter's GitHub handle.
+  - The output says alice's fixed request should be recorded in alice's thread.
+  - The output says bob's deferral and rationale should be recorded in bob's thread.
+  - The output says to resolve a thread only after its thread reply records the fix
+    or explicit deferral.
+  - The output does not replace per-thread replies with a single top-level comment.
+- id: gh-thread-replies-use-graphql
+  name: gh thread replies use graphql
+  prompt: Use the pull-request skill. You need to use the `gh` CLI to reply to a
+    GitHub PR review thread, not to add a general PR comment. State the required
+    command approach.
+  expected_output: The response says to use GitHub GraphQL through gh with the review
+    thread or review comment node ID for an in-thread reply, and rejects using gh
+    pr comment for the thread reply.
+  assertions:
+  - The output mentions GraphQL or `gh api graphql`.
+  - The output says to use the review thread ID, review comment node ID, or another
+    GraphQL node identifier for the in-thread reply.
+  - The output says not to use `gh pr comment` for a review-thread reply.
+  - The output distinguishes an in-thread reply from a top-level PR comment.
+- id: link-external-references
+  name: link external references
+  prompt: Use the pull-request skill. You are drafting a PR comment that mentions
+    Jira issue PAY-321 and the Python requests library. State how those references
+    should appear.
+  expected_output: The response says external references should be links. The Jira
+    issue should use a full Jira URL when the base URL is known or inferable, and
+    the Python requests library should link to an authoritative page such as official
+    docs, PyPI, or the project repository.
+  assertions:
+  - The output says the Jira issue should be a full web link rather than only `PAY-321`
+    when the Jira base URL is known or inferable.
+  - The output says the Python requests library should be linked.
+  - The output names an authoritative destination type such as official documentation,
+    PyPI, or a project repository.
+  - The output does not endorse leaving bare external names when an authoritative
+    link can be supplied.
+- id: reject-top-level-summary-for-addressed-comments
+  name: reject top level summary for addressed comments
+  prompt: Use the pull-request skill. Review this plan. "I fixed every review comment,
+    so I will leave one top-level PR comment saying everything is addressed and then
+    resolve all threads."
+  expected_output: The response rejects the plan because addressed GitHub PR review
+    comments require per-thread replies before resolution, with each reply addressing
+    the commenter by GitHub handle and recording the fix or deferral in that thread.
+  assertions:
+  - The output rejects or corrects the plan.
+  - The output says one top-level PR comment is not enough for addressed review comments.
+  - The output requires replying in each review thread.
+  - The output requires addressing commenters by GitHub handle.
+  - The output says threads should be resolved only after the corresponding thread
+    reply records the fix or deferral.

@@ -38,6 +38,7 @@ Shared coding-agent skills used from `~/.codex/skills`, `~/.claude/skills`, and 
 - [`jira-priority`](src/jira-priority/SKILL.md): classifies the priority of a Jira issue using a customer-impact scheme with escalation rules for missing workarounds and critical business processes.
 - [`kata`](src/kata/SKILL.md): keeps Kata issues searched, assigned, updated with evidence, and closed when verified.
 - [`markdown`](src/markdown/SKILL.md): edits Markdown with useful Unicode, including box-drawing directory trees.
+- [`pull-request`](src/pull-request/SKILL.md): prepares GitHub PRs and handles review-thread replies, resolutions, and linked external references.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`repo-policy`](src/repo-policy/SKILL.md): configures GitHub repository policies for protected main, PR merges, CI gates, and artifact releases.
 - [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates Kata task tracking with non-blocking Roborev review, including configured external review providers.
@@ -57,6 +58,8 @@ Run `bash scripts/install-agent-services.sh` to install Kata and Roborev for the
 Run `bash scripts/validate_skills.sh`.
 
 For the Kata and Roborev service installer, run `bash scripts/validate_agent_services.sh`.
+
+For skill and global-instruction linking, run `bash scripts/validate_link_skills.sh`.
 
 Model-backed evals use [`scripts/skilpel.yaml`](scripts/skilpel.yaml), which sets target and judge temperature to `0`.
 

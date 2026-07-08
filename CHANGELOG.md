@@ -6,6 +6,17 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-07-08
+
+### Added
+
+- Added the `pull-request` skill for GitHub PR readiness, per-thread review replies, `@handle` reviewer responses, GraphQL-backed thread replies, and linked external references.
+
+### Changed
+
+- Added focused validation for `scripts/link_skills.sh` to prove `~/.claude/CLAUDE.md` links to `home/AGENTS.md` and a preexisting hand-managed file fails without blocking the other symlinks.
+- Moved GitHub PR review-thread handling guidance out of `home/AGENTS.md` and into the dedicated `pull-request` skill.
+
 ## [2.2.6] - 2026-07-07
 
 ### Added

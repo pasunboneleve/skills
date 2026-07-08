@@ -14,6 +14,7 @@ When working on code, architecture, tests, commits, branches, Kata, Roborev, PRs
 Prefer and apply:
 - $roborev-kata-workflow
 - $commit-discipline
+- $pull-request
 - $change-friendly-architecture
 
 Before running `git commit`:
@@ -23,11 +24,6 @@ Before running `git commit`:
 - Classify the commit as simple or non-trivial.
 - For non-trivial commits, use the structured commit message sections from `$commit-discipline`.
 - Confirm validation status and Kata status.
-
-## GitHub PR reviews
-
-- Reply in the specific review thread for each addressed comment, then resolve that thread once the fix or explicit deferral is recorded.
-- Do not replace per-thread replies with a single top-level PR summary.
 
 ## Local agent services
 
