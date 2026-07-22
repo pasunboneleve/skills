@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.3.1] - 2026-07-22
+
+### Changed
+
+- Added standing authorization in the shared home guidance for Roborev to send trusted-repository review diffs and relevant context to its configured external AI providers.
+
 ## [2.3.0] - 2026-07-08
 
 ### Added

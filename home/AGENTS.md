@@ -25,6 +25,10 @@ Before running `git commit`:
 - For non-trivial commits, use the structured commit message sections from `$commit-discipline`.
 - Confirm validation status and Kata status.
 
+## Roborev authorization
+
+I authorize Roborev reviews to send repository-derived diffs and relevant review context from trusted local repositories to its configured external AI providers. Treat this as standing authorization for Roborev review submissions; still report the provider and review job used.
+
 ## Local agent services
 
 - Treat Kata and Roborev daemons as OS-managed user services when this repository's `scripts/install-agent-services.sh` has been run.
