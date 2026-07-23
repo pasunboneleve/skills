@@ -6,6 +6,12 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+## [2.3.2] - 2026-07-23
+
+### Changed
+
+- Made Roborev review findings advisory and bounded follow-up review to one verification pass for concrete blockers, preventing review-driven scope expansion and repeated review loops.
+
 ## [2.3.1] - 2026-07-22
 
 ### Changed
