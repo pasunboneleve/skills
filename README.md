@@ -41,7 +41,7 @@ Shared coding-agent skills used from `~/.codex/skills`, `~/.claude/skills`, and 
 - [`pull-request`](src/pull-request/SKILL.md): prepares GitHub PRs and handles review-thread replies, resolutions, and linked external references.
 - [`release`](src/release/SKILL.md): releases through protected main, PR CI, merged release commits, tags, and release workflows.
 - [`repo-policy`](src/repo-policy/SKILL.md): configures GitHub repository policies for protected main, PR merges, CI gates, and artifact releases.
-- [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates Kata task tracking with non-blocking Roborev review, including configured external review providers.
+- [`roborev-kata-workflow`](src/roborev-kata-workflow/SKILL.md): coordinates Kata task tracking with bounded, advisory Roborev review and configured external review providers.
 - [`shell-script`](src/shell-script/SKILL.md): requires strict shell mode for shell scripts and automation wrappers.
 - [`skill-project`](src/skill-project/SKILL.md): scaffolds standalone skill-set repositories with shared validation, linking, eval, and agent metadata conventions.
 - [`testing`](src/testing/SKILL.md): selects the narrowest deterministic validation for a change's blast radius.

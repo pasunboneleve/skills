@@ -53,6 +53,50 @@ evals:
   - The output names Roborev job 812 in the Kata update or closeout evidence.
   - The output reports that the Kata issue remains open, pending, blocked, or deferred.
   - The output does not include `kata close` as the next command.
+- id: classify-scope-expanding-roborev-finding
+  name: classify scope-expanding Roborev finding
+  prompt: Use the roborev-kata-workflow skill. A completed Roborev job on a small
+    bug fix asks the agent to replace the current design, create a decision report,
+    and rerun review after each new document. The job gives no concrete defect in
+    the current diff. State what the agent should do.
+  expected_output: The response treats the feedback as deferred or declined rather
+    than new implementation work, records the reason in Kata, does not submit a
+    follow-up review merely to satisfy the finding, and surfaces the broader request
+    to the user before it is taken up.
+  assertions:
+  - The output classifies the finding as deferred, declined, out of scope, unsupported,
+    or equivalent rather than an automatic change request.
+  - The output requires recording the finding and rationale in Kata.
+  - The output does not recommend another review merely because Roborev requested it.
+  - The output says to ask or report to the user before the broader work is taken up.
+- id: allow-one-blocker-verification-review
+  name: allow one blocker verification review
+  prompt: Use the roborev-kata-workflow skill. Roborev identifies a reproducible
+    authorization bypass in the current diff. The agent fixes the smallest affected
+    boundary and reruns the focused test. State whether another Roborev job is allowed
+    and how later feedback is handled.
+  expected_output: The response allows one verification review because the finding
+    is a concrete high-risk blocker. It says the agent must classify any later finding
+    and record it in Kata rather than starting another review cycle.
+  assertions:
+  - The output identifies the authorization bypass as a blocker, correctness, security,
+    or high-risk finding.
+  - The output allows at most one verification review after the fix.
+  - The output says later findings must be classified and recorded in Kata.
+- id: reject-repeat-review-for-nonblocking-finding
+  name: reject repeat review for nonblocking finding
+  prompt: Use the roborev-kata-workflow skill. The verification review after a fixed
+    data-validation bug suggests renaming a local helper and adding a future enhancement.
+    No current behavior is broken. State the next action before closing the Kata issue.
+  expected_output: The response classifies the suggestions as a fix only if the rename
+    is an evidenced in-scope defect, otherwise defers or declines them, records the
+    outcome in Kata, and does not submit a third review. It allows closure once the
+    job is accounted for and other close conditions pass.
+  assertions:
+  - The output requires classifying and recording both suggestions in Kata.
+  - The output permits deferring or declining the future enhancement.
+  - The output allows closure once the final job is accounted for and the other close
+    conditions pass.
 - id: roborev-external-provider-is-intended
   name: roborev external provider is intended
   prompt: Use the roborev-kata-workflow skill. The team says Roborev sends repository
@@ -130,14 +174,14 @@ evals:
     exited non-zero, but the streamed text says `No issues found`. Validation passed
     and the change is committed. State what must happen before closing the Kata issue.
   expected_output: The response requires verifying job 913 with roborev show before
-    treating it as green. It should close only if roborev show confirms no findings,
-    and the Kata close evidence should name job 913 and the verification.
+    treating it as a completed job with no findings. The Kata close evidence should
+    name job 913 and the verification.
   assertions:
   - The output requires running or checking `roborev show 913`.
   - The output says not to treat the non-zero Roborev wrapper result as green until
     job 913 is verified.
   - The output says the Kata issue can close only if verification confirms no findings
-    or all findings are resolved or deferred.
+    or all findings are resolved, deferred, or declined with rationale.
   - The output requires the Kata close evidence or comment to name Roborev job 913
     and its verified outcome.
   - The output does not recommend closing immediately based only on the streamed `No
