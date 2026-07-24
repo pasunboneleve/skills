@@ -1,0 +1,4 @@
+interface:
+  display_name: "Browser Clickthrough"
+  short_description: "Prove a UI change with a deterministic browser clickthrough"
+  default_prompt: "Use $browser-clickthrough to verify a UI change end to end: pin the code under test, drive the app in Playwright, and assert on DOM state with an API cross-check."

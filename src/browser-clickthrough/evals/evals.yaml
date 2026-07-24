@@ -1,0 +1,58 @@
+skill_name: browser-clickthrough
+evals:
+- id: plan-clickthrough-positive
+  name: plan clickthrough positive
+  prompt: 'Use the browser-clickthrough skill. A user asks: `I fixed a bug in a multi-step
+    web wizard. Plan how you will verify the fix actually works in the running app.`
+    Describe the approach you will take.'
+  expected_output: The response pins the code under test, seeds authentication via
+    localStorage rather than the login form, drives the running app step by step
+    with screenshots and control dumps, and verifies from DOM state plus a deterministic
+    non-UI cross-check rather than from a screenshot alone.
+  assertions:
+  - The output runs the actual app in a browser to verify, not static inspection or a code read alone.
+  - The output seeds or injects the auth session (e.g. into localStorage) instead of automating the login form.
+  - The output captures per-step evidence such as screenshots and a dump of the page's interactive controls.
+  - The output asserts on concrete DOM state (a control's disabled state, element/row counts, or an error banner) rather than a screenshot impression.
+  - The output cross-checks the UI result against a deterministic non-UI probe such as the underlying API.
+- id: pin-code-under-test-positive
+  name: pin code under test positive
+  prompt: 'Use the browser-clickthrough skill. I need to run the app against the exact
+    fix commit to click through it, but that branch is already checked out in my main
+    working copy and I do not want to disturb it. How should I run the exact code?'
+  expected_output: The response uses a detached git worktree at the commit under test
+    (since the branch is already checked out elsewhere) and reuses the main checkout's
+    heavy dependencies by symlink rather than reprovisioning, keeping the harness config
+    ephemeral.
+  assertions:
+  - The output creates a separate worktree pinned to the commit rather than re-checking out the same branch in place.
+  - The output uses a detached worktree (or otherwise avoids checking out the same branch in two places) because a branch checked out elsewhere cannot be added to a second worktree.
+  - The output reuses the main checkout's heavy dependencies (such as a virtualenv or node_modules) via symlink instead of reprovisioning them.
+  - The output keeps the harness/runner configuration ephemeral rather than committing machine-specific absolute paths into the product repo.
+- id: reject-screenshot-claim-negative
+  name: reject screenshot claim negative
+  prompt: 'Use the browser-clickthrough skill. Review this verification report: `I
+    opened the page, it rendered without obvious errors, and the screenshot looks
+    correct, so the fix is verified.` Is this acceptable?'
+  expected_output: The response rejects the report because a screenshot impression
+    is not deterministic evidence; it requires assertions on DOM state and a non-UI
+    cross-check.
+  assertions:
+  - The output rejects or flags the report as insufficient.
+  - The output says a screenshot or visual impression alone does not prove the behavior.
+  - The output requires asserting on concrete DOM state (disabled state, counts, or an error banner).
+  - The output requires a deterministic cross-check, such as probing the underlying API, or reporting the actual observed values.
+- id: reject-login-form-and-networkidle-negative
+  name: reject login form and networkidle negative
+  prompt: 'Use the browser-clickthrough skill. Review this clickthrough plan for a
+    single-page app: `I will automate the login form with username and password, wait
+    for networkidle after every navigation, and then screenshot the final step.` Is
+    this a good plan?'
+  expected_output: The response corrects the plan — seed the session into localStorage
+    instead of automating the login form, and use domcontentloaded with explicit waits
+    instead of networkidle, which never settles in a single-page app.
+  assertions:
+  - The output flags or corrects the plan rather than approving it as-is.
+  - The output says to seed or inject the auth session (e.g. via localStorage) rather than automating the login form.
+  - The output says networkidle is unreliable for a single-page app and to use domcontentloaded with explicit waits instead.
+  - The output still expects state-based assertions rather than a final screenshot alone.
