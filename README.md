@@ -26,6 +26,7 @@ Shared coding-agent skills used from `~/.codex/skills`, `~/.claude/skills`, and 
 
 - [`change-friendly-architecture`](src/change-friendly-architecture/SKILL.md): reviews designs for narrow, testable boundaries, explicit dependencies, visible workflows, and low blast radius.
 - [`beads`](src/beads/SKILL.md): keeps Beads work claimed, updated with evidence, and closed when complete.
+- [`browser-clickthrough`](src/browser-clickthrough/SKILL.md): verifies a UI change end to end by pinning the code under test in a detached worktree, driving the running app in Playwright with seeded auth, and asserting on DOM state with a deterministic API cross-check.
 - [`changelog`](src/changelog/SKILL.md): keeps unreleased changelog entries accurate and finalizes version sections at release time.
 - [`ci`](src/ci/SKILL.md): adds GitHub Actions checks and README badges for code and skills projects.
 - [`coding`](src/coding/SKILL.md): surfaces code execution exceptions, keeps code idiomatic, separates mixed-language scripts, and avoids machine-specific paths.

@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Added the `browser-clickthrough` skill: verify a UI change end to end by pinning the code under test in a detached worktree with symlinked deps, driving the running app in Playwright with localStorage-seeded auth and resilient step-driving, and asserting on DOM state with a deterministic API cross-check.
+
 ## [2.3.2] - 2026-07-23
 
 ### Changed
