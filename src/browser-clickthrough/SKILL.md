@@ -9,10 +9,12 @@ Use this skill to prove a UI change with a scripted browser clickthrough, not wi
 
 ## Pin the code under test
 
-- Run the app against the EXACT commits under review, without disturbing the working checkouts.
+- Start the app from the EXACT commits under review and drive that running app in a real Playwright browser, without disturbing the working checkouts.
+- Verification plans must name the app/server startup from the pinned worktree before Playwright drives the browser; code inspection alone is discovery, not clickthrough validation.
 - When the branch is already checked out in the main working copy, add a DETACHED worktree at the commit SHA (`git worktree add --detach <path> <sha>`); a branch checked out elsewhere cannot be added to a second worktree.
 - Symlink heavy, branch-independent dependencies (`.venv`, `node_modules`, `.env`) from the main checkout into each worktree instead of reprovisioning them.
-- Point the local fullstack runner at the worktree parent. Treat this harness config as ephemeral — absolute paths, not committed to the product repo.
+- Point the local fullstack runner at the worktree parent. Treat this harness config as ephemeral: use absolute paths for the local run, keep them out of product files, and do not commit machine-specific paths.
+- When giving setup steps, explicitly say that runner or harness path changes are local-only and must not be committed.
 
 ## Discover before scripting
 
