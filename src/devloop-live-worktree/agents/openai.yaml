@@ -1,0 +1,4 @@
+interface:
+  display_name: "Devloop Live Worktree"
+  short_description: "Change what a running devloop harness serves without a needless restart"
+  default_prompt: "Use $devloop-live-worktree to decide whether changing what the running devloop harness serves needs a restart, a path change, or an in-place checkout: restart only to point at a different directory, and checkout-in-place (or edit) to serve newer code from the same directory."

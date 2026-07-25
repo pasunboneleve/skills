@@ -34,6 +34,7 @@ Shared coding-agent skills used from `~/.codex/skills`, `~/.claude/skills`, and 
 - [`create-skill`](src/create-skill/SKILL.md): creates concise skills with OpenAI metadata, eval scaffolding, and focused validation.
 - [`decompose-skill`](src/decompose-skill/SKILL.md): splits oversized skills into a small trigger surface plus focused resources.
 - [`devloop`](src/devloop/SKILL.md): discovers [`devloop`](https://github.com/pasunboneleve/devloop) from its built-in guidance and validates workflows with observable evidence.
+- [`devloop-live-worktree`](src/devloop-live-worktree/SKILL.md): changes what a running devloop harness serves with the least disruption — restarting only to point at a different directory, and checking out or editing code in place to serve newer code without a restart.
 - [`documentation-boundary`](src/documentation-boundary/SKILL.md): separates README synopsis work from real documentation updates.
 - [`docs-structure`](src/docs-structure/SKILL.md): organises README synopsis content and durable docs into focused files.
 - [`jira-priority`](src/jira-priority/SKILL.md): classifies the priority of a Jira issue using a customer-impact scheme with escalation rules for missing workarounds and critical business processes.
