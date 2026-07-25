@@ -6,6 +6,10 @@ This project uses SemVer. Version tags use the `vMAJOR.MINOR.PATCH` format.
 
 ## [Unreleased]
 
+### Added
+
+- Added the `devloop-live-worktree` skill: change what a running devloop harness serves with the least disruption — restart only to point devloop at a different directory (config root/cwd is resolved at startup and a symlink relink only affects the next spawn), and check out or edit code in place (advancing a detached worktree per commit, or pointing at the main checkout) to serve newer code via hot reload without a restart.
+
 ## [2.4.0] - 2026-07-25
 
 ### Added

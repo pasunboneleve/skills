@@ -1,0 +1,69 @@
+skill_name: devloop-live-worktree
+evals:
+- id: serve-newer-code-positive
+  name: serve newer code positive
+  prompt: 'Use the devloop-live-worktree skill. My devloop harness is already running
+    and serving from a directory. The code I want it to show now lives on a newer commit
+    (on another branch/worktree). How do I get the running harness to show that code?'
+  expected_output: The response gets the newer code into the directory the harness already
+    serves with an in-place `git checkout` (or by advancing the detached worktree to
+    the newer SHA), and relies on hot reload / autoreload so the running harness picks
+    it up without a restart and without changing any paths.
+  assertions:
+  - The output serves the newer code by checking it out in place in the directory the harness already points at, or by advancing the pinned/detached worktree to the newer commit.
+  - The output does NOT restart devloop and does NOT change root/cwd paths for this case.
+  - The output relies on the dev server or app server hot-reloading/recompiling the changed code in place.
+- id: different-directory-restart-positive
+  name: different directory restart positive
+  prompt: 'Use the devloop-live-worktree skill. I need my running devloop harness to
+    serve from a completely different directory than the one it started against. What
+    do I do?'
+  expected_output: The response explains that devloop reads root/cwd only at startup,
+    so pointing it at a different directory requires editing the devloop config and
+    restarting devloop (stop then re-run); a running process will not pick up the new
+    directory otherwise.
+  assertions:
+  - The output requires restarting devloop (stop then re-run) to serve from a different directory.
+  - The output explains that devloop resolves root/cwd only at startup and does not hot-apply config edits.
+- id: reject-symlink-relink-negative
+  name: reject symlink relink negative
+  prompt: 'Use the devloop-live-worktree skill. Review this plan: `The harness is running.
+    To make it serve a different directory, I will just repoint the symlink it uses,
+    and the live harness will start serving the new target without anything else.` Is
+    this correct?'
+  expected_output: The response rejects the plan, because a running process holds the
+    already-resolved real path; a symlink relink affects only the next spawn, so serving
+    a different directory still requires restarting devloop.
+  assertions:
+  - The output rejects or corrects the plan rather than approving it.
+  - The output explains that an already-running process holds the resolved real path, so a relink affects only the next spawn.
+  - The output requires a devloop restart to actually serve the different directory.
+- id: reject-two-worktree-iteration-negative
+  name: reject two worktree iteration negative
+  prompt: 'Use the devloop-live-worktree skill. Review this setup: `To develop this
+    feature, I will keep one worktree that devloop serves and a second worktree where
+    I edit, and sync my changes over to the served one as I go.` Is this a good way to
+    iterate?'
+  expected_output: The response rejects the two-worktree iteration setup as unnecessary,
+    because pointing devloop at the single tree being edited lets hot reload reflect
+    every save with no sync step; a separate serving worktree is justified only for
+    isolation (a frozen commit or serving a different branch), and being detached it
+    lags to committed code and cannot show uncommitted edits.
+  assertions:
+  - The output rejects or corrects the two-worktree iteration setup as unnecessary for iterating.
+  - The output says to point devloop at the single tree being edited so hot reload reflects each save with no sync step.
+  - The output limits a dedicated serving worktree to isolation cases (frozen commit, or serving a different branch than the one being edited).
+  - The output notes the detached serving worktree only advances to committed code via checkout and cannot reflect uncommitted edits.
+- id: reject-restart-per-edit-negative
+  name: reject restart per edit negative
+  prompt: 'Use the devloop-live-worktree skill. Review this workflow: `Whenever I change
+    a source file in the directory the harness serves, I stop devloop and re-run it so
+    the change shows up.` Is this the right approach?'
+  expected_output: The response rejects the restart-per-edit workflow as unnecessary,
+    because editing (or checking out) code in the directory the harness already serves
+    is picked up in place by hot reload / autoreload; restarting is only needed to change
+    which directory devloop points at.
+  assertions:
+  - The output rejects or corrects the restart-per-edit workflow as unnecessary.
+  - The output explains that in-place edits or checkouts in the served directory are picked up by hot reload/autoreload without a restart.
+  - The output reserves restarting devloop for changing which directory (root/cwd) it points at, not for ordinary source changes.
