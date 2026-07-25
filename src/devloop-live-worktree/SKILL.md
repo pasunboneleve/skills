@@ -39,3 +39,4 @@ Use this skill to decide whether a change to what a running devloop harness serv
 - A dedicated serving worktree pays off ONLY for ISOLATION: keeping the harness on a frozen commit, or serving one branch while you edit another.
 - Because the same branch cannot be checked out in two worktrees, that serving worktree must be DETACHED and advanced with `git checkout <sha>` after each commit. It therefore inherently lags to COMMITTED code and cannot show uncommitted edits — it is not a `git pull` of the work branch.
 - Treat the two-worktree split as isolation-only, never the default for iterating.
+- When rejecting a two-worktree iteration plan, explicitly say the detached serving worktree advances only to committed code by checkout and cannot reflect uncommitted edits.
